@@ -28,8 +28,13 @@ const IndexOnlineService = r => require.ensure([], () => r(require('@/components
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
   components: {
-    IndexHeader, IndexNavbar, PagePic, InfoContent,
-    IndexCompanyInfo, IndexOnlineService, IndexBottom
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    InfoContent,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
   }
 
 }
@@ -44,7 +49,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
   .partner-header-nav {
     display: flex;
     flex-direction: column;
@@ -60,8 +65,8 @@ export default {
   }
   .online-service-container {
     z-index: 1;
-    position: absolute;
-    top: 400px;
+    position: fixed;
+    bottom: 50px;
     right: 0;
   }
 }

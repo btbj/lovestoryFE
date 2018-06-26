@@ -11,7 +11,7 @@
           <div :class="[ 'header-word', type === 'register' ? 'word-style' : '']">会员注册</div>
         </div>
       </div>
-      <div class="login-body" v-if="type === 'login'">
+      <div class="login-body">
         <div class="title-word">专业红娘为您牵线搭桥</div>
         <div class="tel">
           <plain-input class="tel-input" placeholder="手机号" v-model="tel" maxlength="11"></plain-input>
@@ -48,9 +48,6 @@
         <div class="registered-num">
           最新登记注册会员<span style="color: #FD6F9F">220145</span>人
         </div>
-      </div>
-      <div class="register-body" v-else>
-
       </div>
     </div>
   </div>
@@ -258,13 +255,6 @@ export default {
         color: gray;
         font-size: 14px;
       }
-    }
-    .register-body {
-      box-sizing: border-box;
-      width: 100%;
-      height: 300px;
-      padding: 10px;
-      border: 1px solid black;
     }
   }
 }

@@ -25,7 +25,7 @@ const LeftBar = r => require.ensure([], () => r(require('./components/LeftBar'))
 export default {
   components: {
     IndexHeader, IndexNavbar, LeftBar
-  },
+  }
 }
 </script>
 
@@ -38,7 +38,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
   .home-header-nav {
     display: flex;
     flex-direction: column;

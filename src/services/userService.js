@@ -14,6 +14,12 @@ export default {
   doLoginByPhone (phone) {
     return Api.post((this.serviceURL + 'do_login_by_phone'), phone)
   },
+  doReg (info) {
+    return Api.post((this.serviceURL + 'do_reg'), info)
+  },
+  getInfo (token) {
+    return Api.post((this.serviceURL + 'get_info'), token)
+  },
   create (credentials) {
     return Api.post((this.serviceURL + 'do_create'), credentials)
     // return Api.create().post((this.serviceURL + 'do_create'), credentials)

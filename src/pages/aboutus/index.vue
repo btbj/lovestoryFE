@@ -1,5 +1,5 @@
 <template>
-  <section class="aboutus-root-container">
+  <section class="container">
     <div class="us-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -27,12 +27,21 @@ const IndexCompanyInfo = r => require.ensure([], () => r(require('@/components/I
 const IndexOnlineService = r => require.ensure([], () => r(require('@/components/IndexOnlineService')), 'aboutus')
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
-  components: { IndexHeader, IndexNavbar, PagePic, AboutContent, IndexCompanyInfo, IndexOnlineService, IndexBottom }
+  components: {
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    AboutContent,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
+  }
+
 }
 </script>
 
 <style lang="less">
-.aboutus-root-container {
+.container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,7 +49,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
   .us-header-nav {
     display: flex;
     flex-direction: column;

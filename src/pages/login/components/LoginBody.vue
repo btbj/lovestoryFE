@@ -130,7 +130,7 @@ export default {
     },
     async doLogin () {
       try {
-        let res = await userService.doLogin('/api/user/do_login', {
+        let res = await userService.doLogin({
           phone: this.tel,
           password: this.password
         })
