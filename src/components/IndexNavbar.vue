@@ -19,10 +19,9 @@
 export default {
   methods: {
     navTo (destName) {
-      if (destName === 'myInfo' && !this.currentToken) {
-        destName = 'login'
-      }
-      this.$router.push({name: destName})
+      let notAllowed = (destName === 'myinfo' && this.currentToken === null)
+      let newDest = notAllowed ? 'login' : destName
+      this.$router.push({name: newDest})
     },
     isCurrent (pageName) {
       let routeRootName = this.$route.name.split('-')[0]
@@ -34,6 +33,9 @@ export default {
     currentToken () {
       return this.$store.getters.token
     }
+  },
+  mounted: function () {
+    console.log(this.currentToken)
   }
 }
 </script>

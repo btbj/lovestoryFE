@@ -26,7 +26,11 @@ export default {
         this.userInfo = res.data.info
         console.log(res)
       } catch (error) {
-        console.log(error)
+        if (error.error_code === 110 || error.error_code === 101) {
+          this.$store.dispatch('logout')
+        } else {
+          console.log(error)
+        }
       }
     }
   },

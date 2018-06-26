@@ -9,9 +9,14 @@ import PartnerInfo from '@/pages/findpartner/partnerinfo'
 import LoveStory from '@/pages/lovestory'
 import News from '@/pages/news'
 import NewsInfo from '@/pages/news/newsinfo'
+
 import MyInfo from '@/pages/myInfo'
 import BasicInfo from '@/pages/myInfo/basicInfo'
 import DatingRecords from '@/pages/myInfo/datingRecords'
+
+import AboutUsSubRoute from './sub/aboutus'
+import NewsSubRoute from './sub/news'
+
 
 Vue.use(Router)
 
@@ -35,7 +40,9 @@ export default new Router({
     {
       path: '/aboutus',
       name: 'aboutus',
-      component: AboutUs
+      redirect: '/aboutus/company',
+      component: AboutUs,
+      children: AboutUsSubRoute.routes
     },
     {
       path: '/findpartner',
@@ -55,7 +62,9 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: News
+      redirect: '/news/notification',
+      component: News,
+      children: NewsSubRoute.routes
     },
     {
       path: '/news/newsinfo',

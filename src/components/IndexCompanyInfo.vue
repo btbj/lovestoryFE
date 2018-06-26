@@ -21,9 +21,9 @@
      <div class="about-us-box">
        <div class="info-label">关于我们</div>
        <div class="about-us">
-         <div class="about-item">公司介绍</div>
-         <div class="about-item">办公环境</div>
-         <div class="about-item">联系方式</div>
+         <div class="about-item" @click="$router.push('/aboutus/company')">公司介绍</div>
+         <div class="about-item" @click="$router.push('/aboutus/env')">办公环境</div>
+         <div class="about-item" @click="$router.push('/aboutus/contact')">联系方式</div>
        </div>
      </div>
      <div class="attention-us-box">
@@ -133,6 +133,9 @@ export default {
           font-size: 14px;
           margin-bottom: 10px;
           cursor: pointer;
+        }
+        .about-item:hover{
+          color: #F3487E;
         }
       }
     }

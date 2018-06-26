@@ -1,12 +1,22 @@
 <template>
-  <section class="container">
+  <section class="aboutus-container">
     <div class="us-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
     </div>
     <page-pic></page-pic>
     <div class="us-content-container">
-      <about-content></about-content>
+      <about-frame></about-frame>
+      <!-- <div class="about-content-box">
+        <div class="content-link-box">
+          <about-us></about-us>
+          <new-news></new-news>
+          <contact-us></contact-us>
+        </div>
+        <div class="content-info-box">
+          <router-view></router-view>
+        </div>
+      </div> -->
     </div>
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
@@ -21,7 +31,7 @@
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'aboutus')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'aboutus')
 const PagePic = r => require.ensure([], () => r(require('@/components/PagePic')), 'aboutus')
-const AboutContent = r => require.ensure([], () => r(require('./components/AboutContent')), 'aboutus')
+const AboutFrame = r => require.ensure([], () => r(require('./components/AboutFrame')), 'aboutus')
 
 const IndexCompanyInfo = r => require.ensure([], () => r(require('@/components/IndexCompanyInfo')), 'aboutus')
 const IndexOnlineService = r => require.ensure([], () => r(require('@/components/IndexOnlineService')), 'aboutus')
@@ -31,7 +41,7 @@ export default {
     IndexHeader,
     IndexNavbar,
     PagePic,
-    AboutContent,
+    AboutFrame,
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
@@ -41,7 +51,7 @@ export default {
 </script>
 
 <style lang="less">
-.container {
+.aboutus-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,6 +60,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 0;
+  background: white;
   .us-header-nav {
     display: flex;
     flex-direction: column;
@@ -71,5 +82,4 @@ export default {
     right: 0;
   }
 }
-
 </style>

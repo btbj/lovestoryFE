@@ -30,5 +30,16 @@ export const store = () => new Vuex.Store({
       state.token = { value, expire }
       localStorage.setItem('LoveStoryToken', JSON.stringify(state.token))
     }
+  },
+  actions: {
+    login (context, {value, expire}) {
+      context.commit('setToken', {value, expire})
+    },
+    logout (context) {
+      context.commit('setToken', {
+        value: null,
+        expire: 0
+      })
+    }
   }
 })
