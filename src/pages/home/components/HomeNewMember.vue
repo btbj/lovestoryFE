@@ -85,6 +85,7 @@ export default {
     border-top: 1px solid lightgrey;
     .info-item {
       display: flex;
+      flex-direction: row;
       width: 100%;
       height: 24px;
       align-items: center;
@@ -93,12 +94,12 @@ export default {
         color: #FF70A2;
       }
       .item-date {
-        width: 72px;
         font-size: 14px;
         color: grey;
         margin-right: 30px;
       }
       .item-content {
+        flex: 1;
         box-sizing: border-box;
         width: 325px;
         text-align: left;

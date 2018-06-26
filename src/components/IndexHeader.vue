@@ -35,7 +35,8 @@ export default {
   justify-content: center;
   width: 100%;
   padding: 5px 0;
-  margin-bottom: 5px;
+  padding-bottom: 5px;
+  background: white;
   .logo {
     box-sizing: border-box;
     min-width: 200px;
