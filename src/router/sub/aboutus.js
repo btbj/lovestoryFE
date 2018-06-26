@@ -15,7 +15,7 @@ export default {
       component: OfficeEnv
     },
     {
-      path: 'methods',
+      path: 'contact',
       name: 'aboutus-contactmethods',
       component: ContactMethods
     }

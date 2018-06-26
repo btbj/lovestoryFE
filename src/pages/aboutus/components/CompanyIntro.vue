@@ -15,14 +15,29 @@
 </template>
 
 <script>
+import siteService from '@/services/siteService'
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'aboutus')
 
 export default {
   components: { ContentNav },
   data () {
     return {
-      contentInfo: '相亲相爱网是一个严肃认真的婚恋相亲网站，为具有中华人民共和国国籍的单身成年人士提供婚恋服务'
+      contentInfo: ''
     }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        this.contentInfo = res.data.info.value
+        // console.log(res)
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo(1)
   }
 }
 </script>
