@@ -9,11 +9,13 @@
             <left-bar></left-bar>
           </el-aside>
           <el-main>
-            <nuct-child></nuct-child>
+            <!-- <basic-info></basic-info> -->
+            <router-view></router-view>
           </el-main>
         </el-container>
       </div>
     </div>
+    <index-bottom></index-bottom>
   </section>
 </template>
 
@@ -21,10 +23,14 @@
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'myinfo')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'myinfo')
 const LeftBar = r => require.ensure([], () => r(require('./components/LeftBar')), 'myinfo')
+const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'myinfo')
 
 export default {
   components: {
-    IndexHeader, IndexNavbar, LeftBar
+    IndexHeader,
+    IndexNavbar,
+    LeftBar,
+    IndexBottom
   }
 }
 </script>
@@ -55,8 +61,11 @@ export default {
     text-align: center;
     .main-body{
       margin: auto;
-      width: 840px;
+      width: 920px;
       padding: 15px;
+      .el-main {
+        padding: 0 20px;
+      }
     }
   }
 }
