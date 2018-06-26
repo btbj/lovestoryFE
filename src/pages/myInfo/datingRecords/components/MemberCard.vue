@@ -1,7 +1,7 @@
 <template>
   <div class="member-card-container">
     <div class="pic-box-container">
-      <div class="pic-box" v-for="(card, index) in memberCardsList"
+      <div class="pic-box" v-for="(card, index) in list"
            :key="index">
         <div class="pic">
           <img :src=card.img
@@ -13,97 +13,15 @@
         </div>
       </div>
     </div>
-    <div class="pagination-box">
-      <page-pagination></page-pagination>
-    </div>
   </div>
 </template>
 
 <script>
-const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'story')
-
 export default {
-  components: {
-    PagePagination
-  },
+  props: ['list'],
   data () {
     return {
-      memberCardsList: [{
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }, {
-        img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34',
-        address: '杭州湾新区'
-      }]
+
     }
   }
 }
@@ -117,11 +35,12 @@ export default {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     box-sizing: border-box;
     border-bottom: 1px solid lightgrey;
     margin-bottom: 20px;
     .pic-box {
+      flex-basis: 20%;
       width: 110px;
       height: 200px;
       box-sizing: border-box;
@@ -157,13 +76,6 @@ export default {
         }
       }
     }
-  }
-
-  .pagination-box {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
   }
 }
 </style>
