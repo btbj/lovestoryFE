@@ -6,11 +6,11 @@
       <span style="font-size: 16px;">&nbsp;/NEWS</span>
     </div>
     <div class="item-list-box" style="height: 130px">
-      <div :class="['news-info-item', currentLink === 'announcement' ? 'selected' : '']" @click="postLink('announcement')">通知公告</div>
+      <div :class="['news-info-item', isCurrent('news-notification') ? 'selected' : '']" @click="postLink('news-notification')">通知公告</div>
       <div class="news-info-divided-line"></div>
-      <div :class="['news-info-item', currentLink === 'companyNews' ? 'selected' : '']" @click="postLink('companyNews')">公司新闻</div>
+      <div :class="['news-info-item', isCurrent('news-company') ? 'selected' : '']" @click="postLink('news-company')">公司新闻</div>
       <div class="news-info-divided-line"></div>
-      <div :class="['news-info-item', currentLink === 'tradeInfo' ? 'selected' : '']" @click="postLink('tradeInfo')">行业资讯</div>
+      <div :class="['news-info-item', isCurrent('news-industry') ? 'selected' : '']" @click="postLink('news-industry')">行业资讯</div>
       <div class="news-info-divided-line"></div>
     </div>
   </div>
@@ -25,7 +25,10 @@ export default {
   },
   methods: {
     postLink (linkName) {
-      this.currentLink = linkName
+      this.$router.push({name: linkName})
+    },
+    isCurrent (routeName) {
+      return this.$route.name === routeName
     }
   }
 }

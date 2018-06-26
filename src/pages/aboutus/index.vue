@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="aboutus-container">
     <div class="us-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="less">
-.container {
+.aboutus-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 0;
+  background: white;
   .us-header-nav {
     display: flex;
     flex-direction: column;

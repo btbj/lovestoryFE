@@ -11,6 +11,7 @@ import News from '@/pages/news'
 import NewsInfo from '@/pages/news/newsinfo'
 import MyInfo from '@/pages/myinfo'
 import AboutUsSubRoute from './sub/aboutus'
+import NewsSubRoute from './sub/news'
 
 Vue.use(Router)
 
@@ -56,7 +57,9 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: News
+      redirect: '/news/notification',
+      component: News,
+      children: NewsSubRoute.routes
     },
     {
       path: '/news/newsinfo',

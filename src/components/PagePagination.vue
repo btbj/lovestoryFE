@@ -1,17 +1,37 @@
 <template>
   <div class="page-pagination-box">
     <el-pagination
-        background
-        layout="prev, pager, next"
-        :page-size="5"
-        :total="13">
-</el-pagination>
+      background
+      layout="prev, pager, next"
+      :page-size="Number(paginationData.size)"
+      :total="Number(paginationData.total) || 1"
+      @current-change="handlePageChange">
+    </el-pagination>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    paginationData: {
+      type: Object,
+      default: () => {
+        return {
+          current: 1,
+          total: 1,
+          size: 4
+        }
+      }
+    }
+  },
+  methods: {
+    handlePageChange (page) {
+      this.$emit('change', page)
+    }
+  },
+  mounted: function () {
+    console.log(this.paginationData)
+  }
 }
 </script>
 
@@ -28,7 +48,10 @@ export default {
     border: none;
   }
   .el-pagination.is-background .el-pager li:not(.disabled) {
-      border: 1px solid grey;
+    border: 1px solid grey;
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled):not(.active):hover {
+    color: #F1356F;
   }
   .el-pagination {
     .btn-prev, .btn-next {
