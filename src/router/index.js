@@ -9,9 +9,14 @@ import PartnerInfo from '@/pages/findpartner/partnerinfo'
 import LoveStory from '@/pages/lovestory'
 import News from '@/pages/news'
 import NewsInfo from '@/pages/news/newsinfo'
-import MyInfo from '@/pages/myinfo'
+
+import MyInfo from '@/pages/myInfo'
+import BasicInfo from '@/pages/myInfo/basicInfo'
+import DatingRecords from '@/pages/myInfo/datingRecords'
+
 import AboutUsSubRoute from './sub/aboutus'
 import NewsSubRoute from './sub/news'
+
 
 Vue.use(Router)
 
@@ -69,7 +74,19 @@ export default new Router({
     {
       path: '/myinfo',
       name: 'myinfo',
-      component: MyInfo
+      component: MyInfo,
+      redirect: '/myinfo/basicInfo',
+      children: [
+        {
+          path: '/myinfo/basicInfo',
+          name: 'myinfo-basicinfo',
+          component: BasicInfo
+        }, {
+          path: '/myinfo/datingRecords',
+          name: 'myinfo-datingrecords',
+          component: DatingRecords
+        }
+      ]
     }
   ]
 })
