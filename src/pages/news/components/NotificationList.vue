@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getInfo (index) {
-      this.$router.push({name: 'newsinfo', params: {'id': index}})
+      this.$router.push({name: 'news-detail', params: {'category': 'notification', 'id': index}})
     },
     async getList (page = 1) {
       try {
