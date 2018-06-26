@@ -9,7 +9,7 @@
       <div class="news-item" v-for="(news, index) in newsList"
             :key="index">
         <span class="icon-stop item-icon"></span>
-        <span>{{news.content}}</span></div>
+        <span class="news-content">{{news.content}}</span></div>
     </div>
   </div>
 </template>
@@ -19,15 +19,15 @@ export default {
   data () {
     return {
       newsList: [{
-        content: '教您几点在法国的常用礼仪...'
+        content: '教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪'
       }, {
-        content: '一个星期不适用聊天软件，我的生活...'
+        content: '一个星期不适用聊天软件，我的生活一个星期不适用聊天软件，我的生活一个星期不适用聊天软件，我的生活'
       }, {
-        content: '国外的婚礼习俗...'
+        content: '国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗'
       }, {
-        content: '如何用英语说出最美的情话？...'
+        content: '如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？'
       }, {
-        content: '嫁给老外是种怎样的体验？4个女人...'
+        content: '嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人'
       }]
     }
   }
@@ -78,6 +78,14 @@ export default {
       .item-icon {
         color: #D76083;
         margin-right: 10px;
+      }
+      .news-content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .news-content:hover{
+        color: #D76083;
       }
     }
   }

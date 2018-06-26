@@ -75,6 +75,7 @@ export default {
     }
     .selected {
       background-color: #F1356F;
+      color: white;
     }
     .news-info-divided-line {
       width: 100%;
