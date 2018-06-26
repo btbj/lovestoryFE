@@ -28,7 +28,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 0 0;
+  padding: 0;
   height: 100%;
   .login-header-nav {
     display: flex;

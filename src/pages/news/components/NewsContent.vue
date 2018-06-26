@@ -28,7 +28,7 @@
               <div class="news-words-box">
                 <div class="news-words">{{newsItem.newsContent}}</div>
                 <div class="news-more-btn">
-                  <div class="more-btn" @click="navTo(index)">了解详情</div>
+                  <div class="more-btn" @click="getInfo(index)">了解详情</div>
                 </div>
               </div>
             </div>
@@ -54,36 +54,36 @@ export default {
   data () {
     return {
       newsList: [{
-          newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
-          newsDate: '2018-06-14',
-          newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
-          newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
-        }, {
-          newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
-          newsDate: '2018-06-14',
-          newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
-          newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
-        }, {
-          newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
-          newsDate: '2018-06-14',
-          newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
-          newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
-        }, {
-          newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
-          newsDate: '2018-06-14',
-          newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
-          newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
-        }, {
-          newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
-          newsDate: '2018-06-14',
-          newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
-          newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
-        }]
+        newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
+        newsDate: '2018-06-14',
+        newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
+        newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
+      }, {
+        newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
+        newsDate: '2018-06-14',
+        newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
+        newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
+      }, {
+        newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
+        newsDate: '2018-06-14',
+        newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
+        newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
+      }, {
+        newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
+        newsDate: '2018-06-14',
+        newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
+        newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
+      }, {
+        newsTitle: '我们为什么要办海外婚礼？旅行结婚的奥妙',
+        newsDate: '2018-06-14',
+        newsPic: 'https://dummyimage.com/230x160/eee/3ff.jpg&text=pic',
+        newsContent: '海外婚礼避免了繁冗的婚礼筹备，又开阔了异域视野，正成为年轻人喜结连理的一种新时尚。为什么越来越多的人选择海外婚礼？我们为什么要办海外婚礼？...'
+      }]
     }
   },
   methods: {
-    navTo (index) {
-      this.$router.push({name: 'news-newsinfo', params: {'id': index}})
+    getInfo (index) {
+      this.$router.push({name: 'newsinfo', params: {'id': index}})
     }
   }
 
@@ -108,7 +108,7 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 600px;
+    width: 650px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -149,6 +149,7 @@ export default {
               font-size: 18px;
             }
             .title-date {
+              margin-right: 5px;
               flex: 1;
               text-align: right;
               font-size: 14px;
@@ -179,7 +180,7 @@ export default {
             }
             .news-words-box {
               font-size: 14px;
-              width: 300px;
+              width: 350px;
               height: 160px;
               box-sizing: border-box;
               display: flex;

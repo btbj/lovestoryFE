@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import api from '~/service/api'
+import userService from '@/services/userService'
 
 export default {
-   data () {
+  data () {
     return {
       userInfo: null
     }
@@ -24,7 +24,7 @@ export default {
   methods: {
     async getUserInfo () {
       try {
-        let res = await api.post('/api/user/get_info', {
+        let res = await userService.getInfo({
           token: this.$store.getters.token
         })
         this.userInfo = res.data.info

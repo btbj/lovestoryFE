@@ -58,7 +58,12 @@ const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/C
 const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'story')
 
 export default {
-  components: {  NewNews, ContactUs, ContentNav, PagePagination },
+  components: {
+    NewNews,
+    ContactUs,
+    ContentNav,
+    PagePagination
+  },
   data () {
     return {
       storyList: [
@@ -67,43 +72,43 @@ export default {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }]
+          }]
         }, {
           item: [{
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }]
-        },{
+          }]
+        }, {
           item: [{
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }, {
+          }, {
             pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-            }]
+          }]
         }]
     }
   }
@@ -128,7 +133,7 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 600px;
+    width: 650px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -162,7 +167,7 @@ export default {
             align-items: center;
             padding: 10px;
             .long-story-content {
-              padding: 5px 0;
+              padding: 1px 0;
               width: 100%;
               height: 160px;
               box-sizing: border-box;
@@ -185,9 +190,9 @@ export default {
             align-items: center;
             padding: 10px;
             .short-story-content {
-              padding: 5px 0;
+              padding: 1px 0;
               width: 100%;
-              height: 120px;
+              height: 128px;
               box-sizing: border-box;
               text-align: left;
               font-size: 14px;
