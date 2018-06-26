@@ -50,6 +50,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 0;
+  background: white;
   .news-header-nav {
     display: flex;
     flex-direction: column;

@@ -6,30 +6,49 @@
       <span style="font-size: 16px;">&nbsp;/NEWS</span>
     </div>
     <div class="item-list-box">
-      <div class="news-item" v-for="(news, index) in newsList"
-            :key="index">
+      <div class="news-item" v-for="(news, index) in newsList" :key="index"
+        @click="checkNewsDetail(news)">
         <span class="icon-stop item-icon"></span>
-        <span class="news-content">{{news.content}}</span></div>
+        <span class="news-content">{{news.title}}</span></div>
     </div>
   </div>
 </template>
 
 <script>
+import articleService from '@/services/articleService'
+
 export default {
   data () {
     return {
-      newsList: [{
-        content: '教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪教您几点在法国的常用礼仪'
-      }, {
-        content: '一个星期不适用聊天软件，我的生活一个星期不适用聊天软件，我的生活一个星期不适用聊天软件，我的生活'
-      }, {
-        content: '国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗国外的婚礼习俗'
-      }, {
-        content: '如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？如何用英语说出最美的情话？'
-      }, {
-        content: '嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人嫁给老外是种怎样的体验？4个女人'
-      }]
+      newsList: []
     }
+  },
+  methods: {
+    async getNews () {
+      try {
+        let res = await articleService.articles({
+          page: 1,
+          per_page: 5
+        })
+        console.log('success', res)
+        this.newsList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    checkNewsDetail (news) {
+      console.log(news)
+      let category = 'notification'
+      switch (news.category) {
+        case '1': category = 'notification'; break
+        case '2': category = 'company'; break
+        case '3': category = 'industry'; break
+      }
+      this.$router.push({name: 'news-detail', params: {category, 'id': news.id}})
+    }
+  },
+  mounted: async function () {
+    this.getNews()
   }
 }
 </script>
