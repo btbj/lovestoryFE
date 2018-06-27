@@ -2,14 +2,14 @@
   <div class="nav-box">
     <div :class="['nav-item', isCurrent('home') ? 'selected' : '']" @click="navTo('home')">网站首页</div>
     <div :class="['nav-item', isCurrent('aboutus') ? 'selected' : '']" @click="navTo('aboutus')">关于我们</div>
-    <div :class="['nav-item', isCurrent('news') ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
+    <div :class="['nav-item', (isCurrent('news') || isCurrent('newsinfo')) ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
     <div class="nav-item">服务介绍</div>
     <div :class="['nav-item', isCurrent('lovestory') ? 'selected' : '']" @click="navTo('lovestory')">晒幸福</div>
-    <div :class="['nav-item', isCurrent('findpartner') ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
+    <div :class="['nav-item', (isCurrent('findpartner') || isCurrent('partnerinfo')) ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
     <div class="nav-item">我要相亲</div>
     <div class="nav-item">定制服务</div>
     <div class="nav-item">活动互动</div>
-    <div :class="['nav-item', isCurrent('myInfo') ? 'selected' : '']" @click="navTo('myInfo')">
+    <div :class="['nav-item', isCurrent('myinfo') ? 'selected' : '']" @click="navTo('myinfo')">
       <span class="icon-person person-icon"></span>
     </div>
   </div>
@@ -19,10 +19,9 @@
 export default {
   methods: {
     navTo (destName) {
-      if (destName === 'myInfo' && !this.currentToken) {
-        destName = 'login'
-      }
-      this.$router.push({name: destName})
+      let notAllowed = (destName === 'myinfo' && this.currentToken === null)
+      let newDest = notAllowed ? 'login' : destName
+      this.$router.push({name: newDest})
     },
     isCurrent (pageName) {
       let routeRootName = this.$route.name.split('-')[0]
@@ -34,6 +33,9 @@ export default {
     currentToken () {
       return this.$store.getters.token
     }
+  },
+  mounted: function () {
+    console.log(this.currentToken)
   }
 }
 </script>

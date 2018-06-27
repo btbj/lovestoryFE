@@ -1,70 +1,64 @@
 <template>
- <div class="home-news-info">
-   <div class="news-info-header">
-     <div class="news-info-label">新闻资讯</div>
-     <div class="news-info-tab">
-       <div class="tab-item" @click="getType('companyNews')"
-            :style="{ border: type === 'companyNews' ? arrowShow: 'none'}">
-          <div class="tab-company-news"
-            :style="{ color: type === 'companyNews' ? activeColor : ''}">公司新闻</div>
-          <div class="tab-arrow" :style="{ display: type === 'companyNews' ? arrowShow : 'none'}"></div>
-       </div>
-       <div class="tab-item" @click="getType('tradeInfo')"
-            :style="{ border: type === 'tradeInfo' ? arrowShow : 'none'}">
-        <div class="tab-trade-info"
-            :style="{ color: type === 'tradeInfo' ? activeColor : ''}">行业资讯</div>
-        <div class="tab-arrow" :style="{ display: type === 'tradeInfo' ? arrowShow : 'none'}"></div>
-       </div>
-     </div>
-   </div>
-   <div class="news-info-box">
-     <div class="news-info-content">
-       <div class="info-item" v-for="(info, index) in infoList"
-            :key="index">
-         <div class="info-pic">
-           <img :src=info.img
-                class="img-style">
-         </div>
-         <div class="info-words">
-           <div class="info-title">
-            {{info.title}}
-           </div>
-           <div class="info-content">
-             {{info.content}}
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="home-news-info">
+    <div class="news-info-header">
+      <div class="news-info-label">新闻资讯</div>
+      <div class="news-info-tab">
+        <div :class="['tab-item', type === 'company' ? 'selected' : '']" @click="getNews('company')">
+          <div class="tab-item-text">公司新闻</div>
+          <div class="tab-arrow"></div>
+        </div>
+        <div :class="['tab-item', type === 'industry' ? 'selected' : '']" @click="getNews('industry')">
+          <div class="tab-item-text">行业资讯</div>
+          <div class="tab-arrow"></div>
+        </div>
+      </div>
+    </div>
+    <div class="news-info-box">
+      <div class="news-info-content">
+        <div class="info-item" v-for="(news, index) in newsList" :key="index">
+          <div class="info-pic" :style="`background-image: url('${news.image_url}')`">
+            <!-- <img :src="news.image_url" class="img-style"> -->
+          </div>
+          <div class="info-words">
+            <div class="info-title"> {{news.title}} </div>
+            <div class="info-content"> {{news.content}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import articleService from '@/services/articleService'
+
 export default {
   data () {
     return {
       arrowShow: '',
       activeColor: '#FF1493',
-      type: 'companyNews',
-      infoList: [{
-        img: 'https://dummyimage.com/150x90/eee/3ff.jpg&text=pic',
-        title: '今年最流行婚礼，看完好想结婚！',
-        content: '每个女生对婚礼的憧憬，大概都是从拥有第一个洋娃娃开始的。忽闪的长睫毛、精致的妆容、长长的蕾丝裙、blingbling的蝴蝶结高跟鞋......简直就是婚礼现场'
-      }, {
-        img: 'https://dummyimage.com/150x90/eee/3ff.jpg&text=pic',
-        title: '今年最流行婚礼，看完好想结婚！',
-        content: '每个女生对婚礼的憧憬，大概都是从拥有第一个洋娃娃开始的。忽闪的长睫毛、精致的妆容、长长的蕾丝裙、blingbling的蝴蝶结高跟鞋......简直就是婚礼现场'
-      }, {
-        img: 'https://dummyimage.com/150x90/eee/3ff.jpg&text=pic',
-        title: '今年最流行婚礼，看完好想结婚！',
-        content: '每个女生对婚礼的憧憬，大概都是从拥有第一个洋娃娃开始的。忽闪的长睫毛、精致的妆容、长长的蕾丝裙、blingbling的蝴蝶结高跟鞋......简直就是婚礼现场'
-      }]
+      type: 'company',
+      newsList: []
     }
   },
   methods: {
-    getType (type) {
+    async getNews (type = 'company') {
       this.type = type
+      try {
+        let res = await articleService.articles({
+          category: type === 'company' ? 2 : 3,
+          page: 1,
+          per_page: 3
+        })
+        console.log('success', res)
+        this.newsList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
     }
+  },
+  mounted: async function () {
+    this.getNews()
   }
 
 }
@@ -92,6 +86,9 @@ export default {
       font-weight: bold;
       box-sizing: border-box;
       margin-right: 80px;
+      margin-bottom: -1px;
+      z-index: 1;
+      // height: 34px;
     }
     .news-info-tab {
       flex: 1;
@@ -99,34 +96,40 @@ export default {
       align-items: center;
       justify-content: flex-start;
       .tab-item {
-        border-bottom: 1px solid #FF70A2;
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 0);
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-right: 50px;
-        height: 36px;
-        .tab-company-news {
+        margin-bottom: -1px;
+        height: 32px;
+        line-height: 32px;
+        cursor: pointer;
+        .tab-item-text {
           padding: 5px 0;
           font-size: 16px;
-          color: black;
-          cursor: pointer;
-        }
-        .tab-trade-info {
-          font-size: 16px;
-          cursor: pointer;
-          padding: 5px 0;
         }
         .tab-arrow {
-          position: relative;
+          position: absolute;
+          display: none;
           z-index: 1;
+          bottom: 0;
           margin: auto;
           width:0;
           height:0;
           border-left:4px solid transparent;
           border-right:4px solid transparent;
           border-bottom:4px solid #FF70A2;
+        }
+        &.selected {
+          color: #FF70A2;
+          border-color: #FF70A2;
+          .tab-arrow {
+            display: block;
+          }
         }
       }
     }
@@ -156,15 +159,9 @@ export default {
           box-sizing: border-box;
           margin-right: 10px;
           overflow: hidden;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          .img-style {
-            min-width: 100%;
-            min-height: 100%;
-          }
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
         }
         .info-words {
           box-sizing: border-box;
@@ -174,10 +171,13 @@ export default {
           flex-direction: column;
           align-items: flex-start;
           justify-content: space-around;
+          padding: 10px 0;
           .info-title {
             font-size: 16px;
+            margin-bottom: 10px;
           }
           .info-content {
+            flex: 1;
             font-size: 14px;
             text-align: left;
             color: grey;

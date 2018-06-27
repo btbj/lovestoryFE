@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?q07ikb');
+  src:  url('fonts/icomoon.eot?q07ikb#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?q07ikb') format('truetype'),
+    url('fonts/icomoon.woff?q07ikb') format('woff'),
+    url('fonts/icomoon.svg?q07ikb#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down:before {
+  content: "\e900";
+}
+.icon-content_paste:before {
+  content: "\e14f";
+}
+.icon-expand_less:before {
+  content: "\e5ce";
+}
+.icon-expand_more:before {
+  content: "\e5cf";
+}
+.icon-settings:before {
+  content: "\e8b8";
+}
+.icon-assignment_ind:before {
+  content: "\e85e";
+}
+.icon-phone:before {
+  content: "\e0cd";
+}
+.icon-check_box:before {
+  content: "\e834";
+}
+.icon-check_box_outline_blank:before {
+  content: "\e835";
+}
+.icon-navigate_next:before {
+  content: "\e409";
+}
+.icon-mode_edit:before {
+  content: "\e254";
+}
+.icon-forward:before {
+  content: "\e154";
+}
+.icon-my_location:before {
+  content: "\e55c";
+}
+.icon-people:before {
+  content: "\e7fb";
+}
+.icon-insert_drive_file:before {
+  content: "\e24d";
+}
+.icon-keyboard_arrow_left:before {
+  content: "\e314";
+}
+.icon-keyboard_arrow_right:before {
+  content: "\e315";
+}
+.icon-language:before {
+  content: "\e894";
+}
+.icon-message:before {
+  content: "\e0c9";
+}
+.icon-radio_button_unchecked:before {
+  content: "\e836";
+}
+.icon-person:before {
+  content: "\e7fd";
+}
+.icon-phone_in_talk:before {
+  content: "\e61d";
+}
+.icon-search:before {
+  content: "\e8b6";
+}
+.icon-stop:before {
+  content: "\e047";
+}
+.icon-wc:before {
+  content: "\e63d";
+}
+.icon-wechat:before {
+  content: "\e901";
+}
+.icon-qq:before {
+  content: "\e902";
+}

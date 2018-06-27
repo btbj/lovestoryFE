@@ -73,6 +73,9 @@ export default {
         font-size: 14px;
         margin-bottom: 3px;
         text-align: left;
+        p {
+          margin: 10px 0;
+        }
       }
       .info-detail-btn {
         width: 110px;

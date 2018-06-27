@@ -1,6 +1,5 @@
 <template>
-  <div class="register-container">
-
+  <div class="register-body-container">
     <div class="register-form">
       <div class="form-title">
         <div class="title-text">用户注册</div>
@@ -68,7 +67,7 @@
 </template>
 
 <script>
-import api from '~/service/api'
+import userService from '@/services/userService'
 import OtpBtn from '@/components/OtpBtn'
 
 export default {
@@ -116,7 +115,7 @@ export default {
         ],
         height: [
           { required: true, message: '请输入身高', trigger: 'blur' },
-          { pattern: /^[\d]{3}$/, message: '请输入身高（cm）', trigger: 'blur'}
+          { pattern: /^[\d]{3}$/, message: '请输入身高（cm）', trigger: 'blur' }
         ],
         education: [
           { required: true, message: '请输入学历', trigger: 'blur' }
@@ -126,7 +125,7 @@ export default {
         ],
         phone: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          { pattern: /^1[\d]{10}$/, message: '手机号格式错误', trigger: 'blur'}
+          { pattern: /^1[\d]{10}$/, message: '手机号格式错误', trigger: 'blur' }
         ],
         code: [
           { required: true, message: '请输入收到的验证码', trigger: 'blur' }
@@ -157,13 +156,13 @@ export default {
           this.startRegister()
         } else {
           console.log('error submit!!')
-          return false;
+          return false
         }
       })
     },
     async startRegister () {
       try {
-        let res = await api.post('/api/user/do_reg', {
+        let res = await userService.doReg({
           // name: this.registerInfo.name,
           sex: this.registerInfo.sex,
           year: this.registerInfo.birthday.getFullYear(),
@@ -178,7 +177,7 @@ export default {
           phone: this.registerInfo.phone,
           code: this.registerInfo.code,
           password: this.registerInfo.password,
-          nickname: this.registerInfo.nickname,
+          nickname: this.registerInfo.nickname
         })
         this.$message({
           message: res.message,
@@ -196,7 +195,7 @@ export default {
 </script>
 
 <style lang="less">
-.register-container {
+.register-body-container {
   flex: 1;
   width: 100%;
   min-height: 1220px;
@@ -261,6 +260,5 @@ export default {
     }
   }
 }
-
 
 </style>

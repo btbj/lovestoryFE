@@ -74,7 +74,7 @@ export default {
   },
 
   handleTokenError (message) {
-    if (store.getters.loginState) {
+    if (store.getters.token) {
       store.dispatch('logout')
       vm.$alert(message, '请重新登录', {
         confirmButtonText: '确定',

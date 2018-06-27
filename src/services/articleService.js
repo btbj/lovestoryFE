@@ -17,8 +17,8 @@ export default {
   update (newInfo) {
     return Api.post((this.serviceURL + 'do_update'), newInfo)
   },
-  articles (token) {
-    return Api.post((this.serviceURL + 'articles'), token)
+  articles (category) {
+    return Api.post((this.serviceURL + 'articles'), category)
   },
 
   // 错误处理 //

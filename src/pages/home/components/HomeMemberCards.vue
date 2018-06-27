@@ -149,7 +149,7 @@ export default {
             box-sizing: border-box;
             .member-info-item {
               font-size: 14px;
-              margin-bottom: 2px;
+              margin-bottom: 5px;
             }
             .member-detail-btn {
               width: 100%;

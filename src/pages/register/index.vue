@@ -1,6 +1,6 @@
 <template>
-  <section class="container">
-    <div class="login-header-nav">
+  <section class="register-container">
+    <div class="register-header-nav">
       <index-header></index-header>
     </div>
     <register-body></register-body>
@@ -14,13 +14,16 @@ const RegisterBody = r => require.ensure([], () => r(require('./components/Regis
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'register')
 
 export default {
-  components: { IndexHeader, RegisterBody, IndexBottom }
-
+  components: {
+    IndexHeader,
+    RegisterBody,
+    IndexBottom
+  }
 }
 </script>
 
 <style lang="less">
-.container {
+.register-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,9 +31,8 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 0 0;
-  height: 100%;
-  .login-header-nav {
+  padding: 0;
+  .register-header-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
