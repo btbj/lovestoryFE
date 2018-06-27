@@ -41,7 +41,7 @@ export default {
         title: '照片',
         message: '请选择照片',
         options: ['有照片'],
-        value: '',
+        value: '有照片',
         extended: false
       }
     }

@@ -50,6 +50,7 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
+        this.TagData.value = this.value
       }
       this.TagData.extended = extended
     },
