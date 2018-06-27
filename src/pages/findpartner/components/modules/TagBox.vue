@@ -2,44 +2,33 @@
   <div class="tag-box">
   <div class="hot-tag-box">
     <div class="row-item">
-      <div class="row-label">热门标签&nbsp;:</div>
+      <div class="row-label">热门标签 :</div>
       <div class="row-tags">
-        <div class="tag-item">高级白领</div>
-        <div class="tag-item">教师</div>
-        <div class="tag-item">医务工作者</div>
-        <div class="tag-item">高级白领</div>
-        <div class="tag-item">教师</div>
-        <div class="tag-item">医务工作者</div>
+        <div class="hot-tag-item">高级白领</div>
+        <div class="hot-tag-item">教师</div>
+        <div class="hot-tag-item">医务工作者</div>
+        <div class="hot-tag-item">高级白领</div>
+        <div class="hot-tag-item">教师</div>
+        <div class="hot-tag-item">医务工作者</div>
       </div>
     </div>
     <div class="row-item">
-      <div class="row-label">您已选择&nbsp;:</div>
+      <div class="row-label">您已选择 :</div>
       <div class="row-tags">
-        <el-tag v-for="(tag, index) in chosenTagList"
-                :key="index"
-                closable
-                @close="handleClose(tag)"
-                style="margin: 5px">
-          {{tag}}
-          <span class="icon-expand_more icon-style"></span>
-        </el-tag>
+        <sex-tag class="tag-item" v-if="tags.sex" v-model="tags.sex"></sex-tag>
+        <marage-history-tag class="tag-item" v-if="tags.marageHistroy" v-model="tags.marageHistroy"></marage-history-tag>
       </div>
     </div>
   </div>
   <div class="more-tags">
     <div class="row-item">
-      <div class="row-label">更多标签&nbsp;:</div>
+      <div class="row-label">更多标签 :</div>
       <div class="row-tags">
-        <div class="single-tag" v-for="(tag, index) in moreTagList"
-              :key="index" @click="pushTag(tag)">
-          <el-tag type="info">
-            {{tag}}
-            <span class="icon-expand_more icon-style"></span>
-          </el-tag>
-        </div>
+        <sex-tag class="tag-item" v-if="!tags.sex" v-model="tags.sex"></sex-tag>
+        <marage-history-tag class="tag-item" v-if="!tags.marageHistroy" v-model="tags.marageHistroy"></marage-history-tag>
       </div>
     </div>
-    <div class="collapse-btn" @click="collapseTag">收起
+    <div class="collapse-btn">收起
       <span class="icon-expand_less"></span>
     </div>
   </div>
@@ -47,25 +36,21 @@
 </template>
 
 <script>
+import SexTag from '../TagItems/SexTag'
+import MarageHistoryTag from '../TagItems/MarageHistoryTag'
+
 export default {
+  components: { SexTag, MarageHistoryTag },
   data () {
     return {
-      chosenTagList: ['女', '杭州湾', '20-28岁', '有照片'],
-      moreTagList: ['身高', '婚史', '学历', '住房', '购车', '职业', '星座', '宗教信仰', '身高', '婚史', '学历', '住房', '购车', '职业', '星座', '宗教信仰']
+      tags: {
+        sex: '',
+        marageHistroy: ''
+      }
     }
   },
   methods: {
-    handleClose (tag) {
-      this.chosenTagList.splice(this.chosenTagList.indexOf(tag), 1)
-      this.moreTagList.push(tag)
-    },
-    pushTag (tag) {
-      this.chosenTagList.push(tag)
-      this.moreTagList.splice(this.moreTagList.indexOf(tag), 1)
-    },
-    collapseTag () {
 
-    }
   }
 }
 </script>
@@ -96,14 +81,8 @@ export default {
       width: 500px;
       box-sizing: border-box;
       flex-wrap: wrap;
-      .icon-style {
-        font-size: 20px;
-        position: relative;
-        top: 4px;
-      }
-      .el-tag {
-        height: 30px;
-        color: black;
+      .tag-item{
+        margin-left: 5px;
       }
     }
   }
@@ -115,7 +94,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    .tag-item {
+    .hot-tag-item {
       border: 1px solid #F33973;
       border-radius: 10px;
       font-size: 14px;
