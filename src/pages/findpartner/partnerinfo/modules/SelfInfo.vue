@@ -2,7 +2,7 @@
   <div class="_self-info-box">
     <div class="_self-big-pic">
       <div class="_big-pic">
-        <img src="https://dummyimage.com/168x288/333/3ff.jpg&text=pic"
+        <img src="https://dummyimage.com/188x288/333/3ff.jpg&text=pic"
               class="img-style">
       </div>
     </div>
@@ -113,7 +113,7 @@ export default {
   display: flex;
   align-items: center;
   ._self-big-pic {
-    width: 200px;
+    width: 220px;
     height: 320px;
     border: 1px solid lightgrey;
     box-sizing: border-box;
@@ -139,7 +139,7 @@ export default {
   }
   ._self-content-box {
     padding: 5px;
-    width: 410px;
+    width: 440px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

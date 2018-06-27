@@ -200,7 +200,7 @@ export default {
     }
     .row-tags {
       display: flex;
-      width: 500px;
+      width: 600px;
       box-sizing: border-box;
       flex-wrap: wrap;
       .tag-item{

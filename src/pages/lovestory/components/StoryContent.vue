@@ -69,11 +69,11 @@ export default {
       storyList: [
         {
           item: [{
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
+            pic: 'https://dummyimage.com/180x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
+            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女'
           }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
+            pic: 'https://dummyimage.com/180x140/eee/3ff.jpg&text=pic',
             title: '长跑爱情',
             content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
           }, {
@@ -133,7 +133,7 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 650px;
+    width: 700px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -158,7 +158,7 @@ export default {
           align-items: center;
           margin-bottom: 20px;
           .long-card-box {
-            width: 180px;
+            width: 200px;
             border: 1px solid lightgrey;
             box-sizing: border-box;
             margin-bottom: 10px;
@@ -176,12 +176,12 @@ export default {
               overflow: hidden;
               text-overflow: ellipsis;
               display: -webkit-box;
-              -webkit-line-clamp: 8;
+              -webkit-line-clamp: 10;
               -webkit-box-orient: vertical;
             }
           }
           .short-card-box {
-            width: 180px;
+            width: 200px;
             border: 1px solid lightgrey;
             box-sizing: border-box;
             margin-bottom: 10px;
@@ -199,12 +199,12 @@ export default {
               overflow: hidden;
               text-overflow: ellipsis;
               display: -webkit-box;
-              -webkit-line-clamp: 6;
+              -webkit-line-clamp: 8;
               -webkit-box-orient: vertical;
             }
           }
           .card-pic {
-            width: 160px;
+            width: 180px;
             height: 140px;
             box-sizing: border-box;
             margin-bottom: 10px;

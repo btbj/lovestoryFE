@@ -35,19 +35,23 @@
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>基本资料</span>
         </div>
-        <div :class="['item', isCurrentRoute('myintro') ? 'selected' : '']">
+        <div :class="['item', isCurrentRoute('myintro') ? 'selected' : '']"
+          @click="toInfoRoute('myintro')">
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>内心独白</span>
         </div>
-        <div :class="['item', isCurrentRoute('mypics') ? 'selected' : '']">
+        <div :class="['item', isCurrentRoute('mypics') ? 'selected' : '']"
+          @click="toInfoRoute('mypics')">
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>我的相册</span>
         </div>
-        <div :class="['item', isCurrentRoute('mydetail') ? 'selected' : '']">
+        <div :class="['item', isCurrentRoute('mydetail') ? 'selected' : '']"
+          @click="toInfoRoute('mydetail')">
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>详细资料</span>
         </div>
-        <div :class="['item', isCurrentRoute('myoption') ? 'selected' : '']">
+        <div :class="['item', isCurrentRoute('myoption') ? 'selected' : '']"
+          @click="toInfoRoute('myoption')">
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>择偶条件</span>
         </div>
@@ -57,7 +61,8 @@
           <span class="icon icon-settings"></span>
           <span>我 的 账 号</span>
         </div>
-        <div :class="['item', isCurrentRoute('changepwd') ? 'selected' : '']">
+        <div :class="['item', isCurrentRoute('changepwd') ? 'selected' : '']"
+          @click="toInfoRoute('changepwd')">
           <span class="icon icon-keyboard_arrow_right"></span>
           <span>密码修改</span>
         </div>

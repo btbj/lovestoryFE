@@ -77,7 +77,7 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 650px;
+    width: 700px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;

@@ -147,7 +147,7 @@ export default {
         }
         .news-words-box {
           font-size: 14px;
-          width: 350px;
+          width: 400px;
           height: 160px;
           box-sizing: border-box;
           display: flex;
