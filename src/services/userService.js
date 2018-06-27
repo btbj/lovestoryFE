@@ -20,6 +20,9 @@ export default {
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
   },
+  search (info) {
+    return Api.post((this.serviceURL + 'search'), info)
+  },
   create (credentials) {
     return Api.post((this.serviceURL + 'do_create'), credentials)
     // return Api.create().post((this.serviceURL + 'do_create'), credentials)

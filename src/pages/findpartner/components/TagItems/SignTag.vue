@@ -1,29 +1,34 @@
 <template>
   <div class="tag-item-root">
-    <div :class="['small-tag', value ? 'selected' : '']"
+    <div :class="['small-tag', value.length ? 'selected' : '']"
       v-if="!TagData.extended"
       @click.stop="extendTag(true)">
       <span>{{tagLabel}}</span>
       <span class="icon icon-expand_more"></span>
-      <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+      <span class="icon icon-cancel" v-if="value.length" @click.stop="resetValue"></span>
     </div>
     <div class="big-tag" v-else>
-      <div :class="['small-tag', value ? 'selected' : '']"
+      <div :class="['small-tag', value.length ? 'selected' : '']"
         @click.stop="extendTag(false)">
         <span>{{tagLabel}}</span>
         <span class="icon icon-expand_less"></span>
-        <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+        <span class="icon icon-cancel" v-if="value.length" @click.stop="resetValue"></span>
       </div>
-      <div class="extended-box">
+      <div class="extended-box" @click.stop="() => {}">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" class="status-select" v-model="TagData.value" placeholder="请选择">
+        <el-checkbox-group class="xz-checkbox-group" v-model="TagData.value">
+          <el-checkbox class="xz-checkbox-item"
+            v-for="(item, index) in TagData.options"
+            :key="index" :label="item">{{item}}</el-checkbox>
+        </el-checkbox-group>
+        <!-- <el-select size="mini" v-model="TagData.value" placeholder="请选择">
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
             :label="item"
             :value="item">
           </el-option>
-        </el-select>
+        </el-select> -->
         <div class="confirm-btn" @click.stop="confirmNewValue">确定</div>
       </div>
     </div>
@@ -38,10 +43,10 @@ export default {
   data () {
     return {
       TagData: {
-        title: '婚史',
-        message: '请选择婚史',
-        options: ['未婚', '离异', '丧偶'],
-        value: '',
+        title: '星座',
+        message: '请选择星座',
+        options: ['白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座'],
+        value: [],
         extended: false
       }
     }
@@ -50,6 +55,7 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
+        this.TagData.value = this.value
       }
       this.TagData.extended = extended
     },
@@ -59,13 +65,23 @@ export default {
       TagEventBus.$emit('getNewData')
     },
     resetValue () {
-      this.$emit('input', '')
+      this.$emit('input', [])
       TagEventBus.$emit('getNewData')
     }
   },
   computed: {
     tagLabel () {
-      return this.value || this.TagData.title
+      let result = this.TagData.title
+      if (this.value.length) {
+        result = ''
+        this.value.forEach((item, index) => {
+          if (index > 0) {
+            result += '、'
+          }
+          result += item
+        })
+      }
+      return result
     }
   },
   mounted: function () {
@@ -154,7 +170,17 @@ export default {
 </style>
 
 <style lang="less">
-.status-select{
-  width: 100px;
+.xz-checkbox-group{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px 0;
+  .xz-checkbox-item{
+    flex-basis: 30%;
+    margin: 5px 0;
+  }
 }
 </style>

@@ -16,7 +16,7 @@
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" class="status-select" v-model="TagData.value" placeholder="请选择">
+        <el-select class="salary-select" size="mini" v-model="TagData.value" placeholder="请选择">
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
@@ -38,9 +38,9 @@ export default {
   data () {
     return {
       TagData: {
-        title: '婚史',
-        message: '请选择婚史',
-        options: ['未婚', '离异', '丧偶'],
+        title: '职业',
+        message: '请选择职业',
+        options: ['在校学生', '计算机/互联网/IT', '电子/半导体/仪表仪器', '通信技术', '销售', '市场拓展', '公关/商务', '采购/贸易', '客户服务/技术支持', '人力资源/行政/后勤', '高级管理', '生产/加工/制造', '质控/安检', '工程机械', '技工', '财会/审计/统计', '金融/证券/投资/保险', '房地产/装修/物业', '仓储/物流', '交通/运输', '普通劳动力/家政服务', '普通服务行业', '航空服务业', '教育/培训', '咨询/顾问', '学术/科研', '法律', '设计/创意', '文学/传媒/影视', '餐饮/旅游', '化工', '能源/地质勘查', '医疗/护理', '保健/美容', '生物/制药/医疗器械', '体育工作者', '翻译', '公务员/国家干部', '私营业主', '农/林/牧/渔业', '警察/其它', '自由职业者', '其他'],
         value: '',
         extended: false
       }
@@ -154,7 +154,7 @@ export default {
 </style>
 
 <style lang="less">
-.status-select{
-  width: 100px;
+.salary-select{
+  width: 150px;
 }
 </style>

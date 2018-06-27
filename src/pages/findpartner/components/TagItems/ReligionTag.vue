@@ -16,7 +16,7 @@
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" class="status-select" v-model="TagData.value" placeholder="请选择">
+        <el-select class="salary-select" size="mini" v-model="TagData.value" placeholder="请选择">
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
@@ -38,9 +38,9 @@ export default {
   data () {
     return {
       TagData: {
-        title: '婚史',
-        message: '请选择婚史',
-        options: ['未婚', '离异', '丧偶'],
+        title: '宗教信仰',
+        message: '请选择宗教信仰',
+        options: ['无宗教信仰', '大乘佛教显宗', '大乘佛教密宗', '大乘佛教净宗', '小乘佛教', '道教', '儒教', '基督教天主教派', '基督教东正教派', '基督教新教派', '犹太教', '伊斯兰教什叶派', '伊斯兰教逊尼派', '印度教', '神道教', '萨满教', '其它宗教信仰'],
         value: '',
         extended: false
       }
@@ -154,7 +154,7 @@ export default {
 </style>
 
 <style lang="less">
-.status-select{
-  width: 100px;
+.salary-select{
+  width: 150px;
 }
 </style>

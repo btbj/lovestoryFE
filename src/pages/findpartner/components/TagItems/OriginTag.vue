@@ -1,29 +1,41 @@
 <template>
   <div class="tag-item-root">
-    <div :class="['small-tag', value ? 'selected' : '']"
+    <div :class="['small-tag', value.length ? 'selected' : '']"
       v-if="!TagData.extended"
       @click.stop="extendTag(true)">
       <span>{{tagLabel}}</span>
       <span class="icon icon-expand_more"></span>
-      <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+      <span class="icon icon-cancel" v-if="value.length" @click.stop="resetValue"></span>
     </div>
     <div class="big-tag" v-else>
-      <div :class="['small-tag', value ? 'selected' : '']"
+      <div :class="['small-tag', value.length ? 'selected' : '']"
         @click.stop="extendTag(false)">
         <span>{{tagLabel}}</span>
         <span class="icon icon-expand_less"></span>
-        <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+        <span class="icon icon-cancel" v-if="value.length" @click.stop="resetValue"></span>
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" class="status-select" v-model="TagData.value" placeholder="请选择">
-          <el-option
-            v-for="(item, index) in TagData.options"
-            :key="index"
-            :label="item"
-            :value="item">
-          </el-option>
-        </el-select>
+        <div class="box-row">
+          <el-select size="mini" class="area-selector" v-model="TagData.province" placeholder="请选择"
+            @change="() => {TagData.city = ''}">
+            <el-option
+              v-for="(item, index) in provinceList"
+              :key="index"
+              :label="item"
+              :value="item">
+            </el-option>
+          </el-select>
+          <el-select size="mini" class="area-selector" v-model="TagData.city" placeholder="请选择">
+            <el-option label="不限" value=""></el-option>
+            <el-option
+              v-for="(item, index) in cityList"
+              :key="index"
+              :label="item"
+              :value="item">
+            </el-option>
+          </el-select>
+        </div>
         <div class="confirm-btn" @click.stop="confirmNewValue">确定</div>
       </div>
     </div>
@@ -32,16 +44,18 @@
 
 <script>
 import TagEventBus from '@/components/eventBus'
+import AddressRawData from './addressBook'
 
 export default {
   props: ['value'],
   data () {
     return {
+      AddressData: null,
       TagData: {
-        title: '婚史',
-        message: '请选择婚史',
-        options: ['未婚', '离异', '丧偶'],
-        value: '',
+        title: '籍贯地区',
+        message: '请选择籍贯地区',
+        province: '北京市',
+        city: '',
         extended: false
       }
     }
@@ -50,25 +64,58 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
+        this.TagData.province = this.value[0] || '北京市'
+        this.TagData.city = this.value[1] || ''
       }
       this.TagData.extended = extended
     },
     confirmNewValue () {
       this.TagData.extended = false
-      this.$emit('input', this.TagData.value)
-      TagEventBus.$emit('getNewData')
+      if (this.TagData.province) {
+        let newData = [this.TagData.province]
+        if (this.TagData.city) {
+          newData.push(this.TagData.city)
+        }
+        this.$emit('input', newData)
+        TagEventBus.$emit('getNewData')
+      }
     },
     resetValue () {
-      this.$emit('input', '')
+      this.TagData.province = '北京市'
+      this.TagData.city = ''
+      this.$emit('input', [])
       TagEventBus.$emit('getNewData')
     }
   },
   computed: {
     tagLabel () {
-      return this.value || this.TagData.title
+      let result = this.TagData.title
+      if (this.value.length) {
+        result = '（籍贯）' + this.value[0]
+        if (this.value[1]) {
+          result += `, ${this.value[1]}`
+        }
+      }
+      return result
+    },
+    provinceList () {
+      return Object.keys(this.AddressData)
+    },
+    cityList () {
+      if (this.TagData.province) {
+        let citys = Object.keys(this.AddressData[this.TagData.province])
+        if (citys.length === 1) {
+          return Object.values(this.AddressData[this.TagData.province])[0]
+        } else {
+          return citys
+        }
+      } else {
+        return null
+      }
     }
   },
   mounted: function () {
+    this.AddressData = AddressRawData
     TagEventBus.$on('closeAll', this.extendTag)
     window.addEventListener('click', () => {
       TagEventBus.$emit('closeAll')
@@ -127,7 +174,7 @@ export default {
     background: white;
     position: absolute;
     border: 1px solid #ddd;
-    min-width: 100px;
+    min-width: 250px;
     min-height: 70px;
     margin-top: -1px;
     display: flex;
@@ -140,6 +187,12 @@ export default {
     .message{
       font-weight: bold;
       margin: 5px 0;
+    }
+    .box-row{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
     }
     .confirm-btn{
       height: 25px;
@@ -154,7 +207,8 @@ export default {
 </style>
 
 <style lang="less">
-.status-select{
-  width: 100px;
+.area-selector {
+  width: 150px !important;
+  margin-right: 5px;
 }
 </style>

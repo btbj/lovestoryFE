@@ -1,21 +1,22 @@
 <template>
   <div class="tag-item-root">
-    <div :class="['small-tag', TagData.value ? 'selected' : '']"
-      v-if="!TagData.extended" @click="extendTag">
-      <span>{{TagData.value || TagData.title}}</span>
+    <div :class="['small-tag', value ? 'selected' : '']"
+      v-if="!TagData.extended"
+      @click.stop="extendTag(true)">
+      <span>{{tagLabel}}</span>
       <span class="icon icon-expand_more"></span>
-      <span class="icon icon-cancel" v-if="TagData.value" @click.stop="resetValue"></span>
+      <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
     </div>
     <div class="big-tag" v-else>
-      <div :class="['small-tag', TagData.value ? 'selected' : '']"
-        @click="extendTag(false)">
-        <span>{{TagData.value || TagData.title}}</span>
+      <div :class="['small-tag', value ? 'selected' : '']"
+        @click.stop="extendTag(false)">
+        <span>{{tagLabel}}</span>
         <span class="icon icon-expand_less"></span>
-        <span class="icon icon-cancel" v-if="TagData.value" @click.stop="resetValue"></span>
+        <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
       </div>
-      <div class="extended-box" v-if="tempData">
+      <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" v-model="tempData.value" placeholder="请选择">
+        <el-select class="salary-select" size="mini" v-model="TagData.value" placeholder="请选择">
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
@@ -23,43 +24,55 @@
             :value="item">
           </el-option>
         </el-select>
-        <div class="confirm-btn" @click="confirmNewValue">确定</div>
+        <div class="confirm-btn" @click.stop="confirmNewValue">确定</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TagEventBus from '@/components/eventBus'
+
 export default {
   props: ['value'],
   data () {
     return {
-      tempData: null
+      TagData: {
+        title: '民族',
+        message: '请选择民族',
+        options: ['汉族', '藏族', '朝鲜族', '蒙古族', '回族', '满族', '维吾尔族', '壮族', '彝族', '苗族', '其它'],
+        value: '',
+        extended: false
+      }
     }
   },
   methods: {
-    extendTag (extended = true) {
-      let newData = this.TagData
-      newData.extended = extended
-      this.$emit('input', newData)
+    extendTag (extended = false) {
+      if (extended) {
+        TagEventBus.$emit('closeAll')
+      }
+      this.TagData.extended = extended
     },
     confirmNewValue () {
-      let newData = JSON.parse(JSON.stringify(this.tempData))
-      this.$emit('input', newData)
+      this.TagData.extended = false
+      this.$emit('input', this.TagData.value)
+      TagEventBus.$emit('getNewData')
     },
     resetValue () {
-      let newData = this.TagData
-      newData.value = ''
-      this.$emit('input', newData)
+      this.$emit('input', '')
+      TagEventBus.$emit('getNewData')
     }
   },
   computed: {
-    TagData () {
-      return this.value
+    tagLabel () {
+      return this.value || this.TagData.title
     }
   },
-  mounted: async function () {
-    this.tempData = JSON.parse(JSON.stringify(this.TagData))
+  mounted: function () {
+    TagEventBus.$on('closeAll', this.extendTag)
+    window.addEventListener('click', () => {
+      TagEventBus.$emit('closeAll')
+    })
   }
 }
 </script>
@@ -137,5 +150,11 @@ export default {
       margin: 5px 0;
     }
   }
+}
+</style>
+
+<style lang="less">
+.salary-select{
+  width: 150px;
 }
 </style>

@@ -16,7 +16,7 @@
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
-        <el-select size="mini" class="status-select" v-model="TagData.value" placeholder="请选择">
+        <el-select class="salary-select" size="mini" v-model="TagData.value" placeholder="请选择">
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
@@ -38,9 +38,9 @@ export default {
   data () {
     return {
       TagData: {
-        title: '婚史',
-        message: '请选择婚史',
-        options: ['未婚', '离异', '丧偶'],
+        title: '住房',
+        message: '请选择住房',
+        options: ['未购房', '需要时购置', '已购房（有贷款）', '已购房（无贷款）', '已购房', '与人合租', '独自租房', '与父母同住', '住朋友家', '住单位房'],
         value: '',
         extended: false
       }
@@ -154,7 +154,7 @@ export default {
 </style>
 
 <style lang="less">
-.status-select{
-  width: 100px;
+.salary-select{
+  width: 150px;
 }
 </style>

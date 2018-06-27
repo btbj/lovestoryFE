@@ -5,14 +5,14 @@
       @click.stop="extendTag(true)">
       <span>{{tagLabel}}</span>
       <span class="icon icon-expand_more"></span>
-      <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+      <!-- <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span> -->
     </div>
     <div class="big-tag" v-else>
       <div :class="['small-tag', value ? 'selected' : '']"
         @click.stop="extendTag(false)">
         <span>{{tagLabel}}</span>
         <span class="icon icon-expand_less"></span>
-        <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+        <!-- <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span> -->
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
@@ -41,7 +41,7 @@ export default {
         title: '性别',
         message: '请选择性别',
         options: ['男', '女'],
-        value: '',
+        value: '女',
         extended: false
       }
     }
@@ -50,15 +50,18 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
+        this.TagData.value = this.value
       }
       this.TagData.extended = extended
     },
     confirmNewValue () {
       this.TagData.extended = false
       this.$emit('input', this.TagData.value)
+      TagEventBus.$emit('getNewData')
     },
     resetValue () {
       this.$emit('input', '')
+      TagEventBus.$emit('getNewData')
     }
   },
   computed: {
