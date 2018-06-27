@@ -71,7 +71,7 @@ export default new Router({
     {
       path: '/myinfo',
       name: 'myinfo',
-      redirect: '/myinfo/basicInfo',
+      redirect: '/myinfo/personalCenter',
       component: MyInfo,
       children: MyinfoSubRoute.routes
     }

@@ -136,7 +136,7 @@ export default {
   ._marriage-item-label {
     width: 100%;
     height: 25px;
-    background-color: lightgrey;
+    background-color: #F0F0F0;
     box-sizing: border-box;
     color: #F1356F;
     padding: 0 0 0 25px;

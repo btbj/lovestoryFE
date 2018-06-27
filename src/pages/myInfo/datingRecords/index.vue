@@ -68,13 +68,9 @@ export default {
       span{
         width: 100%;
         border-right: 1px solid #F1356F;
-        // &:first-child{
-          // border-left: 1px solid #F1356F;
-        // }
       }
     }
   }
-
   .pagination-box {
     width: 100%;
     box-sizing: border-box;
