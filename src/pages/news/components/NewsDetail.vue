@@ -15,8 +15,8 @@
           发布时间 : {{newsDetail.info.created_date}}
         </div>
       </div>
-      <div class="_inner-news-content-box">
-        {{newsDetail.info.content}}
+      <div class="_inner-news-content-box" v-html="newsDetail.info.content">
+        <!-- {{newsDetail.info.content}} -->
       </div>
       <div class="_inner-news-prev-next">
         <div :class="['_news-prev', newsDetail.pre ? 'clickable' : '']"
