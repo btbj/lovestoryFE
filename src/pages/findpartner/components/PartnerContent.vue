@@ -12,8 +12,9 @@
           <span slot="leftSecondTitle">寻找对象></span>
         </content-nav>
         <div class="inner-item-content">
-          <search-box></search-box>
+          <search-box v-model="searchData.keyword" @search="getList"></search-box>
           <tag-box @change="handelTagBoxChange"></tag-box>
+          <sort-box v-model="searchData.sort" @sortChanged="getList"></sort-box>
           <member-info></member-info>
         </div>
       </div>
@@ -28,6 +29,7 @@ const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/Conta
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'partner')
 const SearchBox = r => require.ensure([], () => r(require('./modules/SearchBox')), 'partner')
 const TagBox = r => require.ensure([], () => r(require('./modules/TagBox')), 'partner')
+const SortBox = r => require.ensure([], () => r(require('./modules/SortBox')), 'partner')
 const MemberInfo = r => require.ensure([], () => r(require('./modules/MemberInfo')), 'partner')
 
 export default {
@@ -37,23 +39,34 @@ export default {
     ContentNav,
     SearchBox,
     TagBox,
+    SortBox,
     MemberInfo },
   data () {
     return {
-
+      searchData: {
+        keyword: '',
+        attrs: [{name: 'sex', value: '女', type: 1}],
+        sort: 'normal'
+      }
     }
   },
   methods: {
-    async handelTagBoxChange (data) {
-      console.log(data)
+    async getList (page = 1) {
       try {
         let res = await userService.search({
-          attrs: data
+          keyword: this.searchData.keyword,
+          attrs: this.searchData.attrs,
+          sort: this.searchData.sort
         })
         console.log(res)
       } catch (error) {
         userService.handleErr(error)
       }
+    },
+    handelTagBoxChange (attrs) {
+      // console.log(attrs)
+      this.searchData.attrs = attrs
+      this.getList()
     }
   }
 }
