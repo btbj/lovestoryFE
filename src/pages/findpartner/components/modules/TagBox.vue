@@ -111,7 +111,7 @@ export default {
         age: {name: 'age', value: [], type: 2},
         height: {name: 'height', value: [], type: 2},
         education: {name: 'education', value: '', type: 1},
-        salary: {name: 'month_pay', value: '', type: 1},
+        salary: {name: 'month_pay', value: '', type: 2},
         house: {name: 'live_status', value: '', type: 1},
         car: {name: 'car_status', value: '', type: 1},
         children: {name: 'children', value: '', type: 1},
