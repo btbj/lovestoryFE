@@ -2,70 +2,177 @@
   <div class="tag-box">
   <div class="hot-tag-box">
     <div class="row-item">
-      <div class="row-label">热门标签&nbsp;:</div>
+      <div class="row-label">热门标签 :</div>
       <div class="row-tags">
-        <div class="tag-item">高级白领</div>
-        <div class="tag-item">教师</div>
-        <div class="tag-item">医务工作者</div>
-        <div class="tag-item">高级白领</div>
-        <div class="tag-item">教师</div>
-        <div class="tag-item">医务工作者</div>
+        <div class="hot-tag-item">高级白领</div>
+        <div class="hot-tag-item">教师</div>
+        <div class="hot-tag-item">医务工作者</div>
+        <div class="hot-tag-item">高级白领</div>
+        <div class="hot-tag-item">教师</div>
+        <div class="hot-tag-item">医务工作者</div>
       </div>
     </div>
     <div class="row-item">
-      <div class="row-label">您已选择&nbsp;:</div>
+      <div class="row-label">您已选择 :</div>
       <div class="row-tags">
-        <el-tag v-for="(tag, index) in chosenTagList"
-                :key="index"
-                closable
-                @close="handleClose(tag)"
-                style="margin: 5px">
-          {{tag}}
-          <span class="icon-expand_more icon-style"></span>
-        </el-tag>
+        <sex-tag class="tag-item" v-if="tags.sex.value" v-model="tags.sex.value"></sex-tag>
+        <area-tag class="tag-item" v-if="tags.area.value.length" v-model="tags.area.value"></area-tag>
+        <age-tag class="tag-item" v-if="tags.age.value.length" v-model="tags.age.value"></age-tag>
+        <height-tag class="tag-item" v-if="tags.height.value.length" v-model="tags.height.value"></height-tag>
+        <marage-history-tag class="tag-item" v-if="tags.marageHistroy.value" v-model="tags.marageHistroy.value"></marage-history-tag>
+        <education-tag class="tag-item" v-if="tags.education.value" v-model="tags.education.value"></education-tag>
+        <salary-tag class="tag-item" v-if="tags.salary.value" v-model="tags.salary.value"></salary-tag>
+        <house-tag class="tag-item" v-if="tags.house.value" v-model="tags.house.value"></house-tag>
+        <car-tag class="tag-item" v-if="tags.car.value" v-model="tags.car.value"></car-tag>
+        <children-tag class="tag-item" v-if="tags.children.value" v-model="tags.children.value"></children-tag>
+        <job-tag class="tag-item" v-if="tags.job.value" v-model="tags.job.value"></job-tag>
+        <company-tag class="tag-item" v-if="tags.company.value" v-model="tags.company.value"></company-tag>
+        <census-tag class="tag-item" v-if="tags.census.value.length" v-model="tags.census.value"></census-tag>
+        <origin-tag class="tag-item" v-if="tags.origin.value.length" v-model="tags.origin.value"></origin-tag>
+        <nation-tag class="tag-item" v-if="tags.nation.value" v-model="tags.nation.value"></nation-tag>
+        <blood-tag class="tag-item" v-if="tags.blood.value" v-model="tags.blood.value"></blood-tag>
+        <zodiac-tag class="tag-item" v-if="tags.zodiac.value.length" v-model="tags.zodiac.value"></zodiac-tag>
+        <sign-tag class="tag-item" v-if="tags.sign.value.length" v-model="tags.sign.value"></sign-tag>
+        <religion-tag class="tag-item" v-if="tags.religion.value" v-model="tags.religion.value"></religion-tag>
+        <integrity-tag class="tag-item" v-if="tags.integrity.value" v-model="tags.integrity.value"></integrity-tag>
+        <photo-tag class="tag-item" v-if="tags.photo.value" v-model="tags.photo.value"></photo-tag>
       </div>
+    </div>
+    <div class="collapse-btn" v-if="!moreTag" @click="moreTag = true">
+      <span>设置更多条件</span>
+      <span class="icon icon-expand_more"></span>
     </div>
   </div>
-  <div class="more-tags">
+  <div class="more-tags" v-if="moreTag">
     <div class="row-item">
-      <div class="row-label">更多标签&nbsp;:</div>
+      <div class="row-label">更多标签 :</div>
       <div class="row-tags">
-        <div class="single-tag" v-for="(tag, index) in moreTagList"
-              :key="index" @click="pushTag(tag)">
-          <el-tag type="info">
-            {{tag}}
-            <span class="icon-expand_more icon-style"></span>
-          </el-tag>
-        </div>
+        <sex-tag class="tag-item" v-if="!tags.sex.value" v-model="tags.sex.value"></sex-tag>
+        <area-tag class="tag-item" v-if="!tags.area.value.length" v-model="tags.area.value"></area-tag>
+        <age-tag class="tag-item" v-if="!tags.age.value.length" v-model="tags.age.value"></age-tag>
+        <height-tag class="tag-item" v-if="!tags.height.value.length" v-model="tags.height.value"></height-tag>
+        <marage-history-tag class="tag-item" v-if="!tags.marageHistroy.value" v-model="tags.marageHistroy.value"></marage-history-tag>
+        <education-tag class="tag-item" v-if="!tags.education.value" v-model="tags.education.value"></education-tag>
+        <salary-tag class="tag-item" v-if="!tags.salary.value" v-model="tags.salary.value"></salary-tag>
+        <house-tag class="tag-item" v-if="!tags.house.value" v-model="tags.house.value"></house-tag>
+        <car-tag class="tag-item" v-if="!tags.car.value" v-model="tags.car.value"></car-tag>
+        <children-tag class="tag-item" v-if="!tags.children.value" v-model="tags.children.value"></children-tag>
+        <job-tag class="tag-item" v-if="!tags.job.value" v-model="tags.job.value"></job-tag>
+        <company-tag class="tag-item" v-if="!tags.company.value" v-model="tags.company.value"></company-tag>
+        <census-tag class="tag-item" v-if="!tags.census.value.length" v-model="tags.census.value"></census-tag>
+        <origin-tag class="tag-item" v-if="!tags.origin.value.length" v-model="tags.origin.value"></origin-tag>
+        <nation-tag class="tag-item" v-if="!tags.nation.value" v-model="tags.nation.value"></nation-tag>
+        <blood-tag class="tag-item" v-if="!tags.blood.value" v-model="tags.blood.value"></blood-tag>
+        <zodiac-tag class="tag-item" v-if="!tags.zodiac.value.length" v-model="tags.zodiac.value"></zodiac-tag>
+        <sign-tag class="tag-item" v-if="!tags.sign.value.length" v-model="tags.sign.value"></sign-tag>
+        <religion-tag class="tag-item" v-if="!tags.religion.value" v-model="tags.religion.value"></religion-tag>
+        <integrity-tag class="tag-item" v-if="!tags.integrity.value" v-model="tags.integrity.value"></integrity-tag>
+        <photo-tag class="tag-item" v-if="!tags.photo.value" v-model="tags.photo.value"></photo-tag>
       </div>
     </div>
-    <div class="collapse-btn" @click="collapseTag">收起
-      <span class="icon-expand_less"></span>
+    <div class="collapse-btn" @click="moreTag = false">
+      <span>收起</span>
+      <span class="icon icon-expand_less"></span>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import TagEventBus from '@/components/eventBus'
+import SexTag from '../TagItems/SexTag'
+import MarageHistoryTag from '../TagItems/MarageHistoryTag'
+import AreaTag from '../TagItems/AreaTag'
+import AgeTag from '../TagItems/AgeTag'
+import HeightTag from '../TagItems/HeightTag'
+import ZodiacTag from '../TagItems/ZodiacTag'
+import EducationTag from '../TagItems/EducationTag'
+import SalaryTag from '../TagItems/SalaryTag'
+import HouseTag from '../TagItems/HouseTag'
+import CarTag from '../TagItems/CarTag'
+import ChildrenTag from '../TagItems/ChildrenTag'
+import JobTag from '../TagItems/JobTag'
+import CompanyTag from '../TagItems/CompanyTag'
+import CensusTag from '../TagItems/CensusTag'
+import OriginTag from '../TagItems/OriginTag'
+import NationTag from '../TagItems/NationTag'
+import BloodTag from '../TagItems/BloodTag'
+import SignTag from '../TagItems/SignTag'
+import ReligionTag from '../TagItems/ReligionTag'
+import IntegrityTag from '../TagItems/IntegrityTag'
+import PhotoTag from '../TagItems/PhotoTag'
+
 export default {
+  components: { SexTag, MarageHistoryTag, AreaTag, AgeTag, HeightTag, ZodiacTag, EducationTag, SalaryTag, HouseTag, CarTag, ChildrenTag, JobTag, CompanyTag, CensusTag, OriginTag, NationTag, BloodTag, SignTag, ReligionTag, IntegrityTag, PhotoTag },
   data () {
     return {
-      chosenTagList: ['女', '杭州湾', '20-28岁', '有照片'],
-      moreTagList: ['身高', '婚史', '学历', '住房', '购车', '职业', '星座', '宗教信仰', '身高', '婚史', '学历', '住房', '购车', '职业', '星座', '宗教信仰']
+      moreTag: true,
+      tags: {
+        sex: {name: 'sex', value: '女', type: 1},
+        marageHistroy: {name: 'marital_status', value: '', type: 1},
+        area: {name: ['province', 'city'], value: [], type: 4},
+        age: {name: 'age', value: [], type: 2},
+        height: {name: 'height', value: [], type: 2},
+        education: {name: 'education', value: '', type: 1},
+        salary: {name: 'salary', value: '', type: 1},
+        house: {name: 'house', value: '', type: 1},
+        car: {name: 'car', value: '', type: 1},
+        children: {name: 'children', value: '', type: 1},
+        job: {name: 'job', value: '', type: 1},
+        company: {name: 'company', value: '', type: 1},
+        census: {name: ['census_province', 'census_city'], value: [], type: 4},
+        origin: {name: ['origin_province', 'origin_city'], value: [], type: 4},
+        nation: {name: 'nation', value: '', type: 1},
+        blood: {name: 'blood', value: '', type: 1},
+        zodiac: {name: 'zodiac', value: [], type: 3},
+        sign: {name: 'sign', value: [], type: 3},
+        religion: {name: 'religion', value: '', type: 1},
+        integrity: {name: 'integrity', value: '', type: 1},
+        photo: {name: 'photo', value: '', type: 1}
+      }
     }
   },
   methods: {
-    handleClose (tag) {
-      this.chosenTagList.splice(this.chosenTagList.indexOf(tag), 1)
-      this.moreTagList.push(tag)
-    },
-    pushTag (tag) {
-      this.chosenTagList.push(tag)
-      this.moreTagList.splice(this.moreTagList.indexOf(tag), 1)
-    },
-    collapseTag () {
-
+    handleGetNewData () {
+      console.log('get new data')
+      console.log(this.submitTags)
+      this.$emit('change', this.submitTags)
     }
+  },
+  computed: {
+    submitTags () {
+      let result = Object.values(this.tags).filter(item => {
+        if (item.type === 1 && item.value) {
+          return item
+        }
+        if (item.type === 2 && item.value.length) {
+          return item
+        }
+        if (item.type === 3 && item.value.length) {
+          return item
+        }
+      })
+      let areaTags = Object.values(this.tags).filter(item => {
+        return item.type === 4
+      })
+      areaTags.forEach(item => {
+        let province = {name: item.name[0], value: item.value[0], type: 1}
+        let city = {name: item.name[1], value: item.value[1], type: 1}
+        if (province.value) {
+          result.push(province)
+        }
+        if (city.value) {
+          result.push(city)
+        }
+      })
+      return result
+    }
+  },
+  mounted: async function () {
+    TagEventBus.$on('getNewData', this.handleGetNewData)
+  },
+  beforeDestroy: async function () {
+    TagEventBus.$off()
   }
 }
 </script>
@@ -96,14 +203,8 @@ export default {
       width: 600px;
       box-sizing: border-box;
       flex-wrap: wrap;
-      .icon-style {
-        font-size: 20px;
-        position: relative;
-        top: 4px;
-      }
-      .el-tag {
-        height: 30px;
-        color: black;
+      .tag-item{
+        margin: 5px 0 5px 5px;
       }
     }
   }
@@ -115,7 +216,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    .tag-item {
+    .hot-tag-item {
       border: 1px solid #F33973;
       border-radius: 10px;
       font-size: 14px;
@@ -134,12 +235,21 @@ export default {
       cursor: pointer;
       margin: 5px;
     }
-    .collapse-btn {
-      color: blue;
-      cursor: pointer;
-      font-size: 14px;
-      float: right;
-    }
+  }
+}
+
+.collapse-btn {
+  color: blue;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  align-self: flex-end;
+  .icon{
+    font-size: 18px;
   }
 }
 </style>

@@ -13,7 +13,7 @@
         </content-nav>
         <div class="inner-item-content">
           <search-box></search-box>
-          <tag-box></tag-box>
+          <tag-box @change="handelTagBoxChange"></tag-box>
           <member-info></member-info>
         </div>
       </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import userService from '@/services/userService'
 const NewNews = r => require.ensure([], () => r(require('@/frame/sidebar/NewNews')), 'partner')
 const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/ContactUs')), 'partner')
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'partner')
@@ -36,7 +37,25 @@ export default {
     ContentNav,
     SearchBox,
     TagBox,
-    MemberInfo }
+    MemberInfo },
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    async handelTagBoxChange (data) {
+      console.log(data)
+      try {
+        let res = await userService.search({
+          attrs: data
+        })
+        console.log(res)
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    }
+  }
 }
 </script>
 

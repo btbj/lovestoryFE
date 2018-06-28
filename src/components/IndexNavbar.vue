@@ -19,9 +19,9 @@
 export default {
   methods: {
     navTo (destName) {
-      let notAllowed = (destName === 'myinfo' && this.currentToken === null)
-      let newDest = notAllowed ? 'login' : destName
-      this.$router.push({name: newDest})
+      // let notAllowed = (destName === 'myinfo' && this.currentToken === null)
+      // let newDest = notAllowed ? 'login' : destName
+      this.$router.push({name: destName})
     },
     isCurrent (pageName) {
       let routeRootName = this.$route.name.split('-')[0]

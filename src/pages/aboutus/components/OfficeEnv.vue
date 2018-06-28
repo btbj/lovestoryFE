@@ -7,8 +7,8 @@
         <span slot="leftSecondTitle">关于我们></span>
         <span slot="leftThirdTitle">办公环境</span>
       </content-nav>
-      <div class="inner-item-content">
-        {{contentInfo}}
+      <div class="inner-item-content" v-html="contentInfo">
+        <!-- {{contentInfo}} -->
       </div>
     </div>
   </div>

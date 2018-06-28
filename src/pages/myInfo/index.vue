@@ -31,6 +31,16 @@ export default {
     IndexNavbar,
     LeftBar,
     IndexBottom
+  },
+  computed: {
+    currentToken () {
+      return this.$store.getters.token
+    }
+  },
+  mounted: async function () {
+    if (this.currentToken === null) {
+      // this.$router.replace({name: 'login'})
+    }
   }
 }
 </script>
