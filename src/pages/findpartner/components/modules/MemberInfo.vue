@@ -1,17 +1,10 @@
 <template>
   <div>
-    <div class="sorting-header-box">
-      <div class="sorting-item" style="color: red">综合排序</div>
-      <div class="sorting-item" style="width: 100px">登录时间
-        <span class="icon-arrow-down item-icon"></span>
-      </div>
-    </div>
     <div class="sorting-pic-box">
-      <div class="single-card" v-for="(member, index) in memberCardsList"
-      :key="index">
+      <div class="single-card"
+        v-for="(member, index) in list" :key="index">
         <div class="card-pic">
-          <img :src=member.img
-              class="img-style">
+          <img :src=member.img class="img-style">
         </div>
         <div class="card-info">
           <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
@@ -27,125 +20,16 @@
         </div>
       </div>
     </div>
-    <div class="pagination-box">
-      <page-pagination></page-pagination>
-    </div>
   </div>
 </template>
 
 <script>
-const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'partner')
 
 export default {
-  components: { PagePagination },
+  props: ['list'],
   data () {
     return {
-      memberCardsList: [{
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }]
+      memberCardsList: []
     }
   },
   methods: {
@@ -157,40 +41,16 @@ export default {
 </script>
 
 <style lang="less">
-.sorting-header-box {
-  width: 100%;
-  height: 35px;
-  box-sizing: border-box;
-  background-color: #F2F2F2;
-  border: 1px solid lightgrey;
-  display: flex;
-  margin-bottom: 15px;
-  .sorting-item {
-    width: 80px;
-    border-right: 1px solid lightgrey;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    cursor: pointer;
-    .item-icon {
-      font-size: 10px;
-      position: relative;
-      top: 1px;
-      margin-left: 5px;
-    }
-  }
-}
 .sorting-pic-box {
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-bottom: 30px;
   .single-card {
+    flex-basis: 33%;
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
@@ -237,10 +97,5 @@ export default {
     }
   }
 }
-.pagination-box {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
+
 </style>

@@ -4,12 +4,9 @@
     <div class="row-item">
       <div class="row-label">热门标签 :</div>
       <div class="row-tags">
-        <div class="hot-tag-item">高级白领</div>
-        <div class="hot-tag-item">教师</div>
-        <div class="hot-tag-item">医务工作者</div>
-        <div class="hot-tag-item">高级白领</div>
-        <div class="hot-tag-item">教师</div>
-        <div class="hot-tag-item">医务工作者</div>
+        <div :class="['hot-tag-item', item === tags.hotTag.value ? 'selected' : '']"
+          v-for="(item, index) in tags.hotTag.options" :key="index"
+          @click="selectHotTag(item)">{{item}}</div>
       </div>
     </div>
     <div class="row-item">
@@ -26,15 +23,15 @@
         <car-tag class="tag-item" v-if="tags.car.value" v-model="tags.car.value"></car-tag>
         <children-tag class="tag-item" v-if="tags.children.value" v-model="tags.children.value"></children-tag>
         <job-tag class="tag-item" v-if="tags.job.value" v-model="tags.job.value"></job-tag>
-        <company-tag class="tag-item" v-if="tags.company.value" v-model="tags.company.value"></company-tag>
+        <!-- <company-tag class="tag-item" v-if="tags.company.value" v-model="tags.company.value"></company-tag> -->
         <census-tag class="tag-item" v-if="tags.census.value.length" v-model="tags.census.value"></census-tag>
-        <origin-tag class="tag-item" v-if="tags.origin.value.length" v-model="tags.origin.value"></origin-tag>
+        <!-- <origin-tag class="tag-item" v-if="tags.origin.value.length" v-model="tags.origin.value"></origin-tag> -->
         <nation-tag class="tag-item" v-if="tags.nation.value" v-model="tags.nation.value"></nation-tag>
         <blood-tag class="tag-item" v-if="tags.blood.value" v-model="tags.blood.value"></blood-tag>
         <zodiac-tag class="tag-item" v-if="tags.zodiac.value.length" v-model="tags.zodiac.value"></zodiac-tag>
         <sign-tag class="tag-item" v-if="tags.sign.value.length" v-model="tags.sign.value"></sign-tag>
         <religion-tag class="tag-item" v-if="tags.religion.value" v-model="tags.religion.value"></religion-tag>
-        <integrity-tag class="tag-item" v-if="tags.integrity.value" v-model="tags.integrity.value"></integrity-tag>
+        <!-- <integrity-tag class="tag-item" v-if="tags.integrity.value" v-model="tags.integrity.value"></integrity-tag> -->
         <photo-tag class="tag-item" v-if="tags.photo.value" v-model="tags.photo.value"></photo-tag>
       </div>
     </div>
@@ -58,15 +55,15 @@
         <car-tag class="tag-item" v-if="!tags.car.value" v-model="tags.car.value"></car-tag>
         <children-tag class="tag-item" v-if="!tags.children.value" v-model="tags.children.value"></children-tag>
         <job-tag class="tag-item" v-if="!tags.job.value" v-model="tags.job.value"></job-tag>
-        <company-tag class="tag-item" v-if="!tags.company.value" v-model="tags.company.value"></company-tag>
+        <!-- <company-tag class="tag-item" v-if="!tags.company.value" v-model="tags.company.value"></company-tag> -->
         <census-tag class="tag-item" v-if="!tags.census.value.length" v-model="tags.census.value"></census-tag>
-        <origin-tag class="tag-item" v-if="!tags.origin.value.length" v-model="tags.origin.value"></origin-tag>
+        <!-- <origin-tag class="tag-item" v-if="!tags.origin.value.length" v-model="tags.origin.value"></origin-tag> -->
         <nation-tag class="tag-item" v-if="!tags.nation.value" v-model="tags.nation.value"></nation-tag>
         <blood-tag class="tag-item" v-if="!tags.blood.value" v-model="tags.blood.value"></blood-tag>
         <zodiac-tag class="tag-item" v-if="!tags.zodiac.value.length" v-model="tags.zodiac.value"></zodiac-tag>
         <sign-tag class="tag-item" v-if="!tags.sign.value.length" v-model="tags.sign.value"></sign-tag>
         <religion-tag class="tag-item" v-if="!tags.religion.value" v-model="tags.religion.value"></religion-tag>
-        <integrity-tag class="tag-item" v-if="!tags.integrity.value" v-model="tags.integrity.value"></integrity-tag>
+        <!-- <integrity-tag class="tag-item" v-if="!tags.integrity.value" v-model="tags.integrity.value"></integrity-tag> -->
         <photo-tag class="tag-item" v-if="!tags.photo.value" v-model="tags.photo.value"></photo-tag>
       </div>
     </div>
@@ -114,29 +111,40 @@ export default {
         age: {name: 'age', value: [], type: 2},
         height: {name: 'height', value: [], type: 2},
         education: {name: 'education', value: '', type: 1},
-        salary: {name: 'salary', value: '', type: 1},
-        house: {name: 'house', value: '', type: 1},
-        car: {name: 'car', value: '', type: 1},
+        salary: {name: 'month_pay', value: '', type: 2},
+        house: {name: 'live_status', value: '', type: 1},
+        car: {name: 'car_status', value: '', type: 1},
         children: {name: 'children', value: '', type: 1},
         job: {name: 'job', value: '', type: 1},
-        company: {name: 'company', value: '', type: 1},
-        census: {name: ['census_province', 'census_city'], value: [], type: 4},
-        origin: {name: ['origin_province', 'origin_city'], value: [], type: 4},
+        // company: {name: 'company', value: '', type: 1},
+        census: {name: ['household_province', 'household_city'], value: [], type: 4},
+        // origin: {name: ['origin_province', 'origin_city'], value: [], type: 4},
         nation: {name: 'nation', value: '', type: 1},
-        blood: {name: 'blood', value: '', type: 1},
+        blood: {name: 'blood_type', value: '', type: 1},
         zodiac: {name: 'zodiac', value: [], type: 3},
         sign: {name: 'sign', value: [], type: 3},
         religion: {name: 'religion', value: '', type: 1},
-        integrity: {name: 'integrity', value: '', type: 1},
-        photo: {name: 'photo', value: '', type: 1}
+        // integrity: {name: 'integrity', value: '', type: 1},
+        photo: {name: 'has_image', value: '', type: 1},
+        hotTag: {name: 'hot_tag', value: '', options: ['高级白领', '教师', '医务工作者', '银行职员', '空姐', '公务员', '会计', '在校学生', '私营业主'], type: 1}
       }
     }
   },
   methods: {
     handleGetNewData () {
-      console.log('get new data')
-      console.log(this.submitTags)
-      this.$emit('change', this.submitTags)
+      let newSubmitTags = this.submitTags.map(item => {
+        let {name, value, type} = item
+        return {name, value, type}
+      })
+      this.$emit('change', newSubmitTags)
+    },
+    selectHotTag (item) {
+      if (this.tags.hotTag.value === item) {
+        this.tags.hotTag.value = null
+      } else {
+        this.tags.hotTag.value = item
+      }
+      this.handleGetNewData()
     }
   },
   computed: {
@@ -219,11 +227,17 @@ export default {
     .hot-tag-item {
       border: 1px solid #F33973;
       border-radius: 10px;
-      font-size: 14px;
+      line-height: 14px;
+      font-size: 12px;
       margin: 5px;
-      padding: 3px;
+      padding: 5px;
       color: #F33973;
       background-color: white;
+      cursor: pointer;
+      &.selected{
+        color: white;
+        background: #F33973;
+      }
     }
   }
   .more-tags {

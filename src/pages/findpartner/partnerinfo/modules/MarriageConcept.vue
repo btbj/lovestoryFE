@@ -1,7 +1,7 @@
 <template>
   <div class="_box-container">
     <div class="_box-title">
-      <span class="icon-radio_button_unchecked item-icon"></span>
+      <span class="icon-radio_button_unchecked icon"></span>
       <span>婚姻观念</span>
     </div>
     <div class="_marriage-item-label">关于自己</div>
@@ -119,7 +119,7 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  .item-icon {
+  .icon {
     color: #F1356F;
     font-weight: bold;
     margin-right: 10px;

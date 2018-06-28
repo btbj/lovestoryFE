@@ -20,8 +20,8 @@
           <el-option
             v-for="(item, index) in TagData.options"
             :key="index"
-            :label="item"
-            :value="item">
+            :label="item.label"
+            :value="index">
           </el-option>
         </el-select>
         <div class="confirm-btn" @click.stop="confirmNewValue">确定</div>
@@ -40,7 +40,13 @@ export default {
       TagData: {
         title: '月薪',
         message: '请选择月薪',
-        options: ['2000元以下', '2000~5000元', '5000~10000元', '10000~20000元', '20000元以上'],
+        options: [
+          {label: '2000元以下', value: ['0', '2000']},
+          {label: '2000~5000元', value: ['2000', '5000']},
+          {label: '5000~10000元', value: ['5000', '10000']},
+          {label: '10000~20000元', value: ['10000', '20000']},
+          {label: '20000元以上', value: ['20000']}
+        ],
         value: '',
         extended: false
       }
@@ -50,13 +56,14 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
-        this.TagData.value = this.value
+        this.TagData.value = this.matchIndex === -1 ? '' : this.matchIndex
       }
       this.TagData.extended = extended
     },
     confirmNewValue () {
       this.TagData.extended = false
-      this.$emit('input', this.TagData.value)
+      let selectedIndex = this.TagData.value
+      this.$emit('input', this.TagData.options[selectedIndex].value)
       TagEventBus.$emit('getNewData')
     },
     resetValue () {
@@ -65,8 +72,19 @@ export default {
     }
   },
   computed: {
+    matchIndex () {
+      let textValue = JSON.stringify({value: this.value})
+      let result = -1
+      this.TagData.options.forEach((item, index) => {
+        let matchText = JSON.stringify({value: item.value})
+        if (textValue === matchText) {
+          result = index
+        }
+      })
+      return result
+    },
     tagLabel () {
-      return this.value || this.TagData.title
+      return this.matchIndex !== -1 ? this.TagData.options[this.matchIndex].label : this.TagData.title
     }
   },
   mounted: function () {

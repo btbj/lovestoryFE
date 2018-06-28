@@ -1,7 +1,7 @@
 <template>
   <div class="detail-info-container">
     <div class="detail-info-title">
-      <span class="icon-radio_button_unchecked item-icon"></span>
+      <span class="icon-radio_button_unchecked icon"></span>
       <span>详细资料</span>
     </div>
     <div class="detail-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
@@ -137,7 +137,7 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    .item-icon {
+    .icon {
       color: #F1356F;
       font-weight: bold;
       margin-right: 10px;

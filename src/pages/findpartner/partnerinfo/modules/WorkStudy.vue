@@ -1,7 +1,7 @@
 <template>
   <div class="_box-container">
     <div class="_box-title">
-      <span class="icon-radio_button_unchecked item-icon"></span>
+      <span class="icon-radio_button_unchecked icon"></span>
       <span>工作学习</span>
     </div>
     <div class="_box-content">
@@ -63,7 +63,7 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  .item-icon {
+  .icon {
     color: #F1356F;
     font-weight: bold;
     margin-right: 10px;

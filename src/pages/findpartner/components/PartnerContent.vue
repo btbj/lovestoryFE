@@ -12,9 +12,13 @@
           <span slot="leftSecondTitle">寻找对象></span>
         </content-nav>
         <div class="inner-item-content">
-          <search-box></search-box>
+          <search-box v-model="searchData.keyword" @search="getList"></search-box>
           <tag-box @change="handelTagBoxChange"></tag-box>
-          <member-info></member-info>
+          <sort-box v-model="searchData.sort" @sortChanged="getList"></sort-box>
+          <member-info :list="userList"></member-info>
+          <div class="pagination-box">
+            <page-pagination :paginationData="paginationData" @change="getList"></page-pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -28,7 +32,9 @@ const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/Conta
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'partner')
 const SearchBox = r => require.ensure([], () => r(require('./modules/SearchBox')), 'partner')
 const TagBox = r => require.ensure([], () => r(require('./modules/TagBox')), 'partner')
+const SortBox = r => require.ensure([], () => r(require('./modules/SortBox')), 'partner')
 const MemberInfo = r => require.ensure([], () => r(require('./modules/MemberInfo')), 'partner')
+const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'partner')
 
 export default {
   components: {
@@ -37,23 +43,73 @@ export default {
     ContentNav,
     SearchBox,
     TagBox,
-    MemberInfo },
+    SortBox,
+    MemberInfo,
+    PagePagination },
   data () {
     return {
-
+      searchData: {
+        keyword: '',
+        attrs: [{name: 'sex', value: '女', type: 1}],
+        sort: 'normal'
+      },
+      paginationData: {
+        current: 1,
+        total: 1,
+        size: 15
+      },
+      userList: [
+        {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }
+      ]
     }
   },
   methods: {
-    async handelTagBoxChange (data) {
-      console.log(data)
+    async getList (page = 1) {
       try {
         let res = await userService.search({
-          attrs: data
+          keyword: this.searchData.keyword,
+          attrs: this.searchData.attrs,
+          sort: this.searchData.sort,
+          page,
+          per_page: this.paginationData.size
         })
         console.log(res)
       } catch (error) {
         userService.handleErr(error)
       }
+    },
+    handelTagBoxChange (attrs) {
+      // console.log(attrs)
+      this.searchData.attrs = attrs
+      this.getList()
     }
   }
 }
@@ -98,6 +154,13 @@ export default {
       }
     }
   }
+}
+
+.pagination-box {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 </style>

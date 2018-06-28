@@ -1,31 +1,39 @@
 <template>
   <div class="search-box">
     <div class="search-input-box">
-      <input type="text" class="search-style" v-model="searchText">
+      <input type="text" class="search-style" :value="value" @input="handleInput">
       <div class="search-btn" @click="search">搜&nbsp;&nbsp;索</div>
     </div>
     <div class="search-word-box">
       <div class="word-label">热门搜索词&nbsp;&nbsp;: </div>
-      <span class="word-style">苗条</span>
-      <span class="word-style">幽默</span>
-      <span class="word-style">清纯</span>
-      <span class="word-style">可爱</span>
-      <span class="word-style">时尚</span>
-      <span class="word-style">睿智</span>
+      <span class="word-style"
+        v-for="(item, index) in hotKeywords" :key="index"
+        @click="selectKeyword(item)">{{item}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['value'],
   data () {
     return {
-      searchText: ''
+      hotKeywords: ['苗条', '幽默', '清纯', '可爱', '时尚', '睿智']
     }
   },
   methods: {
+    handleInput (evnet) {
+      let newValue = event.target.value
+      console.log(newValue)
+      this.$emit('input', newValue)
+    },
     search () {
-
+      console.log('start search')
+      this.$emit('search')
+    },
+    selectKeyword (keyword) {
+      this.$emit('input', keyword)
+      this.$emit('search')
     }
   }
 
@@ -42,7 +50,7 @@ export default {
   padding: 5px 40px;
   .search-input-box {
     width: 100%;
-    height: 40px;
+    height: 50px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -50,9 +58,9 @@ export default {
     .search-style {
       width: 400px;
       height: 30px;
-      border: 3px solid #F1356F;
       box-sizing: border-box;
-      padding: 0 10px;
+      border: 3px solid #F1356F;
+      padding: 5px 10px;
       outline: none;
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
@@ -81,6 +89,10 @@ export default {
     .word-style {
       font-size: 14px;
       margin: 0 5px;
+      cursor: pointer;
+      &.word-style:hover{
+        text-decoration-line: underline;
+      }
     }
   }
 }
