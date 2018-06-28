@@ -2,7 +2,7 @@
   <div class="personal-info-container">
     <div class="personal-info-box">
       <div class="personal-info-title">
-        <span class="icon-radio_button_unchecked icon-style"></span>
+        <span class="icon-radio_button_unchecked item-icon"></span>
         <span>我的择偶标准</span>
       </div>
       <div class="personal-info-content">
@@ -51,7 +51,7 @@
     <div class="seprator"></div>
     <div class="personal-info-box" style="margin-top: 30px">
       <div class="personal-info-title">
-        <span class="icon-radio_button_unchecked icon-style"></span>
+        <span class="icon-radio_button_unchecked item-icon"></span>
         <span>今日推荐</span>
       </div>
       <div class="personal-info-pic-content">
@@ -70,7 +70,7 @@
     </div>
     <div class="personal-info-box">
       <div class="personal-info-title">
-        <span class="icon-radio_button_unchecked icon-style"></span>
+        <span class="icon-radio_button_unchecked item-icon"></span>
         <span>谁看过我</span>
       </div>
       <div class="personal-info-pic-content">
@@ -89,7 +89,7 @@
     </div>
     <div class="personal-info-box" style="margin: 0">
       <div class="personal-info-title">
-        <span class="icon-radio_button_unchecked icon-style"></span>
+        <span class="icon-radio_button_unchecked item-icon"></span>
         <span>谁关注我</span>
       </div>
       <div class="personal-info-pic-content">
@@ -221,7 +221,7 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    .icon-style {
+    .item-icon {
       color: #F1356F;
       font-weight: bold;
       margin-right: 10px;

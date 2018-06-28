@@ -4,15 +4,15 @@
       v-if="!TagData.extended"
       @click.stop="extendTag(true)">
       <span>{{tagLabel}}</span>
-      <span class="icon icon-expand_more"></span>
-      <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+      <span class="item-icon icon-expand_more"></span>
+      <span class="item-icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
     </div>
     <div class="big-tag" v-else>
       <div :class="['small-tag', value ? 'selected' : '']"
         @click.stop="extendTag(false)">
         <span>{{tagLabel}}</span>
-        <span class="icon icon-expand_less"></span>
-        <span class="icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
+        <span class="item-icon icon-expand_less"></span>
+        <span class="item-icon icon-cancel" v-if="value" @click.stop="resetValue"></span>
       </div>
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
@@ -96,7 +96,7 @@ export default {
     background-color: #d7ebff;
     border-color: #a3c5e8;
   }
-  .icon{
+  .item-icon{
     font-size: 16px;
     &.icon-cancel{
       margin-left: 5px;

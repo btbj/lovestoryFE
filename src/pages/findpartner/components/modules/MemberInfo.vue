@@ -3,7 +3,7 @@
     <div class="sorting-header-box">
       <div class="sorting-item" style="color: red">综合排序</div>
       <div class="sorting-item" style="width: 100px">登录时间
-        <span class="icon-arrow-down icon-style"></span>
+        <span class="icon-arrow-down item-icon"></span>
       </div>
     </div>
     <div class="sorting-pic-box">
@@ -174,7 +174,7 @@ export default {
     justify-content: center;
     font-size: 14px;
     cursor: pointer;
-    .icon-style {
+    .item-icon {
       font-size: 10px;
       position: relative;
       top: 1px;

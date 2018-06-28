@@ -48,7 +48,7 @@ export default {
     align-items: center;
     justify-content: center;
     .search-style {
-      width: 380px;
+      width: 400px;
       height: 30px;
       border: 3px solid #F1356F;
       box-sizing: border-box;
@@ -73,7 +73,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     align-content: center;
-    padding: 0 40px;
+    padding: 0 50px;
     .word-label {
       font-size: 14px;
       font-weight: bold;

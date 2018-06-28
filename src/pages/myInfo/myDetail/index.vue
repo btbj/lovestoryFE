@@ -1,7 +1,7 @@
 <template>
   <div class="detail-info-container">
     <div class="detail-info-title">
-      <span class="icon-radio_button_unchecked icon-style"></span>
+      <span class="icon-radio_button_unchecked item-icon"></span>
       <span>详细资料</span>
     </div>
     <div class="detail-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
@@ -74,7 +74,7 @@
             <div class="label">经济观念&nbsp;:</div>
           </div>
           <div class="right-checkbox" style="padding: 0">
-            <el-select size="small"></el-select>
+            <el-select size="small" v-model="economicConcept"></el-select>
           </div>
         </div>
       </div>
@@ -106,7 +106,8 @@ export default {
   data () {
     return {
       activityTab: 'economicStrength',
-      economicStrengthList: []
+      economicStrengthList: [],
+      economicConcept: ''
     }
   },
   methods: {
@@ -136,7 +137,7 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    .icon-style {
+    .item-icon {
       color: #F1356F;
       font-weight: bold;
       margin-right: 10px;
