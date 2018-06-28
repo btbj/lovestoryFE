@@ -5,7 +5,7 @@
         @click="selectType('normal')">综合排序</div>
       <div :class="['sorting-item', isCurrent('time') ? 'selected' : '']"
         @click="selectType('time')">登录时间
-        <span class="icon-arrow-down icon-style"></span>
+        <span class="icon-arrow-down icon"></span>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
       background: white;
       color: red;
     }
-    .icon-style {
+    .icon {
       font-size: 10px;
       position: relative;
       top: 1px;

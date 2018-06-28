@@ -9,7 +9,7 @@
       <div class="content-chart">
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-mode_edit icon-style"></span>
+            <span class="icon-mode_edit icon"></span>
           </div>
           <div class="icon-label">在线免费注册</div>
         </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-assignment_ind icon-style"></span>
+            <span class="icon-assignment_ind icon"></span>
           </div>
           <div class="icon-label">线下实名签约</div>
         </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-search icon-style"></span>
+            <span class="icon-search icon"></span>
           </div>
           <div class="icon-label">人工匹配筛选</div>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-my_location icon-style"></span>
+            <span class="icon-my_location icon"></span>
           </div>
           <div class="icon-label">全程跟踪服务</div>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-people icon-style"></span>
+            <span class="icon-people icon"></span>
           </div>
           <div class="icon-label">会员一对一约见</div>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="chart-item">
           <div class="icon-bg">
-            <span class="icon-wc icon-style"></span>
+            <span class="icon-wc icon"></span>
           </div>
           <div class="icon-label">会员喜结佳缘</div>
         </div>
@@ -129,7 +129,7 @@ export default {
           border-radius: 50%;
           background-color: #FD6F9F;
           margin-bottom: 10px;
-          .icon-style {
+          .icon {
             font-size: 28px;
             color: white;
             line-height: 55px;

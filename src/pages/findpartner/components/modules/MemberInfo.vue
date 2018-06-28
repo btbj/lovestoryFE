@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="sorting-pic-box">
-      <div class="single-card" v-for="(member, index) in memberCardsList"
-      :key="index">
+      <div class="single-card"
+        v-for="(member, index) in list" :key="index">
         <div class="card-pic">
-          <img :src=member.img
-              class="img-style">
+          <img :src=member.img class="img-style">
         </div>
         <div class="card-info">
           <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
@@ -21,125 +20,16 @@
         </div>
       </div>
     </div>
-    <div class="pagination-box">
-      <page-pagination></page-pagination>
-    </div>
   </div>
 </template>
 
 <script>
-const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'partner')
 
 export default {
-  components: { PagePagination },
+  props: ['list'],
   data () {
     return {
-      memberCardsList: [{
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }]
+      memberCardsList: []
     }
   },
   methods: {
@@ -157,9 +47,10 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-bottom: 30px;
   .single-card {
+    flex-basis: 33%;
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
@@ -206,10 +97,5 @@ export default {
     }
   }
 }
-.pagination-box {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
+
 </style>

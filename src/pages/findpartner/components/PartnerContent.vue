@@ -15,7 +15,10 @@
           <search-box v-model="searchData.keyword" @search="getList"></search-box>
           <tag-box @change="handelTagBoxChange"></tag-box>
           <sort-box v-model="searchData.sort" @sortChanged="getList"></sort-box>
-          <member-info></member-info>
+          <member-info :list="userList"></member-info>
+          <div class="pagination-box">
+            <page-pagination :paginationData="paginationData" @change="getList"></page-pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -31,6 +34,7 @@ const SearchBox = r => require.ensure([], () => r(require('./modules/SearchBox')
 const TagBox = r => require.ensure([], () => r(require('./modules/TagBox')), 'partner')
 const SortBox = r => require.ensure([], () => r(require('./modules/SortBox')), 'partner')
 const MemberInfo = r => require.ensure([], () => r(require('./modules/MemberInfo')), 'partner')
+const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'partner')
 
 export default {
   components: {
@@ -40,14 +44,51 @@ export default {
     SearchBox,
     TagBox,
     SortBox,
-    MemberInfo },
+    MemberInfo,
+    PagePagination },
   data () {
     return {
       searchData: {
         keyword: '',
         attrs: [{name: 'sex', value: '女', type: 1}],
         sort: 'normal'
-      }
+      },
+      paginationData: {
+        current: 1,
+        total: 1,
+        size: 15
+      },
+      userList: [
+        {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }, {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }
+      ]
     }
   },
   methods: {
@@ -56,7 +97,9 @@ export default {
         let res = await userService.search({
           keyword: this.searchData.keyword,
           attrs: this.searchData.attrs,
-          sort: this.searchData.sort
+          sort: this.searchData.sort,
+          page,
+          per_page: this.paginationData.size
         })
         console.log(res)
       } catch (error) {
@@ -111,6 +154,13 @@ export default {
       }
     }
   }
+}
+
+.pagination-box {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 </style>

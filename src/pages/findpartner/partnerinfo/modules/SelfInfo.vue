@@ -72,7 +72,7 @@
       </div>
       <div class="_self-slide-pic">
         <div class="page-btn">
-          <span class="icon-keyboard_arrow_left icon-style"></span>
+          <span class="icon-keyboard_arrow_left icon"></span>
         </div>
         <div class="pic-box" v-for="(pic, index) in  selfPicList"
               :key="index">
@@ -80,7 +80,7 @@
                 class="img-style">
         </div>
         <div class="page-btn">
-          <span class="icon-keyboard_arrow_right icon-style"></span>
+          <span class="icon-keyboard_arrow_right icon"></span>
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@ export default {
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        .icon-style {
+        .icon {
           font-size: 30px;
           color: grey;
         }

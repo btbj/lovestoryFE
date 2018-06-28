@@ -1,7 +1,7 @@
 <template>
   <div class="option-info-container">
     <div class="option-info-title">
-      <span class="icon-radio_button_unchecked icon-style"></span>
+      <span class="icon-radio_button_unchecked icon"></span>
       <span>择偶条件</span>
     </div>
     <div class="option-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
@@ -153,7 +153,7 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    .icon-style {
+    .icon {
       color: #F1356F;
       font-weight: bold;
       margin-right: 10px;
