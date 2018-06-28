@@ -74,7 +74,7 @@
             <div class="label">经济观念&nbsp;:</div>
           </div>
           <div class="right-checkbox" style="padding: 0">
-            <el-select size="small"></el-select>
+            <el-select size="small" v-model="economicConcept"></el-select>
           </div>
         </div>
       </div>
@@ -106,7 +106,8 @@ export default {
   data () {
     return {
       activityTab: 'economicStrength',
-      economicStrengthList: []
+      economicStrengthList: [],
+      economicConcept: ''
     }
   },
   methods: {

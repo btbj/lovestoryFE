@@ -5,65 +5,65 @@
     <div class="menu-list">
       <div class="menu-box">
         <div class="title">
-          <span class="icon icon-people"></span>
+          <span class="item-icon icon-people"></span>
           <span>交 友 记 录</span>
         </div>
         <div :class="['item', currentDatingRecordsType('visitor') ? 'selected': '']" @click="toDatingRecords('visitor')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>谁看过我</span>
         </div>
         <div :class="['item', currentDatingRecordsType('history') ? 'selected': '']" @click="toDatingRecords('history')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>我看过谁</span>
         </div>
         <div :class="['item', currentDatingRecordsType('follower') ? 'selected': '']" @click="toDatingRecords('follower')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>谁关注我</span>
         </div>
         <div :class="['item', currentDatingRecordsType('following') ? 'selected': '']" @click="toDatingRecords('following')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>我关注谁</span>
         </div>
       </div>
       <div class="menu-box">
         <div class="title">
-          <span class="icon icon-assignment"></span>
+          <span class="item-icon icon-assignment"></span>
           <span>完 善 资 料</span>
         </div>
         <div :class="['item', isCurrentRoute('basicinfo') ? 'selected' : '']"
           @click="toInfoRoute('basicinfo')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>基本资料</span>
         </div>
         <div :class="['item', isCurrentRoute('myintro') ? 'selected' : '']"
           @click="toInfoRoute('myintro')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>内心独白</span>
         </div>
         <div :class="['item', isCurrentRoute('mypics') ? 'selected' : '']"
           @click="toInfoRoute('mypics')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>我的相册</span>
         </div>
         <div :class="['item', isCurrentRoute('mydetail') ? 'selected' : '']"
           @click="toInfoRoute('mydetail')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>详细资料</span>
         </div>
         <div :class="['item', isCurrentRoute('myoption') ? 'selected' : '']"
           @click="toInfoRoute('myoption')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>择偶条件</span>
         </div>
       </div>
       <div class="menu-box">
         <div class="title">
-          <span class="icon icon-settings"></span>
+          <span class="item-icon icon-settings"></span>
           <span>我 的 账 号</span>
         </div>
         <div :class="['item', isCurrentRoute('changepwd') ? 'selected' : '']"
           @click="toInfoRoute('changepwd')">
-          <span class="icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>密码修改</span>
         </div>
       </div>
@@ -123,7 +123,7 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: center;
-        .icon{
+        .item-icon{
           margin-left: -20px;
           width: 20px;
           font-size: 20px;
@@ -136,7 +136,7 @@ export default {
         margin-bottom: 2px;
         margin-left: 7px;
         cursor: pointer;
-        .icon{
+        .item-icon{
           color: #D76083;
           width: 20px;
           margin-left: -5px;
@@ -144,7 +144,7 @@ export default {
         }
         &.selected{
           color: #D76083;
-          .icon{
+          .item-icon{
             display: inline;
           }
         }
