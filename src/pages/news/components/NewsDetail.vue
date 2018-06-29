@@ -134,13 +134,14 @@ export default {
     }
     ._inner-news-content-box {
       width: 100%;
-      height: 600px;
+      // height: 600px;
       border-bottom: 1px dotted grey;
       box-sizing: border-box;
       padding: 20px 10px;
       font-size: 14px;
       text-align: left;
       margin-bottom: 20px;
+      word-wrap: break-word;
     }
     ._inner-news-prev-next {
       width: 100%;
