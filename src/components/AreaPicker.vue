@@ -1,14 +1,12 @@
 <template>
   <div class="area-picker-root">
-    <el-select size="small" class="area-picker" v-model="province" placeholder="请选择"
-      @change="handleChange('reset')">
+    <el-select size="small" class="area-picker" v-model="province" placeholder="请选择">
       <el-option
         v-for="(item, index) in provinceList" :key="index"
         :label="item" :value="item">
       </el-option>
     </el-select>
-    <el-select size="small" class="area-picker" v-model="city" placeholder="请选择"
-      @change="handleChange">
+    <el-select size="small" class="area-picker" v-model="city" placeholder="请选择">
       <el-option
         v-for="(item, index) in cityList" :key="index"
         :label="item" :value="item">
@@ -23,29 +21,24 @@ export default {
   props: ['value'],
   data () {
     return {
-      AddressData: {},
-      province: '',
-      city: ''
+      AddressData: {}
+      // province: '',
+      // city: ''
     }
   },
   methods: {
-    handleChange (reset) {
-      console.log(reset)
-      if (reset === 'reset') {
-        this.city = this.cityList[0]
-      }
-      this.$emit('input', [this.province, this.city])
-    }
-  },
-  computed: {
-    provinceList () {
-      return Object.keys(this.AddressData)
-    },
-    cityList () {
-      if (this.province) {
-        let citys = Object.keys(this.AddressData[this.province])
+    // handleChange (reset) {
+    //   console.log(reset)
+    //   if (reset === 'reset') {
+    //     this.city = this.cityList[0]
+    //   }
+    //   this.$emit('input', [this.province, this.city])
+    // }
+    getCityList (province = this.province) {
+      if (province) {
+        let citys = Object.keys(this.AddressData[province] || {})
         if (citys.length === 1) {
-          return Object.values(this.AddressData[this.province])[0]
+          return Object.values(this.AddressData[province])[0]
         } else {
           return citys
         }
@@ -54,10 +47,37 @@ export default {
       }
     }
   },
+  computed: {
+    provinceList () {
+      return Object.keys(this.AddressData)
+    },
+    cityList (province = this.province) {
+      return this.getCityList()
+    },
+    province: {
+      get: function () {
+        return this.value ? this.value[0] : ''
+      },
+      set: function (newProvince) {
+        let newCity = this.getCityList(newProvince)[0]
+        // console.log(newProvince, newCity)
+        this.$emit('input', [newProvince, newCity])
+      }
+    },
+    city: {
+      get: function () {
+        return this.value ? this.value[1] : ''
+      },
+      set: function (newCity) {
+        // console.log(this.province, newCity)
+        this.$emit('input', [this.province, newCity])
+      }
+    }
+  },
   mounted: function () {
     this.AddressData = AddressRawData
-    this.province = this.value[0]
-    this.city = this.value[1]
+    // this.province = this.value[0]
+    // this.city = this.value[1]
   }
 }
 </script>

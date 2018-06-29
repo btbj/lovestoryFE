@@ -244,10 +244,16 @@ export default {
   .el-form-item__content{
     text-align: left;
     margin-left: 10px;
-    .el-input{
-      width: 250px;
-    }
+    // .el-input{
+    //   width: 250px;
+    // }
   }
+}
+.input-item{
+  width: 250px;
+}
+.area-piker{
+  width: 300px;
 }
 
 </style>

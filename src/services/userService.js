@@ -20,6 +20,9 @@ export default {
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
   },
+  setExtraInfo (token) {
+    return Api.post((this.serviceURL + 'set_extra_info'), token)
+  },
   search (info) {
     return Api.post((this.serviceURL + 'search'), info)
   },

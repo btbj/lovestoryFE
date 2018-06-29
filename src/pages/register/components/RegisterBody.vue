@@ -42,8 +42,14 @@
           </el-select>
         </el-form-item>
         <el-form-item label="月薪" prop="salary">
-          <el-input class="input-item" size="small" placeholder="请输入月薪（元）"
-            v-model="registerInfo.salary"></el-input>
+          <!-- <el-input class="input-item" size="small" placeholder="请输入月薪（元）"
+            v-model="registerInfo.salary"></el-input> -->
+          <el-select size="small" class="input-item" placeholder="请选择学历"
+            v-model="registerInfo.salary">
+            <el-option v-for="(item, index) in options.salary" :key="index"
+              :label="item" :value="item">
+            </el-option>
+          </el-select>
         </el-form-item>
         <div class="seperator"></div>
         <el-form-item label="手机号" prop="phone">
@@ -67,11 +73,11 @@
           <el-input class="input-item" size="small" placeholder="请输入昵称"
             v-model="registerInfo.nickname"></el-input>
         </el-form-item>
-        <el-form-item label="自我介绍" prop="introduction">
+        <el-form-item label="内心独白" prop="monologue">
           <el-input class="textarea-item" type="textarea" resize="none"
-            placeholder="请输入自我介绍"
+            placeholder="请输入内心独白"
             :rows="4"
-            v-model="registerInfo.introduction"></el-input>
+            v-model="registerInfo.monologue"></el-input>
         </el-form-item>
       </el-form>
       <el-button class="register-btn" @click="validateForm">立即注册</el-button>
@@ -109,7 +115,7 @@ export default {
         password: '',
         passwordConfirm: '',
         nickname: '',
-        introduction: ''
+        monologue: ''
       },
       formRule: {
         // name: [
@@ -135,8 +141,7 @@ export default {
           { required: true, message: '请输入学历', trigger: 'blur' }
         ],
         salary: [
-          { required: true, message: '请输入月薪（元）', trigger: 'blur' },
-          { pattern: /^[\d]{1,10}$/, message: '请输入月薪（元）', trigger: 'blur' }
+          { required: true, message: '请输入月薪（元）', trigger: 'blur' }
         ],
         phone: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
@@ -156,12 +161,13 @@ export default {
         nickname: [
           { required: true, message: '请输入昵称', trigger: 'blur' }
         ],
-        introduction: [
-          { required: true, message: '请输入自我介绍', trigger: 'blur' }
+        monologue: [
+          { required: true, message: '请输入内心独白', trigger: 'blur' }
         ]
       },
       options: {
-        education: ['高中及中专以下', '大专', '本科', '双学士', '硕士', '博士', '博士后']
+        education: ['高中及中专以下', '大专', '本科', '双学士', '硕士', '博士', '博士后'],
+        salary: ['2000元以下', '2000~5000元', '5000~10000元', '10000~20000元', '20000元以上']
       }
     }
   },
@@ -193,7 +199,7 @@ export default {
           height: this.registerInfo.height,
           education: this.registerInfo.education,
           month_pay: this.registerInfo.salary,
-          introduction: this.registerInfo.introduction,
+          monologue: this.registerInfo.monologue,
           phone: this.registerInfo.phone,
           code: this.registerInfo.code,
           password: this.registerInfo.password,
