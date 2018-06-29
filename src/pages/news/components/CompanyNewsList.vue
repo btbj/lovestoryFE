@@ -160,6 +160,7 @@ export default {
             font-size: 14px;
             padding: 5px;
             text-align: left;
+            word-wrap: break-word;
           }
           .news-more-btn {
             width: 100%;

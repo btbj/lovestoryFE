@@ -20,6 +20,18 @@ export default {
   setMonologue (info) {
     return Api.post((this.serviceURL + 'set_monologue'), info)
   },
+  setAvatar (info) {
+    return Api.post((this.serviceURL + 'set_avatar'), info)
+  },
+  addAlbumImage (info) {
+    return Api.post((this.serviceURL + 'add_album_image'), info)
+  },
+  deleteAlbumImage (info) {
+    return Api.post((this.serviceURL + 'delete_album_image'), info)
+  },
+  albumImages (info) {
+    return Api.post((this.serviceURL + 'album_images'), info)
+  },
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
   },
