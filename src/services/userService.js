@@ -17,6 +17,9 @@ export default {
   doReg (info) {
     return Api.post((this.serviceURL + 'do_reg'), info)
   },
+  setMonologue (info) {
+    return Api.post((this.serviceURL + 'set_monologue'), info)
+  },
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
   },

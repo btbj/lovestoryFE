@@ -265,7 +265,7 @@ export default {
         await this.singleFormVerify('contactForm')
         this.submitNewInfo()
       } catch (error) {
-        console.log(error)
+        userService.handleErr(error)
       }
     },
     singleFormVerify (formName) {
