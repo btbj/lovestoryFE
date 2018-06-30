@@ -41,6 +41,9 @@ export default {
   setExtraInfo (token) {
     return Api.post((this.serviceURL + 'set_extra_info'), token)
   },
+  setConditions (token) {
+    return Api.post((this.serviceURL + 'set_conditions'), token)
+  },
   search (info) {
     return Api.post((this.serviceURL + 'search'), info)
   },
