@@ -66,6 +66,10 @@
           <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>密码修改</span>
         </div>
+        <div class="item"
+          @click="logoutUser">
+          <span>退出登录</span>
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +94,10 @@ export default {
     },
     toInfoRoute (name) {
       this.$router.push({name: 'myinfo-' + name})
+    },
+    logoutUser () {
+      this.$store.dispatch('logout')
+      this.$router.push('/')
     }
   }
 

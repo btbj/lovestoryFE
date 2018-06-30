@@ -39,7 +39,7 @@ export default {
   },
   mounted: async function () {
     if (this.currentToken === null) {
-      // this.$router.replace({name: 'login'})
+      this.$router.replace({name: 'login'})
     }
   }
 }

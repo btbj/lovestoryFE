@@ -17,6 +17,9 @@ export default {
   doReg (info) {
     return Api.post((this.serviceURL + 'do_reg'), info)
   },
+  verifyCode (info) {
+    return Api.post((this.serviceURL + 'verify_code'), info)
+  },
   setMonologue (info) {
     return Api.post((this.serviceURL + 'set_monologue'), info)
   },

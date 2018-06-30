@@ -59,8 +59,8 @@ export default {
 
 <style lang="less">
 .otp-btn-root{
-  background-color: #FEBDD3;
-  color: #FE75A3;
+  background-color: #F1356F;
+  color: white;
   text-align: center;
   font-size: 13px;
   border: none;

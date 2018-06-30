@@ -1,5 +1,6 @@
 <template>
-  <div class="account-info-container">
+  <div class="account-info-container"
+    v-loading="loading">
     <div class="account-info-title">
       <span class="icon-radio_button_unchecked item-icon"></span>
       <span>密码修改</span>
@@ -24,47 +25,50 @@
       <div class="item-row">
         <div class="row-label">您的手机号是:</div>
         <div class="row-content">
-          <span>152****7571</span>
-          <div class="vecode-btn">发送验证码</div>
+          <span>{{maskPhone}}</span>
+          <otp-btn class="otp-btn" :phoneNumber="phone"></otp-btn>
+          <!-- <div class="vecode-btn">发送验证码</div> -->
         </div>
       </div>
       <div class="item-row">
         <div class="row-label">手机验证码:</div>
         <div class="row-content">
-          <el-input placeholder="请输入验证码" v-model="vecode"></el-input>
+          <el-input placeholder="请输入验证码" v-model="vecode" maxlength="4"></el-input>
         </div>
       </div>
       <div class="item-row">
         <div class="row-label"></div>
         <div class="row-content">
-          <div class="vecode-remark">
+          <!-- <div class="vecode-remark">
             验证码已发送。超过60秒未收到短信校验码，可点击重新发送按钮来重新获取短信校验码。
-          </div>
+          </div> -->
         </div>
       </div>
-      <div class="opt-btn">
-        <div class="btn" style="margin-left: 200px">确定</div>
-        <div class="btn" style="margin-left: 20px"
-             @click="nextStep('2')">下一步</div>
+      <div class="btn-group">
+        <div class="btn" style="margin-left: 200px" @click="verifyCode">下一步</div>
+        <!-- <div class="btn" style="margin-left: 20px"
+             @click="verifyCode">下一步</div> -->
       </div>
     </div>
     <div class="account-step-content" v-else-if="stepNum === '2'">
       <div class="item-row">
         <div class="row-label">新密码:</div>
         <div class="row-content">
-          <el-input type="password" placeholder="请输入新密码" v-model="newPwd"></el-input>
+          <el-input type="password" placeholder="请输入新密码" v-model="newPwd"
+            maxlength="20" auto-complete="new-password"></el-input>
         </div>
       </div>
       <div class="item-row">
         <div class="row-label">再次输入新密码:</div>
         <div class="row-content">
-          <el-input type="password" placeholder="请再次输入新密码" v-model="againPwd"></el-input>
+          <el-input type="password" placeholder="请再次输入新密码" v-model="againPwd"
+            maxlength="20" auto-complete="new-password"></el-input>
         </div>
       </div>
-      <div class="opt-btn">
-        <div class="btn" style="margin-left: 200px">确定</div>
-        <div class="btn" style="margin-left: 20px"
-             @click="nextStep('3')">下一步</div>
+      <div class="btn-group">
+        <div class="btn" style="margin-left: 200px" @click="changePwd">修改</div>
+        <!-- <div class="btn" style="margin-left: 20px"
+             @click="nextStep('3')">下一步</div> -->
       </div>
     </div>
     <div class="account-step-content" v-else-if="stepNum === '3'">
@@ -74,9 +78,15 @@
 </template>
 
 <script>
+import userService from '@/services/userService'
+import OtpBtn from '@/components/OtpBtn'
+
 export default {
+  components: { OtpBtn },
   data () {
     return {
+      loading: false,
+      phone: '',
       vecode: '',
       stepNum: '1',
       newPwd: '',
@@ -86,7 +96,68 @@ export default {
   methods: {
     nextStep (id) {
       this.stepNum = id
+    },
+    async getUserInfo () {
+      this.loading = true
+      try {
+        let res = await userService.getInfo({
+          token: this.$store.getters.token
+        })
+        this.phone = res.data.info.info.phone
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+      this.loading = false
+    },
+    async verifyCode () {
+      this.loading = true
+      try {
+        let res = await userService.verifyCode({
+          phone: this.phone,
+          code: this.vecode
+        })
+        console.log(res)
+        this.nextStep('2')
+      } catch (error) {
+        userService.handleErr(error)
+      }
+      this.loading = false
+    },
+    async changePwd () {
+      if (this.newPwd.length < 8 || this.againPwd.length < 8) {
+        this.$message({
+          message: '密码长度不能小于8位',
+          type: 'error'
+        })
+        return
+      }
+      this.loading = true
+      try {
+        let res = await userService.changePwd({
+          token: this.$store.getters.token,
+          pwd: this.newPwd,
+          pwd2: this.againPwd
+        })
+        console.log(res)
+        this.nextStep('3')
+      } catch (error) {
+        userService.handleErr(error)
+      }
+      this.loading = false
     }
+  },
+  computed: {
+    maskPhone () {
+      if (!this.phone) {
+        return null
+      } else {
+        return this.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+      }
+    }
+  },
+  mounted: async function () {
+    await this.getUserInfo()
   }
 }
 </script>
@@ -208,7 +279,7 @@ export default {
         }
       }
     }
-    .opt-btn {
+    .btn-group {
       margin-top: 20px;
       width: 100%;
       box-sizing: border-box;
@@ -225,5 +296,8 @@ export default {
       }
     }
   }
+}
+.otp-btn{
+  margin-left: 15px;
 }
 </style>

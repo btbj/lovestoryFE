@@ -63,11 +63,11 @@
         </el-form-item>
         <el-form-item label="登录密码" prop="password">
           <el-input class="input-item" size="small" type="password" placeholder="请输入密码"
-            v-model="registerInfo.password" auto-complete="new-password"></el-input>
+            v-model="registerInfo.password" auto-complete="new-password" maxlength="20"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="passwordConfirm">
           <el-input class="input-item" size="small" type="password" placeholder="请再次输入密码"
-            v-model="registerInfo.passwordConfirm" auto-complete="new-password"></el-input>
+            v-model="registerInfo.passwordConfirm" auto-complete="new-password" maxlength="20"></el-input>
         </el-form-item>
         <el-form-item label="昵称" prop="nickname">
           <el-input class="input-item" size="small" placeholder="请输入昵称"
