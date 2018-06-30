@@ -64,7 +64,7 @@ export default {
           name: '雅萱',
           age: '34岁',
           height: '176',
-          education: '海龟硕士',
+          education: '高中及中专以下',
           income: '150000'
         }, {
           img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',

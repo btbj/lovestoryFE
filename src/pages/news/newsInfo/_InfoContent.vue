@@ -135,6 +135,8 @@ export default {
           font-size: 14px;
           text-align: left;
           margin-bottom: 20px;
+          word-wrap: break-word;
+          word-break: break-all;
         }
         ._inner-news-prev-next {
           width: 100%;

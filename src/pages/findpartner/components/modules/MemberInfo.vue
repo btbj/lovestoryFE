@@ -54,7 +54,7 @@ export default {
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
-    width: 200px;
+    height: 170px;
     .card-pic {
       margin-right: 3px;
       width: 100px;
@@ -75,17 +75,19 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 95px;
+      justify-content: space-around;
+      width: 100px;
       height: 100%;
       box-sizing: border-box;
       .member-info-item {
         font-size: 14px;
         margin-bottom: 5px;
+        text-align: left;
       }
       .member-detail-btn {
         width: 100%;
         height: 30px;
-        margin-top: 15px;
+        margin-top: 5px;
         .btn {
           background-color: #FD6F9F;
           color: white;

@@ -38,7 +38,7 @@ export default {
         name: '雅萱',
         age: '34岁',
         height: '176',
-        education: '海龟硕士',
+        education: '高中及中专以下',
         income: '150000'
       }, {
         img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
@@ -110,7 +110,7 @@ export default {
     height: 100%;
     box-sizing: border-box;
     .el-carousel__container {
-      height: 330px;
+      height: 370px;
       .page-cards {
         display: flex;
         flex-wrap: wrap;
@@ -123,7 +123,7 @@ export default {
           display: flex;
           box-sizing: border-box;
           width: 205px;
-          height: 155px;
+          height: 170px;
           .card-pic {
             margin-right: 3px;
             width: 100px;
@@ -144,12 +144,14 @@ export default {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: space-around;
             width: 95px;
             height: 100%;
             box-sizing: border-box;
             .member-info-item {
               font-size: 14px;
               margin-bottom: 5px;
+              text-align: left;
             }
             .member-detail-btn {
               width: 100%;
