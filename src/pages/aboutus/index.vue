@@ -72,7 +72,7 @@ export default {
   }
   .us-content-container {
     width: 100%;
-    height: 680px;
+    // height: 680px;
     box-sizing: border-box;
   }
   .online-service-container {
