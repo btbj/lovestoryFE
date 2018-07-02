@@ -14,19 +14,38 @@
     </div>
     <div class="tel">
       <span class="icon-phone tel-icon"></span>
-      <span class="tel-number">400-0000-0000</span>
+      <span class="tel-number">{{hotLine}}</span>
       </div>
   </div>
 </template>
 
 <script>
 import imageService from '@/services/imageService'
+import siteService from '@/services/siteService'
 
 export default {
+  data () {
+    return {
+      hotLine: 'hotline'
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        this.hotLine = res.data.info.value
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
   computed: {
     siteLogo () {
       return imageService.siteLogo
     }
+  },
+  mounted: async function () {
+    this.getSiteInfo(12)
   }
 }
 </script>

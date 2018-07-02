@@ -4,18 +4,9 @@
      <div class="contact-info-box">
        <div class="info-label">联系方式</div>
        <div class="contact-info">
-         <div class="contact-item">
-           <div class="contact-label">热线 :</div>
-           <div class="contact-content">4006-0000-0000</div></div>
-         <div class="contact-item">
-           <div class="contact-label">Q Q :</div>
-           <div class="contact-content">945195459</div></div>
-         <div class="contact-item">
-           <div class="contact-label">邮箱 :</div>
-           <div class="contact-content">945195459@qq.com</div></div>
-         <div class="contact-item">
-           <div class="contact-label">地址 :</div>
-           <div class="contact-content">浙江省宁波市慈溪市古塘街道科技路18号</div></div>
+         <div class="contact-item" v-for="(item, index) in contactList" :key="index">
+           <div class="contact-label">{{item.label}} :</div>
+           <div class="contact-content">{{item.value}}</div></div>
        </div>
      </div>
      <div class="about-us-box">
@@ -57,8 +48,32 @@
 </template>
 
 <script>
-export default {
+import siteService from '@/services/siteService'
 
+export default {
+  data () {
+    return {
+      contactList: []
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        let array = res.data.info.map(item => {
+          let {name, value, label} = item
+          return {name, value, label}
+        })
+        console.log(array)
+        this.contactList = array
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo([7, 8, 9, 11])
+  }
 }
 </script>
 
