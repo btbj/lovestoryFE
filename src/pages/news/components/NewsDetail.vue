@@ -20,12 +20,12 @@
       </div>
       <div class="_inner-news-prev-next">
         <div :class="['_news-prev', newsDetail.pre ? 'clickable' : '']"
-          @click="newsDetail.pre ? getDetail(newsDetail.pre.id) : null">
+          @click="newsDetail.pre ? getNewDetail(newsDetail.pre.id) : null">
           <div class="prev-link">上一篇 : </div>
           <div class="prev-label">{{newsDetail.pre ? newsDetail.pre.title : '没有了'}}</div>
         </div>
         <div :class="['_news-next', newsDetail.next ? 'clickable' : '']"
-          @click="newsDetail.next ? getDetail(newsDetail.next.id) : null">
+          @click="newsDetail.next ? getNewDetail(newsDetail.next.id) : null">
           <div class="next-link">下一篇 : </div>
           <div class="next-label">{{newsDetail.next ? newsDetail.next.title : '没有了'}}</div>
         </div>
@@ -37,19 +37,15 @@
 <script>
 import articleService from '@/services/articleService'
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'news')
-const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'news')
 
 export default {
-  components: { ContentNav, PagePagination },
+  components: { ContentNav },
   data () {
     return {
       newsDetail: null
     }
   },
   methods: {
-    getInfo (index) {
-      this.$router.push({name: 'newsinfo', params: {'id': index}})
-    },
     async getDetail (id) {
       try {
         let res = await articleService.info({
@@ -60,9 +56,17 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    getNewDetail (id) {
+      let newParams = this.$route.params
+      newParams.id = id
+      this.$router.push({name: 'news-detail', params: newParams})
     }
   },
   computed: {
+    newsId () {
+      return this.$route.params
+    },
     categoryText () {
       let currentCategory = this.$route.path.split('/')[2]
       let result = '未知分类'
@@ -72,6 +76,11 @@ export default {
         case 'industry': result = '行业资讯'; break
       }
       return result
+    }
+  },
+  watch: {
+    newsId () {
+      this.getDetail(this.newsId.id)
     }
   },
   mounted: async function () {

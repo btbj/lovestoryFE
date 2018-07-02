@@ -10,60 +10,75 @@
       <div class="avatar-container">
         <div class="avatar-box">
           <div class="avatar">
-            <img src="https://dummyimage.com/130x130/333/3ff.jpg&text=pic"
+            <img v-if="avatarUrl" :src="avatarUrl"
                 class="img-style">
           </div>
         </div>
-        <div class="avatar-btn">更换头像</div>
+        <!-- <div class="avatar-btn">更换头像</div> -->
+        <upload-avatar-btn @changed="handleNewAvatar"/>
       </div>
     </div>
     <div class="seprator"></div>
-    <div class="pics-info-box">
-      <div class="pics-info-banner">我的生活照</div>
-      <div class="pics-container">
-        <div class="pic-box" v-for="(pic, index) in picList"
-             :key="index">
-          <div class="pic">
-            <img :src=pic.img
-                class="img-style">
-          </div>
-        </div>
-        <div class="pic-box">
-          <div class="pic">
-            <div class="add-icon-box">
-              <span class="icon-control_point item-icon"></span>
-              <div class="add-word">上传照片</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <pic-wall></pic-wall>
     <div class="option-btn">
-      <div class="btn">保存并继续</div>
-      <div class="btn">跳过此页</div>
+      <div class="btn" @click="nextStep">保存并继续</div>
+      <div class="btn" @click="nextStep">跳过此页</div>
     </div>
   </div>
 </template>
 
 <script>
+import userService from '@/services/userService'
+import UploadAvatarBtn from './components/UploadAvatarBtn'
+import PicWall from './components/PicWall'
+
 export default {
+  components: { UploadAvatarBtn, PicWall },
   data () {
     return {
-      picList: [
-        {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }, {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }, {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }, {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }, {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }, {
-          img: 'https://dummyimage.com/120x180/333/3ff.jpg&text=pic'
-        }]
+      avatarUrl: null
     }
+  },
+  methods: {
+    nextStep () {
+      this.$router.push({name: 'myinfo-mydetail'})
+    },
+    async getUserInfo () {
+      try {
+        let res = await userService.getInfo({
+          token: this.$store.getters.token
+        })
+        this.avatarUrl = res.data.info.info.head_image_url
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async submitInfo () {
+      if (this.letterCount < 20) {
+        alert('内心独白字数不小于20')
+        return
+      }
+      try {
+        let res = await userService.setMonologue({
+          token: this.$store.getters.token,
+          monologue: this.intro
+        })
+        this.$message({
+          message: res.message,
+          type: 'success'
+        })
+        this.$router.push({name: 'myinfo-mypics'})
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    },
+    handleNewAvatar () {
+      window.location.reload()
+    }
+  },
+  mounted: async function () {
+    await this.getUserInfo()
   }
 }
 </script>
@@ -159,64 +174,7 @@ export default {
           }
         }
       }
-      .avatar-btn {
-        width: 130px;
-        height: 40px;
-        background-color: #F1356F;
-        box-sizing: border-box;
-        border-radius: 5px;
-        line-height: 40px;
-        color: white;
-        cursor: pointer;
-      }
-    }
-    .pics-container {
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-wrap: wrap;
-      .pic-box {
-        width: 140px;
-        height: 200px;
-        border: 1px solid lightgrey;
-        box-sizing: border-box;
-        margin: 0 2px 30px 5px;
-        padding: 9px;
-        display: flex;
-        .pic {
-          width: 100%;
-          height: 100%;
-          box-sizing: border-box;
-          overflow: hidden;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          .img-style {
-            max-width: 100%;
-            max-height: 100%;
-          }
-          .add-icon-box {
-            width: 100%;
-            height: 100%;
-            background-color: #E8E8E8;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            .item-icon {
-              font-size: 80px;
-              color: white;
-              margin: 20px 0;
-            }
-            .add-word {
-              font-size: 16px;
-            }
-          }
-        }
-      }
+
     }
   }
   .option-btn {

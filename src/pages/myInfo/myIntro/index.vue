@@ -7,29 +7,64 @@
     <div class="intro-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
     <div class="intro-info-box">
       <el-input type="textarea" resize="none"
-        :rows="10" v-model="intro" maxlength="1000"
-        @input="countInput"></el-input>
-      <div class="intro-remark">限20-1000字， 目前已输入{{wordsNumber}}, 您还可以输入{{1000-wordsNumber}}字</div>
+        :rows="10" v-model="intro" maxlength="1000"></el-input>
+      <div class="intro-remark">限20~1000字， 目前已输入{{letterCount}}, 您还可以输入{{1000-letterCount}}字</div>
     </div>
     <div class="option-btn">
-      <div class="btn">保存并继续</div>
+      <div class="btn" @click="submitInfo">保存并继续</div>
       <div class="btn">跳过此页</div>
     </div>
   </div>
 </template>
 
 <script>
+import userService from '@/services/userService'
+
 export default {
   data () {
     return {
-      intro: '',
-      wordsNumber: 0
+      intro: ''
     }
   },
   methods: {
-    countInput () {
-      this.wordsNumber = this.intro.length
+    async getUserInfo () {
+      try {
+        let res = await userService.getInfo({
+          token: this.$store.getters.token
+        })
+        this.intro = res.data.info.info.monologue || ''
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async submitInfo () {
+      if (this.letterCount < 20) {
+        alert('内心独白字数不小于20')
+        return
+      }
+      try {
+        let res = await userService.setMonologue({
+          token: this.$store.getters.token,
+          monologue: this.intro
+        })
+        this.$message({
+          message: res.message,
+          type: 'success'
+        })
+        this.$router.push({name: 'myinfo-mypics'})
+      } catch (error) {
+        userService.handleErr(error)
+      }
     }
+  },
+  computed: {
+    letterCount () {
+      return this.intro.length
+    }
+  },
+  mounted: async function () {
+    await this.getUserInfo()
   }
 
 }

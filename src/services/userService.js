@@ -17,8 +17,32 @@ export default {
   doReg (info) {
     return Api.post((this.serviceURL + 'do_reg'), info)
   },
+  verifyCode (info) {
+    return Api.post((this.serviceURL + 'verify_code'), info)
+  },
+  setMonologue (info) {
+    return Api.post((this.serviceURL + 'set_monologue'), info)
+  },
+  setAvatar (info) {
+    return Api.post((this.serviceURL + 'set_avatar'), info)
+  },
+  addAlbumImage (info) {
+    return Api.post((this.serviceURL + 'add_album_image'), info)
+  },
+  deleteAlbumImage (info) {
+    return Api.post((this.serviceURL + 'delete_album_image'), info)
+  },
+  albumImages (info) {
+    return Api.post((this.serviceURL + 'album_images'), info)
+  },
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
+  },
+  setExtraInfo (token) {
+    return Api.post((this.serviceURL + 'set_extra_info'), token)
+  },
+  setConditions (token) {
+    return Api.post((this.serviceURL + 'set_conditions'), token)
   },
   search (info) {
     return Api.post((this.serviceURL + 'search'), info)
