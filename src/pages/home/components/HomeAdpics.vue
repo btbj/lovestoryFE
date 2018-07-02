@@ -1,5 +1,5 @@
 <template>
-  <div class="home-post-pics">
+  <div class="home-post-pics" :style="`background-image: url(${activityImg});`">
     <div class="pic-content">
       <div class="activity-info-box">
         <div class="info-label">Activity</div>
@@ -26,8 +26,14 @@
 </template>
 
 <script>
-export default {
+import imageService from '@/services/imageService'
 
+export default {
+  computed: {
+    activityImg () {
+      return imageService.activity
+    }
+  }
 }
 </script>
 
@@ -36,21 +42,23 @@ export default {
   margin: 30px 0;
   box-sizing: border-box;
   width: 100%;
-  height: 300px;
+  height: 400px;
   padding: 20px 180px;
-  background-image: url("https://dummyimage.com/1200x300/eee/3ff.jpg&text=pic");
+  // background-image: url("https://dummyimage.com/1200x300/eee/3ff.jpg&text=pic");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   .pic-content {
-    width: 100%;
+    margin: auto;
+    width: 800px;
     height: 100%;
     box-sizing: border-box;
     display: flex;
-    padding: 5px 0;
+    align-items: center;
+    justify-content: center;
     .activity-info-box {
-      width: 50%;
-      height: 100%;
+      width: 400px;
+      height: 300px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -89,8 +97,8 @@ export default {
       }
     }
     .activity-pic-box {
-      width: 50%;
-      height: 100%;
+      width: 400px;
+      height: 300px;
       box-sizing: border-box;
       overflow: hidden;
       position: relative;

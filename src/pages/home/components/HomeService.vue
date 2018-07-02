@@ -1,92 +1,105 @@
 <template>
-  <div class="home-service">
-    <div class="content-img"></div>
-    <!-- <div class="service-content">
-      <div class="content-words">
-        <div class="big-words">定制服务，为爱保驾护航</div>
-        <div class="small-words">专业红娘团，优质一对一服务</div>
-      </div>
-      <div class="content-chart">
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-mode_edit icon"></span>
+  <div class="home-service-wrapper">
+    <img :src="processImg" alt="">
+    <!-- <div class="home-service" :style="`background-image: url('${processImg}');`"> -->
+      <!-- <div class="service-content">
+        <div class="content-words">
+          <div class="big-words">定制服务，为爱保驾护航</div>
+          <div class="small-words">专业红娘团，优质一对一服务</div>
+        </div>
+        <div class="content-chart">
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-mode_edit icon"></span>
+            </div>
+            <div class="icon-label">在线免费注册</div>
           </div>
-          <div class="icon-label">在线免费注册</div>
-        </div>
-        <div class="chart-item">
-          <span class="icon-forward icon-arrow-style"></span>
-        </div>
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-assignment_ind icon"></span>
+          <div class="chart-item">
+            <span class="icon-forward icon-arrow-style"></span>
           </div>
-          <div class="icon-label">线下实名签约</div>
-        </div>
-        <div class="chart-item">
-          <span class="icon-forward icon-arrow-style"></span>
-        </div>
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-search icon"></span>
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-assignment_ind icon"></span>
+            </div>
+            <div class="icon-label">线下实名签约</div>
           </div>
-          <div class="icon-label">人工匹配筛选</div>
-        </div>
-        <div class="chart-item">
-          <span class="icon-forward icon-arrow-style"></span>
-        </div>
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-my_location icon"></span>
+          <div class="chart-item">
+            <span class="icon-forward icon-arrow-style"></span>
           </div>
-          <div class="icon-label">全程跟踪服务</div>
-        </div>
-        <div class="chart-item">
-          <span class="icon-forward icon-arrow-style"></span>
-        </div>
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-people icon"></span>
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-search icon"></span>
+            </div>
+            <div class="icon-label">人工匹配筛选</div>
           </div>
-          <div class="icon-label">会员一对一约见</div>
-        </div>
-        <div class="chart-item">
-          <span class="icon-forward icon-arrow-style"></span>
-        </div>
-        <div class="chart-item">
-          <div class="icon-bg">
-            <span class="icon-wc icon"></span>
+          <div class="chart-item">
+            <span class="icon-forward icon-arrow-style"></span>
           </div>
-          <div class="icon-label">会员喜结佳缘</div>
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-my_location icon"></span>
+            </div>
+            <div class="icon-label">全程跟踪服务</div>
+          </div>
+          <div class="chart-item">
+            <span class="icon-forward icon-arrow-style"></span>
+          </div>
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-people icon"></span>
+            </div>
+            <div class="icon-label">会员一对一约见</div>
+          </div>
+          <div class="chart-item">
+            <span class="icon-forward icon-arrow-style"></span>
+          </div>
+          <div class="chart-item">
+            <div class="icon-bg">
+              <span class="icon-wc icon"></span>
+            </div>
+            <div class="icon-label">会员喜结佳缘</div>
+          </div>
         </div>
-      </div>
-    </div> -->
+      </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-export default {
+import imageService from '@/services/imageService'
 
+export default {
+  computed: {
+    processImg () {
+      return imageService.process
+    }
+  }
 }
 </script>
 
 <style lang="less">
-.home-service {
+.home-service-wrapper{
   margin: 30px 0;
   width: 100%;
-  height: 320px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  img{
+    height: 100%;
+  }
+}
+.home-service {
+  height: 100%;
   box-sizing: border-box;
-  background: url("https://dummyimage.com/1200x320/eee/3ff.jpg&text=pic");
+  // background: url("https://dummyimage.com/1200x320/eee/3ff.jpg&text=pic");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   // padding: 20px 180px;
   text-align: center;
-  .content-img{
-    height: 100%;
-    background: url("/images/processInstruct.png");
-    background-size: cover;
-    background-position: center center;
-  }
   .service-content {
     width: 100%;
     height: 100%;

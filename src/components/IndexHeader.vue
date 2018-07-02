@@ -1,7 +1,7 @@
 <template>
   <div class="info-box">
     <div class="logo">
-      <img src="https://dummyimage.com/200x70/333/3ff.jpg&text=logo"
+      <img :src="siteLogo"
           style="width: 100%; height: 100%">
     </div>
     <div class="info">
@@ -20,8 +20,14 @@
 </template>
 
 <script>
-export default {
+import imageService from '@/services/imageService'
 
+export default {
+  computed: {
+    siteLogo () {
+      return imageService.siteLogo
+    }
+  }
 }
 </script>
 
