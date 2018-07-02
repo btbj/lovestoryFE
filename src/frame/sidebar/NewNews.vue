@@ -43,8 +43,13 @@ export default {
         case '1': category = 'notification'; break
         case '2': category = 'company'; break
         case '3': category = 'industry'; break
+        default: category = 'not registered'
       }
-      this.$router.push({name: 'news-detail', params: {category, 'id': news.id}})
+      if (category !== 'not registered') {
+        this.$router.push({name: 'news-detail', params: {category, 'id': news.id}})
+      } else {
+        console.log('category not registered in NewNews')
+      }
     }
   },
   mounted: async function () {
