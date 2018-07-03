@@ -7,31 +7,31 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪&nbsp;:&nbsp;</span>
+          <span class="label">月薪</span>：
           <span>2000~5000元</span>
         </div>
         <div class="_item-column">
-          <span>购&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房&nbsp;:&nbsp;</span>
+          <span class="label">购房</span>：
           <span>与父母同住</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>购&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车&nbsp;:&nbsp;</span>
+          <span class="label">购车</span>：
           <span>暂未购车</span>
         </div>
         <div class="_item-column">
-          <span>经济观念&nbsp;:&nbsp;</span>
+          <span class="label">经济观念</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>投资理财&nbsp;:&nbsp;</span>
+          <span class="label">投资理财</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>外债贷款&nbsp;:&nbsp;</span>
+          <span class="label">外债贷款</span>：
           <span>---</span>
         </div>
       </div>
@@ -97,6 +97,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

@@ -4,26 +4,26 @@
     <el-form class="form-sector" label-position="right" label-width="110px"
         :model="appearanceInfo" ref="infoForm">
       <el-form-item prop="weight">
-        <span slot="label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重&nbsp;:</span>
+        <span slot="label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重：</span>
         <el-input class="input-style" size="small" v-model="appearanceInfo.weight">
         </el-input>&nbsp;公斤
       </el-form-item>
       <el-form-item prop="body">
-        <span slot="label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型&nbsp;:</span>
+        <span slot="label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
         <el-select size="small" v-model="appearanceInfo.body">
           <el-option v-for="item in options.body" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item prop="face">
-        <span slot="label">脸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型&nbsp;:</span>
+        <span slot="label">脸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
         <el-select size="small" v-model="appearanceInfo.face">
           <el-option v-for="item in options.face" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item prop="eye">
-        <span slot="label">眼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睛&nbsp;:</span>
+        <span slot="label">眼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睛：</span>
         <div class="item-box">
           <el-select class="select-style" size="small"
            v-model="appearanceInfo.eyeColor"
@@ -38,7 +38,7 @@
         </div>
       </el-form-item>
       <el-form-item prop="hair">
-        <span slot="label">头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发&nbsp;:</span>
+        <span slot="label">头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发：</span>
         <div class="item-box">
           <el-select class="select-style" size="small"
            v-model="appearanceInfo.hairColor"
@@ -58,33 +58,33 @@
         </div>
       </el-form-item>
       <el-form-item prop="skin">
-        <span slot="label">皮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;肤&nbsp;:</span>
+        <span slot="label">皮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;肤：</span>
         <el-select size="small" v-model="appearanceInfo.skin">
           <el-option v-for="item in options.skin" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item prop="color">
-        <span slot="label">肤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色&nbsp;:</span>
+        <span slot="label">肤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：</span>
         <el-select size="small" v-model="appearanceInfo.color">
           <el-option v-for="item in options.color" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item prop="muscle">
-        <span slot="label">肌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;肉&nbsp;:</span>
+        <span slot="label">肌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;肉：</span>
         <el-select size="small" v-model="appearanceInfo.muscle">
           <el-option v-for="item in options.muscle" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="健康情况 :" prop="health">
+      <el-form-item label="健康情况：" prop="health">
         <el-select size="small" v-model="appearanceInfo.health">
           <el-option v-for="item in options.health" :key="item"
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="穿着风格 :" prop="style">
+      <el-form-item label="穿着风格：" prop="style">
         <div class="style-box">
           <el-checkbox-group v-model="appearanceInfo.styleList">
             <div class="checkbox-row">

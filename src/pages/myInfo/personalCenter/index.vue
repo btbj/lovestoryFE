@@ -8,41 +8,41 @@
       <div class="personal-info-content">
         <div class="content-item-row">
           <div class="item-column">
-            <span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄&nbsp;:&nbsp;</span>
+            <span class="label">年龄</span>：
             <span>26~32岁之间</span>
           </div>
           <div class="item-column">
-            <span>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高&nbsp;:&nbsp;</span>
+            <span class="label">身高</span>：
             <span>158-164cm</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:&nbsp;</span>
+            <span class="label">民族</span>：
             <span>不限</span>
           </div>
           <div class="item-column">
-            <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;</span>
+            <span class="label">学历</span>：
             <span>不限</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>相&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;:&nbsp;</span>
+            <span class="label">相册</span>：
             <span>有照片</span>
           </div>
           <div class="item-column">
-            <span>婚姻状况&nbsp;:&nbsp;</span>
+            <span class="label">婚姻状况</span>：
             <span>不限</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>居&nbsp;住&nbsp;地&nbsp;:&nbsp;</span>
+            <span class="label">居住地</span>：
             <span>浙江宁波</span>
           </div>
           <div class="item-column">
-            <span>诚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信&nbsp;:&nbsp;</span>
+            <span class="label">诚信</span>：
             <span>不限</span>
           </div>
         </div>
@@ -250,6 +250,10 @@ export default {
           display: flex;
           align-items: center;
           width: 50%;
+          .label{
+            width: 70px;
+            text-align-last: justify;
+          }
         }
       }
     }

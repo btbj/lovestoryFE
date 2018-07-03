@@ -7,41 +7,41 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>职业职位&nbsp;:&nbsp;</span>
+          <span class="label">职业职位</span>：
           <span>其他</span>
         </div>
         <div class="_item-column">
-          <span>公司行业&nbsp;:&nbsp;</span>
+          <span class="label">公司行业</span>：
           <span>其他行业</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>公司类型&nbsp;:&nbsp;</span>
+          <span class="label">公司类型</span>：
           <span>私营企业</span>
         </div>
         <div class="_item-column">
-          <span>福利待遇&nbsp;:&nbsp;</span>
+          <span class="label">福利待遇</span>：
           <span>事业稳定上升</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>工作状态&nbsp;:&nbsp;</span>
+          <span class="label">工作状态</span>：
           <span>轻松稳定</span>
         </div>
         <div class="_item-column">
-          <span>调动工作可能性&nbsp;:&nbsp;</span>
+          <span class="label" style="width: 100px">调动工作可能性</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>事业与家庭&nbsp;:&nbsp;</span>
+          <span class="label">事业与家庭</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>海外工作可能性&nbsp;:&nbsp;</span>
+          <span class="label" style="width: 100px">海外工作可能性</span>：
           <span>---</span>
         </div>
       </div>
@@ -107,6 +107,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

@@ -5,82 +5,82 @@
         :model="styleInfo" ref="infoForm" :rules="formRule">
         <div class="style-label">嗜好习惯</div>
         <el-form-item prop="smoking">
-          <span slot="label">吸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烟&nbsp;:</span>
+          <span slot="label">吸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烟：</span>
           <el-select size="small" v-model="styleInfo.smoking">
             <el-option v-for="item in options.smoking" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="drinking">
-          <span slot="label">饮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;酒&nbsp;:</span>
+          <span slot="label">饮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;酒：</span>
           <el-select size="small" v-model="styleInfo.drinking">
             <el-option v-for="item in options.drinking" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="锻炼习惯 :" prop="exercise">
+        <el-form-item label="锻炼习惯：" prop="exercise">
           <el-select size="small" v-model="styleInfo.exercise">
             <el-option v-for="item in options.exercise" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="饮食习惯 :" prop="diet">
+        <el-form-item label="饮食习惯：" prop="diet">
           <el-select size="small" v-model="styleInfo.diet">
             <el-option v-for="item in options.diet" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="逛街购物 :" prop="shopping">
+        <el-form-item label="逛街购物：" prop="shopping">
           <el-select size="small" v-model="styleInfo.shopping">
             <el-option v-for="item in options.shopping" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宗教信仰 :" prop="religion">
+        <el-form-item label="宗教信仰：" prop="religion">
           <el-select size="small" v-model="styleInfo.religion">
             <el-option v-for="item in options.religion" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="作息时间 :" prop="schedule">
+        <el-form-item label="作息时间：" prop="schedule">
           <el-select size="small" v-model="styleInfo.schedule">
             <el-option v-for="item in options.schedule" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="交际圈子 :" prop="communication">
+        <el-form-item label="交际圈子：" prop="communication">
           <el-select size="small" v-model="styleInfo.communication">
             <el-option v-for="item in options.communication" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="最大消费 :" prop="consumption">
+        <el-form-item label="最大消费：" prop="consumption">
           <el-select size="small" v-model="styleInfo.consumption">
             <el-option v-for="item in options.consumption" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <div class="style-label">家务</div>
-        <el-form-item label="家务水平等级 :" prop="level">
+        <el-form-item label="家务水平等级：" prop="level">
           <el-select size="small" v-model="styleInfo.level">
             <el-option v-for="item in options.level" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="家务分配情况 :" prop="assignment">
+        <el-form-item label="家务分配情况：" prop="assignment">
           <el-select size="small" v-model="styleInfo.assignment">
             <el-option v-for="item in options.assignment" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <div class="style-label">宠物</div>
-        <el-form-item label="宠物喜欢程度 :" prop="degree">
+        <el-form-item label="宠物喜欢程度：" prop="degree">
           <el-select size="small" v-model="styleInfo.degree">
             <el-option v-for="item in options.degree" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="关于宠物 :" prop="pet">
+        <el-form-item label="关于宠物：" prop="pet">
           <el-select size="small" v-model="styleInfo.pet">
             <el-option v-for="item in options.pet" :key="item"
               :label="item" :value="item"></el-option>

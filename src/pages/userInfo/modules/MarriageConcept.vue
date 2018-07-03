@@ -8,57 +8,57 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯&nbsp;:&nbsp;</span>
+          <span class="label">籍贯</span>：
           <span>湖北武汉</span>
         </div>
         <div class="_item-column">
-          <span>户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口&nbsp;:&nbsp;</span>
+          <span class="label">户口</span>：
           <span>湖北武汉</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍&nbsp;:&nbsp;</span>
+          <span class="label">国籍</span>：
           <span>中国大陆</span>
         </div>
         <div class="_item-column">
-          <span>个性特征&nbsp;:&nbsp;</span>
+          <span class="label">个性特征</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>幽&nbsp;&nbsp;默&nbsp;感&nbsp;:&nbsp;</span>
+          <span class="label">幽默感</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>脾&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;气&nbsp;:&nbsp;</span>
+          <span class="label">脾气</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>对待感情&nbsp;:&nbsp;</span>
+          <span class="label">对待感情</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>是否要小孩&nbsp;:&nbsp;</span>
+          <span class="label">是否要小孩</span>：
           <span>想要小孩</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>何时结婚&nbsp;:&nbsp;</span>
+          <span class="label">何时结婚</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>是否能接受异地恋&nbsp;:&nbsp;</span>
+          <span class="label" style="width: 120px">是否能接受异地恋</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>理想婚姻&nbsp;:&nbsp;</span>
+          <span class="label">理想婚姻</span>：
           <span>---</span>
         </div>
       </div>
@@ -67,37 +67,37 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>愿与对方父母同住&nbsp;:&nbsp;</span>
+          <span class="label" style="width: 120px">愿与对方父母同住</span>：
           <span>不愿意</span>
         </div>
         <div class="_item-column">
-          <span>家中排行&nbsp;:&nbsp;</span>
+          <span class="label">家中排行</span>：
           <span>老幺</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>父母情况&nbsp;:&nbsp;</span>
+          <span class="label">父母情况</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>兄弟姐妹&nbsp;:&nbsp;</span>
-          <span>---</span>
-        </div>
-      </div>
-      <div class="_content-item-row">
-        <div class="_item-column">
-          <span>父母经济情况&nbsp;:&nbsp;</span>
-          <span>---</span>
-        </div>
-        <div class="_item-column">
-          <span>父母医保情况&nbsp;:&nbsp;</span>
+          <span class="label">兄弟姐妹</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>父母的工作&nbsp;:&nbsp;</span>
+          <span class="label" style="width: 90px">父母经济情况</span>：
+          <span>---</span>
+        </div>
+        <div class="_item-column">
+          <span class="label" style="width: 90px">父母医保情况</span>：
+          <span>---</span>
+        </div>
+      </div>
+      <div class="_content-item-row">
+        <div class="_item-column">
+          <span class="label">父母的工作</span>：
           <span>---</span>
         </div>
       </div>
@@ -163,6 +163,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

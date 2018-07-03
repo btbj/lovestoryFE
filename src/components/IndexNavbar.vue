@@ -5,7 +5,7 @@
     <div :class="['nav-item', (isCurrent('news') || isCurrent('newsinfo')) ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
     <div class="nav-item">服务介绍</div>
     <div :class="['nav-item', isCurrent('lovestory') ? 'selected' : '']" @click="navTo('lovestory')">晒幸福</div>
-    <div :class="['nav-item', (isCurrent('findpartner') || isCurrent('partnerinfo')) ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
+    <div :class="['nav-item', (isCurrent('findpartner') || isCurrent('userinfo')) ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
     <div class="nav-item">我要相亲</div>
     <div class="nav-item">定制服务</div>
     <div class="nav-item">活动互动</div>

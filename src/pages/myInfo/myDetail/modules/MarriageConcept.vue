@@ -5,71 +5,71 @@
         :model="familyInfo" ref="infoForm" :rules="formRule">
         <div class="style-label">关于自己</div>
         <el-form-item prop="origin">
-          <span slot="label">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯&nbsp;:</span>
+          <span slot="label">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：</span>
           <area-picker class="area-picker" v-model="familyInfo.origin"></area-picker>
         </el-form-item>
         <el-form-item prop="nationality">
-          <span slot="label">国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍&nbsp;:</span>
+          <span slot="label">国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍：</span>
           <!-- <el-select size="small" v-model="familyInfo.nationality">
             <el-option v-for="item in options.nationality" :key="item"
               :label="item" :value="item"></el-option>
           </el-select> -->
           数据多 未写
         </el-form-item>
-        <el-form-item label="个性特征 :" prop="personality">
+        <el-form-item label="个性特征：" prop="personality">
           <el-select size="small" v-model="familyInfo.personality">
             <el-option v-for="item in options.personality" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="幽默感 :" prop="humor">
+        <el-form-item label="幽默感：" prop="humor">
           <el-select size="small" v-model="familyInfo.humor">
             <el-option v-for="item in options.humor" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="对待感情 :" prop="feeling">
+        <el-form-item label="对待感情：" prop="feeling">
           <el-select size="small" v-model="familyInfo.feeling">
             <el-option v-for="item in options.feeling" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="是否要小孩 :" prop="child">
+        <el-form-item label="是否要小孩：" prop="child">
           <el-select size="small" v-model="familyInfo.child">
             <el-option v-for="item in options.child" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="何时结婚 :" prop="marriageTime">
+        <el-form-item label="何时结婚：" prop="marriageTime">
           <el-select size="small" v-model="familyInfo.marriageTime">
             <el-option v-for="item in options.marriageTime" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="是否接受异地恋 :" prop="remoteLove">
+        <el-form-item label="是否接受异地恋：" prop="remoteLove">
           <el-select size="small" v-model="familyInfo.remoteLove">
             <el-option v-for="item in options.remoteLove" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="理想婚姻 :" prop="remoteLove">
+        <el-form-item label="理想婚姻：" prop="remoteLove">
           <el-input type="textarea" resize="none"
            :rows="5" v-model="familyInfo.idealMarriage"></el-input>
         </el-form-item>
         <div class="style-label">关于家庭</div>
-        <el-form-item label="愿与对方父母同住 :" prop="living">
+        <el-form-item label="愿与对方父母同住：" prop="living">
           <el-select size="small" v-model="familyInfo.living">
             <el-option v-for="item in options.living" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="家中排行 :" prop="ranking">
+        <el-form-item label="家中排行：" prop="ranking">
           <el-select size="small" v-model="familyInfo.ranking">
             <el-option v-for="item in options.ranking" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="兄弟姐妹 :" prop="relative">
+        <el-form-item label="兄弟姐妹：" prop="relative">
           <el-checkbox label="哥哥" v-model=familyInfo.relative.brother.checked></el-checkbox>
           <el-select v-model="familyInfo.relative.brother.num" size="mini"
             class="select-num" v-if="familyInfo.relative.brother.checked">
@@ -96,13 +96,13 @@
             :label="num" :value="num"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母情况 :" prop="parents">
+        <el-form-item label="父母情况：" prop="parents">
           <el-select size="small" v-model="familyInfo.parents">
             <el-option v-for="item in options.parents" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母工作 :" prop="parentsWork">
+        <el-form-item label="父母工作：" prop="parentsWork">
           父&nbsp;<el-select size="small" class="select-style" v-model="familyInfo.fatherWork">
             <el-option v-for="item in options.parentsWork" :key="item"
               :label="item" :value="item"></el-option>
@@ -112,13 +112,13 @@
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母经济情况 :" prop="parentsEconomic">
+        <el-form-item label="父母经济情况：" prop="parentsEconomic">
           <el-select size="small" v-model="familyInfo.parentsEconomic">
             <el-option v-for="item in options.parentsEconomic" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母医保情况 :" prop="parentsInsurance">
+        <el-form-item label="父母医保情况：" prop="parentsInsurance">
           <el-select size="small" v-model="familyInfo.parentsInsurance">
             <el-option v-for="item in options.parentsInsurance" :key="item"
               :label="item" :value="item"></el-option>

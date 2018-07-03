@@ -5,7 +5,7 @@
        <div class="info-label">联系方式</div>
        <div class="contact-info">
          <div class="contact-item" v-for="(item, index) in contactList" :key="index">
-           <div class="contact-label">{{item.label}} :</div>
+           <div class="contact-label">{{item.label}}：</div>
            <div class="contact-content">{{item.value}}</div></div>
        </div>
      </div>
@@ -120,7 +120,7 @@ export default {
           display: flex;
           .contact-label {
             margin-right: 8px;
-            width: 40px;
+            width: 45px;
             text-align: right;
           }
           .contact-content {

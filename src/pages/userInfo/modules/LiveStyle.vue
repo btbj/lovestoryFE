@@ -7,51 +7,51 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>吸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烟&nbsp;:&nbsp;</span>
+          <span class="label">吸烟</span>：
           <span>不吸，但反感</span>
         </div>
         <div class="_item-column">
-          <span>饮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;酒&nbsp;:&nbsp;</span>
+          <span class="label">饮酒</span>：
           <span>有兴致时喝</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>锻炼习惯&nbsp;:&nbsp;</span>
+          <span class="label">锻炼习惯</span>：
           <span>集中时间锻炼</span>
         </div>
         <div class="_item-column">
-          <span>饮食习惯&nbsp;:&nbsp;</span>
+          <span class="label">饮食习惯</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>逛街购物&nbsp;:&nbsp;</span>
+          <span class="label">逛街购物</span>：
           <span>---</span>
         </div>
         <div class="_item-column">
-          <span>宗教信仰&nbsp;:&nbsp;</span>
+          <span class="label">宗教信仰</span>：
           <span>无宗教信仰</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>作息时间&nbsp;:&nbsp;</span>
+          <span class="label">作息时间</span>：
           <span>偶尔懒散一下</span>
         </div>
         <div class="_item-column">
-          <span>交际圈子&nbsp;:&nbsp;</span>
+          <span class="label">交际圈子</span>：
           <span>---</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>最大消费&nbsp;:&nbsp;</span>
+          <span class="label">最大消费</span>：
           <span>购置服装</span>
         </div>
         <div class="_item-column">
-          <span>家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务&nbsp;:&nbsp;</span>
+          <span class="label">家务</span>：
           <span>会一些</span>
         </div>
       </div>
@@ -117,6 +117,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

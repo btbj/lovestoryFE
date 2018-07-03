@@ -1,72 +1,72 @@
 <template>
   <div>
     <div class="work-content">
-      <el-form class="form-sector" label-position="right" label-width="120px"
+      <el-form class="form-sector" label-position="right" label-width="125px"
         :model="workInfo" ref="infoForm" :rules="formRule">
         <div class="style-label">工作</div>
-        <el-form-item label="职业职位 :" prop="profession">
+        <el-form-item label="职业职位：" prop="profession">
           <el-select size="small" v-model="workInfo.profession">
             <el-option v-for="item in options.profession" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="公司行业 :" prop="industry">
+        <el-form-item label="公司行业：" prop="industry">
           <el-select size="small" v-model="workInfo.industry">
             <el-option v-for="item in options.industry" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="公司类型 :" prop="company">
+        <el-form-item label="公司类型：" prop="company">
           <el-select size="small" v-model="workInfo.company">
             <el-option v-for="item in options.company" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="福利待遇 :" prop="welfare">
+        <el-form-item label="福利待遇：" prop="welfare">
           <el-select size="small" v-model="workInfo.welfare">
             <el-option v-for="item in options.welfare" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="工作状态 :" prop="status">
+        <el-form-item label="工作状态：" prop="status">
           <el-select size="small" v-model="workInfo.status">
             <el-option v-for="item in options.status" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="调动工作可能性 :" prop="transfer">
+        <el-form-item label="调动工作可能性：" prop="transfer">
           <el-select size="small" v-model="workInfo.transfer">
             <el-option v-for="item in options.transfer" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="海外工作可能性 :" prop="overseas">
+        <el-form-item label="海外工作可能性：" prop="overseas">
           <el-select size="small" v-model="workInfo.overseas">
             <el-option v-for="item in options.overseas" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="事业与家庭 :" prop="business">
+        <el-form-item label="事业与家庭：" prop="business">
           <el-select size="small" v-model="workInfo.business">
             <el-option v-for="item in options.business" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <div class="style-label">学习</div>
-        <el-form-item label="毕业学校 :" prop="school">
+        <el-form-item label="毕业学校：" prop="school">
           <!-- <el-select size="small" v-model="workInfo.school">
             <el-option v-for="item in options.school" :key="item"
               :label="item" :value="item"></el-option>
           </el-select> -->
           数据多 未写
         </el-form-item>
-        <el-form-item label="专业类型 :" prop="major">
+        <el-form-item label="专业类型：" prop="major">
           <el-select size="small" v-model="workInfo.major">
             <el-option v-for="item in options.major" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="语言能力 :" prop="language">
+        <el-form-item label="语言能力：" prop="language">
           <div class="language-box">
             <el-checkbox-group v-model="workInfo.languageList">
               <div class="checkbox-column">
