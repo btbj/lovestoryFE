@@ -61,7 +61,7 @@ export default {
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
-    width: 200px;
+    height: 170px;
     .card-pic {
       margin-right: 3px;
       width: 100px;
@@ -99,7 +99,7 @@ export default {
       .info-detail-btn {
         width: 100%;
         height: 30px;
-        margin-top: 15px;
+        margin-top: 5px;
         .btn {
           background-color: #FD6F9F;
           color: white;

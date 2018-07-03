@@ -161,6 +161,7 @@ export default {
             padding: 5px;
             text-align: left;
             word-wrap: break-word;
+            word-break: break-all;
           }
           .news-more-btn {
             width: 100%;
