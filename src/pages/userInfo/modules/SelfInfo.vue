@@ -2,71 +2,70 @@
   <div class="_self-info-box">
     <div class="_self-big-pic">
       <div class="_big-pic">
-        <img src="https://dummyimage.com/188x288/333/3ff.jpg&text=pic"
-              class="img-style">
+        <img :src="info.info.head_image_url" class="img-style">
       </div>
     </div>
     <div class="_self-content-box">
       <div class="_self-name-row">
-        <div class="_self-name">老爷</div>
+        <div class="_self-name">{{info.info.nickname}}</div>
         <div class="_focus-btn-box">
           <div class="_btn">关 注</div>
         </div>
       </div>
       <div class="_self-age-row">
-        <span>31岁&nbsp;,&nbsp;</span>
-        <span>男&nbsp;,&nbsp;</span>
-        <span>宁波杭州湾</span>
+        <span>{{info.info.age}}岁，</span>
+        <span>{{info.info.sex}}，</span>
+        <span>{{info.info.province}} {{info.info.city}}</span>
       </div>
       <div class="_self-detail-info">
         <div class="_detail-item-row">
           <div class="_item-column">
-            <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;</span>
-            <span>大专</span>
+            <span class="label">学历</span>：
+            <span>{{info.info.education}}</span>
           </div>
           <div class="_item-column">
-            <span>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高&nbsp;:&nbsp;</span>
-            <span>172cm</span>
-          </div>
-        </div>
-        <div class="_detail-item-row">
-          <div class="_item-column">
-            <span>购&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车&nbsp;:&nbsp;</span>
-            <span>---</span>
-          </div>
-          <div class="_item-column">
-            <span>月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪&nbsp;:&nbsp;</span>
-            <span>5000-10000元</span>
+            <span class="label">身高</span>：
+            <span>{{info.info.height}}cm</span>
           </div>
         </div>
         <div class="_detail-item-row">
           <div class="_item-column">
-            <span>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房&nbsp;:&nbsp;</span>
-            <span>与父母同住</span>
+            <span class="label">购车</span>：
+            <span>{{info.info.car_status}}</span>
           </div>
           <div class="_item-column">
-            <span>体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重&nbsp;:&nbsp;</span>
-            <span>53公斤</span>
-          </div>
-        </div>
-        <div class="_detail-item-row">
-          <div class="_item-column">
-            <span>星&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;座&nbsp;:&nbsp;</span>
-            <span>射手座</span>
-          </div>
-          <div class="_item-column">
-            <span>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:&nbsp;</span>
-            <span>汉族</span>
+            <span class="label">月薪</span>：
+            <span>{{info.info.month_pay}}</span>
           </div>
         </div>
         <div class="_detail-item-row">
           <div class="_item-column">
-            <span>属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相&nbsp;:&nbsp;</span>
-            <span>马</span>
+            <span class="label">住房</span>：
+            <span>{{info.info.house_status}}</span>
           </div>
           <div class="_item-column">
-            <span>婚姻状况&nbsp;:&nbsp;</span>
-            <span>离异</span>
+            <span class="label">体重</span>：
+            <span>{{info.info.weight || '——'}}</span>
+          </div>
+        </div>
+        <div class="_detail-item-row">
+          <div class="_item-column">
+            <span class="label">星座</span>：
+            <span>{{info.info.sign || '——'}}</span>
+          </div>
+          <div class="_item-column">
+            <span class="label">民族</span>：
+            <span>{{info.info.nation || '——'}}</span>
+          </div>
+        </div>
+        <div class="_detail-item-row">
+          <div class="_item-column">
+            <span class="label">属相</span>：
+            <span>{{info.info.zodiac || '——'}}</span>
+          </div>
+          <div class="_item-column">
+            <span class="label">婚姻状况</span>：
+            <span>{{info.info.marital_status || '——'}}</span>
           </div>
         </div>
       </div>
@@ -89,6 +88,7 @@
 
 <script>
 export default {
+  props: ['info'],
   data () {
     return {
       selfPicList: [{
@@ -195,6 +195,10 @@ export default {
           display: flex;
           align-items: center;
           width: 50%;
+          .label{
+            width: 70px;
+            text-align-last: justify;
+          }
         }
       }
     }

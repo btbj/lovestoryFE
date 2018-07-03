@@ -22,7 +22,7 @@
           </div>
 
           <div class="info-detail-btn">
-            <div class="btn" @click="getInfo(index)">查看详情</div>
+            <div class="btn" @click="getInfo(member)">查看详情</div>
           </div>
         </div>
       </div>
@@ -40,8 +40,8 @@ export default {
     }
   },
   methods: {
-    getInfo (index) {
-      this.$router.push({name: 'partnerinfo', params: {'id': index}})
+    getInfo (member) {
+      this.$router.push({name: 'userinfo', params: {'id': member.id}})
     }
   }
 }

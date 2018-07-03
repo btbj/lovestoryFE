@@ -6,7 +6,7 @@ import PrePay from '@/pages/register/PrePay'
 import Home from '@/pages/home'
 import AboutUs from '@/pages/aboutus'
 import FindPartner from '@/pages/findpartner'
-import PartnerInfo from '@/pages/findpartner/partnerinfo'
+import UserInfo from '@/pages/userInfo'
 import LoveStory from '@/pages/lovestory'
 import News from '@/pages/news'
 import NewsInfo from '@/pages/news/newsinfo'
@@ -53,9 +53,9 @@ export default new Router({
       component: FindPartner
     },
     {
-      path: '/findpartner/partnerinfo',
-      name: 'partnerinfo',
-      component: PartnerInfo
+      path: '/user/:id',
+      name: 'userinfo',
+      component: UserInfo
     },
     {
       path: '/lovestory',

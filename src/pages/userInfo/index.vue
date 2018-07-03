@@ -21,7 +21,7 @@
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'partner')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'partner')
 const PagePic = r => require.ensure([], () => r(require('@/components/PagePic')), 'partner')
-const InfoContent = r => require.ensure([], () => r(require('./_InfoContent')), 'partner')
+const InfoContent = r => require.ensure([], () => r(require('./InfoContent')), 'partner')
 
 const IndexCompanyInfo = r => require.ensure([], () => r(require('@/components/IndexCompanyInfo')), 'partner')
 const IndexOnlineService = r => require.ensure([], () => r(require('@/components/IndexOnlineService')), 'partner')

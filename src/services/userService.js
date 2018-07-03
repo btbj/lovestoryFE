@@ -38,6 +38,9 @@ export default {
   getInfo (token) {
     return Api.post((this.serviceURL + 'get_info'), token)
   },
+  getUserInfo (id) {
+    return Api.post((this.serviceURL + 'get_user_info'), id) // 获取他人信息
+  },
   setExtraInfo (token) {
     return Api.post((this.serviceURL + 'set_extra_info'), token)
   },
