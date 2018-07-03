@@ -1,98 +1,66 @@
 <template>
-  <div class="home-member-cards">
-    <el-carousel indicator-position="outside" :autoplay="false">
-      <el-carousel-item v-for="page in 3" :key="page">
-        <div class="page-cards">
-          <div class="single-card" v-for="(member, index) in memberCardsList"
-           :key="index">
-            <div class="card-pic">
-              <img :src=member.img
-                   class="img-style">
-            </div>
-            <div class="card-info">
-              <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
-                {{member.name}}
-              </div>
-              <div class="member-info-item">年龄: {{member.age}}</div>
-              <div class="member-info-item">身高: {{member.height}}</div>
-              <div class="member-info-item">学历: {{member.education}}</div>
-              <div class="member-info-item">收入: {{member.income}}</div>
-              <div class="member-detail-btn">
-                <div class="btn">查看详情</div>
-              </div>
-            </div>
+  <div v-show="show" class="home-member-cards">
+    <div class="page-cards">
+      <div class="single-card" v-for="(member, index) in memberCardsList"
+        :key="index">
+        <div class="card-pic">
+          <img :src="member.head_image_url"
+                class="img-style">
+        </div>
+        <div class="card-info">
+          <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
+            {{member.name}}
+          </div>
+          <div class="member-info-item">年龄: {{member.age}}</div>
+          <div class="member-info-item">身高: {{member.height}}</div>
+          <div class="member-info-item">学历: {{member.education}}</div>
+          <div class="member-info-item">收入: {{member.income}}</div>
+          <div class="member-detail-btn">
+            <div class="btn">查看详情</div>
           </div>
         </div>
-      </el-carousel-item>
-    </el-carousel>
+      </div>
+    </div>
   </div>
 
 </template>
 
 <script>
+import userService from '@/services/userService'
+
 export default {
   data () {
     return {
-      memberCardsList: [{
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '高中及中专以下',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }, {
-        img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-        name: '雅萱',
-        age: '34岁',
-        height: '176',
-        education: '海龟硕士',
-        income: '150000'
-      }]
+      show: false,
+      memberCardsList: [
+        {
+          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+          name: '雅萱',
+          age: '34岁',
+          height: '176',
+          education: '海龟硕士',
+          income: '150000'
+        }
+      ]
     }
+  },
+  methods: {
+    async getList (page = 1) {
+      try {
+        let res = await userService.recommends({
+          num: 8
+        })
+        console.log('success', res)
+        this.memberCardsList = res.data.users
+        this.show = true
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getList()
   }
-
 }
 </script>
 
@@ -105,80 +73,63 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .el-carousel {
+
+  .page-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
-    .el-carousel__container {
-      height: 370px;
-      .page-cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+    .single-card {
+      flex-basis: 25%;
+      margin: 5px 0;
+      display: flex;
+      box-sizing: border-box;
+      width: 205px;
+      height: 155px;
+      .card-pic {
+        margin-right: 3px;
+        width: 100px;
+        height: 155px;
+        background: white;
         box-sizing: border-box;
-        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .img-style {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 95px;
         height: 100%;
-        .single-card {
-          margin: 5px 0;
-          display: flex;
-          box-sizing: border-box;
-          width: 205px;
-          height: 170px;
-          .card-pic {
-            margin-right: 3px;
-            width: 100px;
-            height: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            .img-style {
-              max-width: 100%;
-              max-height: 100%;
-            }
-          }
-          .card-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-around;
-            width: 95px;
-            height: 100%;
-            box-sizing: border-box;
-            .member-info-item {
-              font-size: 14px;
-              margin-bottom: 5px;
-              text-align: left;
-            }
-            .member-detail-btn {
-              width: 100%;
-              height: 30px;
-              margin-top: 15px;
-              .btn {
-                background-color: #FD6F9F;
-                color: white;
-                line-height: 30px;
-                font-size: 14px;
-                cursor: pointer;
-              }
-            }
+        box-sizing: border-box;
+        .member-info-item {
+          font-size: 14px;
+          margin-bottom: 5px;
+        }
+        .member-detail-btn {
+          width: 100%;
+          height: 30px;
+          margin-top: 15px;
+          .btn {
+            background-color: #FD6F9F;
+            color: white;
+            line-height: 30px;
+            font-size: 14px;
+            cursor: pointer;
           }
         }
       }
     }
-    .el-carousel__indicator {
-      .el-carousel__button {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: #FE6D9F;
-      }
-    }
   }
-
 }
-
 </style>

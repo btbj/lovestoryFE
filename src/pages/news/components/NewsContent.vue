@@ -28,7 +28,7 @@ export default {
 
 <style lang="less">
 .news-content-box {
-  width: 80%;
+  width: 1000px;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
