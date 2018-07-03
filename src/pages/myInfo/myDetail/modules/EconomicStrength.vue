@@ -91,7 +91,7 @@ export default {
         let {investList, debitList, economicConcept} = res.data.details
         this.investList = investList || []
         this.debitList = debitList || []
-        this.economicConcept = economicConcept || ''
+        this.economicConcept = economicConcept[0]
       } catch (error) {
         userService.handleErr(error)
       }
