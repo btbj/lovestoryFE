@@ -209,6 +209,11 @@ export default {
           message: res.message,
           type: 'success'
         })
+        this.$store.dispatch('setToken', {
+          value: res.data.token,
+          expire: res.data.timeout
+        })
+        this.$router.push({name: 'prepay'})
       } catch (error) {
         console.log(error)
         if (error.message) {

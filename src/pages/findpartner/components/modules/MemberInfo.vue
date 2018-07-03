@@ -4,18 +4,25 @@
       <div class="single-card"
         v-for="(member, index) in list" :key="index">
         <div class="card-pic">
-          <img :src=member.img class="img-style">
+          <img :src="member.head_image_url" class="img-style">
         </div>
         <div class="card-info">
-          <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
-            {{member.name}}
+          <div class="info-name" style="color: #F02D73;font-size: 16px;">
+            {{member.nickname}}
           </div>
-          <div class="member-info-item">年龄: {{member.age}}</div>
-          <div class="member-info-item">身高: {{member.height}}</div>
-          <div class="member-info-item">学历: {{member.education}}</div>
-          <div class="member-info-item">收入: {{member.income}}</div>
-          <div class="member-detail-btn">
-            <div class="btn" @click="getInfo(index)">查看详情</div>
+          <div class="info-detial">
+            <div class="detial-item">
+              <div>年龄:</div><div>{{member.age}}</div></div>
+            <div class="detial-item">
+              <div>身高:</div><div>{{member.height}}</div></div>
+            <div class="detial-item">
+              <div>学历:</div><div>{{member.education}}</div></div>
+            <!-- <div class="member-info-item">
+              <div>收入:</div><div>{{member.month_pay}}</div></div> -->
+          </div>
+
+          <div class="info-detail-btn">
+            <div class="btn" @click="getInfo(member)">查看详情</div>
           </div>
         </div>
       </div>
@@ -33,8 +40,8 @@ export default {
     }
   },
   methods: {
-    getInfo (index) {
-      this.$router.push({name: 'partnerinfo', params: {'id': index}})
+    getInfo (member) {
+      this.$router.push({name: 'userinfo', params: {'id': member.id}})
     }
   }
 }
@@ -75,16 +82,21 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: space-around;
-      width: 100px;
+      justify-content: space-between;
+      width: 95px;
       height: 100%;
       box-sizing: border-box;
-      .member-info-item {
-        font-size: 14px;
-        margin-bottom: 5px;
-        text-align: left;
+      .info-detial{
+        display: flex;
+        flex-direction: column;
+        .detial-item {
+          font-size: 12px;
+          margin-bottom: 5px;
+          display: flex;
+          flex-direction: row;
+        }
       }
-      .member-detail-btn {
+      .info-detail-btn {
         width: 100%;
         height: 30px;
         margin-top: 5px;

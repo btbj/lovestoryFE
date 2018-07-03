@@ -29,7 +29,7 @@ export default {
 
 <style lang="less">
 .about-content-box {
-  width: 80%;
+  width: 1000px;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
@@ -83,7 +83,7 @@ export default {
       }
       .inner-item-content {
         width: 100%;
-        height: 580px;
+        // height: 580px;
         box-sizing: border-box;
         padding: 40px 5px 10px 5px;
         text-align: left;

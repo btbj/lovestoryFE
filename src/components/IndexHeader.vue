@@ -1,7 +1,7 @@
 <template>
   <div class="info-box">
     <div class="logo">
-      <img src="https://dummyimage.com/200x70/333/3ff.jpg&text=logo"
+      <img :src="siteLogo"
           style="width: 100%; height: 100%">
     </div>
     <div class="info">
@@ -14,14 +14,39 @@
     </div>
     <div class="tel">
       <span class="icon-phone tel-icon"></span>
-      <span class="tel-number">400-0000-0000</span>
+      <span class="tel-number">{{hotLine}}</span>
       </div>
   </div>
 </template>
 
 <script>
-export default {
+import imageService from '@/services/imageService'
+import siteService from '@/services/siteService'
 
+export default {
+  data () {
+    return {
+      hotLine: 'hotline'
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        this.hotLine = res.data.info.value
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  computed: {
+    siteLogo () {
+      return imageService.siteLogo
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo(12)
+  }
 }
 </script>
 

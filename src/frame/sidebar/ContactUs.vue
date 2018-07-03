@@ -8,38 +8,39 @@
     <div class="item-list-box">
       <div class="contact-item" v-for="(contact, index) in contactList"
             :key="index">
-        <span class="item-label">{{contact.way}} :</span>
-        <span>&nbsp;{{contact.content}}</span>
-      </div>
-      <div class="contact-item" style="margin-left: 8px">
-        {{companyAddr.label}} : {{companyAddr.address}}
+        <span class="item-label">{{contact.label}} :</span>
+        <div class="item-info">{{contact.value}}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import siteService from '@/services/siteService'
+
 export default {
   data () {
     return {
-      contactList: [{
-        way: '电话',
-        content: '010-87771071 / 4006-010-050'
-      }, {
-        way: 'Q Q',
-        content: '1183776681'
-      }, {
-        way: '邮箱',
-        content: '2850772582@qq.com'
-      }, {
-        way: '网址',
-        content: 'www.iucupid.com'
-      }],
-      companyAddr: {
-        label: '公司地址',
-        address: '北京市朝阳区广渠路36号院首城国际B座915室 100022'
+      contactList: []
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        let array = res.data.info.map(item => {
+          let {name, value, label} = item
+          return {name, value, label}
+        })
+        // console.log(array)
+        this.contactList = array
+      } catch (error) {
+        siteService.handleErr(error)
       }
     }
+  },
+  mounted: async function () {
+    this.getSiteInfo([7, 8, 9, 10, 11])
   }
 }
 </script>
@@ -81,14 +82,18 @@ export default {
       height: 20%;
       box-sizing: border-box;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-start;
       font-size: 14px;
       text-align: left;
       .item-label {
-        width: 40px;
+        width: 50px;
         box-sizing: border-box;
         text-align: right;
+      }
+      .item-info{
+        flex: 1;
+        margin-left: 10px;
       }
     }
   }

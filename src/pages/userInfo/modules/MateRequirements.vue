@@ -7,38 +7,47 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>所在地区&nbsp;:&nbsp;</span>
-          <span>浙江宁波</span>
+          <span class="label">所在地区</span>：
+          <span v-if="info.condition.province">{{info.condition.province}} {{info.condition.city}}</span>
+          <span v-else>不限</span>
         </div>
         <div class="_item-column">
-          <span>身高范围&nbsp;:&nbsp;</span>
-          <span>158厘米~164厘米</span>
-        </div>
-      </div>
-      <div class="_content-item-row">
-        <div class="_item-column">
-          <span>婚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;史&nbsp;:&nbsp;</span>
-          <span>不限</span>
-        </div>
-        <div class="_item-column">
-          <span>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:&nbsp;</span>
-          <span>不限</span>
+          <span class="label">身高范围</span>：
+          <span v-if="info.condition.height_min && info.condition.height_max">
+            {{info.condition.height_min}}厘米~{{info.condition.height_max}}厘米
+          </span>
+          <span v-else-if="info.condition.height_min">{{info.condition.height_min}}厘米以上</span>
+          <span v-else>不限</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;</span>
-          <span>不限</span>
+          <span class="label">婚史</span>：
+          <span>{{info.condition.marital_status || '不限'}}</span>
         </div>
         <div class="_item-column">
-          <span>有无照片&nbsp;:&nbsp;</span>
-          <span>有</span>
+          <span class="label">民族</span>：
+          <span>{{info.condition.nation || '不限'}}</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>年龄范围&nbsp;:&nbsp;</span>
-          <span>26岁~32岁</span>
+          <span class="label">学历</span>：
+          <span>{{info.condition.education || '不限'}}</span>
+        </div>
+        <div class="_item-column">
+          <span class="label">有无照片</span>：
+          <span>{{info.condition.has_images ? '有照片' : '不限'}}</span>
+        </div>
+      </div>
+      <div class="_content-item-row">
+        <div class="_item-column">
+          <span class="label">年龄范围</span>：
+          <span v-if="info.condition.age_min && info.condition.age_max">
+            {{info.condition.age_min}}岁~{{info.condition.age_max}}岁
+          </span>
+          <span v-else-if="info.condition.age_min">{{info.condition.age_min}}岁以上</span>
+          <span v-else>不限</span>
         </div>
       </div>
     </div>
@@ -47,6 +56,7 @@
 
 <script>
 export default {
+  props: ['info']
 
 }
 </script>
@@ -103,6 +113,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

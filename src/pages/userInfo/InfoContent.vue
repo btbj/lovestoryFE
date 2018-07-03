@@ -11,14 +11,14 @@
           <span slot="leftFirstTitle">首页></span>
           <span slot="leftSecondTitle">寻找对象></span>
         </content-nav>
-        <div class="_inner-item-content">
-          <self-info></self-info>
-          <inner-monologue></inner-monologue>
-          <mate-requirements></mate-requirements>
-          <live-style></live-style>
-          <economic-strength></economic-strength>
-          <work-study></work-study>
-          <marriage-concept></marriage-concept>
+        <div class="_inner-item-content" v-if="userInfo">
+          <self-info :info="userInfo"></self-info>
+          <inner-monologue :info="userInfo"></inner-monologue>
+          <mate-requirements :info="userInfo"></mate-requirements>
+          <live-style :info="userInfo"></live-style>
+          <economic-strength :info="userInfo"></economic-strength>
+          <work-study :info="userInfo"></work-study>
+          <marriage-concept :info="userInfo"></marriage-concept>
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import userService from '@/services/userService'
 const NewNews = r => require.ensure([], () => r(require('@/frame/sidebar/NewNews')), 'partner')
 const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/ContactUs')), 'partner')
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'partner')
@@ -49,13 +50,35 @@ export default {
     EconomicStrength,
     WorkStudy,
     MarriageConcept
+  },
+  data () {
+    return {
+      userInfo: null
+    }
+  },
+  methods: {
+    async getUserInfo () {
+      try {
+        let res = await userService.getUserInfo({
+          token: this.$store.getters.token,
+          id: this.$route.params.id
+        })
+        this.userInfo = res.data.info
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted: async function () {
+    await this.getUserInfo()
   }
 }
 </script>
 
 <style lang="less">
 ._partner-content-box {
-  width: 80%;
+  width: 1000px;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
