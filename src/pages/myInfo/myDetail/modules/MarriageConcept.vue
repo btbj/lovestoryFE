@@ -70,7 +70,31 @@
           </el-select>
         </el-form-item>
         <el-form-item label="兄弟姐妹 :" prop="relative">
-          还没写
+          <el-checkbox label="哥哥" v-model=familyInfo.relative.brother.checked></el-checkbox>
+          <el-select v-model="familyInfo.relative.brother.num" size="mini"
+            class="select-num" v-if="familyInfo.relative.brother.checked">
+            <el-option v-for="num in getNum" :key="num"
+            :label="num" :value="num"></el-option>
+            </el-select>
+          <el-checkbox label="姐姐" v-model=familyInfo.relative.sister.checked></el-checkbox>
+          <el-select v-model="familyInfo.relative.sister.num" size="mini"
+            class="select-num" v-if="familyInfo.relative.sister.checked">
+            <el-option v-for="num in getNum" :key="num"
+            :label="num" :value="num"></el-option>
+          </el-select>
+          <br>
+          <el-checkbox label="弟弟" v-model=familyInfo.relative.youngerBro.checked></el-checkbox>
+          <el-select v-model="familyInfo.relative.youngerBro.num" size="mini"
+            class="select-num" v-if="familyInfo.relative.youngerBro.checked">
+            <el-option v-for="num in getNum" :key="num"
+            :label="num" :value="num"></el-option>
+          </el-select>
+          <el-checkbox label="妹妹" v-model=familyInfo.relative.youngerSis.checked></el-checkbox>
+          <el-select v-model="familyInfo.relative.youngerSis.num" size="mini"
+            class="select-num" v-if="familyInfo.relative.youngerSis.checked">
+            <el-option v-for="num in getNum" :key="num"
+            :label="num" :value="num"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="父母情况 :" prop="parents">
           <el-select size="small" v-model="familyInfo.parents">
@@ -82,7 +106,7 @@
           父&nbsp;<el-select size="small" class="select-style" v-model="familyInfo.fatherWork">
             <el-option v-for="item in options.parentsWork" :key="item"
               :label="item" :value="item"></el-option>
-          </el-select>
+          </el-select><br>
           母&nbsp;<el-select size="small" class="select-style" v-model="familyInfo.motherWork">
             <el-option v-for="item in options.parentsWork" :key="item"
               :label="item" :value="item"></el-option>
@@ -103,7 +127,7 @@
       </el-form>
     </div>
     <div class="option-btn">
-      <div class="btn">保存并继续</div>
+      <div class="btn" @click="aaa">保存并继续</div>
       <div class="btn">跳过此页</div>
     </div>
   </div>
@@ -128,7 +152,28 @@ export default {
         idealMarriage: '',
         living: '',
         ranking: '',
-        relative: '',
+        relative: {
+          'brother': {
+            'id': 0,
+            'num': '',
+            'checked': false
+          },
+          'youngerBro': {
+            'id': 1,
+            'num': '',
+            'checked': false
+          },
+          'sister': {
+            'id': 2,
+            'num': '',
+            'checked': false
+          },
+          'youngerSis': {
+            'id': 3,
+            'num': '',
+            'checked': false
+          }
+        },
         parents: '',
         fatherWork: '',
         motherWork: '',
@@ -172,6 +217,23 @@ export default {
         ]
       }
     }
+  },
+  methods: {
+    aaa () {
+      console.log(this.familyInfo.relative.brother)
+      console.log(this.familyInfo.relative.sister)
+      console.log(this.familyInfo.relative.youngerBro)
+      console.log(this.familyInfo.relative.youngerSis)
+    }
+  },
+  computed: {
+    getNum () {
+      let numArray = []
+      for (let i = 1; i < 11; i++) {
+        numArray.push(i)
+      }
+      return numArray
+    }
   }
 
 }
@@ -196,6 +258,9 @@ export default {
         text-align: left;
         margin-left: 10px;
       }
+      .el-checkbox {
+        margin: 0 3px;
+      }
     }
     .style-label {
       width: 100%;
@@ -208,6 +273,10 @@ export default {
     }
     .select-style {
       width: 150px;
+    }
+    .select-num {
+      width: 100px;
+      margin: 0 10px;
     }
   }
 }
