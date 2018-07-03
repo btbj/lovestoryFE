@@ -2,60 +2,62 @@
   <div class="special-planning-box">
       <div class="special-planning-content">
         <div class="special-planning-header">
-          <div class="header-item" @click="getActiveTab('first')"
-               :style="{background: activeTab === 'first' ? activeBg : '' }">
-            <div class="header-word"
-               :style="{ color: activeTab === 'first' ? activeColor : '' }">
-               {{planningList[0].title}}
+          <div :class="['header-item', isActiveTab(index) ? 'selected' : '']"
+            v-for="(item, index) in newsList" :key="index"
+            @click="activeTab = index">
+            <div class="header-word">
+               {{item.title}}
             </div>
-            <div class="header-arrow" :style="{ display: activeTab === 'first' ? arrowShow : 'none'}"></div>
-          </div>
-          <div class="header-item" @click="getActiveTab('second')"
-               :style="{background: activeTab === 'second' ? activeBg : '' }">
-            <div class="header-word"
-               :style="{ color: activeTab === 'second' ? activeColor : '' }">
-               {{planningList[1].title}}
-            </div>
-            <div class="header-arrow" :style="{ display: activeTab === 'second' ? arrowShow : 'none'}"></div>
-          </div>
-          <div class="header-item" @click="getActiveTab('third')"
-               :style="{background: activeTab === 'third' ? activeBg : '' }">
-            <div class="header-word"
-               :style="{ color: activeTab === 'third' ? activeColor : '' }">
-               {{planningList[2].title}}
-            </div>
-            <div class="header-arrow" :style="{ display: activeTab === 'third' ? arrowShow : 'none'}"></div>
+            <div class="header-arrow"></div>
           </div>
         </div>
         <div class="special-planning-body">
-          <img src="https://dummyimage.com/540x300/eee/3ff.jpg&text=logo"
-                class="img-style">
+          <img :src="selectedImg" class="img-style">
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import articleService from '@/services/articleService'
+
 export default {
   data () {
     return {
-      activeTab: 'first',
-      activeBg: '#FD6F9F',
-      activeColor: 'white',
-      arrowShow: '',
-      planningList: [{
-        title: '【4周年特别策划】单身男神女神云集 万元奖品等你来拿'
-      }, {
-        title: '【4周年特别策划】单身男神女神云集 万元奖品等你来拿'
-      }, {
-        title: '【4周年特别策划】单身男神女神云集 万元奖品等你来拿'
+      activeTab: 0,
+      newsList: [{
+        title: '暂无活动'
       }]
     }
   },
   methods: {
-    getActiveTab (tabItem) {
-      this.activeTab = tabItem
+    isActiveTab (index) {
+      return index === this.activeTab
+    },
+    getInfo (index) {
+      this.$router.push({name: 'news-detail', params: {'category': 'notification', 'id': index}})
+    },
+    async getList (page = 1) {
+      try {
+        let res = await articleService.articles({
+          category: 5,
+          page,
+          per_page: 3
+        })
+        console.log('success', res)
+        this.newsList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
     }
+  },
+  computed: {
+    selectedImg () {
+      return this.newsList[this.activeTab].image_url
+    }
+  },
+  mounted: async function () {
+    this.getList()
   }
 
 }
@@ -78,8 +80,9 @@ export default {
       height: 60px;
       box-sizing: border-box;
       display: flex;
+      flex-direction: row;
       .header-item {
-        width: 180px;
+        flex: 1;
         height: 52px;
         box-sizing: border-box;
         background-color: white;
@@ -97,7 +100,6 @@ export default {
           align-items: center;
           justify-content: center;
           font-size: 14px;
-          color: black;
           text-align: left;
           display: -webkit-box;
           -webkit-box-orient: vertical;
@@ -106,6 +108,7 @@ export default {
           text-overflow: ellipsis;
         }
         .header-arrow {
+          display: none;
           position: absolute;
           z-index: 1;
           margin: auto;
@@ -115,6 +118,13 @@ export default {
           border-left:8px solid transparent;
           border-right:8px solid transparent;
           border-top:8px solid #FD6F9F;
+        }
+        &.selected{
+          background: #FD6F9F;
+          color: white;
+          .header-arrow{
+            display: block;
+          }
         }
       }
     }
