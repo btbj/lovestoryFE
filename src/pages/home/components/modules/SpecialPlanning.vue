@@ -92,6 +92,10 @@ export default {
         align-items: center;
         cursor: pointer;
         padding: 3px;
+        border-left: 1px solid #ddd;
+        &:first-child{
+          border-left: none;
+        }
         .header-word {
           width: 174px;
           max-height: 46px;

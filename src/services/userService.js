@@ -49,39 +49,33 @@ export default {
   },
   create (credentials) {
     return Api.post((this.serviceURL + 'do_create'), credentials)
-    // return Api.create().post((this.serviceURL + 'do_create'), credentials)
   },
   login (credentials) {
     return Api.post((this.serviceURL + 'do_login'), credentials)
-    // return Api.create().post((this.serviceURL + 'do_login'), credentials)
   },
   changePwd (credentials) {
     return Api.post((this.serviceURL + 'do_change_pwd'), credentials)
-    // return Api.create().post((this.serviceURL + 'do_change_pwd'), credentials)
   },
   info (credentials) {
     return Api.post((this.serviceURL + 'get_info'), credentials)
-    // return Api.create().post((this.serviceURL + 'info'), credentials)
   },
   delete (credentials) {
     return Api.post((this.serviceURL + 'do_delete'), credentials)
-    // return Api.create().post((this.serviceURL + 'do_delete'), credentials)
   },
   update (newInfo) {
     return Api.post((this.serviceURL + 'do_update'), newInfo)
-    // return Api.create().post((this.serviceURL + 'do_update'), newInfo)
   },
   users (token) {
     return Api.post((this.serviceURL + 'users'), token)
-    // return Api.create().post((this.serviceURL + 'users'), token)
+  },
+  recommends (token) {
+    return Api.post((this.serviceURL + 'recommends'), token) // 首页token可以为空
   },
   resetPwd (token) {
     return Api.post((this.serviceURL + 'reset_pwd'), token)
-    // return Api.create().post((this.serviceURL + 'reset_pwd'), token)
   },
   getMenus (token) {
     return Api.post((this.serviceURL + 'get_menus'), token)
-    // return Api.create().post((this.serviceURL + 'get_menus'), token)
   },
 
   // 错误处理 //
