@@ -64,7 +64,7 @@ export default {
           let {name, value, label} = item
           return {name, value, label}
         })
-        console.log(array)
+        // console.log(array)
         this.contactList = array
       } catch (error) {
         siteService.handleErr(error)

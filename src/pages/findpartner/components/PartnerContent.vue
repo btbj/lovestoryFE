@@ -51,7 +51,7 @@ export default {
       searchData: {
         keyword: '',
         attrs: [{name: 'sex', value: '女', type: 1}],
-        sort: 'normal'
+        sort: ''
       },
       paginationData: {
         current: 1,
@@ -59,35 +59,14 @@ export default {
         size: 15
       },
       userList: [
-        {
-          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34岁',
-          height: '176',
-          education: '海龟硕士',
-          income: '150000'
-        }, {
-          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34岁',
-          height: '176',
-          education: '海龟硕士',
-          income: '150000'
-        }, {
-          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34岁',
-          height: '176',
-          education: '海龟硕士',
-          income: '150000'
-        }, {
-          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34岁',
-          height: '176',
-          education: '海龟硕士',
-          income: '150000'
-        }
+        // {
+        //   head_image_url: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
+        //   name: '雅萱',
+        //   age: '34岁',
+        //   height: '176',
+        //   education: '海龟硕士',
+        //   income: '150000'
+        // }
       ]
     }
   },
@@ -95,12 +74,14 @@ export default {
     async getList (page = 1) {
       try {
         let res = await userService.search({
+          token: this.$store.getters.token,
           keyword: this.searchData.keyword,
           attrs: this.searchData.attrs,
           sort: this.searchData.sort,
           page,
           per_page: this.paginationData.size
         })
+        this.userList = res.data.users
         console.log(res)
       } catch (error) {
         userService.handleErr(error)
@@ -111,6 +92,9 @@ export default {
       this.searchData.attrs = attrs
       this.getList()
     }
+  },
+  mounted: async function () {
+    await this.getList()
   }
 }
 </script>
