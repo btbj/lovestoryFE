@@ -161,8 +161,7 @@ export default {
       try {
         let res = await userService.getUserDetails({
           token: this.$store.getters.token,
-          data: ['styleSmoking', 'styleDrinking', 'styleExercise', 'styleDiet', 'styleShopping', 'styleReligion', 'styleSchedule',
-            'styleCommunication', 'styleConsumption', 'styleHomeworkLevel', 'styleHomeworkAssignment', 'stylePetLoving', 'styleAboutPet']
+          data: Object.keys(this.styleInfo)
         })
         console.log(res)
         Object.keys(res.data.details).forEach(key => {
