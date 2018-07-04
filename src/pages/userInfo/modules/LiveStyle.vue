@@ -7,52 +7,52 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>吸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烟&nbsp;:&nbsp;</span>
-          <span>不吸，但反感</span>
+          <span class="label">吸烟</span>：
+          <span>{{styleInfo.styleSmoking || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>饮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;酒&nbsp;:&nbsp;</span>
-          <span>有兴致时喝</span>
-        </div>
-      </div>
-      <div class="_content-item-row">
-        <div class="_item-column">
-          <span>锻炼习惯&nbsp;:&nbsp;</span>
-          <span>集中时间锻炼</span>
-        </div>
-        <div class="_item-column">
-          <span>饮食习惯&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label">饮酒</span>：
+          <span>{{styleInfo.styleDrinking || '——'}}</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>逛街购物&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label">锻炼习惯</span>：
+          <span>{{styleInfo.styleExercise || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>宗教信仰&nbsp;:&nbsp;</span>
-          <span>无宗教信仰</span>
-        </div>
-      </div>
-      <div class="_content-item-row">
-        <div class="_item-column">
-          <span>作息时间&nbsp;:&nbsp;</span>
-          <span>偶尔懒散一下</span>
-        </div>
-        <div class="_item-column">
-          <span>交际圈子&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label">饮食习惯</span>：
+          <span>{{styleInfo.styleDiet || '——'}}</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>最大消费&nbsp;:&nbsp;</span>
-          <span>购置服装</span>
+          <span class="label">逛街购物</span>：
+          <span>{{styleInfo.styleShopping || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务&nbsp;:&nbsp;</span>
-          <span>会一些</span>
+          <span class="label">宗教信仰</span>：
+          <span>{{styleInfo.styleReligion || '——'}}</span>
+        </div>
+      </div>
+      <div class="_content-item-row">
+        <div class="_item-column">
+          <span class="label">作息时间</span>：
+          <span>{{styleInfo.styleSchedule || '——'}}</span>
+        </div>
+        <div class="_item-column">
+          <span class="label">交际圈子</span>：
+          <span>{{styleInfo.styleCommunication || '——'}}</span>
+        </div>
+      </div>
+      <div class="_content-item-row">
+        <div class="_item-column">
+          <span class="label">最大消费</span>：
+          <span>{{styleInfo.styleConsumption || '——'}}</span>
+        </div>
+        <div class="_item-column">
+          <span class="label">家务</span>：
+          <span>{{styleInfo.styleHomeworkAssignment || '——'}}</span>
         </div>
       </div>
     </div>
@@ -60,8 +60,47 @@
 </template>
 
 <script>
-export default {
+import userService from '@/services/userService'
 
+export default {
+  data () {
+    return {
+      styleInfo: {
+        styleSmoking: '',
+        styleDrinking: '',
+        styleExercise: '',
+        styleDiet: '',
+        styleShopping: '',
+        styleReligion: '',
+        styleSchedule: '',
+        styleCommunication: '',
+        styleConsumption: '',
+        styleHomeworkLevel: '',
+        styleHomeworkAssignment: '',
+        stylePetLoving: '',
+        styleAboutPet: ''
+      }
+    }
+  },
+  methods: {
+    async getDetails () {
+      try {
+        let res = await userService.getUserDetails({
+          token: this.$store.getters.token,
+          id: this.$route.params.id,
+          data: Object.keys(this.styleInfo)
+        })
+        Object.keys(res.data.details).forEach(key => {
+          this.styleInfo[key] = res.data.details[key][0]
+        })
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    await this.getDetails()
+  }
 }
 </script>
 
@@ -117,6 +156,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

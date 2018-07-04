@@ -87,7 +87,6 @@ export default {
           token: this.$store.getters.token,
           data: ['investList', 'debitList', 'economicConcept']
         })
-        console.log(res)
         let {investList, debitList, economicConcept} = res.data.details
         this.investList = investList || []
         this.debitList = debitList || []

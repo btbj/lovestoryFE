@@ -7,42 +7,42 @@
     <div class="_box-content">
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>职业职位&nbsp;:&nbsp;</span>
-          <span>其他</span>
+          <span class="label">职业职位</span>：
+          <span>{{workInfo.workProfession || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>公司行业&nbsp;:&nbsp;</span>
-          <span>其他行业</span>
-        </div>
-      </div>
-      <div class="_content-item-row">
-        <div class="_item-column">
-          <span>公司类型&nbsp;:&nbsp;</span>
-          <span>私营企业</span>
-        </div>
-        <div class="_item-column">
-          <span>福利待遇&nbsp;:&nbsp;</span>
-          <span>事业稳定上升</span>
+          <span class="label">公司行业</span>：
+          <span>{{workInfo.workIndustry || '——'}}</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>工作状态&nbsp;:&nbsp;</span>
-          <span>轻松稳定</span>
+          <span class="label">公司类型</span>：
+          <span>{{workInfo.workCompany || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>调动工作可能性&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label">福利待遇</span>：
+          <span>{{workInfo.workWelfare || '——'}}</span>
         </div>
       </div>
       <div class="_content-item-row">
         <div class="_item-column">
-          <span>事业与家庭&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label">工作状态</span>：
+          <span>{{workInfo.workStatus || '——'}}</span>
         </div>
         <div class="_item-column">
-          <span>海外工作可能性&nbsp;:&nbsp;</span>
-          <span>---</span>
+          <span class="label" style="width: 100px;">调动工作可能性</span>：
+          <span>{{workInfo.workTransfer || '——'}}</span>
+        </div>
+      </div>
+      <div class="_content-item-row">
+        <div class="_item-column">
+          <span class="label">事业与家庭</span>：
+          <span>{{workInfo.workPriority || '——'}}</span>
+        </div>
+        <div class="_item-column">
+          <span class="label" style="width: 100px;">海外工作可能性</span>：
+          <span>{{workInfo.workOverseas || '——'}}</span>
         </div>
       </div>
     </div>
@@ -50,8 +50,42 @@
 </template>
 
 <script>
-export default {
+import userService from '@/services/userService'
 
+export default {
+  data () {
+    return {
+      workInfo: {
+        workProfession: '',
+        workIndustry: '',
+        workCompany: '',
+        workWelfare: '',
+        workStatus: '',
+        workTransfer: '',
+        workOverseas: '',
+        workPriority: ''
+      }
+    }
+  },
+  methods: {
+    async getDetails () {
+      try {
+        let res = await userService.getUserDetails({
+          token: this.$store.getters.token,
+          id: this.$route.params.id,
+          data: Object.keys(this.workInfo)
+        })
+        Object.keys(res.data.details).forEach(key => {
+          this.workInfo[key] = res.data.details[key][0]
+        })
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    await this.getDetails()
+  }
 }
 </script>
 
@@ -107,6 +141,10 @@ export default {
         display: flex;
         align-items: center;
         width: 50%;
+        .label{
+          width: 70px;
+          text-align-last: justify;
+        }
       }
     }
   }

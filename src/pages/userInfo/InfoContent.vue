@@ -15,9 +15,9 @@
           <self-info :info="userInfo"></self-info>
           <inner-monologue :info="userInfo"></inner-monologue>
           <mate-requirements :info="userInfo"></mate-requirements>
-          <live-style :info="userInfo"></live-style>
+          <live-style></live-style>
           <economic-strength :info="userInfo"></economic-strength>
-          <work-study :info="userInfo"></work-study>
+          <work-study></work-study>
           <marriage-concept :info="userInfo"></marriage-concept>
         </div>
       </div>
