@@ -12,39 +12,19 @@
           <span slot="leftSecondTitle">晒幸福></span>
         </content-nav>
         <div class="inner-item-content">
-          <div class="vertical-container">
-            <div class="long-card-box" v-for="(story, index) in storyList[0].item"
-                  :key="index">
-              <div class="card-pic">
-                <img :src=story.pic class="img-style">
-              </div>
-              <div class="card-story-title">{{story.title}}</div>
-              <div class="long-story-content">{{story.content}}</div>
+
+          <div class="card-box" v-for="(story, index) in storyList"
+                :key="index">
+            <div class="card-pic">
+              <img :src="story.image_url" class="img-style">
             </div>
+            <div class="story-title">{{story.title}}</div>
+            <div class="story-content">{{story.content}}</div>
           </div>
-          <div class="vertical-container">
-            <div class="short-card-box" v-for="(story, index) in storyList[1].item"
-                  :key="index">
-              <div class="card-pic">
-                <img :src=story.pic class="img-style">
-              </div>
-              <div class="card-story-title">{{story.title}}</div>
-              <div class="short-story-content">{{story.content}}</div>
-            </div>
-          </div>
-          <div class="vertical-container">
-            <div class="long-card-box" v-for="(story, index) in storyList[2].item"
-                  :key="index">
-              <div class="card-pic">
-                <img :src=story.pic class="img-style">
-              </div>
-              <div class="card-story-title">{{story.title}}</div>
-              <div class="long-story-content">{{story.content}}</div>
-            </div>
-          </div>
+
         </div>
         <div class="pagination-box">
-          <page-pagination></page-pagination>
+          <page-pagination :paginationData="paginationData" @change="getList"></page-pagination>
         </div>
       </div>
     </div>
@@ -52,6 +32,7 @@
 </template>
 
 <script>
+import articleService from '@/services/articleService'
 const NewNews = r => require.ensure([], () => r(require('@/frame/sidebar/NewNews')), 'story')
 const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/ContactUs')), 'story')
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'story')
@@ -66,51 +47,39 @@ export default {
   },
   data () {
     return {
-      storyList: [
-        {
-          item: [{
-            pic: 'https://dummyimage.com/180x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女在中国男人眼里，她是个剩女'
-          }, {
-            pic: 'https://dummyimage.com/180x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }]
-        }, {
-          item: [{
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }]
-        }, {
-          item: [{
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }, {
-            pic: 'https://dummyimage.com/160x140/eee/3ff.jpg&text=pic',
-            title: '长跑爱情',
-            content: '在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。在我眼里，她是个小女孩；在中国男人眼里，她是个剩女。'
-          }]
-        }]
+      paginationData: {
+        current: 1,
+        total: 1,
+        size: 9
+      },
+      storyList: [ ]
     }
+  },
+  methods: {
+    checkDetail (id) {
+      // this.$router.push({name: 'newsinfo', params: {'id': index}})
+      this.$router.push({name: 'news-detail', params: {'category': 'company', 'id': id}})
+    },
+    async getList (page = 1) {
+      try {
+        let res = await articleService.articles({
+          category: 6,
+          page,
+          per_page: this.paginationData.size
+        })
+        console.log('success', res)
+        this.storyList = res.data.articles
+        let {count: total, page: current, per_page: size} = res.data
+        this.paginationData = {
+          current, total, size
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getList()
   }
 }
 </script>
@@ -148,78 +117,19 @@ export default {
         width: 100%;
         box-sizing: border-box;
         display: flex;
-        justify-content: space-around;
-        padding: 20px 0;
-        .vertical-container {
-          width: 190px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 10px 0;
+        .card-box {
+          flex-basis: 30%;
+          border: 1px solid lightgrey;
           box-sizing: border-box;
+          margin: 0 10px 20px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-bottom: 20px;
-          .long-card-box {
-            width: 200px;
-            border: 1px solid lightgrey;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-            .long-story-content {
-              padding: 1px 0;
-              width: 100%;
-              height: 160px;
-              box-sizing: border-box;
-              text-align: left;
-              font-size: 14px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: -webkit-box;
-              -webkit-line-clamp: 10;
-              -webkit-box-orient: vertical;
-            }
-          }
-          .short-card-box {
-            width: 200px;
-            border: 1px solid lightgrey;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-            .short-story-content {
-              padding: 1px 0;
-              width: 100%;
-              height: 128px;
-              box-sizing: border-box;
-              text-align: left;
-              font-size: 14px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: -webkit-box;
-              -webkit-line-clamp: 8;
-              -webkit-box-orient: vertical;
-            }
-          }
-          .card-pic {
-            width: 180px;
-            height: 140px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            .img-style {
-              max-width: 100%;
-              max-height: 100%;
-            }
-          }
-          .card-story-title {
+          padding: 10px;
+          .story-title {
             width: 100%;
             height: 30px;
             box-sizing: border-box;
@@ -227,6 +137,38 @@ export default {
             line-height: 30px;
             text-align: left;
           }
+          .story-content {
+            padding: 1px 0;
+            width: 100%;
+            line-height: 25px;
+            height: 125px;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+          }
+        }
+
+        .card-pic {
+          width: 180px;
+          height: 140px;
+          box-sizing: border-box;
+          margin-bottom: 10px;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .img-style {
+            max-width: 100%;
+            max-height: 100%;
+          }
+
         }
       }
       .pagination-box {
