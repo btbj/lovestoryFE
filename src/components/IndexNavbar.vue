@@ -7,7 +7,7 @@
     <div :class="['nav-item', isCurrent('lovestory') ? 'selected' : '']" @click="navTo('lovestory')">晒幸福</div>
     <div :class="['nav-item', (isCurrent('findpartner') || isCurrent('partnerinfo')) ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
     <div :class="['nav-item', isCurrent('register')  ? 'selected' : '']" @click="navTo('register')">我要相亲</div>
-    <div class="nav-item">定制服务</div>
+    <div :class="['nav-item', isCurrent('plans') ? 'selected' : '']" @click="navTo('plans')">定制服务</div>
     <div class="nav-item">活动互动</div>
     <div :class="['nav-item', isCurrent('myinfo') ? 'selected' : '']" @click="navTo('myinfo')">
       <span class="icon-person person-icon"></span>
