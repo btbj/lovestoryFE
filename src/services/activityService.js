@@ -8,6 +8,9 @@ export default {
   activities (credentials) {
     return Api.post((this.serviceURL + 'activities'), credentials)
   },
+  info (credentials) {
+    return Api.post((this.serviceURL + 'info'), credentials)
+  },
 
   // 错误处理 //
   handleErr (res) {

@@ -8,6 +8,7 @@ import AboutUs from '@/pages/aboutus'
 import FindPartner from '@/pages/findpartner'
 import ServiceIntro from '@/pages/serviceIntro'
 import Plans from '@/pages/plans'
+import Activities from '@/pages/activities'
 import UserInfo from '@/pages/userInfo'
 import LoveStory from '@/pages/lovestory'
 import News from '@/pages/news'
@@ -19,6 +20,8 @@ import NewsSubRoute from './sub/news'
 import MyinfoSubRoute from './sub/myinfo'
 import PlanList from '@/pages/plans/components/PlanList'
 import PlanDetail from '@/pages/plans/components/PlanDetail'
+import ActivityList from '@/pages/activities/components/ActivityList'
+import ActivityDetail from '@/pages/activities/components/ActivityDetail'
 
 Vue.use(Router)
 
@@ -85,6 +88,23 @@ export default new Router({
           path: 'detail/:id',
           name: 'plans-detail',
           component: PlanDetail
+        }
+      ]
+    },
+    {
+      path: '/activities',
+      redirect: '/activities/list',
+      component: Activities,
+      children: [
+        {
+          path: 'list',
+          name: 'activities',
+          component: ActivityList
+        },
+        {
+          path: 'detail/:id',
+          name: 'activities-detail',
+          component: ActivityDetail
         }
       ]
     },
