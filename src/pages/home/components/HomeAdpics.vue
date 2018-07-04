@@ -5,13 +5,13 @@
         <div class="info-label">Activity</div>
         <div class="info-title">{{activityInfo.title}}</div>
         <div class="info-item">
-          <p>活动时间: {{activityInfo.time}}</p>
+          <p>活动时间：{{activityInfo.time}}</p>
         </div>
         <div class="info-item">
-          <p>活动地点: {{activityInfo.address}}</p>
+          <p>活动地点：{{activityInfo.address}}</p>
         </div>
         <div class="info-item" style="margin-bottom: 20px">
-          <p>活动介绍: {{activityInfo.introduction}}</p>
+          <p>活动介绍：{{activityInfo.introduction}}</p>
         </div>
         <div class="info-detail-btn">查看更多</div>
       </div>

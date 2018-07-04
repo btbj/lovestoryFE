@@ -119,7 +119,6 @@ export default {
           margin-bottom: 5px;
           display: flex;
           .contact-label {
-            margin-right: 8px;
             width: 45px;
             text-align: right;
           }

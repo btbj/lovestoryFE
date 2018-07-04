@@ -249,19 +249,6 @@ export default {
   margin-bottom: 40px;
   .form-sector{
     box-sizing: border-box;
-    .el-form-item{
-      margin-bottom: 10px;
-      &:last-child{
-        margin-bottom: 0;
-      }
-      .el-form-item__content{
-        text-align: left;
-        margin-left: 10px;
-      }
-      .el-checkbox {
-        margin: 0 3px;
-      }
-    }
     .style-label {
       width: 100%;
       height: 30px;
@@ -299,4 +286,17 @@ export default {
     cursor: pointer;
   }
 }
+.el-form-item{
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    .el-form-item__content{
+      text-align: left;
+      margin-left: 10px;
+    }
+    .el-checkbox {
+      margin: 0 3px;
+    }
+  }
 </style>

@@ -93,7 +93,6 @@ export default {
       }
       .item-info{
         flex: 1;
-        margin-left: 10px;
       }
     }
   }
