@@ -5,7 +5,7 @@
         版权所有© 2018&nbsp;&nbsp;&nbsp;&nbsp;相亲相爱婚介网&nbsp;&nbsp;&nbsp;&nbsp;浙ICP备180*******号
       </div>
       <div class="bottom-technical-support">
-        技术支持 : 谷多网络
+        技术支持：谷多网络
       </div>
     </div>
   </div>

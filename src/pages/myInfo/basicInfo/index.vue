@@ -9,47 +9,47 @@
       <div class="basic-info-content">
         <div class="content-item-row">
           <div class="item-column">
-            <span class="item-label">昵称</span>:
+            <span class="item-label">昵称</span>：
             <span class="item-info">{{userInfo.nickname}}</span>
           </div>
           <div class="item-column">
-            <span class="item-label">身高</span>:
+            <span class="item-label">身高</span>：
             <span class="item-info">{{userInfo.height}}cm</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span class="item-label">性别</span>:
+            <span class="item-label">性别</span>：
             <span class="item-info">{{userInfo.sex}}</span>
           </div>
           <div class="item-column">
-            <span class="item-label">年龄</span>:
+            <span class="item-label">年龄</span>：
             <span class="item-info">{{userInfo.age}}岁</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span class="item-label">出生日期</span>:
+            <span class="item-label">出生日期</span>：
             <span class="item-info">{{userInfo.birthday}}</span>
           </div>
           <div class="item-column">
-            <span class="item-label">学历</span>:
+            <span class="item-label">学历</span>：
             <span class="item-info">{{userInfo.education}}</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span class="item-label">生肖</span>:
+            <span class="item-label">生肖</span>：
             <span class="item-info">{{userInfo.zodiac}}</span>
           </div>
           <div class="item-column">
-            <span class="item-label">婚姻状况</span>:
+            <span class="item-label">婚姻状况</span>：
             <span class="item-info">{{userInfo.marrageStatus}}</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span class="item-label">星座</span>:
+            <span class="item-label">星座</span>：
             <span class="item-info">{{userInfo.sign}}</span>
           </div>
         </div>
@@ -59,49 +59,49 @@
     <div class="basic-info-form">
       <el-form class="form-sector" label-position="right" label-width="100px"
         :model="basicInfo" ref="infoForm" :rules="formRule">
-        <el-form-item label="有无子女 :" prop="children">
+        <el-form-item label="有无子女：" prop="children">
           <el-select size="small" v-model="basicInfo.children">
             <el-option v-for="item in options.children" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="所在地区 :" prop="address">
+        <el-form-item label="所在地区：" prop="address">
           <area-picker class="area-picker" v-model="basicInfo.address"></area-picker>
         </el-form-item>
         <el-form-item prop="household">
-          <span slot="label">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口&nbsp;:</span>
+          <span slot="label">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口：</span>
           <!-- <el-select size="small" v-model="basicInfo.account"></el-select> -->
           <area-picker class="area-picker" v-model="basicInfo.household"></area-picker>
         </el-form-item>
         <el-form-item prop="blood">
-          <span slot="label">血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型&nbsp;:</span>
+          <span slot="label">血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
           <el-select size="small" v-model="basicInfo.blood">
             <el-option v-for="item in options.blood" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="nation">
-          <span slot="label">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:</span>
+          <span slot="label">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族：</span>
           <el-select size="small" v-model="basicInfo.nation">
             <el-option v-for="item in options.nation" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="salary">
-          <span slot="label">月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪&nbsp;:</span>
+          <span slot="label">月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪：</span>
           <el-select size="small" v-model="basicInfo.salary">
             <el-option v-for="item in options.salary" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="house">
-          <span slot="label">住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房&nbsp;:</span>
+          <span slot="label">住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房：</span>
           <el-select size="small" v-model="basicInfo.house">
             <el-option v-for="item in options.house" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="购车情况 :" prop="car">
+        <el-form-item label="购车情况：" prop="car">
           <el-select size="small" v-model="basicInfo.car">
             <el-option v-for="item in options.car" :key="item"
               :label="item" :value="item"></el-option>
@@ -115,18 +115,18 @@
       <div class="contact-label" style="color: lightgrey">以下资料我们将为您保密，不会显示在您的个人资料页面上</div>
       <el-form class="form-sector" label-position="right" label-width="100px"
         :model="contactInfo" ref="contactForm" :rules="formRule">
-        <el-form-item label="真实姓名 :" prop="name">
+        <el-form-item label="真实姓名：" prop="name">
           <el-input class="input-item" size="small" v-model="contactInfo.name"></el-input>
         </el-form-item>
-        <el-form-item label="身份证号 :" prop="idCard">
+        <el-form-item label="身份证号：" prop="idCard">
           <el-input class="input-item" size="small" v-model="contactInfo.idCard"></el-input>
         </el-form-item>
         <el-form-item prop="email">
-          <span slot="label">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;:</span>
+          <span slot="label">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
           <el-input class="input-item" size="small" v-model="contactInfo.email"></el-input>
         </el-form-item>
         <el-form-item prop="wechat">
-          <span slot="label">微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信&nbsp;:</span>
+          <span slot="label">微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信：</span>
           <el-input class="input-item" size="small" v-model="contactInfo.wechat"></el-input>
         </el-form-item>
       </el-form>
@@ -378,11 +378,10 @@ export default {
           width: 50%;
           .item-label{
             width: 70px;
-            text-align: justify;
             text-align-last: justify;
           }
           .item-info{
-            margin-left: 15px;
+            margin-left: 0;
           }
         }
       }
@@ -434,24 +433,20 @@ export default {
     }
   }
 }
-.el-form-item{
-  // margin-bottom: 5px;
-  &:last-child{
-    margin-bottom: 0;
-  }
-  .el-form-item__content{
-    text-align: left;
-    margin-left: 10px;
-    // .el-input{
-    //   width: 250px;
-    // }
-  }
-}
 .input-item{
   width: 250px;
 }
 .area-piker{
   width: 300px;
 }
-
+.el-form-item{
+  margin-bottom: 5px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  .el-form-item__content{
+    text-align: left;
+    margin-left: 10px;
+  }
+}
 </style>

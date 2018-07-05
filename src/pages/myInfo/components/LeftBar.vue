@@ -45,7 +45,7 @@
           <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>我的相册</span>
         </div>
-        <div :class="['item', isCurrentRoute('mydetail') ? 'selected' : '']"
+        <div :class="['item', isCurrentMyDetail () ? 'selected' : '']"
           @click="toInfoRoute('mydetail')">
           <span class="item-icon icon-keyboard_arrow_right"></span>
           <span>详细资料</span>
@@ -87,6 +87,12 @@ export default {
     },
     toDatingRecords (type) {
       this.$router.push({name: 'myinfo-datingrecords-' + type})
+    },
+    isCurrentMyDetail () {
+      let rightRoute = (this.$route.name === 'myinfo-mydetail-economic' || this.$route.name === 'myinfo-mydetail-life' ||
+       this.$route.name === 'myinfo-mydetail-work' || this.$route.name === 'myinfo-mydetail-appearance' ||
+       this.$route.name === 'myinfo-mydetail-marriage' || this.$route.name === 'myinfo-mydetail-hobby')
+      return rightRoute
     },
     isCurrentRoute (name) {
       let rightRoute = this.$route.name === 'myinfo-' + name

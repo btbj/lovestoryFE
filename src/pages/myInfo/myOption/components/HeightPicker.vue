@@ -5,7 +5,7 @@
         v-for="(item, index) in minList" :key="index"
         :label="item" :value="item">
       </el-option>
-    </el-select>~&nbsp;&nbsp;&nbsp;
+    </el-select>-&nbsp;&nbsp;&nbsp;
     <el-select size="small" class="area-picker" v-model="max" placeholder="请选择">
       <el-option
         v-for="(item, index) in maxList" :key="index"

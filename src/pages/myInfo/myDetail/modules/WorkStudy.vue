@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="work-content">
-      <el-form class="form-sector" label-position="right" label-width="120px"
+      <el-form class="form-sector" label-position="right" label-width="125px"
         :model="workInfo" ref="infoForm" :rules="formRule">
         <div class="style-label">工作</div>
         <el-form-item label="职业职位 :" prop="workProfession">

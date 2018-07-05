@@ -6,6 +6,7 @@
         <span>我的择偶标准</span>
       </div>
       <div class="personal-info-content">
+<<<<<<< HEAD
         <div class="pi-content-item-row">
           <div class="pi-item-column">
             <span class="label">年龄</span>：
@@ -40,6 +41,46 @@
           <div class="pi-item-column">
             <span class="label">居住地</span>：
             <span>{{optionInfo.province ? optionInfo.province + ' ' + optionInfo.city : '不限'}}</span>
+=======
+        <div class="content-item-row">
+          <div class="item-column">
+            <span class="label">年龄</span>：
+            <span>26~32岁之间</span>
+          </div>
+          <div class="item-column">
+            <span class="label">身高</span>：
+            <span>158-164cm</span>
+          </div>
+        </div>
+        <div class="content-item-row">
+          <div class="item-column">
+            <span class="label">民族</span>：
+            <span>不限</span>
+          </div>
+          <div class="item-column">
+            <span class="label">学历</span>：
+            <span>不限</span>
+          </div>
+        </div>
+        <div class="content-item-row">
+          <div class="item-column">
+            <span class="label">相册</span>：
+            <span>有照片</span>
+          </div>
+          <div class="item-column">
+            <span class="label">婚姻状况</span>：
+            <span>不限</span>
+          </div>
+        </div>
+        <div class="content-item-row">
+          <div class="item-column">
+            <span class="label">居住地</span>：
+            <span>浙江宁波</span>
+          </div>
+          <div class="item-column">
+            <span class="label">诚信</span>：
+            <span>不限</span>
+>>>>>>> 8d960ed640e01f9a0b882d52948b05b4f3a788ac
           </div>
         </div>
       </div>
@@ -273,7 +314,11 @@ export default {
           align-items: center;
           width: 50%;
           .label{
+<<<<<<< HEAD
             width: 80px;
+=======
+            width: 70px;
+>>>>>>> 8d960ed640e01f9a0b882d52948b05b4f3a788ac
             text-align-last: justify;
           }
         }

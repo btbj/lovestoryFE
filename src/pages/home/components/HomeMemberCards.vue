@@ -10,10 +10,10 @@
           <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
             {{member.nickname}}
           </div>
-          <div class="member-info-item">年龄: {{member.age}}</div>
-          <div class="member-info-item">身高: {{member.height}}</div>
-          <div class="member-info-item">学历: {{member.education}}</div>
-          <div class="member-info-item">收入: {{member.income}}</div>
+          <div class="member-info-item">年龄：{{member.age}}</div>
+          <div class="member-info-item">身高：{{member.height}}</div>
+          <div class="member-info-item">学历：{{member.education}}</div>
+          <div class="member-info-item">收入：{{member.income}}</div>
           <div class="member-detail-btn">
             <div class="btn">查看详情</div>
           </div>

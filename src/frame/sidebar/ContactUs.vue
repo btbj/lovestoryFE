@@ -8,7 +8,7 @@
     <div class="item-list-box">
       <div class="contact-item" v-for="(contact, index) in contactList"
             :key="index">
-        <span class="item-label">{{contact.label}} :</span>
+        <span class="item-label">{{contact.label}}：</span>
         <div class="item-info">{{contact.value}}</div>
       </div>
     </div>
@@ -87,13 +87,12 @@ export default {
       font-size: 14px;
       text-align: left;
       .item-label {
-        width: 50px;
+        width: 45px;
         box-sizing: border-box;
         text-align: right;
       }
       .item-info{
         flex: 1;
-        margin-left: 10px;
       }
     }
   }
