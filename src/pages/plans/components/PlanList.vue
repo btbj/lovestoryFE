@@ -1,10 +1,9 @@
 <template>
-  <div class="news-list-root">
+  <div class="plans-list-root">
     <content-nav>
-      <span slot="rightTitle">通知公告</span>
+      <span slot="rightTitle">定制服务</span>
       <span slot="leftFirstTitle">首页></span>
-      <span slot="leftSecondTitle">新闻资讯></span>
-      <span slot="leftThirdTitle">通知公告</span>
+      <span slot="leftSecondTitle">定制服务</span>
     </content-nav>
     <div class="inner-item-content">
       <div class="news-item-box" v-for="(newsItem, index) in newsList"
@@ -18,7 +17,7 @@
             <img :src="newsItem.image_url"
                   class="img-style">
           </div>
-          <div class="news-words-box">
+          <div class="plans-words-box">
             <div class="news-words">{{newsItem.content}}</div>
             <div class="news-more-btn">
               <div class="more-btn" @click="getInfo(newsItem.id)">了解详情</div>
@@ -52,12 +51,12 @@ export default {
   },
   methods: {
     getInfo (id) {
-      this.$router.push({name: 'news-detail', params: {'category': 'notification', id}})
+      this.$router.push({name: 'plans-detail', params: {id}})
     },
     async getList (page = 1) {
       try {
         let res = await articleService.articles({
-          category: 1,
+          category: 5,
           page,
           per_page: this.paginationData.size
         })
@@ -79,7 +78,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.news-list-root {
+.plans-list-root {
   padding: 5px;
   width: 100%;
   height: 100%;
@@ -145,7 +144,7 @@ export default {
             max-height: 100%;
           }
         }
-        .news-words-box {
+        .plans-words-box {
           font-size: 14px;
           width: 400px;
           height: 160px;

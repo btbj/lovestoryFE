@@ -51,9 +51,9 @@ export default {
     }
   },
   methods: {
-    getInfo (index) {
+    getInfo (id) {
       // this.$router.push({name: 'newsinfo', params: {'id': index}})
-      this.$router.push({name: 'news-detail', params: {'category': 'industry', 'id': index}})
+      this.$router.push({name: 'news-detail', params: {'category': 'industry', id}})
     },
     async getList (page = 1) {
       try {

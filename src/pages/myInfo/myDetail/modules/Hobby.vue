@@ -3,14 +3,11 @@
   <div class="hobby-content">
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word">喜欢的体育运动</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.sportList">
+        <el-checkbox-group v-model="checkBoxList.loveSports">
           <div class="check-column-box">
             <el-checkbox v-for="sport in options.sport.sportColumn1"
                :label="sport" :key="sport" :value="sport"></el-checkbox>
@@ -32,14 +29,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #FFC663">喜欢的食物</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.foodList">
+        <el-checkbox-group v-model="checkBoxList.loveFoods">
           <div class="check-column-box">
             <el-checkbox v-for="food in options.food.foodColumn1"
                :label="food" :key="food" :value="food"></el-checkbox>
@@ -61,14 +55,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #77D8F5">喜欢的书籍</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.bookList">
+        <el-checkbox-group v-model="checkBoxList.loveBooks">
           <div class="check-column-box">
             <el-checkbox v-for="book in options.book.bookColumn1"
                :label="book" :key="book" :value="book"></el-checkbox>
@@ -90,14 +81,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #8AA0F3">喜欢的电影</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.movieList">
+        <el-checkbox-group v-model="checkBoxList.loveMovies">
           <div class="check-column-box">
             <el-checkbox v-for="movie in options.movie.movieColumn1"
                :label="movie" :key="movie" :value="movie"></el-checkbox>
@@ -119,14 +107,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #519EE6">关注的节目</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.showList">
+        <el-checkbox-group v-model="checkBoxList.loveTVs">
           <div class="check-column-box">
             <el-checkbox v-for="show in options.show.showColumn1"
                :label="show" :key="show" :value="show"></el-checkbox>
@@ -148,14 +133,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #ED877B">娱乐休闲</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.entertainmentList">
+        <el-checkbox-group v-model="checkBoxList.loveEntertainments">
           <div class="check-column-box">
             <el-checkbox v-for="entertainment in options.entertainment.entertainmentColumn1"
                :label="entertainment" :key="entertainment" :value="entertainment"></el-checkbox>
@@ -177,14 +159,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #FEB5BC">业余爱好</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.hobbyList">
+        <el-checkbox-group v-model="checkBoxList.loveHobbies">
           <div class="check-column-box">
             <el-checkbox v-for="hobby in options.hobby.hobbyColumn1"
                :label="hobby" :key="hobby" :value="hobby"></el-checkbox>
@@ -206,14 +185,11 @@
     </div>
     <div class="item-content-box">
       <div class="item-label-box">
-        <div class="label-pic">
-          <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic"
-               class="img-style">
-        </div>
+        <!-- <div class="label-pic"> <img src="https://dummyimage.com/40x40/333/3ff.jpg&text=pic" class="img-style"> </div> -->
         <div class="label-word" style="color: #40D1CC">喜欢的旅游去处</div>
       </div>
       <div class="item-check-box">
-        <el-checkbox-group v-model="checkBoxList.travelList">
+        <el-checkbox-group v-model="checkBoxList.loveDestinations">
           <div class="check-column-box">
             <el-checkbox v-for="travel in options.travel.travelColumn1"
                :label="travel" :key="travel" :value="travel"></el-checkbox>
@@ -235,25 +211,27 @@
     </div>
   </div>
   <div class="option-btn">
-    <div class="btn">保存并继续</div>
-    <div class="btn">跳过此页</div>
+    <div class="btn" @click="saveDetails">保存</div>
+      <!-- <div class="btn">跳过此页</div> -->
   </div>
   </div>
 </template>
 
 <script>
+import userService from '@/services/userService'
+
 export default {
   data () {
     return {
       checkBoxList: {
-        sportList: [],
-        foodList: [],
-        bookList: [],
-        movieList: [],
-        showList: [],
-        entertainmentList: [],
-        hobbyList: [],
-        travelList: []
+        loveSports: [],
+        loveFoods: [],
+        loveBooks: [],
+        loveMovies: [],
+        loveTVs: [],
+        loveEntertainments: [],
+        loveHobbies: [],
+        loveDestinations: []
       },
       options: {
         sport: {
@@ -306,6 +284,40 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    async getDetails () {
+      try {
+        let res = await userService.getUserDetails({
+          token: this.$store.getters.token,
+          data: Object.keys(this.checkBoxList)
+        })
+        console.log(res)
+        Object.keys(res.data.details).forEach(key => {
+          this.checkBoxList[key] = res.data.details[key]
+        })
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    },
+    async saveDetails () {
+      try {
+        let res = await userService.setUserDetails({
+          token: this.$store.getters.token,
+          data: this.checkBoxList
+        })
+        this.$message({
+          message: res.message,
+          type: 'success'
+        })
+        console.log(res)
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getDetails()
   }
 }
 </script>

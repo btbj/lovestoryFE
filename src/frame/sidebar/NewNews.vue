@@ -27,6 +27,7 @@ export default {
     async getNews () {
       try {
         let res = await articleService.articles({
+          category: [1, 2, 3],
           page: 1,
           per_page: 5
         })

@@ -1,27 +1,29 @@
 <template>
-  <div class="news-list-root">
+  <div class="activities-list-root">
     <content-nav>
-      <span slot="rightTitle">通知公告</span>
+      <span slot="rightTitle">互动活动</span>
       <span slot="leftFirstTitle">首页></span>
-      <span slot="leftSecondTitle">新闻资讯></span>
-      <span slot="leftThirdTitle">通知公告</span>
+      <span slot="leftSecondTitle">互动活动</span>
     </content-nav>
     <div class="inner-item-content">
-      <div class="news-item-box" v-for="(newsItem, index) in newsList"
+      <div class="news-item-box" v-for="(activity, index) in newsList"
           :key="index">
         <div class="item-title-box">
-          <div class="title-words">{{newsItem.title}}</div>
-          <div class="title-date">{{newsItem.created_date}}</div>
+          <div class="title-words">{{activity.title}}</div>
+          <div class="title-date">{{activity.created_date}}</div>
         </div>
         <div class="item-content-box">
           <div class="news-pic">
-            <img :src="newsItem.image_url"
-                  class="img-style">
+            <img :src="activity.image_url" class="img-style">
           </div>
-          <div class="news-words-box">
-            <div class="news-words">{{newsItem.content}}</div>
+          <div class="activities-words-box">
+            <div class="activity-info-box">
+              <div class="activity-time">活动时间：{{activity.time}}</div>
+              <div class="activity-address">活动地点：{{activity.address}}</div>
+              <div class="activity-intro">活动介绍：{{activity.introduction}}</div>
+            </div>
             <div class="news-more-btn">
-              <div class="more-btn" @click="getInfo(newsItem.id)">了解详情</div>
+              <div class="more-btn" @click="getInfo(activity.id)">了解详情</div>
             </div>
           </div>
         </div>
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-import articleService from '@/services/articleService'
+import activityService from '@/services/activityService'
 const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'news')
 const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'news')
 
@@ -52,17 +54,16 @@ export default {
   },
   methods: {
     getInfo (id) {
-      this.$router.push({name: 'news-detail', params: {'category': 'notification', id}})
+      this.$router.push({name: 'activities-detail', params: {id}})
     },
     async getList (page = 1) {
       try {
-        let res = await articleService.articles({
-          category: 1,
+        let res = await activityService.activities({
           page,
           per_page: this.paginationData.size
         })
         console.log('success', res)
-        this.newsList = res.data.articles
+        this.newsList = res.data.activities
         let {count: total, page: current, per_page: size} = res.data
         this.paginationData = {
           current, total, size
@@ -79,7 +80,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.news-list-root {
+.activities-list-root {
   padding: 5px;
   width: 100%;
   height: 100%;
@@ -96,11 +97,11 @@ export default {
     flex-direction: column;
     .news-item-box {
       width: 100%;
-      height: 220px;
+      // height: 220px;
       border: 1px solid grey;
       box-sizing: border-box;
       margin-bottom: 20px;
-      padding: 5px 20px;
+      padding: 5px 20px 20px;
       display: flex;
       flex-direction: column;
       .item-title-box {
@@ -145,22 +146,37 @@ export default {
             max-height: 100%;
           }
         }
-        .news-words-box {
+        .activities-words-box {
           font-size: 14px;
           width: 400px;
-          height: 160px;
+          height: 200px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
-          .news-words {
+          .activity-info-box {
+            flex: 1;
             width: 100%;
-            height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             box-sizing: border-box;
             font-size: 14px;
             padding: 5px;
-            text-align: left;
-            word-wrap: break-word;
-            word-break: break-all;
+            .activity-time, .activity-address{
+              margin-bottom: 20px;
+            }
+            .activity-intro{
+              line-height: 20px;
+              height: 60px;
+              width: 380px;
+              word-wrap: break-word;
+              word-break: break-all;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
           }
           .news-more-btn {
             width: 100%;

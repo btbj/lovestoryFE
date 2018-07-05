@@ -11,7 +11,7 @@
           <p>活动地点：{{activityInfo.address}}</p>
         </div>
         <div class="info-item" style="margin-bottom: 20px">
-          <p>活动介绍：{{activityInfo.introduction}}</p>
+          <div class="activity-intro">活动介绍: {{activityInfo.introduction}}</div>
         </div>
         <div class="info-detail-btn">查看更多</div>
       </div>
@@ -120,7 +120,19 @@ export default {
         p {
           margin: 10px 0;
         }
+        .activity-intro{
+          width: 320px;
+          height: 100px;
+          line-height: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          word-break: break-all;
+        }
       }
+
       .info-detail-btn {
         width: 110px;
         height: 30px;

@@ -18,6 +18,20 @@ export default {
     IndexHeader,
     RegisterBody,
     IndexBottom
+  },
+  computed: {
+    currentToken () {
+      return this.$store.getters.token
+    }
+  },
+  mounted: async function () {
+    if (this.currentToken) {
+      this.$message({
+        message: '您已注册',
+        type: 'success'
+      })
+      this.$router.replace({name: 'myinfo'})
+    }
   }
 }
 </script>
