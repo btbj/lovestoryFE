@@ -1,40 +1,34 @@
 <template>
   <div class="home-love-pics">
-    <div class="first-row">
-      <div class="first-row-pic"
-           style="background-image: url('https://dummyimage.com/408x200/333/3ff.jpg&text=pic')">
+    <div class="first-row" v-if="storyList.length >= 2">
+      <div class="first-row-pic" :style="`background-image: url('${storyList[0].image_url}')`">
         <div class="first-pic-logo">
           <div class="first-logo-words">晒幸福</div>
         </div>
       </div>
-      <div class="first-row-pic"
-           style="background-image: url('https://dummyimage.com/408x200/333/3ff.jpg&text=pic')">
+      <div class="first-row-pic" :style="`background-image: url('${storyList[1].image_url}')`">
         <div class="first-pic-logo">
           <div class="first-logo-words">晒幸福</div>
         </div>
       </div>
     </div>
-    <div class="second-row">
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
+    <div class="second-row" v-if="storyList.length >= 6">
+      <div class="second-row-pic" :style="`background-image: url('${storyList[2].image_url}')`">
         <div class="second-pic-logo">
           <div class="second-logo-words">晒幸福</div>
         </div>
       </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
+      <div class="second-row-pic" :style="`background-image: url('${storyList[3].image_url}')`">
         <div class="second-pic-logo">
           <div class="second-logo-words">晒幸福</div>
         </div>
       </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
+      <div class="second-row-pic" :style="`background-image: url('${storyList[4].image_url}')`">
         <div class="second-pic-logo">
           <div class="second-logo-words">晒幸福</div>
         </div>
       </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
+      <div class="second-row-pic" :style="`background-image: url('${storyList[5].image_url}')`">
         <div class="second-pic-logo">
           <div class="second-logo-words">晒幸福</div>
         </div>
@@ -44,8 +38,35 @@
 </template>
 
 <script>
+import articleService from '@/services/articleService'
 export default {
-
+  data () {
+    return {
+      storyList: [ ]
+    }
+  },
+  methods: {
+    checkDetail (id) {
+      // this.$router.push({name: 'newsinfo', params: {'id': index}})
+      // this.$router.push({name: 'news-detail', params: {'category': 'company', 'id': id}})
+    },
+    async getList (page = 1) {
+      try {
+        let res = await articleService.articles({
+          category: 6,
+          page,
+          per_page: 6
+        })
+        console.log('success', res)
+        this.storyList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getList()
+  }
 }
 </script>
 
@@ -77,11 +98,12 @@ export default {
         border-bottom: 30px solid #FD6F9F;
         border-left: 30px solid transparent;
         width: 120px;
-        cursor: pointer;
         .first-logo-words {
           position: relative;
           top: 25px;
           color: white;
+          user-select: none;
+          -webkit-user-select: none;
         }
       }
     }
@@ -106,11 +128,12 @@ export default {
         border-bottom: 25px solid #FD6F9F;
         border-left: 25px solid transparent;
         width: 90px;
-        cursor: pointer;
         .second-logo-words {
           position: relative;
           top: 22px;
           color: white;
+          user-select: none;
+          -webkit-user-select: none;
         }
       }
     }
