@@ -80,6 +80,27 @@ export default {
   recommends (token) {
     return Api.post((this.serviceURL + 'recommends'), token) // 首页token可以为空
   },
+  seenMeUsers (token) {
+    return Api.post((this.serviceURL + 'seen_me_users'), token)
+  },
+  seensUsers (token) {
+    return Api.post((this.serviceURL + 'seens'), token)
+  },
+  attentionMeUsers (token) {
+    return Api.post((this.serviceURL + 'attention_me_users'), token)
+  },
+  attentionStatus (token) {
+    return Api.post((this.serviceURL + 'attention_status'), token)
+  },
+  doAttention (token) {
+    return Api.post((this.serviceURL + 'do_attention'), token)
+  },
+  cancelAttention (token) {
+    return Api.post((this.serviceURL + 'cancel_attention'), token)
+  },
+  attentions (token) {
+    return Api.post((this.serviceURL + 'attentions'), token)
+  },
   resetPwd (token) {
     return Api.post((this.serviceURL + 'reset_pwd'), token)
   },

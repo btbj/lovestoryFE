@@ -1,15 +1,15 @@
 <template>
   <div class="_self-info-box">
     <div class="_self-big-pic">
-      <div class="_big-pic">
-        <img :src="info.info.head_image_url" class="img-style">
+      <div class="self-info-big-pic">
+        <img :src="info.info.head_image_url" class="self-info-img-style">
       </div>
     </div>
     <div class="_self-content-box">
       <div class="_self-name-row">
         <div class="_self-name">{{info.info.nickname}}</div>
         <div class="_focus-btn-box">
-          <div class="_btn">关 注</div>
+          <follow-btn></follow-btn>
         </div>
       </div>
       <div class="_self-age-row">
@@ -87,7 +87,10 @@
 </template>
 
 <script>
+import FollowBtn from '../components/FollowBtn'
+
 export default {
+  components: { FollowBtn },
   props: ['info'],
   data () {
     return {
@@ -121,7 +124,7 @@ export default {
     margin-right: 10px;
     margin-bottom: 5px;
     padding: 15px;
-    ._big-pic {
+    .self-info-big-pic {
       width: 100%;
       height: 100%;
       box-sizing: border-box;
@@ -131,7 +134,7 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .img-style {
+      .self-info-img-style {
         max-width: 100%;
         max-height: 100%;
       }
@@ -151,25 +154,15 @@ export default {
       align-items: center;
       margin-bottom: 5px;
       ._self-name {
+        flex: 1;
         width: 90px;
         font-weight: bold;
         text-align: left;
       }
       ._focus-btn-box {
-        flex: 1;
         box-sizing: border-box;
         display: flex;
         justify-content: flex-end;
-        ._btn {
-          width: 80px;
-          height: 30px;
-          background-color: #F1356F;
-          box-sizing: border-box;
-          border-radius: 3px;
-          color: white;
-          line-height: 30px;
-          cursor: pointer;
-        }
       }
     }
     ._self-age-row {

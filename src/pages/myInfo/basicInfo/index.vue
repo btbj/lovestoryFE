@@ -146,7 +146,6 @@ export default {
   components: { AreaPicker },
   data () {
     return {
-      netInfo: null,
       userInfo: {
         nickname: 'asdf',
         sex: '男',
@@ -223,7 +222,6 @@ export default {
           token: this.$store.getters.token
         })
         // this.userInfo = res.data.info
-        this.netInfo = res.data
         let {nickname, sex, year, month, day, zodiac, sign, height, age, education, marital_status: marrageStatus} = res.data.info.info
         this.userInfo = {
           nickname,
