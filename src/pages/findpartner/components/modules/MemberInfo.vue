@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="sorting-pic-box">
-      <div class="single-card"
+      <div class="fp-single-card"
         v-for="(member, index) in list" :key="index">
-        <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
+        <div class="fp-card-pic" :style="`background-image: url(${member.head_image_url})`">
           <!-- <img :src="member.head_image_url" class="img-style"> -->
         </div>
-        <div class="card-info">
+        <div class="fp-card-info">
           <div class="info-name" style="color: #F02D73;font-size: 16px;">
             {{member.nickname}}
           </div>
@@ -56,13 +56,13 @@ export default {
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 30px;
-  .single-card {
+  .fp-single-card {
     flex-basis: 33%;
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
     height: 170px;
-    .card-pic {
+    .fp-card-pic {
       margin-right: 3px;
       width: 100px;
       height: 100%;
@@ -80,7 +80,7 @@ export default {
         max-height: 100%;
       }
     }
-    .card-info {
+    .fp-card-info {
       display: flex;
       flex-direction: column;
       align-items: flex-start;

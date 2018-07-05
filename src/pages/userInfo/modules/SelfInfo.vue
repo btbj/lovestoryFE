@@ -69,42 +69,20 @@
           </div>
         </div>
       </div>
-      <div class="_self-slide-pic">
-        <div class="page-btn">
-          <span class="icon-keyboard_arrow_left icon"></span>
-        </div>
-        <div class="pic-box" v-for="(pic, index) in  selfPicList"
-              :key="index">
-          <img :src=pic.img
-                class="img-style">
-        </div>
-        <div class="page-btn">
-          <span class="icon-keyboard_arrow_right icon"></span>
-        </div>
-      </div>
+
+      <album-list></album-list>
+
     </div>
   </div>
 </template>
 
 <script>
 import FollowBtn from '../components/FollowBtn'
+import AlbumList from '../components/AlbumList'
 
 export default {
-  components: { FollowBtn },
-  props: ['info'],
-  data () {
-    return {
-      selfPicList: [{
-        img: 'https://dummyimage.com/76x110/333/3ff.jpg&text=pic'
-      }, {
-        img: 'https://dummyimage.com/76x110/333/3ff.jpg&text=pic'
-      }, {
-        img: 'https://dummyimage.com/76x110/333/3ff.jpg&text=pic'
-      }, {
-        img: 'https://dummyimage.com/76x110/333/3ff.jpg&text=pic'
-      }]
-    }
-  }
+  components: { FollowBtn, AlbumList },
+  props: ['info']
 }
 </script>
 
@@ -192,42 +170,6 @@ export default {
             width: 70px;
             text-align-last: justify;
           }
-        }
-      }
-    }
-    ._self-slide-pic {
-      width: 100%;
-      height: 120px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-around;
-      .page-btn {
-        width: 20px;
-        height: 100%;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        .icon {
-          font-size: 30px;
-          color: grey;
-        }
-      }
-      .pic-box {
-        width: 86px;
-        height: 100%;
-        border: 1px solid lightgrey;
-        box-sizing: border-box;
-        padding: 5px;overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        .img-style {
-          max-width: 100%;
-          max-height: 100%;
         }
       }
     }
