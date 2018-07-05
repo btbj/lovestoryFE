@@ -3,8 +3,8 @@
     <div class="sorting-pic-box">
       <div class="single-card"
         v-for="(member, index) in list" :key="index">
-        <div class="card-pic">
-          <img :src="member.head_image_url" class="img-style">
+        <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
+          <!-- <img :src="member.head_image_url" class="img-style"> -->
         </div>
         <div class="card-info">
           <div class="info-name" style="color: #F02D73;font-size: 16px;">
@@ -73,6 +73,8 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      background-size: cover;
+      background-position: center;
       .img-style {
         max-width: 100%;
         max-height: 100%;

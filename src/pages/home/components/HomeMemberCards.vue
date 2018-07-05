@@ -3,13 +3,12 @@
     <div class="page-cards">
       <div class="single-card" v-for="(member, index) in memberCardsList"
         :key="index">
-        <div class="card-pic">
-          <img :src="member.head_image_url"
-                class="img-style">
+        <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
+          <!-- <img :src="member.head_image_url" class="img-style"> -->
         </div>
         <div class="card-info">
           <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
-            {{member.name}}
+            {{member.nickname}}
           </div>
           <div class="member-info-item">年龄: {{member.age}}</div>
           <div class="member-info-item">身高: {{member.height}}</div>
@@ -100,6 +99,8 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-size: cover;
+        background-position: center;
         .img-style {
           max-width: 100%;
           max-height: 100%;
@@ -110,7 +111,7 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         width: 95px;
-        height: 100%;
+        height: 155px;
         box-sizing: border-box;
         .member-info-item {
           font-size: 14px;
