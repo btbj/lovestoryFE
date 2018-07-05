@@ -16,41 +16,38 @@
 </template>
 
 <script>
+import userService from '@/services/userService'
+
 export default {
   data () {
     return {
-      newMemberList: [{
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }, {
-        date: '2018-05-22',
-        content: '恭喜135****5478某某某先生成为了我们尊贵的会员!'
-      }]
+      newMemberList: [
+        {
+          date: '2018-05-22',
+          content: '恭喜135****5478某某某某某先生成为了我们尊贵的会员!'
+        }
+      ]
     }
+  },
+  methods: {
+    async getList () {
+      try {
+        let res = await userService.newMembers({
+          num: 10
+        })
+        this.newMemberList = res.data.users.map(item => {
+          let date = item.created_date.split(' ')[0]
+          let title = item.sex === '男' ? '先生' : '女士'
+          let content = `恭喜${item.nickname}${title} ${item.phone}成为了我们尊贵的会员!`
+          return { date, content }
+        })
+      } catch (error) {
+        userService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getList()
   }
 
 }

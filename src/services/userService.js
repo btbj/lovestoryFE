@@ -107,6 +107,9 @@ export default {
   getMenus (token) {
     return Api.post((this.serviceURL + 'get_menus'), token)
   },
+  newMembers (token) {
+    return Api.post((this.serviceURL + 'new_members'), token)
+  },
 
   // 错误处理 //
   handleErr (res) {
