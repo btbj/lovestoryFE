@@ -15,7 +15,7 @@
           <div class="member-info-item">学历：{{member.education}}</div>
           <div class="member-info-item">收入：{{member.income}}</div>
           <div class="member-detail-btn">
-            <div class="btn">查看详情</div>
+            <div class="btn" @click="checkUserDetail(member)">查看详情</div>
           </div>
         </div>
       </div>
@@ -44,6 +44,9 @@ export default {
     }
   },
   methods: {
+    checkUserDetail (user) {
+      this.$router.push({name: 'userinfo', params: {'id': user.id}})
+    },
     async getList (page = 1) {
       try {
         let res = await userService.recommends({

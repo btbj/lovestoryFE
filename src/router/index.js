@@ -22,6 +22,8 @@ import PlanList from '@/pages/plans/components/PlanList'
 import PlanDetail from '@/pages/plans/components/PlanDetail'
 import ActivityList from '@/pages/activities/components/ActivityList'
 import ActivityDetail from '@/pages/activities/components/ActivityDetail'
+import StoryList from '@/pages/lovestory/components/StoryList'
+import StoryDetail from '@/pages/lovestory/components/StoryDetail'
 
 Vue.use(Router)
 
@@ -66,8 +68,20 @@ export default new Router({
     },
     {
       path: '/lovestory',
-      name: 'lovestory',
-      component: LoveStory
+      redirect: 'lovestory',
+      component: LoveStory,
+      children: [
+        {
+          path: 'list',
+          name: 'lovestory',
+          component: StoryList
+        },
+        {
+          path: 'detail/:id',
+          name: 'lovestory-detail',
+          component: StoryDetail
+        }
+      ]
     },
     {
       path: '/serviceintro',

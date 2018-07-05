@@ -1,36 +1,18 @@
 <template>
   <div class="home-love-pics">
     <div class="first-row" v-if="storyList.length >= 2">
-      <div class="first-row-pic" :style="`background-image: url('${storyList[0].image_url}')`">
+      <div class="first-row-pic" v-for="(item, index) in firstRow" :key="index"
+        :style="`background-image: url('${item.image_url}')`" @click="checkDetail(item)">
         <div class="first-pic-logo">
-          <div class="first-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="first-row-pic" :style="`background-image: url('${storyList[1].image_url}')`">
-        <div class="first-pic-logo">
-          <div class="first-logo-words">晒幸福</div>
+          <div class="first-logo-words index-story-title">{{item.title}}</div>
         </div>
       </div>
     </div>
     <div class="second-row" v-if="storyList.length >= 6">
-      <div class="second-row-pic" :style="`background-image: url('${storyList[2].image_url}')`">
+      <div class="second-row-pic" v-for="(item, index) in secondRow" :key="index"
+        :style="`background-image: url('${item.image_url}')`" @click="checkDetail(item)">
         <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic" :style="`background-image: url('${storyList[3].image_url}')`">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic" :style="`background-image: url('${storyList[4].image_url}')`">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic" :style="`background-image: url('${storyList[5].image_url}')`">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
+          <div class="second-logo-words index-story-title">{{item.title}}</div>
         </div>
       </div>
     </div>
@@ -46,9 +28,9 @@ export default {
     }
   },
   methods: {
-    checkDetail (id) {
+    checkDetail (story) {
       // this.$router.push({name: 'newsinfo', params: {'id': index}})
-      // this.$router.push({name: 'news-detail', params: {'category': 'company', 'id': id}})
+      this.$router.push({name: 'lovestory-detail', params: {'id': story.id}})
     },
     async getList (page = 1) {
       try {
@@ -62,6 +44,22 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    }
+  },
+  computed: {
+    firstRow () {
+      let array = []
+      if (this.storyList.length >= 2) {
+        array = [this.storyList[0], this.storyList[1]]
+      }
+      return array
+    },
+    secondRow () {
+      let array = []
+      if (this.storyList.length >= 6) {
+        array = this.storyList.filter((item, index) => { return index >= 2 })
+      }
+      return array
     }
   },
   mounted: async function () {
@@ -105,6 +103,9 @@ export default {
           user-select: none;
           -webkit-user-select: none;
         }
+        .index-story-title{
+          width: 120px;
+        }
       }
     }
   }
@@ -114,6 +115,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
+
     .second-row-pic {
       width: 200px;
       height: 100%;
@@ -128,6 +130,7 @@ export default {
         border-bottom: 25px solid #FD6F9F;
         border-left: 25px solid transparent;
         width: 90px;
+        display: flex;
         .second-logo-words {
           position: relative;
           top: 22px;
@@ -135,8 +138,17 @@ export default {
           user-select: none;
           -webkit-user-select: none;
         }
+        .index-story-title{
+          width: 80px;
+        }
       }
     }
+  }
+  .index-story-title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-self: flex-end;
   }
 }
 

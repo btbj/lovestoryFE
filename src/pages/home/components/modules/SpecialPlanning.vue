@@ -11,8 +11,9 @@
             <div class="header-arrow"></div>
           </div>
         </div>
-        <div class="special-planning-body">
-          <img :src="selectedImg" class="img-style">
+        <div class="special-planning-body" :style="`background-image: url('${selectedImg}')`"
+          @click="checkDetail">
+          <!-- <img :src="selectedImg" class="img-style"> -->
         </div>
       </div>
     </div>
@@ -49,6 +50,9 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    checkDetail () {
+      this.$router.push({name: 'plans-detail', params: {id: this.newsList[this.activeTab].id}})
     }
   },
   computed: {
@@ -143,10 +147,14 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .img-style {
-        min-width: 100%;
-        min-height: 100%;
-      }
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      // .img-style {
+      //   min-width: 100%;
+      //   min-height: 100%;
+      // }
     }
   }
 }
