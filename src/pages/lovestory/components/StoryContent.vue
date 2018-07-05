@@ -12,11 +12,10 @@
           <span slot="leftSecondTitle">晒幸福></span>
         </content-nav>
         <div class="inner-item-content">
-
           <div class="card-box" v-for="(story, index) in storyList"
                 :key="index">
-            <div class="card-pic">
-              <img :src="story.image_url" class="img-style">
+          <div class="card-pic" :style="`background-image: url('${story.image_url}');`">
+              <!-- <img :src="story.image_url" class="img-style"> -->
             </div>
             <div class="story-title">{{story.title}}</div>
             <div class="story-content">{{story.content}}</div>
@@ -152,7 +151,6 @@ export default {
             -webkit-box-orient: vertical;
           }
         }
-
         .card-pic {
           width: 180px;
           height: 140px;
@@ -164,6 +162,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          background-size: cover;
+          background-position: center;
           .img-style {
             max-width: 100%;
             max-height: 100%;

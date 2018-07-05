@@ -1,11 +1,11 @@
 <template>
-  <section class="register-container">
+  <div class="register-container">
     <div class="register-header-nav">
       <index-header></index-header>
     </div>
     <register-body></register-body>
     <index-bottom></index-bottom>
-  </section>
+  </div>
 </template>
 
 <script>

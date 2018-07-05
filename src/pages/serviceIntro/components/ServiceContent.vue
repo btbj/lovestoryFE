@@ -1,12 +1,12 @@
 <template>
-  <div class="about-content-box">
+  <div class="service-content-box">
     <div class="content-link-box">
       <!-- <about-us></about-us> -->
       <new-news></new-news>
       <contact-us></contact-us>
     </div>
     <div class="content-info-box">
-      <div class="about-service-intro-root">
+      <div class="service-intro-root">
         <div class="inner-item-box">
           <content-nav>
             <span slot="rightTitle">服务介绍</span>
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="less">
-.about-content-box {
+.service-content-box {
   width: 1000px;
   height: 100%;
   box-sizing: border-box;

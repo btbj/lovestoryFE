@@ -13,8 +13,8 @@
           <div class="title-date">{{activity.created_date}}</div>
         </div>
         <div class="item-content-box">
-          <div class="news-pic">
-            <img :src="activity.image_url" class="img-style">
+          <div class="news-pic" :style="`background-image: url('${activity.image_url}');`">
+            <!-- <img :src="activity.image_url" class="img-style"> -->
           </div>
           <div class="activities-words-box">
             <div class="activity-info-box">
@@ -90,14 +90,13 @@ export default {
   .inner-item-content {
     width: 100%;
     box-sizing: border-box;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: left;
     font-size: 14px;
     display: flex;
     flex-direction: column;
     .news-item-box {
       width: 100%;
-      // height: 220px;
       border: 1px solid grey;
       box-sizing: border-box;
       margin-bottom: 20px;
@@ -128,7 +127,7 @@ export default {
         width: 100%;
         box-sizing: border-box;
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: flex-start;
         .news-pic {
           width: 230px;
@@ -141,6 +140,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          background-size: cover;
+          background-position: center;
           .img-style {
             max-width: 100%;
             max-height: 100%;
