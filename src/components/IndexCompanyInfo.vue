@@ -20,14 +20,13 @@
      <div class="attention-us-box">
        <div class="info-label">关注我们</div>
        <div class="attention-us">
-         <div class="attention-item">
+         <div class="attention-item" v-for="(item, index) in qrCodeList" :key="index">
            <div class="item-qrcode">
-             <img src="https://dummyimage.com/100x100/333/3ff.jpg&text=pic"
-                  class="img-style">
+             <img :src="item.value" class="img-style">
            </div>
-           <div class="item-label">微信公众号</div>
+           <div class="item-label">{{item.label}}</div>
          </div>
-         <div class="attention-item">
+         <!-- <div class="attention-item">
            <div class="item-qrcode">
              <img src="https://dummyimage.com/100x100/333/3ff.jpg&text=pic"
                   class="img-style">
@@ -40,7 +39,7 @@
                   class="img-style">
            </div>
            <div class="item-label">官网手机版</div>
-         </div>
+         </div> -->
        </div>
      </div>
    </div>
@@ -53,7 +52,8 @@ import siteService from '@/services/siteService'
 export default {
   data () {
     return {
-      contactList: []
+      contactList: [],
+      qrCodeList: []
     }
   },
   methods: {
@@ -69,10 +69,24 @@ export default {
       } catch (error) {
         siteService.handleErr(error)
       }
+    },
+    async getQRCode () {
+      try {
+        let res = await siteService.info({id: [16, 17, 18]})
+        let array = res.data.info.map(item => {
+          let {name, url: value, label} = item
+          return {name, value, label}
+        })
+        // console.log(array)
+        this.qrCodeList = array
+      } catch (error) {
+        siteService.handleErr(error)
+      }
     }
   },
   mounted: async function () {
     this.getSiteInfo([7, 8, 9, 11])
+    this.getQRCode()
   }
 }
 </script>
