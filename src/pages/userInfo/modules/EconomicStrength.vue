@@ -134,6 +134,7 @@ export default {
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
+
         .label{
           width: 70px;
           text-align-last: justify;

@@ -5,7 +5,7 @@
         :model="familyInfo" ref="infoForm" :rules="formRule">
         <div class="style-label">关于自己</div>
         <el-form-item prop="origin">
-          <span slot="label">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯&nbsp;:</span>
+          <span slot="label">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：</span>
           <area-picker class="area-picker" v-model="familyInfo.origin"></area-picker>
         </el-form-item>
         <el-form-item prop="nationality">
@@ -15,19 +15,19 @@
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="个性特征 :" prop="personality">
+        <el-form-item label="个性特征：" prop="personality">
           <el-select size="small" v-model="familyInfo.personality">
             <el-option v-for="item in options.personality" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="幽默感 :" prop="humor">
+        <el-form-item label="幽默感：" prop="humor">
           <el-select size="small" v-model="familyInfo.humor">
             <el-option v-for="item in options.humor" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="对待感情 :" prop="feeling">
+        <el-form-item label="对待感情：" prop="feeling">
           <el-select size="small" v-model="familyInfo.feeling">
             <el-option v-for="item in options.feeling" :key="item"
               :label="item" :value="item"></el-option>
@@ -45,13 +45,13 @@
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="是否接受异地恋 :" prop="remoteLove">
+        <el-form-item label="是否接受异地恋：" prop="remoteLove">
           <el-select size="small" v-model="familyInfo.remoteLove">
             <el-option v-for="item in options.remoteLove" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="理想婚姻 :" prop="remoteLove">
+        <el-form-item label="理想婚姻：" prop="remoteLove">
           <el-input type="textarea" resize="none"
            :rows="5" v-model="familyInfo.idealMarriage"></el-input>
         </el-form-item>
@@ -101,7 +101,7 @@
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母工作 :" prop="parentsWork">
+        <el-form-item label="父母工作：" prop="parentsWork">
           父&nbsp;<el-select size="small" class="select-style" v-model="familyInfo.fatherWork">
             <el-option v-for="item in options.parentsWork" :key="item"
               :label="item" :value="item"></el-option>
@@ -111,13 +111,13 @@
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母经济情况 :" prop="parentsEconomic">
+        <el-form-item label="父母经济情况：" prop="parentsEconomic">
           <el-select size="small" v-model="familyInfo.parentsEconomic">
             <el-option v-for="item in options.parentsEconomic" :key="item"
               :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="父母医保情况 :" prop="parentsInsurance">
+        <el-form-item label="父母医保情况：" prop="parentsInsurance">
           <el-select size="small" v-model="familyInfo.parentsInsurance">
             <el-option v-for="item in options.parentsInsurance" :key="item"
               :label="item" :value="item"></el-option>
@@ -296,19 +296,6 @@ export default {
   margin-bottom: 40px;
   .form-sector{
     box-sizing: border-box;
-    .el-form-item{
-      margin-bottom: 10px;
-      &:last-child{
-        margin-bottom: 0;
-      }
-      .el-form-item__content{
-        text-align: left;
-        margin-left: 10px;
-      }
-      .el-checkbox {
-        margin: 0 3px;
-      }
-    }
     .style-label {
       width: 100%;
       height: 30px;
@@ -346,4 +333,17 @@ export default {
     cursor: pointer;
   }
 }
+.el-form-item{
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    .el-form-item__content{
+      text-align: left;
+      margin-left: 10px;
+    }
+    .el-checkbox {
+      margin: 0 3px;
+    }
+  }
 </style>

@@ -12,11 +12,11 @@
           </div>
           <div class="info-detial">
             <div class="detial-item">
-              <div>年龄:</div><div>{{member.age}}</div></div>
+              <div>年龄：</div><div>{{member.age}}</div></div>
             <div class="detial-item">
-              <div>身高:</div><div>{{member.height}}</div></div>
+              <div>身高：</div><div>{{member.height}}</div></div>
             <div class="detial-item">
-              <div>学历:</div><div>{{member.education}}</div></div>
+              <div>学历：</div><div>{{member.education}}</div></div>
             <!-- <div class="member-info-item">
               <div>收入:</div><div>{{member.month_pay}}</div></div> -->
           </div>

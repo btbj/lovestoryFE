@@ -23,7 +23,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="eye">
-        <span slot="label">眼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睛&nbsp;:</span>
+        <span slot="label">眼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睛：</span>
         <div class="item-box">
           <el-select class="select-style" size="small"
            v-model="appearanceInfo.appearEyeColor"
@@ -38,7 +38,7 @@
         </div>
       </el-form-item>
       <el-form-item prop="hair">
-        <span slot="label">头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发&nbsp;:</span>
+        <span slot="label">头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发：</span>
         <div class="item-box">
           <el-select class="select-style" size="small"
            v-model="appearanceInfo.appearHairColor"
@@ -84,7 +84,7 @@
               :label="item" :value="item"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="穿着风格 :" prop="style">
+      <el-form-item label="穿着风格：" prop="style">
         <div class="style-box">
           <el-checkbox-group v-model="appearanceInfo.appearWearingStyle">
             <div class="checkbox-row">

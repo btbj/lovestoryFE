@@ -10,37 +10,37 @@
       <div class="option-info-content">
         <div class="content-item-row">
           <div class="item-column">
-            <span>所在地区&nbsp;:&nbsp;</span>
+            <span class="item-label">所在地区</span>：
             <span>{{optionAddressText}}</span>
           </div>
           <div class="item-column">
-            <span>身高范围&nbsp;:&nbsp;</span>
+            <span class="item-label">身高范围</span>：
             <span>{{optionHeightText}}</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>婚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;史&nbsp;:&nbsp;</span>
+            <span class="item-label">婚史</span>：
             <span>{{optionInfo.marriageStatus || '不限'}}</span>
           </div>
           <div class="item-column">
-            <span>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:&nbsp;</span>
+            <span class="item-label">民族</span>：
             <span>{{optionInfo.nation || '不限'}}</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;</span>
+            <span class="item-label">学历</span>：
             <span>{{optionInfo.education || '不限'}}</span>
           </div>
           <div class="item-column">
-            <span>有无照片&nbsp;:&nbsp;</span>
+            <span class="item-label">有无照片</span>：
             <span>{{optionInfo.hasPic || '不限'}}</span>
           </div>
         </div>
         <div class="content-item-row">
           <div class="item-column">
-            <span>年龄范围&nbsp;:&nbsp;</span>
+            <span class="item-label">年龄范围</span>：
             <span>{{optionAgeText}}</span>
           </div>
         </div>
@@ -51,17 +51,17 @@
       <div class="option-info-banner">修改择偶条件</div>
       <el-form class="form-sector" label-position="right" label-width="100px"
         :model="optionInfo" ref="infoForm" :rules="formRule">
-        <el-form-item label="所在地区 :" prop="address" >
+        <el-form-item label="所在地区：" prop="address" >
           <!-- <el-select size="small" v-model="optionInfo.region"></el-select> -->
           <area-picker class="input-item" v-model="optionInfo.address"></area-picker>
         </el-form-item>
         <el-form-item prop="age">
-          <span slot="label">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄&nbsp;:</span>
+          <span slot="label">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</span>
           <!-- <el-select size="small" v-model="optionInfo.age"></el-select> -->
           <age-picker class="input-item" v-model="optionInfo.age"></age-picker>
         </el-form-item>
         <el-form-item prop="marriageStatus">
-          <span slot="label">婚姻状况&nbsp;:</span>
+          <span slot="label">婚姻状况：</span>
           <el-select size="small" v-model="optionInfo.marriageStatus" clearable>
             <el-option
               v-for="(item, index) in options.marriageStatus" :key="index"
@@ -70,12 +70,12 @@
           </el-select>
         </el-form-item>
         <el-form-item prop="height">
-          <span slot="label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高&nbsp;:</span>
+          <span slot="label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：</span>
           <!-- <el-select size="small" v-model="optionInfo.height"></el-select> -->
           <height-picker class="input-item" v-model="optionInfo.height"></height-picker>
         </el-form-item>
         <el-form-item prop="education">
-          <span slot="label">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:</span>
+          <span slot="label">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</span>
           <el-select size="small" v-model="optionInfo.education" clearable>
             <el-option
               v-for="(item, index) in options.education" :key="index"
@@ -84,7 +84,7 @@
           </el-select>
         </el-form-item>
         <el-form-item prop="ethnic">
-          <span slot="label">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族&nbsp;:</span>
+          <span slot="label">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族：</span>
           <el-select size="small" v-model="optionInfo.nation" clearable>
             <el-option
               v-for="(item, index) in options.nation" :key="index"
@@ -92,7 +92,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="有无照片 :" prop="picture">
+        <el-form-item label="有无照片：" prop="picture">
           <el-select size="small" v-model="optionInfo.hasPic" clearable>
             <el-option
               v-for="(item, index) in options.hasPic" :key="index"
@@ -343,6 +343,10 @@ export default {
           display: flex;
           align-items: center;
           width: 50%;
+          .item-label{
+            width: 70px;
+            text-align-last: justify;
+          }
         }
       }
     }
@@ -375,6 +379,12 @@ export default {
     }
   }
 }
+.input-item{
+  width: 250px;
+}
+.area-piker{
+  width: 300px;
+}
 .el-form-item{
   margin-bottom: 5px;
   &:last-child{
@@ -383,16 +393,6 @@ export default {
   .el-form-item__content{
     text-align: left;
     margin-left: 10px;
-    // .el-input{
-    //   width: 250px;
-    // }
   }
 }
-.input-item{
-  width: 250px;
-}
-.area-piker{
-  width: 300px;
-}
-
 </style>
