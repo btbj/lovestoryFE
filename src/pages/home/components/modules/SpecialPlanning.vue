@@ -70,7 +70,8 @@ export default {
 <style lang="less">
 .special-planning-box {
   box-sizing: border-box;
-  width: 540px;
+  flex: 3;
+  // width: 100%;
   height: 100%;
   padding-top: 8px;
   .special-planning-content {
@@ -80,7 +81,7 @@ export default {
     display: flex;
     flex-direction: column;
     .special-planning-header {
-      width: 540px;
+      width: 100%;
       height: 60px;
       box-sizing: border-box;
       display: flex;
@@ -138,7 +139,7 @@ export default {
     }
     .special-planning-body {
       margin-top: -8px;
-      width: 540px;
+      width: 100%;
       height: 300px;
       box-sizing: border-box;
       overflow: hidden;

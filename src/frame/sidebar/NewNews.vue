@@ -1,14 +1,14 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-language item-icon"></span>
+      <span class="icon-language2 item-icon"></span>
       <span style="margin-left: 10px;">最新资讯</span>
       <span style="font-size: 16px;">&nbsp;/NEWS</span>
     </div>
     <div class="item-list-box">
       <div class="news-item" v-for="(news, index) in newsList" :key="index"
         @click="checkNewsDetail(news)">
-        <span class="icon-stop item-icon"></span>
+        <span class="icon-stop2 item-icon"></span>
         <span class="news-content">{{news.title}}</span></div>
     </div>
   </div>
@@ -63,6 +63,7 @@ export default {
 .link-item-box {
   padding: 0 5px;
   width: 100%;
+  min-width: 280px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
 
 const env = require('../config/prod.env')
 
@@ -32,6 +33,21 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new PrerenderSPAPlugin({
+      // 要编译的目录
+      staticDir: path.join(__dirname, '../dist'),
+      // 你要预呈现的列表
+      routes: [
+        '/',
+        '/aboutus/company', '/aboutus/env', '/aboutus/contact',
+        '/news/notification', '/news/company', '/news/industry',
+        '/serviceintro',
+        '/lovestory/list',
+        '/findpartner',
+        '/plans/list',
+        '/activities/list'
+      ]
+    }),
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -46,7 +62,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
     }),

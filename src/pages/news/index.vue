@@ -43,6 +43,7 @@ export default {
 <style lang="less">
 .news-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -61,7 +62,8 @@ export default {
     margin-bottom: 1px;
   }
   .news-content-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     box-sizing: border-box;
   }
   .online-service-container {

@@ -28,9 +28,9 @@ export default {
           token: this.$store.getters.token
         })
         this.userInfo = res.data.info
-        if (this.userInfo.info.role_id === '3') {
-          this.$router.replace({name: 'prepay'})
-        }
+        // if (this.userInfo.info.role_id === '3') {
+        //   this.$router.replace({name: 'prepay'})
+        // }
         console.log('user info', res)
       } catch (error) {
         console.log(error)

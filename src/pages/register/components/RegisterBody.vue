@@ -213,7 +213,8 @@ export default {
           value: res.data.token,
           expire: res.data.timeout
         })
-        this.$router.push({name: 'prepay'})
+        this.$router.push({name: 'myinfo'})
+        // this.$router.push({name: 'prepay'})
       } catch (error) {
         console.log(error)
         if (error.message) {

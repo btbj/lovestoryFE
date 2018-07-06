@@ -80,7 +80,8 @@ export default {
 
 <style lang="less">
 .content-info-box {
-  width: 700px;
+  // width: 700px;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   padding: 5px;

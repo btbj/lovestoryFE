@@ -90,24 +90,25 @@ export default {
   .inner-item-content {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: left;
     font-size: 14px;
     display: flex;
     flex-direction: column;
     .news-item-box {
       width: 100%;
-      border: 1px solid grey;
+      height: 310px;
+      border: 1px solid #ddd;
       box-sizing: border-box;
-      margin-bottom: 20px;
-      padding: 5px 20px 20px;
+      margin-bottom: 30px;
+      padding: 20px 30px;
       display: flex;
       flex-direction: column;
       .item-title-box {
         width: 100%;
         height: 30px;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -127,11 +128,11 @@ export default {
         width: 100%;
         box-sizing: border-box;
         display: flex;
-        // align-items: center;
+        align-items: center;
         justify-content: flex-start;
         .news-pic {
-          width: 230px;
-          height: 160px;
+          width: 300px;
+          height: 180px;
           box-sizing: border-box;
           margin-right: 5px;
           overflow: hidden;
@@ -149,14 +150,16 @@ export default {
         }
         .activities-words-box {
           font-size: 14px;
-          width: 400px;
-          height: 200px;
+          // width: 400px;
+          flex: 1;
+          height: 180px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
+          justify-content: space-between;
           .activity-info-box {
-            flex: 1;
             width: 100%;
+            height: 120px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;

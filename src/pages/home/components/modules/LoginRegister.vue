@@ -107,7 +107,8 @@ export default {
   border-bottom: 1px solid lightgray;
   background-color: white;
   box-sizing: border-box;
-  width: 300px;
+  // flex: 2;
+  width: 400px;
   height: 100%;
   .login-register-content {
     display: flex;
@@ -148,7 +149,7 @@ export default {
       box-sizing: border-box;
       width: 100%;
       height: 300px;
-      padding: 10px;
+      padding: 10px 28px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;

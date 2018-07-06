@@ -81,6 +81,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     align-content: center;
+    justify-content: center;
     padding: 0 50px;
     .word-label {
       font-size: 14px;

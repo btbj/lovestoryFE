@@ -53,6 +53,7 @@ export default {
 <style lang="less">
 .aboutus-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -71,7 +72,8 @@ export default {
     margin-bottom: 1px;
   }
   .us-content-container {
-    width: 100%;
+    max-width: 1200px;
+    width: 90%;
     // height: 680px;
     box-sizing: border-box;
   }

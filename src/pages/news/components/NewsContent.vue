@@ -28,13 +28,13 @@ export default {
 
 <style lang="less">
 .news-content-box {
-  width: 1000px;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 10px 0;
   .content-link-box {
     width: 280px;
     height: 100%;
@@ -44,10 +44,13 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 700px;
+    // width: 700px;
+    flex: 1;
+    margin-left: 15px;
     height: 100%;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 5px 0;
+    margin-left: 20px;
   }
 }
 

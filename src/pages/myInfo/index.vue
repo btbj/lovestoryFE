@@ -48,6 +48,7 @@ export default {
 <style lang="less">
 .home-header-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -71,10 +72,12 @@ export default {
     text-align: center;
     .main-body{
       margin: auto;
-      width: 920px;
-      padding: 15px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 15px 0;
       .el-main {
-        padding: 0 20px;
+        padding: 0 0px;
+        margin-left: 20px;
       }
     }
   }

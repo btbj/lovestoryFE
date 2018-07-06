@@ -42,6 +42,7 @@ export default {
 
 <style lang="less">
 .story-container {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -62,6 +63,7 @@ export default {
   }
   .story-content-container {
     width: 100%;
+    max-width: 1200px;
     box-sizing: border-box;
   }
   .online-service-container {

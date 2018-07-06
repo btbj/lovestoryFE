@@ -13,7 +13,7 @@
           <div class="member-info-item">年龄：{{member.age}}</div>
           <div class="member-info-item">身高：{{member.height}}</div>
           <div class="member-info-item">学历：{{member.education}}</div>
-          <div class="member-info-item">收入：{{member.income}}</div>
+          <!-- <div class="member-info-item">收入：{{member.income}}</div> -->
           <div class="member-detail-btn">
             <div class="btn" @click="checkUserDetail(member)">查看详情</div>
           </div>
@@ -70,7 +70,8 @@ export default {
 .home-member-cards {
   margin: 10px 0 20px 0;
   box-sizing: border-box;
-  width: 840px;
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,10 +91,12 @@ export default {
       box-sizing: border-box;
       width: 205px;
       height: 155px;
+      justify-content: flex-start;
+      align-items: center;
       .card-pic {
-        margin-right: 3px;
-        width: 100px;
-        height: 155px;
+        margin-right: 10px;
+        width: 120px;
+        height: 160px;
         background: white;
         box-sizing: border-box;
         overflow: hidden;
@@ -110,9 +113,11 @@ export default {
         }
       }
       .card-info {
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         width: 95px;
         height: 155px;
         box-sizing: border-box;
@@ -121,7 +126,7 @@ export default {
           margin-bottom: 5px;
         }
         .member-detail-btn {
-          width: 100%;
+          width: 95px;
           height: 30px;
           margin-top: 15px;
           .btn {
