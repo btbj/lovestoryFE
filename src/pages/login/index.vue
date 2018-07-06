@@ -1,11 +1,11 @@
 <template>
-  <section class="login-root-container">
+  <div class="login-root-container">
     <div class="login-header-nav">
       <index-header></index-header>
     </div>
     <login-body></login-body>
     <index-bottom></index-bottom>
-  </section>
+  </div>
 </template>
 
 <script>

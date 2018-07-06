@@ -1,5 +1,5 @@
 <template>
-  <section class="home-root-container">
+  <div class="home-root-container">
     <div class="home-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -33,7 +33,7 @@
           @click="$router.push('/demo')">demo</div>
       </div>
     </div> -->
-  </section>
+  </div>
 </template>
 
 <script>

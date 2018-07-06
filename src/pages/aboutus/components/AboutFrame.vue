@@ -85,7 +85,7 @@ export default {
         width: 100%;
         // height: 580px;
         box-sizing: border-box;
-        padding: 40px 5px 10px 5px;
+        padding: 10px 5px;
         text-align: left;
         font-size: 14px;
       }

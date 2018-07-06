@@ -1,7 +1,7 @@
 <template>
-  <section class="container">
+  <div class="user-container">
 
-  </section>
+  </div>
 </template>
 
 <script>

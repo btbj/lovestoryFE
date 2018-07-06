@@ -1,5 +1,5 @@
 <template>
-  <section class="aboutus-container">
+  <div class="aboutus-container">
     <div class="us-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -24,7 +24,7 @@
       <index-online-service></index-online-service>
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
