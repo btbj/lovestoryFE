@@ -8,13 +8,14 @@
       </content-nav>
       <div class="inner-item-content">
 
-        <div class="story-card-box" v-for="(story, index) in storyList" :key="index"
-          @click="checkDetail(story)">
-          <div class="story-card-pic" :style="`background-image: url('${story.image_url}');`">
-            <!-- <img :src="story.image_url" class="img-style"> -->
+        <div class="story-item-wrapper" v-for="(story, index) in storyList" :key="index">
+          <div class="story-card-box" @click="checkDetail(story)">
+            <div class="story-card-pic" :style="`background-image: url('${story.image_url}');`">
+              <!-- <img :src="story.image_url" class="img-style"> -->
+            </div>
+            <div class="story-title">{{story.title}}</div>
+            <div class="story-content">{{story.content}}</div>
           </div>
-          <div class="story-title">{{story.title}}</div>
-          <div class="story-content">{{story.content}}</div>
         </div>
 
       </div>
@@ -99,63 +100,65 @@ export default {
       flex-wrap: wrap;
       justify-content: flex-start;
       padding: 10px 0;
-      .story-card-box {
-        flex-basis: 31%;
-        // width: 200px;
-        border: 1px solid lightgrey;
+      .story-item-wrapper{
+        flex-basis: 33.3%;
+        padding: 0 10px 20px;
         box-sizing: border-box;
-        margin: 0 10px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        cursor: pointer;
-        .story-title {
-          width: 100%;
-          height: 30px;
+        .story-card-box {
+          // width: 200px;
+          border: 1px solid lightgrey;
           box-sizing: border-box;
-          color: #D76083;
-          line-height: 30px;
-          text-align: left;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          // margin: 0 10px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          cursor: pointer;
+          .story-card-pic {
+            width: 100%;
+            height: 140px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            .img-style {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          .story-title {
+            width: 100%;
+            height: 30px;
+            box-sizing: border-box;
+            color: #D76083;
+            line-height: 30px;
+            text-align: left;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .story-content {
+            padding: 1px 0;
+            width: 100%;
+            line-height: 25px;
+            height: 125px;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+          }
         }
-        .story-content {
-          padding: 1px 0;
-          width: 100%;
-          line-height: 25px;
-          height: 125px;
-          box-sizing: border-box;
-          text-align: left;
-          font-size: 14px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-        }
-      }
-
-      .story-card-pic {
-        width: 100%;
-        height: 140px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        .img-style {
-          max-width: 100%;
-          max-height: 100%;
-        }
-
       }
     }
     .pagination-box {
