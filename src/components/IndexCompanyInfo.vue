@@ -9,7 +9,7 @@
            <div class="contact-content">{{item.value}}</div></div>
        </div>
      </div>
-     <div class="about-us-box">
+     <div class="about-us-box hidden-sm-and-down">
        <div class="info-label">关于我们</div>
        <div class="about-us">
          <div class="about-item" @click="$router.push('/aboutus/company')">公司介绍</div>
@@ -17,7 +17,7 @@
          <div class="about-item" @click="$router.push('/aboutus/contact')">联系方式</div>
        </div>
      </div>
-     <div class="attention-us-box">
+     <div class="attention-us-box hidden-md-and-down">
        <div class="info-label">关注我们</div>
        <div class="attention-us">
          <div class="attention-item" v-for="(item, index) in qrCodeList" :key="index">
@@ -116,7 +116,7 @@ export default {
     }
     .contact-info-box {
       box-sizing: border-box;
-      width: 340px;
+      flex: 1;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -132,12 +132,15 @@ export default {
           font-size: 14px;
           margin-bottom: 5px;
           display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
           .contact-label {
             width: 45px;
             text-align: right;
           }
           .contact-content {
-            width: 280px;
+            // width: 280px;
+            flex: 1;
             text-align: left;
           }
         }

@@ -4,7 +4,7 @@ html {
 
 html, body, #app{
   min-height: 720px;
-  min-width: 1100px;
+  /* min-width: 1100px; */
   height: 100%;
   width: 100%;
   background: #f7f7f7;
