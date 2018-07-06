@@ -8,9 +8,9 @@
       </content-nav>
       <div class="inner-item-content">
 
-        <div class="card-box" v-for="(story, index) in storyList" :key="index"
+        <div class="story-card-box" v-for="(story, index) in storyList" :key="index"
           @click="checkDetail(story)">
-          <div class="card-pic" :style="`background-image: url('${story.image_url}');`">
+          <div class="story-card-pic" :style="`background-image: url('${story.image_url}');`">
             <!-- <img :src="story.image_url" class="img-style"> -->
           </div>
           <div class="story-title">{{story.title}}</div>
@@ -99,9 +99,9 @@ export default {
       flex-wrap: wrap;
       justify-content: flex-start;
       padding: 10px 0;
-      .card-box {
-        flex-basis: 30%;
-        width: 200px;
+      .story-card-box {
+        flex-basis: 31%;
+        // width: 200px;
         border: 1px solid lightgrey;
         box-sizing: border-box;
         margin: 0 10px 20px;
@@ -137,8 +137,8 @@ export default {
         }
       }
 
-      .card-pic {
-        width: 180px;
+      .story-card-pic {
+        width: 100%;
         height: 140px;
         box-sizing: border-box;
         margin-bottom: 10px;
@@ -148,6 +148,9 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         .img-style {
           max-width: 100%;
           max-height: 100%;
