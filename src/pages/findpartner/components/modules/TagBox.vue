@@ -208,7 +208,8 @@ export default {
     }
     .row-tags {
       display: flex;
-      width: 600px;
+      // width: 600px;
+      width: 100%;
       box-sizing: border-box;
       flex-wrap: wrap;
       .tag-item{
@@ -223,7 +224,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 10px 15px;
     .hot-tag-item {
       border: 1px solid #F33973;
       border-radius: 10px;
@@ -244,7 +245,7 @@ export default {
     width: 100%;
     border-top: 1px solid lightgrey;
     box-sizing: border-box;
-    padding: 10px 5px;
+    padding: 10px 15px;
     .single-tag {
       cursor: pointer;
       margin: 5px;

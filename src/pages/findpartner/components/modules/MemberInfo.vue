@@ -61,10 +61,10 @@ export default {
     margin: 10px 0;
     display: flex;
     box-sizing: border-box;
-    height: 170px;
+    height: 160px;
     .fp-card-pic {
       margin-right: 3px;
-      width: 100px;
+      width: 120px;
       height: 100%;
       box-sizing: border-box;
       overflow: hidden;

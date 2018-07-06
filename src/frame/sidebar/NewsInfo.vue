@@ -39,6 +39,7 @@ export default {
 .link-item-box {
   padding: 0 5px;
   width: 100%;
+  min-width: 280px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

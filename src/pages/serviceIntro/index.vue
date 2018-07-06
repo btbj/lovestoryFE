@@ -41,6 +41,7 @@ export default {
 
 <style lang="less">
 .service-container {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,7 +61,8 @@ export default {
     margin-bottom: 1px;
   }
   .service-content-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     box-sizing: border-box;
   }
   .online-service-container {
