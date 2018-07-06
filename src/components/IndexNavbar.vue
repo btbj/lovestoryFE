@@ -1,16 +1,18 @@
 <template>
   <div class="nav-box">
-    <div :class="['nav-item', isCurrent('home') ? 'selected' : '']" @click="navTo('home')">网站首页</div>
-    <div :class="['nav-item', isCurrent('aboutus') ? 'selected' : '']" @click="navTo('aboutus')">关于我们</div>
-    <div :class="['nav-item', (isCurrent('news') || isCurrent('newsinfo')) ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
-    <div :class="['nav-item', isCurrent('serviceintro') ? 'selected' : '']" @click="navTo('serviceintro')">服务介绍</div>
-    <div :class="['nav-item', isCurrent('lovestory') ? 'selected' : '']" @click="navTo('lovestory')">晒幸福</div>
-    <div :class="['nav-item', isCurrent('findpartner') ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
-    <div :class="['nav-item', isCurrent('register')  ? 'selected' : '']" @click="navTo('register')">我要相亲</div>
-    <div :class="['nav-item', isCurrent('plans') ? 'selected' : '']" @click="navTo('plans')">定制服务</div>
-    <div :class="['nav-item', isCurrent('activities') ? 'selected' : '']" @click="navTo('activities')">活动互动</div>
-    <div :class="['nav-item', isCurrent('myinfo') ? 'selected' : '']" @click="navTo('myinfo')">
-      <span class="icon-person person-icon"></span>
+    <div class="nav-list">
+      <div :class="['nav-item', isCurrent('home') ? 'selected' : '']" @click="navTo('home')">网站首页</div>
+      <div :class="['nav-item', isCurrent('aboutus') ? 'selected' : '']" @click="navTo('aboutus')">关于我们</div>
+      <div :class="['nav-item', (isCurrent('news') || isCurrent('newsinfo')) ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
+      <div :class="['nav-item', isCurrent('serviceintro') ? 'selected' : '']" @click="navTo('serviceintro')">服务介绍</div>
+      <div :class="['nav-item', isCurrent('lovestory') ? 'selected' : '']" @click="navTo('lovestory')">晒幸福</div>
+      <div :class="['nav-item', isCurrent('findpartner') ? 'selected' : '']" @click="navTo('findpartner')">寻找对象</div>
+      <div :class="['nav-item', isCurrent('register')  ? 'selected' : '']" @click="navTo('register')">我要相亲</div>
+      <div :class="['nav-item', isCurrent('plans') ? 'selected' : '']" @click="navTo('plans')">定制服务</div>
+      <div :class="['nav-item', isCurrent('activities') ? 'selected' : '']" @click="navTo('activities')">活动互动</div>
+      <div :class="['nav-item', isCurrent('myinfo') ? 'selected' : '']" @click="navTo('myinfo')">
+        <span class="icon-person person-icon"></span>
+      </div>
     </div>
   </div>
 </template>
@@ -42,41 +44,48 @@ export default {
 
 <style lang="less">
 .nav-box{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   box-sizing: border-box;
   background-color: #F1356F;
   width: 100%;
-  height: 40px;
+  height: 47px;
   padding: 0;
-  .nav-item {
-    width: 80px;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  .nav-list{
+    max-width: 1200px;
+    width: 90%;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    box-sizing: border-box;
-    font-size: 14px;
-    color: white;
-    margin-right: 1px;
-    cursor: pointer;
-    .person-icon {
-      font-size: 18px;
-      color: white;
+    align-items: center;
+    height: 100%;
+    .nav-item {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-sizing: border-box;
+      font-size: 14px;
+      color: white;
+      margin-right: 1px;
+      cursor: pointer;
+      .person-icon {
+        font-size: 18px;
+        color: white;
+        box-sizing: border-box;
+      }
     }
-  }
-  .nav-item:active {
-    background-color: #c20450;
-  }
-  .nav-item:hover {
-    background-color: #c20450;
-  }
-  .selected {
-    background-color: #c20450;
+    .nav-item:active {
+      background-color: #c20450;
+    }
+    .nav-item:hover {
+      background-color: #c20450;
+    }
+    .selected {
+      background-color: #c20450;
+    }
   }
 }
 

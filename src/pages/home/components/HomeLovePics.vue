@@ -72,18 +72,21 @@ export default {
 .home-love-pics {
   margin: 10px 0 30px 0;
   box-sizing: border-box;
-  width: 840px;
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .first-row {
-    width: 100%;
-    height: 200px;
+    width: 1200px;
+    height: 300px;
     box-sizing: border-box;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
     .first-row-pic {
-      width: 408px;
+      width: 600px;
       height: 100%;
       box-sizing: border-box;
       display: flex;
@@ -92,6 +95,7 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      margin-right: 20px;
       .first-pic-logo {
         border-bottom: 30px solid #FD6F9F;
         border-left: 30px solid transparent;
@@ -107,17 +111,20 @@ export default {
           width: 120px;
         }
       }
+      &:last-child{
+        margin-right: 0;
+      }
     }
   }
   .second-row {
-    width: 100%;
-    height: 150px;
+    width: 1200px;
+    height: 200px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
 
     .second-row-pic {
-      width: 200px;
+      width: 300px;
       height: 100%;
       box-sizing: border-box;
       display: flex;
@@ -126,6 +133,7 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      margin-right: 20px;
       .second-pic-logo {
         border-bottom: 25px solid #FD6F9F;
         border-left: 25px solid transparent;
@@ -141,6 +149,9 @@ export default {
         .index-story-title{
           width: 80px;
         }
+      }
+      &:last-child{
+        margin-right: 0;
       }
     }
   }

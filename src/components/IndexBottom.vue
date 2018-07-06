@@ -2,10 +2,10 @@
   <div class="index-bottom">
     <div class="bottom-box">
       <div class="bottom-copyright">
-        版权所有© 2018 相亲相爱婚介网
+        {{copyRightText}}
       </div>
       <div class="site-register-info">
-        浙ICP备180*******号
+        {{registerInfoText}}
       </div>
       <div class="bottom-technical-support">
         技术支持：谷多网络
@@ -15,8 +15,40 @@
 </template>
 
 <script>
-export default {
+import siteService from '@/services/siteService'
 
+export default {
+  data () {
+    return {
+      siteInfo: []
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        let array = res.data.info.map(item => {
+          let {name, value, label} = item
+          return {name, value, label}
+        })
+        // console.log(array)
+        this.siteInfo = array
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  computed: {
+    copyRightText () {
+      return this.siteInfo[0] ? this.siteInfo[0].value : ''
+    },
+    registerInfoText () {
+      return this.siteInfo[1] ? this.siteInfo[1].value : ''
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo([19, 20])
+  }
 }
 </script>
 
@@ -28,6 +60,7 @@ export default {
   .bottom-box {
     margin: auto;
     width: 90%;
+    max-width: 1200px;
     height: 100%;
     box-sizing: border-box;
     display: flex;

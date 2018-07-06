@@ -103,6 +103,7 @@ export default {
   .news-info-container {
     margin: 30px 0;
     width: 90%;
+    max-width: 1200px;
     box-sizing: border-box;
     padding: 5px;
     display: flex;
