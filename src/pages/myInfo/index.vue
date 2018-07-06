@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="home-header-container">
     <div class="home-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <index-bottom></index-bottom>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less">
-.container {
+.home-header-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

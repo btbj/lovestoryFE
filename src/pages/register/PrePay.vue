@@ -1,11 +1,11 @@
 <template>
-  <section class="register-container">
+  <div class="register-container">
     <div class="register-header-nav">
       <index-header></index-header>
     </div>
     <pay-info/>
     <index-bottom></index-bottom>
-  </section>
+  </div>
 </template>
 
 <script>

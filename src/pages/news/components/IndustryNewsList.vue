@@ -14,9 +14,9 @@
           <div class="title-date">{{newsItem.created_date}}</div>
         </div>
         <div class="item-content-box">
-          <div class="news-pic">
-            <img :src="newsItem.image_url"
-                  class="img-style">
+          <div class="news-pic" :style="`background-image: url('${newsItem.image_url}');`">
+            <!-- <img :src="newsItem.image_url"
+                  class="img-style"> -->
           </div>
           <div class="news-words-box">
             <div class="news-words">{{newsItem.content}}</div>
@@ -90,7 +90,7 @@ export default {
   .inner-item-content {
     width: 100%;
     box-sizing: border-box;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: left;
     font-size: 14px;
     display: flex;
@@ -141,6 +141,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          background-size: cover;
+          background-position: center;
           .img-style {
             max-width: 100%;
             max-height: 100%;
@@ -155,13 +157,19 @@ export default {
           flex-direction: column;
           .news-words {
             width: 100%;
-            height: 130px;
+            height: 104px;
             box-sizing: border-box;
             font-size: 14px;
             padding: 5px;
             text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
             word-wrap: break-word;
             word-break: break-all;
+            margin-bottom: 20px;
           }
           .news-more-btn {
             width: 100%;

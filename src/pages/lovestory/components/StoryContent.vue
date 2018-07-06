@@ -94,7 +94,6 @@ export default {
             -webkit-box-orient: vertical;
           }
         }
-
         .card-pic {
           width: 180px;
           height: 140px;
@@ -106,6 +105,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          background-size: cover;
+          background-position: center;
           .img-style {
             max-width: 100%;
             max-height: 100%;

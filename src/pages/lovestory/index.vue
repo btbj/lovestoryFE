@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="story-container">
     <div class="story-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -14,7 +14,7 @@
       <index-online-service></index-online-service>
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="less">
-.container {
+.story-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,6 +50,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 0;
+  background: white;
   .story-header-nav {
     display: flex;
     flex-direction: column;
