@@ -10,8 +10,8 @@
 
         <div class="card-box" v-for="(story, index) in storyList" :key="index"
           @click="checkDetail(story)">
-          <div class="card-pic">
-            <img :src="story.image_url" class="img-style">
+          <div class="card-pic" :style="`background-image: url('${story.image_url}');`">
+            <!-- <img :src="story.image_url" class="img-style"> -->
           </div>
           <div class="story-title">{{story.title}}</div>
           <div class="story-content">{{story.content}}</div>
