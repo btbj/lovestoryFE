@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="tel">
-        <span class="icon-phone tel-icon"></span>
+        <span class="icon-phone2 tel-icon"></span>
         <span class="tel-number">{{hotLine}}</span>
       </div>
     </div>

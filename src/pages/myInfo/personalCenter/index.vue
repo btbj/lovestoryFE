@@ -281,7 +281,7 @@ export default {
     }
     .personal-info-pic-content {
       width: 100%;
-      height: 200px;
+      height: 300px;
       box-sizing: border-box;
       display: flex;
       align-items: center;
@@ -293,9 +293,11 @@ export default {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        align-items: center;
         .pi-pic {
           width: 95%;
-          height: 140px;
+          width: 150px;
+          height: 200px;
           box-sizing: border-box;
           overflow: hidden;
           position: relative;

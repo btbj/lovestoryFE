@@ -46,7 +46,7 @@ export default {
     .member-pic-box {
       flex-basis: 20%;
       width: 110px;
-      height: 200px;
+      height: 300px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -54,7 +54,8 @@ export default {
       margin: 10px 0 20px 0;
       .member-pic {
         width: 90%;
-        height: 140px;
+        width: 150;
+        height: 200px;
         box-sizing: border-box;
         overflow: hidden;
         position: relative;
