@@ -8,7 +8,7 @@
         </div>
         <div class="word">
           <div class="first-row">{{member.nickname}}</div>
-          <div><span>{{member.age}}岁</span> <span v-if="member.province" class="margin-left: 10px;">{{member.province + ' ' + member.city}}</span></div>
+          <div><span>{{member.age}}岁</span> <span v-if="member.province" class="margin-left: 10px;">{{member.province}}</span></div>
         </div>
       </div>
     </div>

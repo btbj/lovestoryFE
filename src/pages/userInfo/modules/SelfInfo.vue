@@ -15,7 +15,7 @@
       <div class="_self-age-row">
         <span>{{info.info.age}}岁，</span>
         <span>{{info.info.sex}}，</span>
-        <span>{{info.info.province}} {{info.info.city}}</span>
+        <span>{{info.info.province}}</span>
       </div>
       <div class="_self-detail-info">
         <div class="_detail-item-row">

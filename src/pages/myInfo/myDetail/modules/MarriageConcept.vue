@@ -135,7 +135,7 @@
 <script>
 import userService from '@/services/userService'
 import contryData from '../rawData/contries.js'
-import AreaPicker from '@/components/AreaPicker'
+import AreaPicker from '@/components/ProvinceCityPicker'
 
 export default {
   components: { AreaPicker },
