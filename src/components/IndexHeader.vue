@@ -1,7 +1,8 @@
 <template>
   <div class="info-box">
-    <div class="logo" @click="$router.push('/')">
-      <span class="text-logo">爱情故事</span>
+    <div class="logo" :style="`background-image: url('${siteLogo}');`"
+      @click="$router.push('/')">
+      <!-- <span class="text-logo">爱情故事</span> -->
       <!-- <img :src="siteLogo" style="width: 100%; height: 100%"> -->
     </div>
     <div class="info">
@@ -64,19 +65,22 @@ export default {
   background: white;
   .logo {
     box-sizing: border-box;
-    min-width: 200px;
-    min-height: 70px;
+    width: 200px;
+    height: 70px;
     margin-right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    .text-logo{
-      font-size: 50px;
-      color: #F4336A;
-      font-weight: bold;
-      user-select: none;
-      cursor: pointer;
-    }
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    // .text-logo{
+    //   font-size: 50px;
+    //   color: #F4336A;
+    //   font-weight: bold;
+    //   user-select: none;
+    //   cursor: pointer;
+    // }
   }
   .info {
     border-left: 1px solid lightgray;
