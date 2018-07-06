@@ -33,7 +33,7 @@ export default {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 0;
   .content-link-box {
     width: 280px;
     height: 100%;

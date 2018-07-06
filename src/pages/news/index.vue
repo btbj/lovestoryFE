@@ -62,7 +62,7 @@ export default {
     margin-bottom: 1px;
   }
   .news-content-container {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     box-sizing: border-box;
   }

@@ -73,7 +73,7 @@ export default {
   }
   .us-content-container {
     max-width: 1200px;
-    width: 100%;
+    width: 90%;
     // height: 680px;
     box-sizing: border-box;
   }

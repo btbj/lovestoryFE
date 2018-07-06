@@ -50,7 +50,7 @@ export default {
     height: 100%;
     box-sizing: border-box;
     padding: 5px 0;
-    margin-left: 15px;
+    margin-left: 20px;
     .inner-item-box {
       padding: 5px;
       width: 100%;
