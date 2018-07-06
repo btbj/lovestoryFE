@@ -95,6 +95,7 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      cursor: pointer;
       margin-right: 20px;
       .first-pic-logo {
         border-bottom: 30px solid #FD6F9F;
@@ -122,7 +123,6 @@ export default {
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
-
     .second-row-pic {
       width: 300px;
       height: 100%;
@@ -133,6 +133,7 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      cursor: pointer;
       margin-right: 20px;
       .second-pic-logo {
         border-bottom: 25px solid #FD6F9F;

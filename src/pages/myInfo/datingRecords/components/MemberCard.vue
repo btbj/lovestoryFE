@@ -52,6 +52,7 @@ export default {
       flex-direction: column;
       align-items: center;
       margin: 10px 0 20px 0;
+      cursor: pointer;
       .member-pic {
         width: 90%;
         width: 150;

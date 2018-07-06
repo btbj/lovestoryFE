@@ -293,6 +293,7 @@ export default {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        cursor: pointer;
         align-items: center;
         .pi-pic {
           width: 95%;
