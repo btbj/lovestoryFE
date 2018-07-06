@@ -2,7 +2,10 @@
   <div class="index-bottom">
     <div class="bottom-box">
       <div class="bottom-copyright">
-        版权所有© 2018&nbsp;&nbsp;&nbsp;&nbsp;相亲相爱婚介网&nbsp;&nbsp;&nbsp;&nbsp;浙ICP备180*******号
+        版权所有© 2018 相亲相爱婚介网
+      </div>
+      <div class="site-register-info">
+        浙ICP备180*******号
       </div>
       <div class="bottom-technical-support">
         技术支持：谷多网络
@@ -20,8 +23,8 @@ export default {
 <style lang="less">
 .index-bottom {
   width: 100%;
-  height: 40px;
   background-color: #F1356F;
+  padding: 5px 0 0;
   .bottom-box {
     margin: auto;
     width: 90%;
@@ -29,13 +32,22 @@ export default {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     color: white;
+    font-size: 14px;
     .bottom-copyright {
-      font-size: 14px;
+      margin-right: 25px;
+      margin-bottom: 5px;
+    }
+    .site-register-info{
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
+      margin-bottom: 5px;
     }
     .bottom-technical-support {
-      font-size: 14px;
+      margin-bottom: 5px;
     }
   }
 }

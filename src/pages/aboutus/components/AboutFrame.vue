@@ -1,6 +1,6 @@
 <template>
   <div class="about-content-box">
-    <div class="content-link-box">
+    <div class="content-link-box hidden-md-and-down">
       <about-us></about-us>
       <new-news></new-news>
       <contact-us></contact-us>
@@ -29,7 +29,8 @@ export default {
 
 <style lang="less">
 .about-content-box {
-  width: 1000px;
+  // width: 1000px;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
