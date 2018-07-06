@@ -1,8 +1,8 @@
 <template>
   <div class="info-box">
-    <div class="logo">
-      <img :src="siteLogo"
-          style="width: 100%; height: 100%">
+    <div class="logo" @click="$router.push('/')">
+      <span class="text-logo">爱情故事</span>
+      <!-- <img :src="siteLogo" style="width: 100%; height: 100%"> -->
     </div>
     <div class="info">
       <div class="info-row1">
@@ -26,7 +26,7 @@ import siteService from '@/services/siteService'
 export default {
   data () {
     return {
-      hotLine: 'hotline'
+      hotLine: ''
     }
   },
   methods: {
@@ -70,6 +70,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    .text-logo{
+      font-size: 50px;
+      color: #F4336A;
+      font-weight: bold;
+      user-select: none;
+      cursor: pointer;
+    }
   }
   .info {
     border-left: 1px solid lightgray;
