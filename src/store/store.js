@@ -12,7 +12,7 @@ export const store = () => new Vuex.Store({
   },
   getters: {
     token (state) {
-      let storedToken = localStorage.getItem('LoveStoryToken')
+      let storedToken = localStorage.getItem('LoveStoryFEToken')
       if (storedToken) {
         state.token = JSON.parse(storedToken)
       }
@@ -28,7 +28,7 @@ export const store = () => new Vuex.Store({
   mutations: {
     setToken (state, {value, expire}) {
       state.token = { value, expire }
-      localStorage.setItem('LoveStoryToken', JSON.stringify(state.token))
+      localStorage.setItem('LoveStoryFEToken', JSON.stringify(state.token))
     }
   },
   actions: {

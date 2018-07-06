@@ -1,10 +1,11 @@
 <template>
-  <div class="info-box">
-    <div class="logo">
-      <img :src="siteLogo"
-          style="width: 100%; height: 100%">
+  <el-row class="info-box">
+    <div class="logo" :style="`background-image: url('${siteLogo}');`"
+      @click="$router.push('/')">
+      <!-- <span class="text-logo">爱情故事</span> -->
+      <!-- <img :src="siteLogo" style="width: 100%; height: 100%"> -->
     </div>
-    <div class="info">
+    <div class="info hidden-sm-and-down">
       <div class="info-row1">
         向会员提供，高品质，高效率
       </div>
@@ -15,8 +16,8 @@
     <div class="tel">
       <span class="icon-phone tel-icon"></span>
       <span class="tel-number">{{hotLine}}</span>
-      </div>
-  </div>
+    </div>
+  </el-row>
 </template>
 
 <script>
@@ -26,7 +27,7 @@ import siteService from '@/services/siteService'
 export default {
   data () {
     return {
-      hotLine: 'hotline'
+      hotLine: ''
     }
   },
   methods: {
@@ -64,12 +65,22 @@ export default {
   background: white;
   .logo {
     box-sizing: border-box;
-    min-width: 200px;
-    min-height: 70px;
+    width: 200px;
+    height: 70px;
     margin-right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    // .text-logo{
+    //   font-size: 50px;
+    //   color: #F4336A;
+    //   font-weight: bold;
+    //   user-select: none;
+    //   cursor: pointer;
+    // }
   }
   .info {
     border-left: 1px solid lightgray;

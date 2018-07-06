@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" :style="`background-image: url('${loginbg}');`">
      <div class="login-box">
       <div class="login-content">
         <div class="login-header">
@@ -102,6 +102,7 @@
 
 <script>
 import userService from '@/services/userService'
+import imageService from '@/services/imageService'
 import OtpBtn from '@/components/OtpBtn'
 import PlainInput from '@/components/PlainInput'
 
@@ -171,6 +172,11 @@ export default {
         console.log(error)
       }
     }
+  },
+  computed: {
+    loginbg () {
+      return imageService.loginbg
+    }
   }
 }
 </script>
@@ -182,7 +188,7 @@ export default {
   // height: 520px;
   border-top: 2px solid #F3487E;
   box-sizing: border-box;
-  background-image: url("https://dummyimage.com/1200x520/eee/3ff.jpg&text=pic");
+  // background-image: url("https://dummyimage.com/1200x520/eee/3ff.jpg&text=pic");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
