@@ -172,14 +172,15 @@ export default {
           }
         })
         let {originProvince, originCity} = res.data.details
-        this.familyInfo.origin = [originProvince[0], originCity[0]]
+        this.familyInfo.origin = originProvince ? [originProvince[0], originCity[0]] : []
         let {bigBrother, youngBrother, bigSister, youngSister} = res.data.details
-        this.relative.brother = {num: bigBrother[0], checked: Boolean(bigBrother[0])}
-        this.relative.youngerBro = {num: youngBrother[0], checked: Boolean(youngBrother[0])}
-        this.relative.sister = {num: bigSister[0], checked: Boolean(bigSister[0])}
-        this.relative.youngerSis = {num: youngSister[0], checked: Boolean(youngSister[0])}
+        this.relative.brother = bigBrother ? {num: bigBrother[0], checked: Boolean(bigBrother[0])} : {num: 0, checked: false}
+        this.relative.youngerBro = youngBrother ? {num: youngBrother[0], checked: Boolean(youngBrother[0])} : {num: 0, checked: false}
+        this.relative.sister = bigSister ? {num: bigSister[0], checked: Boolean(bigSister[0])} : {num: 0, checked: false}
+        this.relative.youngerSis = youngSister ? {num: youngSister[0], checked: Boolean(youngSister[0])} : {num: 0, checked: false}
       } catch (error) {
-        userService.handleErr(error)
+        console.log(error)
+        // userService.handleErr(error)
       }
     }
   },

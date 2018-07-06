@@ -13,7 +13,8 @@
         <div class="info-item" style="margin-bottom: 20px">
           <div class="activity-intro">活动介绍: {{activityInfo.introduction}}</div>
         </div>
-        <div class="info-detail-btn">查看更多</div>
+        <div class="info-detail-btn" v-if="activityInfo.id"
+          @click="checkDetail">查看更多</div>
       </div>
       <div class="activity-pic-box">
         <img :src="activityInfo.image_url"
@@ -32,6 +33,7 @@ export default {
     return {
       show: false,
       activityInfo: {
+        id: null,
         title: '户外踏青交友联谊',
         time: '2017-09-09 14:00 ~ 2017-09-09 17:00',
         address: '成都市青羊区蜀辉路黄苑街563九德会',
@@ -43,8 +45,8 @@ export default {
     isActiveTab (index) {
       return index === this.activeTab
     },
-    getInfo (index) {
-      this.$router.push({name: 'news-detail', params: {'category': 'notification', 'id': index}})
+    checkDetail () {
+      this.$router.push({name: 'activities-detail', params: {id: this.activityInfo.id}})
     },
     async getList (page = 1) {
       try {
@@ -142,6 +144,10 @@ export default {
         color: black;
         line-height: 30px;
         cursor: pointer;
+        &.info-detail-btn:hover{
+          color: #D3016F;
+          border-color: #D3016F;
+        }
       }
     }
     .activity-pic-box {

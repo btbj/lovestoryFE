@@ -3,20 +3,19 @@
     <div class="page-cards">
       <div class="single-card" v-for="(member, index) in memberCardsList"
         :key="index">
-        <div class="card-pic">
-          <img :src="member.head_image_url"
-                class="img-style">
+        <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
+          <!-- <img :src="member.head_image_url" class="img-style"> -->
         </div>
         <div class="card-info">
           <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
-            {{member.name}}
+            {{member.nickname}}
           </div>
           <div class="member-info-item">年龄：{{member.age}}</div>
           <div class="member-info-item">身高：{{member.height}}</div>
           <div class="member-info-item">学历：{{member.education}}</div>
           <div class="member-info-item">收入：{{member.income}}</div>
           <div class="member-detail-btn">
-            <div class="btn">查看详情</div>
+            <div class="btn" @click="checkUserDetail(member)">查看详情</div>
           </div>
         </div>
       </div>
@@ -45,6 +44,9 @@ export default {
     }
   },
   methods: {
+    checkUserDetail (user) {
+      this.$router.push({name: 'userinfo', params: {'id': user.id}})
+    },
     async getList (page = 1) {
       try {
         let res = await userService.recommends({
@@ -100,6 +102,8 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-size: cover;
+        background-position: center;
         .img-style {
           max-width: 100%;
           max-height: 100%;
@@ -110,7 +114,7 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         width: 95px;
-        height: 100%;
+        height: 155px;
         box-sizing: border-box;
         .member-info-item {
           font-size: 14px;

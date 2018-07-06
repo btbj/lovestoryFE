@@ -6,44 +6,40 @@
         <span>我的择偶标准</span>
       </div>
       <div class="personal-info-content">
-        <div class="content-item-row">
-          <div class="item-column">
+        <div class="pi-content-item-row">
+          <div class="pi-item-column">
             <span class="label">年龄</span>：
-            <span>26~32岁之间</span>
+            <span>{{ageOptionText}}</span>
           </div>
-          <div class="item-column">
+          <div class="pi-item-column">
             <span class="label">身高</span>：
-            <span>158-164cm</span>
+            <span>{{heightOptionText}}</span>
           </div>
         </div>
-        <div class="content-item-row">
-          <div class="item-column">
+        <div class="pi-content-item-row">
+          <div class="pi-item-column">
             <span class="label">民族</span>：
-            <span>不限</span>
+            <span>{{optionInfo.nation || '不限'}}</span>
           </div>
-          <div class="item-column">
+          <div class="pi-item-column">
             <span class="label">学历</span>：
-            <span>不限</span>
+            <span>{{optionInfo.education || '不限'}}</span>
           </div>
         </div>
-        <div class="content-item-row">
-          <div class="item-column">
+        <div class="pi-content-item-row">
+          <div class="pi-item-column">
             <span class="label">相册</span>：
-            <span>有照片</span>
+            <span>{{optionInfo.hasPic || '不限'}}</span>
           </div>
-          <div class="item-column">
+          <div class="pi-item-column">
             <span class="label">婚姻状况</span>：
-            <span>不限</span>
+            <span>{{optionInfo.marriageStatus || '不限'}}</span>
           </div>
         </div>
-        <div class="content-item-row">
-          <div class="item-column">
+        <div class="pi-content-item-row">
+          <div class="pi-item-column">
             <span class="label">居住地</span>：
-            <span>浙江宁波</span>
-          </div>
-          <div class="item-column">
-            <span class="label">诚信</span>：
-            <span>不限</span>
+            <span>{{optionInfo.province ? optionInfo.province + ' ' + optionInfo.city : '不限'}}</span>
           </div>
         </div>
       </div>
@@ -55,15 +51,14 @@
         <span>今日推荐</span>
       </div>
       <div class="personal-info-pic-content">
-        <div class="pic-box" v-for="(recommend, index) in recommendList"
-             :key="index">
-          <div class="pic">
-            <img :src=recommend.img
-                 class="img-style">
+        <div class="pi-pic-box" v-for="(recommend, index) in recommendList" :key="index"
+          @click="checkUser(recommend)">
+          <div class="pi-pic" :style="`background-image: url(${recommend.head_image_url})`">
+            <!-- <img :src=recommend.img class="img-style"> -->
           </div>
           <div class="word">
-            <div class="first-row">{{recommend.name}}&nbsp;&nbsp;&nbsp;&nbsp;{{recommend.age}}岁</div>
-            <div>{{recommend.intro}}</div>
+            <div class="first-row"><span style="margin-right: 10px;">{{recommend.nickname}}</span><span>{{recommend.age}}岁</span></div>
+            <div>{{recommend.monologue}}</div>
           </div>
         </div>
       </div>
@@ -74,15 +69,14 @@
         <span>谁看过我</span>
       </div>
       <div class="personal-info-pic-content">
-        <div class="pic-box" v-for="(vistor, index) in vistorList"
-             :key="index">
-          <div class="pic">
-            <img :src=vistor.img
-                 class="img-style">
+        <div class="pi-pic-box" v-for="(visitor, index) in visitorList" :key="index"
+          @click="checkUser(visitor)">
+          <div class="pi-pic" :style="`background-image: url(${visitor.head_image_url})`">
+            <!-- <img :src=visitor.img class="img-style"> -->
           </div>
           <div class="word">
-            <div class="first-row">{{vistor.name}}</div>
-            <div>{{vistor.age}}岁, {{vistor.address}}</div>
+            <div class="first-row">{{visitor.nickname}}</div>
+            <div><span>{{visitor.age}}岁</span> <span v-if="visitor.province" class="margin-left: 10px;">{{visitor.province + ' ' + visitor.city}}</span></div>
           </div>
         </div>
       </div>
@@ -93,14 +87,13 @@
         <span>谁关注我</span>
       </div>
       <div class="personal-info-pic-content">
-        <div class="pic-box" v-for="(follower, index) in followerList"
-             :key="index">
-          <div class="pic">
-            <img :src=follower.img
-                 class="img-style">
+        <div class="pi-pic-box" v-for="(follower, index) in followerList" :key="index"
+          @click="checkUser(follower)">
+          <div class="pi-pic" :style="`background-image: url(${follower.head_image_url})`">
+            <!-- <img :src=follower.img class="img-style"> -->
           </div>
           <div class="word">
-            <div class="first-row">{{follower.name}}</div>
+            <div class="first-row">{{follower.nickname}}</div>
             <div>{{follower.age}}岁, {{follower.address}}</div>
           </div>
         </div>
@@ -110,91 +103,120 @@
 </template>
 
 <script>
+import userService from '@/services/userService'
+
 export default {
   data () {
     return {
-      vistorList:
-        [{
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }],
-      followerList:
-        [{
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          address: '杭州湾新区'
-        }],
-      recommendList:
-        [{
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          intro: '我是一个靠谱,乐观,简单的人'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          intro: '我是一个靠谱,乐观,简单的人'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          intro: '我是一个靠谱,乐观,简单的人'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          intro: '我是一个靠谱,乐观,简单的人'
-        }, {
-          img: 'https://dummyimage.com/110x140/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34',
-          intro: '我是一个靠谱,乐观,简单的人'
-        }]
+      optionInfo: {
+        province: '',
+        city: '',
+        ageMin: '',
+        ageMax: '',
+        marriageStatus: '',
+        heightMin: '',
+        heightMax: '',
+        nation: '',
+        hasPic: ''
+      },
+      visitorList: [],
+      followerList: [],
+      recommendList: []
     }
+  },
+  methods: {
+    checkUser (member) {
+      this.$router.push({name: 'userinfo', params: {'id': member.id}})
+    },
+    async getUserInfo () {
+      try {
+        let res = await userService.getInfo({
+          token: this.$store.getters.token
+        })
+        console.log(res)
+        let {province, city, age_max: ageMax, age_min: ageMin, height_max: heightMax, height_min: heightMin, marital_status: marriageStatus, education, nation, has_images: hasPic} = res.data.info.condition
+        this.optionInfo = {
+          province,
+          city,
+          ageMin,
+          ageMax,
+          marriageStatus,
+          heightMin,
+          heightMax,
+          education,
+          nation,
+          hasPic: hasPic === '0' ? '不限' : '有照片'
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getRecommendsList () {
+      try {
+        let res = await userService.recommends({
+          token: this.$store.getters.token,
+          num: 5
+        })
+        console.log('success', res)
+        this.recommendList = res.data.users
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getVisitorList () {
+      try {
+        let res = await userService.seenMeUsers({
+          token: this.$store.getters.token,
+          num: 5
+        })
+        console.log('success', res)
+        this.visitorList = res.data.users
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getFollowerList () {
+      try {
+        let res = await userService.attentionMeUsers({
+          token: this.$store.getters.token,
+          num: 5
+        })
+        console.log('success', res)
+        this.followerList = res.data.users
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  computed: {
+    ageOptionText () {
+      let max = this.optionInfo.ageMax
+      let min = this.optionInfo.ageMin
+      if (max) {
+        return `在${min}岁~${max}岁之间`
+      } else if (min) {
+        return `${min}岁以上`
+      } else {
+        return '不限'
+      }
+    },
+    heightOptionText () {
+      let max = this.optionInfo.heightMax
+      let min = this.optionInfo.heightMin
+      if (max) {
+        return `${min}~${max}cm`
+      } else if (min) {
+        return `${min}cm以上`
+      } else {
+        return '不限'
+      }
+    }
+  },
+  mounted: async function () {
+    this.getUserInfo()
+    this.getRecommendsList()
+    this.getVisitorList()
+    this.getFollowerList()
   }
 
 }
@@ -239,19 +261,19 @@ export default {
       font-size: 14px;
       padding: 5px 5px 5px 25px;
       text-align: left;
-      .content-item-row {
+      .pi-content-item-row {
         width: 100%;
         height: 20px;
         box-sizing: border-box;
         font-size: 14px;
         margin-bottom: 10px;
         display: flex;
-        .item-column {
+        .pi-item-column {
           display: flex;
           align-items: center;
           width: 50%;
           .label{
-            width: 70px;
+            width: 80px;
             text-align-last: justify;
           }
         }
@@ -263,15 +285,16 @@ export default {
       box-sizing: border-box;
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      .pic-box {
+      justify-content: flex-start;
+      .pi-pic-box {
+        flex-basis: 20%;
         width: 110px;
         height: 100%;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        .pic {
-          width: 100%;
+        .pi-pic {
+          width: 95%;
           height: 140px;
           box-sizing: border-box;
           overflow: hidden;
@@ -280,6 +303,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          background-size: cover;
+          background-position: center;
           .img-style {
             max-width: 100%;
             max-height: 100%;

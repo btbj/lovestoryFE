@@ -22,9 +22,8 @@
       </div>
       <div class="wechat-box">
         <div class="wechat-label">关注微信</div>
-        <div class="wechat-qrcode">
-          <img src="https://dummyimage.com/80x80/333/3ff.jpg&text=pic"
-               class="img-style">
+        <div class="wechat-qrcode" v-if="wechatQR">
+          <img :src="wechatQR" class="img-style">
         </div>
       </div>
     </div>
@@ -33,8 +32,27 @@
 </template>
 
 <script>
-export default {
+import siteService from '@/services/siteService'
 
+export default {
+  data () {
+    return {
+      wechatQR: null
+    }
+  },
+  methods: {
+    async getQRCode () {
+      try {
+        let res = await siteService.info({id: 16})
+        this.wechatQR = res.data.info.url
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getQRCode()
+  }
 }
 </script>
 

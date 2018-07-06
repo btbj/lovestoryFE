@@ -6,8 +6,8 @@
     <div class="user-address">{{userInfo.info.address}}</div>
     <div class="user-status">{{UserAge}} {{userInfo.info.marital_status}}</div>
     <div class="user-fans-row">
-      <div class="item">粉丝  <span class="num fans">108</span></div>
-      <div class="item">关注  <span class="num follow">58</span></div>
+      <div class="item">粉丝  <span class="num fans">{{userInfo.info.fans_num}}</span></div>
+      <div class="item">关注  <span class="num follow">{{userInfo.info.attention_num}}</span></div>
     </div>
   </div>
 </template>

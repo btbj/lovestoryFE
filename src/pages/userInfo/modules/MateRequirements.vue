@@ -57,7 +57,6 @@
 <script>
 export default {
   props: ['info']
-
 }
 </script>
 

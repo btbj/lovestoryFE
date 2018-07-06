@@ -20,7 +20,7 @@
             <!-- <img :src="news.image_url" class="img-style"> -->
           </div>
           <div class="info-words">
-            <div class="info-title"> {{news.title}} </div>
+            <div class="info-title" @click="checkNewsDetail(news.id)"> {{news.title}} </div>
             <div class="info-content"> {{news.content}} </div>
           </div>
         </div>
@@ -42,6 +42,9 @@ export default {
     }
   },
   methods: {
+    checkNewsDetail (id) {
+      this.$router.push({name: 'news-detail', params: {'category': this.type, id}})
+    },
     async getNews (type = 'company') {
       this.type = type
       try {
@@ -150,7 +153,6 @@ export default {
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        cursor: pointer;
         border-bottom: 1px solid lightgrey;
         padding: 5px 0;
         .info-pic {
@@ -175,6 +177,10 @@ export default {
           .info-title {
             font-size: 16px;
             margin-bottom: 10px;
+            cursor: pointer;
+            &.info-title:hover{
+              color: #FF70A2;
+            }
           }
           .info-content {
             flex: 1;

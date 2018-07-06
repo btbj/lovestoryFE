@@ -1,42 +1,18 @@
 <template>
   <div class="home-love-pics">
-    <div class="first-row">
-      <div class="first-row-pic"
-           style="background-image: url('https://dummyimage.com/408x200/333/3ff.jpg&text=pic')">
+    <div class="first-row" v-if="storyList.length >= 2">
+      <div class="first-row-pic" v-for="(item, index) in firstRow" :key="index"
+        :style="`background-image: url('${item.image_url}')`" @click="checkDetail(item)">
         <div class="first-pic-logo">
-          <div class="first-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="first-row-pic"
-           style="background-image: url('https://dummyimage.com/408x200/333/3ff.jpg&text=pic')">
-        <div class="first-pic-logo">
-          <div class="first-logo-words">晒幸福</div>
+          <div class="first-logo-words index-story-title">{{item.title}}</div>
         </div>
       </div>
     </div>
-    <div class="second-row">
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
+    <div class="second-row" v-if="storyList.length >= 6">
+      <div class="second-row-pic" v-for="(item, index) in secondRow" :key="index"
+        :style="`background-image: url('${item.image_url}')`" @click="checkDetail(item)">
         <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
-        </div>
-      </div>
-      <div class="second-row-pic"
-           style="background-image: url('https://dummyimage.com/200x150/333/3ff.jpg&text=pic')">
-        <div class="second-pic-logo">
-          <div class="second-logo-words">晒幸福</div>
+          <div class="second-logo-words index-story-title">{{item.title}}</div>
         </div>
       </div>
     </div>
@@ -44,8 +20,51 @@
 </template>
 
 <script>
+import articleService from '@/services/articleService'
 export default {
-
+  data () {
+    return {
+      storyList: [ ]
+    }
+  },
+  methods: {
+    checkDetail (story) {
+      // this.$router.push({name: 'newsinfo', params: {'id': index}})
+      this.$router.push({name: 'lovestory-detail', params: {'id': story.id}})
+    },
+    async getList (page = 1) {
+      try {
+        let res = await articleService.articles({
+          category: 6,
+          page,
+          per_page: 6
+        })
+        console.log('success', res)
+        this.storyList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  computed: {
+    firstRow () {
+      let array = []
+      if (this.storyList.length >= 2) {
+        array = [this.storyList[0], this.storyList[1]]
+      }
+      return array
+    },
+    secondRow () {
+      let array = []
+      if (this.storyList.length >= 6) {
+        array = this.storyList.filter((item, index) => { return index >= 2 })
+      }
+      return array
+    }
+  },
+  mounted: async function () {
+    this.getList()
+  }
 }
 </script>
 
@@ -77,11 +96,15 @@ export default {
         border-bottom: 30px solid #FD6F9F;
         border-left: 30px solid transparent;
         width: 120px;
-        cursor: pointer;
         .first-logo-words {
           position: relative;
           top: 25px;
           color: white;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        .index-story-title{
+          width: 120px;
         }
       }
     }
@@ -92,6 +115,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
+
     .second-row-pic {
       width: 200px;
       height: 100%;
@@ -106,14 +130,25 @@ export default {
         border-bottom: 25px solid #FD6F9F;
         border-left: 25px solid transparent;
         width: 90px;
-        cursor: pointer;
+        display: flex;
         .second-logo-words {
           position: relative;
           top: 22px;
           color: white;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        .index-story-title{
+          width: 80px;
         }
       }
     }
+  }
+  .index-story-title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-self: flex-end;
   }
 }
 

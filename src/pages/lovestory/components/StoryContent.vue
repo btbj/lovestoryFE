@@ -5,80 +5,23 @@
       <contact-us></contact-us>
     </div>
     <div class="content-info-box">
-      <div class="inner-item-box">
-        <content-nav>
-          <span slot="rightTitle">晒幸福</span>
-          <span slot="leftFirstTitle">首页></span>
-          <span slot="leftSecondTitle">晒幸福></span>
-        </content-nav>
-        <div class="inner-item-content">
-          <div class="card-box" v-for="(story, index) in storyList"
-                :key="index">
-          <div class="card-pic" :style="`background-image: url('${story.image_url}');`">
-              <!-- <img :src="story.image_url" class="img-style"> -->
-            </div>
-            <div class="story-title">{{story.title}}</div>
-            <div class="story-content">{{story.content}}</div>
-          </div>
-
-        </div>
-        <div class="pagination-box">
-          <page-pagination :paginationData="paginationData" @change="getList"></page-pagination>
-        </div>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import articleService from '@/services/articleService'
 const NewNews = r => require.ensure([], () => r(require('@/frame/sidebar/NewNews')), 'story')
 const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/ContactUs')), 'story')
-const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'story')
-const PagePagination = r => require.ensure([], () => r(require('@/components/PagePagination')), 'story')
 
 export default {
   components: {
     NewNews,
-    ContactUs,
-    ContentNav,
-    PagePagination
+    ContactUs
   },
   data () {
     return {
-      paginationData: {
-        current: 1,
-        total: 1,
-        size: 9
-      },
-      storyList: [ ]
     }
-  },
-  methods: {
-    checkDetail (id) {
-      // this.$router.push({name: 'newsinfo', params: {'id': index}})
-      this.$router.push({name: 'news-detail', params: {'category': 'company', 'id': id}})
-    },
-    async getList (page = 1) {
-      try {
-        let res = await articleService.articles({
-          category: 6,
-          page,
-          per_page: this.paginationData.size
-        })
-        console.log('success', res)
-        this.storyList = res.data.articles
-        let {count: total, page: current, per_page: size} = res.data
-        this.paginationData = {
-          current, total, size
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  },
-  mounted: async function () {
-    this.getList()
   }
 }
 </script>
