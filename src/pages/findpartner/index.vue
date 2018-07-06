@@ -35,6 +35,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '寻找对象',
+    meta: [
+      { name: 'keywords', content: '寻找对象,对象搜索' }
+    ]
   }
 
 }

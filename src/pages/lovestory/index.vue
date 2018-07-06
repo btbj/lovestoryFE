@@ -35,6 +35,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '晒幸福',
+    meta: [
+      { name: 'keywords', content: '晒幸福,分享幸福' }
+    ]
   }
 
 }

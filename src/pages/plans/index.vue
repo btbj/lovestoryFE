@@ -34,6 +34,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '定制服务',
+    meta: [
+      { name: 'keywords', content: '定制服务,会员定制,特别策划' }
+    ]
   }
 
 }

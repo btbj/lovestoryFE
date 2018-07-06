@@ -34,6 +34,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '活动互动',
+    meta: [
+      { name: 'keywords', content: '活动互动,活动信息' }
+    ]
   }
 
 }

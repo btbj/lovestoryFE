@@ -32,6 +32,12 @@ export default {
     LeftBar,
     IndexBottom
   },
+  metaInfo: {
+    title: '个人中心',
+    meta: [
+      { name: 'keywords', content: '个人中心' }
+    ]
+  },
   computed: {
     currentToken () {
       return this.$store.getters.token

@@ -14,7 +14,13 @@ const LoginBody = r => require.ensure([], () => r(require('./components/LoginBod
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'login')
 
 export default {
-  components: { IndexHeader, LoginBody, IndexBottom }
+  components: { IndexHeader, LoginBody, IndexBottom },
+  metaInfo: {
+    title: '登录页面',
+    meta: [
+      { name: 'keywords', content: '登录页面,爱情故事登录页面' }
+    ]
+  }
 
 }
 </script>
