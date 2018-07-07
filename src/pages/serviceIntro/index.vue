@@ -34,6 +34,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '服务介绍',
+    meta: [
+      { name: 'keywords', content: '服务介绍' }
+    ]
   }
 
 }

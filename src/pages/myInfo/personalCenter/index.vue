@@ -39,7 +39,7 @@
         <div class="pi-content-item-row">
           <div class="pi-item-column">
             <span class="label">居住地</span>：
-            <span>{{optionInfo.province ? optionInfo.province + ' ' + optionInfo.city : '不限'}}</span>
+            <span>{{optionInfo.province ? optionInfo.province : '不限'}}</span>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
           </div>
           <div class="word">
             <div class="first-row">{{visitor.nickname}}</div>
-            <div><span>{{visitor.age}}岁</span> <span v-if="visitor.province" class="margin-left: 10px;">{{visitor.province + ' ' + visitor.city}}</span></div>
+            <div><span>{{visitor.age}}岁</span> <span v-if="visitor.province" class="margin-left: 10px;">{{visitor.province}}</span></div>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
           </div>
           <div class="word">
             <div class="first-row">{{follower.nickname}}</div>
-            <div>{{follower.age}}岁, {{follower.address}}</div>
+            <div>{{follower.age}}岁, {{follower.province}}</div>
           </div>
         </div>
       </div>
@@ -155,7 +155,8 @@ export default {
       try {
         let res = await userService.recommends({
           token: this.$store.getters.token,
-          num: 5
+          num: 5,
+          per_page: 5
         })
         console.log('success', res)
         this.recommendList = res.data.users
@@ -167,7 +168,8 @@ export default {
       try {
         let res = await userService.seenMeUsers({
           token: this.$store.getters.token,
-          num: 5
+          num: 5,
+          per_page: 5
         })
         console.log('success', res)
         this.visitorList = res.data.users
@@ -179,7 +181,8 @@ export default {
       try {
         let res = await userService.attentionMeUsers({
           token: this.$store.getters.token,
-          num: 5
+          num: 5,
+          per_page: 5
         })
         console.log('success', res)
         this.followerList = res.data.users

@@ -105,7 +105,7 @@ export default {
         // name: 'btbj',
         sex: '男',
         birthday: '',
-        address: ['北京市', '东城区'],
+        address: ['慈溪市', '慈溪市'],
         marrageState: '未婚',
         height: '',
         education: '',

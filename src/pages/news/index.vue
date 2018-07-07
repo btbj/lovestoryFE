@@ -35,6 +35,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '新闻资讯',
+    meta: [
+      { name: 'keywords', content: '新闻资讯,公司新闻,行业资讯,通知公告' }
+    ]
   }
 
 }

@@ -17,9 +17,19 @@
       <div class="extended-box">
         <div class="message">{{TagData.message}}</div>
         <div class="box-row">
-          <el-select size="mini" class="area-selector" v-model="TagData.area" placeholder="请选择">
+          <el-select size="mini" class="area-selector" v-model="TagData.province" placeholder="请选择"
+            @change="() => {TagData.city = ''}">
             <el-option
-              v-for="(item, index) in AreaList"
+              v-for="(item, index) in provinceList"
+              :key="index"
+              :label="item"
+              :value="item">
+            </el-option>
+          </el-select>
+          <el-select size="mini" class="area-selector" v-model="TagData.city" placeholder="请选择">
+            <el-option label="不限" value=""></el-option>
+            <el-option
+              v-for="(item, index) in cityList"
               :key="index"
               :label="item"
               :value="item">
@@ -34,16 +44,18 @@
 
 <script>
 import TagEventBus from '@/components/eventBus'
+import AddressRawData from './addressBook'
 
 export default {
   props: ['value'],
   data () {
     return {
-      AreaList: ['宁波市区', '海曙区', '江东区', '江北区', '北仑区', '镇海区', '鄞州区', '象山区', '宁海县', '余姚市', '慈溪市', '奉化市'],
+      AddressData: null,
       TagData: {
         title: '地区',
         message: '请选择地区',
-        area: '慈溪市',
+        province: '北京市',
+        city: '',
         extended: false
       }
     }
@@ -52,20 +64,25 @@ export default {
     extendTag (extended = false) {
       if (extended) {
         TagEventBus.$emit('closeAll')
-        this.TagData.area = this.value[0] || '慈溪市'
+        this.TagData.province = this.value[0] || '北京市'
+        this.TagData.city = this.value[1] || ''
       }
       this.TagData.extended = extended
     },
     confirmNewValue () {
       this.TagData.extended = false
-      if (this.TagData.area) {
-        let newData = [this.TagData.area, this.TagData.area]
+      if (this.TagData.province) {
+        let newData = [this.TagData.province]
+        if (this.TagData.city) {
+          newData.push(this.TagData.city)
+        }
         this.$emit('input', newData)
         TagEventBus.$emit('getNewData')
       }
     },
     resetValue () {
-      this.TagData.area = '慈溪市'
+      this.TagData.province = '北京市'
+      this.TagData.city = ''
       this.$emit('input', [])
       TagEventBus.$emit('getNewData')
     }
@@ -75,14 +92,30 @@ export default {
       let result = this.TagData.title
       if (this.value.length) {
         result = '（来自）' + this.value[0]
-        // if (this.value[1]) {
-        //   result += `, ${this.value[1]}`
-        // }
+        if (this.value[1]) {
+          result += `, ${this.value[1]}`
+        }
       }
       return result
+    },
+    provinceList () {
+      return Object.keys(this.AddressData)
+    },
+    cityList () {
+      if (this.TagData.province) {
+        let citys = Object.keys(this.AddressData[this.TagData.province])
+        if (citys.length === 1) {
+          return Object.values(this.AddressData[this.TagData.province])[0]
+        } else {
+          return citys
+        }
+      } else {
+        return null
+      }
     }
   },
   mounted: function () {
+    this.AddressData = AddressRawData
     TagEventBus.$on('closeAll', this.extendTag)
     window.addEventListener('click', () => {
       TagEventBus.$emit('closeAll')

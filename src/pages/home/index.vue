@@ -69,14 +69,11 @@ export default {
     IndexOnlineService,
     IndexBottom
   },
-  data () {
-    return {
-    }
-  },
-  methods: {
-
-  },
-  mounted: function () {
+  metaInfo: {
+    title: '爱情故事',
+    meta: [
+      { name: 'keywords', content: '爱情故事首页' }
+    ]
   }
 }
 </script>

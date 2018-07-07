@@ -19,6 +19,12 @@ export default {
     RegisterBody,
     IndexBottom
   },
+  metaInfo: {
+    title: '注册',
+    meta: [
+      { name: 'keywords', content: '注册,会员注册' }
+    ]
+  },
   computed: {
     currentToken () {
       return this.$store.getters.token

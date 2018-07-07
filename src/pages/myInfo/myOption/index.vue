@@ -220,12 +220,12 @@ export default {
     optionAddressText () {
       let result = ''
       let province = this.optionInfo.address[0]
-      let city = this.optionInfo.address[1]
+      // let city = this.optionInfo.address[1]
       if (province) {
         result += province
-        if (city) {
-          result += ' ' + city
-        }
+        // if (city) {
+        //   result += ' ' + city
+        // }
       } else {
         result += '不限'
       }

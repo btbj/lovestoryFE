@@ -1,9 +1,9 @@
 <template>
   <div class="news-list-root">
     <content-nav>
-      <span slot="rightTitle">互动活动</span>
+      <span slot="rightTitle">活动互动</span>
       <span slot="leftFirstTitle">首页></span>
-      <span slot="leftSecondTitle">互动活动</span>
+      <span slot="leftSecondTitle">活动互动</span>
     </content-nav>
     <div class="_inner-item-content" v-if="newsDetail">
       <div class="_inner-news-title-box">

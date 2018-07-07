@@ -45,6 +45,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '关于我们',
+    meta: [
+      { name: 'keywords', content: '关于我们,公司信息,联系方式,工作环境' }
+    ]
   }
 
 }

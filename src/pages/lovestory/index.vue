@@ -35,6 +35,12 @@ export default {
     IndexCompanyInfo,
     IndexOnlineService,
     IndexBottom
+  },
+  metaInfo: {
+    title: '晒幸福',
+    meta: [
+      { name: 'keywords', content: '晒幸福,分享幸福' }
+    ]
   }
 
 }
@@ -62,7 +68,7 @@ export default {
     margin-bottom: 1px;
   }
   .story-content-container {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     box-sizing: border-box;
   }
