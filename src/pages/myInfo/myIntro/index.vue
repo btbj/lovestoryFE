@@ -12,7 +12,7 @@
     </div>
     <div class="option-btn">
       <div class="btn" @click="submitInfo">保存并继续</div>
-      <div class="btn">跳过此页</div>
+      <div class="btn" @click="$router.push({name: 'myinfo-mypics'})">跳过此页</div>
     </div>
   </div>
 </template>

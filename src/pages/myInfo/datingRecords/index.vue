@@ -51,8 +51,8 @@ export default {
     justify-content: flex-start;
     border-bottom: 1px solid #F1356F;
     .switch-tab-item{
-      height: 35px;
-      width: 120px;
+      height: 45px;
+      width: 150px;
       font-size: 14px;
       box-sizing: border-box;
       margin-right: -1px;
@@ -67,6 +67,7 @@ export default {
       }
       span{
         width: 100%;
+        line-height: 20px;
         border-right: 1px solid #F1356F;
       }
     }

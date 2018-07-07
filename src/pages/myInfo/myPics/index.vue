@@ -21,8 +21,8 @@
     <div class="seprator"></div>
     <pic-wall></pic-wall>
     <div class="option-btn">
-      <div class="btn" @click="nextStep">保存并继续</div>
-      <div class="btn" @click="nextStep">跳过此页</div>
+      <div class="btn" @click="nextStep">继续</div>
+      <!-- <div class="btn" @click="nextStep">跳过此页</div> -->
     </div>
   </div>
 </template>

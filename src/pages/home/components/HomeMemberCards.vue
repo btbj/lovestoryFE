@@ -31,16 +31,7 @@ export default {
   data () {
     return {
       show: false,
-      memberCardsList: [
-        {
-          img: 'https://dummyimage.com/100x155/333/3ff.jpg&text=pic',
-          name: '雅萱',
-          age: '34岁',
-          height: '176',
-          education: '海龟硕士',
-          income: '150000'
-        }
-      ]
+      memberCardsList: [ ]
     }
   },
   methods: {
@@ -50,6 +41,7 @@ export default {
     async getList (page = 1) {
       try {
         let res = await userService.recommends({
+          token: this.$store.getters.token,
           num: 8
         })
         console.log('success', res)

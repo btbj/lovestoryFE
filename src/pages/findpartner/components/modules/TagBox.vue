@@ -202,7 +202,7 @@ export default {
     .row-label {
       align-self: flex-start;
       margin-top: 10px;
-      width: 70px;
+      width: 100px;
       font-size: 14px;
       font-weight: bold;
     }
