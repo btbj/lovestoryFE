@@ -5,22 +5,7 @@
       <span class="icon-radio_button_unchecked item-icon"></span>
       <span>密码修改</span>
     </div>
-    <div class="account-step-box">
-      <div :class="['step-item-box', stepNum === '1' ? 'selected' : '']">
-        <div class="step-rectangle">1&nbsp;安全验证</div>
-        <div class="step-solid-triangle"></div>
-      </div>
-      <div class="step-item-box"></div>
-      <div :class="['step-item-box', stepNum === '3' ? 'selected' : '']">
-        <div class="step-hollow-triangle"></div>
-        <div class="step-rectangle">3&nbsp;修改成功</div>
-      </div>
-    </div>
-    <div :class="['step-middle-box', stepNum === '2' ? 'selected' : '']">
-      <div class="step-hollow-triangle"></div>
-      <div class="step-rectangle" style="width: 178px">2&nbsp;输入新密码</div>
-      <div class="step-solid-triangle"></div>
-    </div>
+    <step-header :step-num="stepNum"></step-header>
     <div class="account-step-content" v-if="stepNum === '1'">
       <div class="item-row">
         <div class="row-label">您的手机号是:</div>
@@ -45,7 +30,7 @@
         </div>
       </div>
       <div class="btn-group">
-        <div class="btn" style="margin-left: 200px" @click="verifyCode">下一步</div>
+        <div class="btn" @click="verifyCode">下一步</div>
         <!-- <div class="btn" style="margin-left: 20px"
              @click="verifyCode">下一步</div> -->
       </div>
@@ -66,7 +51,7 @@
         </div>
       </div>
       <div class="btn-group">
-        <div class="btn" style="margin-left: 200px" @click="changePwd">修改</div>
+        <div class="btn"  @click="changePwd">修改</div>
         <!-- <div class="btn" style="margin-left: 20px"
              @click="nextStep('3')">下一步</div> -->
       </div>
@@ -80,9 +65,10 @@
 <script>
 import userService from '@/services/userService'
 import OtpBtn from '@/components/OtpBtn'
+import StepHeader from './components/StepHeader'
 
 export default {
-  components: { OtpBtn },
+  components: { OtpBtn, StepHeader },
   data () {
     return {
       loading: false,
@@ -184,58 +170,6 @@ export default {
       margin-right: 10px;
     }
   }
-  .step-middle-box {
-    height: 40px;
-    box-sizing: border-box;
-    display: flex;
-    margin-top: -40px;
-    margin-left: 164px;
-  }
-  .step-rectangle {
-    width: 154px;
-    height: 100%;
-    background-color: lightgrey;
-    line-height: 40px;
-  }
-  .step-solid-triangle {
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-left: 40px solid lightgrey;
-    border-bottom: 20px solid transparent;
-  }
-  .step-hollow-triangle {
-    width: 0;
-    height: 0;
-    border-top: 20px solid lightgrey;
-    border-left: 40px solid transparent;
-    border-bottom: 20px solid lightgrey;
-  }
-  .selected {
-    .step-rectangle {
-      background-color: #F1356F;
-      color: white;
-    }
-    .step-solid-triangle {
-      border-left: 40px solid #F1356F;
-    }
-    .step-hollow-triangle {
-      border-top: 20px solid #F1356F;
-      border-bottom: 20px solid #F1356F;
-    }
-  }
-  .account-step-box {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    .step-item-box {
-      width: 196px;
-      height: 40px;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-    }
-  }
   .account-step-content {
     margin: 30px 0;
     width: 100%;
@@ -285,6 +219,7 @@ export default {
       box-sizing: border-box;
       display: flex;
       align-items: center;
+      justify-content: center;;
       .btn {
         width: 100px;
         height: 30px;
