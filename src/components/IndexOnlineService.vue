@@ -1,19 +1,19 @@
 <template>
   <div class="home-online-service">
-    <div class="online-service-label">
-      在线客服
+    <div class="online-service-label" @click="hidden = !hidden">
+      <span>红娘牵线</span>
       <span class="icon-message" style="margin-top: 5px"></span>
     </div>
-    <div class="online-service-box">
+    <div class="online-service-box" v-show="!hidden">
       <div class="qq-box">
         <div class="qq-label">QQ咨询</div>
         <div class="qq-item" style="border-bottom: 1px solid lightgrey">
-          <span class="icon-qq qq-icon"></span>
-          <span style="color: rgb(132, 218, 240);">沈老师</span>
+          <span style="color: rgb(132, 218, 240);">沈老师：</span>
+          <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1014180992&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1014180992:52" alt="aaa" title="aaa"/></a>
         </div>
         <div class="qq-item">
-          <span class="icon-qq qq-icon"></span>
-          <span style="color: rgb(132, 218, 240);">马老师</span>
+          <span style="color: rgb(132, 218, 240);">马老师：</span>
+          <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1014180992&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1014180992:52" alt="aaa" title="aaa"/></a>
         </div>
       </div>
       <div class="tel-box">
@@ -37,6 +37,7 @@ import siteService from '@/services/siteService'
 export default {
   data () {
     return {
+      hidden: true,
       wechatQR: null
     }
   },
@@ -56,8 +57,12 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .home-online-service {
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+  z-index: 100000;
   width: 160px;
   height: 300px;
   box-sizing: border-box;
@@ -67,6 +72,7 @@ export default {
     margin-top: 20px;
     width: 30px;
     height: 120px;
+    text-align: center;
     background-color: #F1356F;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -75,6 +81,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
   .online-service-box {
     background-color: white;
