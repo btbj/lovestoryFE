@@ -186,7 +186,7 @@ export default {
   },
   computed: {
     originText () {
-      return this.familyInfo.origin.length ? (this.familyInfo.origin[0] + ' ' + this.familyInfo.origin[1]) : ''
+      return this.familyInfo.origin ? (this.familyInfo.origin[0] + ' ' + this.familyInfo.origin[1]) : ''
     },
     householdText () {
       let province = this.info.info.household_province

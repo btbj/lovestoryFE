@@ -1,4 +1,4 @@
-const baseURL = 'http://php.gooduo.net/lovestory233/public/images/webStatic/'
+const baseURL = 'http://www.lovestory33.com/server/public/images/webStatic/'
 
 export default {
   siteLogo: baseURL + 'logo.png',

@@ -7,13 +7,10 @@
         <!-- <img :src="siteLogo" style="width: 100%; height: 100%"> -->
       </div>
       <div class="info">
-        <div class="info-row1">
-          向会员提供，高品质，高效率
-        </div>
-        <div class="info-row2">
-          高端相亲交友服务平台
-        </div>
+        <div class="red-slogan-text">因为认真，所以安心！</div>
+        <div class="red-slogan-text">因为专业，所以贴心！</div>
       </div>
+      <div class="extra-text">中国严肃婚恋中心</div>
       <div class="tel">
         <span class="icon-phone2 tel-icon"></span>
         <span class="tel-number">{{hotLine}}</span>
@@ -100,16 +97,15 @@ export default {
       align-items: flex-start;
       justify-content: center;
       padding-left: 20px;
-      .info-row1 {
-        font-size: 14px;
-        color: gray;
-        margin-bottom: 3px;
-      }
-      .info-row2 {
-        color: #F4336A;
+      .red-slogan-text{
+        margin: 2px;
+        color: #F1356F;
         font-size: 18px;
         font-weight: bold;
       }
+    }
+    .extra-text{
+      color: #F1356F;
     }
     .tel {
       min-width: 200px;

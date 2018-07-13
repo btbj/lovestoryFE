@@ -1,7 +1,7 @@
 <template>
   <div class="nav-box">
     <div class="nav-list">
-      <div :class="['nav-item', isCurrent('home') ? 'selected' : '']" @click="navTo('home')">网站首页</div>
+      <div :class="['nav-item', isCurrent('home') ? 'selected' : '']" @click="navTo('home')">首页</div>
       <div :class="['nav-item', isCurrent('aboutus') ? 'selected' : '']" @click="navTo('aboutus')">关于我们</div>
       <div :class="['nav-item', (isCurrent('news') || isCurrent('newsinfo')) ? 'selected' : '']" @click="navTo('news')">新闻资讯</div>
       <div :class="['nav-item', isCurrent('serviceintro') ? 'selected' : '']" @click="navTo('serviceintro')">服务介绍</div>

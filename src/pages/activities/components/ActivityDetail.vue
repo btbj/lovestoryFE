@@ -96,7 +96,7 @@ export default {
     }
     ._inner-news-content-box {
       width: 100%;
-      height: 600px;
+      // height: 600px;
       overflow-y: auto;
       border-bottom: 1px dotted grey;
       box-sizing: border-box;
@@ -161,5 +161,11 @@ export default {
     display: flex;
     justify-content: center;
   }
+}
+</style>
+
+<style lang="less">
+._inner-news-content-box img {
+  max-width: 100%;
 }
 </style>

@@ -13,7 +13,7 @@
     <home-member-cards></home-member-cards>
     <home-adpics></home-adpics>
     <home-adwords>
-      <div slot="post-title">就在你身边，他们相爱啦</div>
+      <div slot="post-title">我无法定义幸福, 但是我知道有爱就一定会幸福</div>
       <div slot="post-words">立即加入会员，缘分就在眼前</div>
     </home-adwords>
     <home-love-pics></home-love-pics>
