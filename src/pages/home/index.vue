@@ -5,7 +5,7 @@
       <index-navbar></index-navbar>
     </div>
     <home-pic></home-pic>
-    <home-login></home-login>
+    <home-login style="z-index: 100px;"></home-login>
     <home-adwords>
       <div slot="post-title">如果有爱，为什么错过</div>
       <div slot="post-words">立即加入会员，缘分就在眼前</div>
