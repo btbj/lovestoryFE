@@ -5,7 +5,7 @@
         @click="selectType('')">综合排序</div>
       <div :class="['sorting-item', isCurrent('time') ? 'selected' : '']"
         @click="selectType('time')">登录时间
-        <span class="icon-expand_more icon"></span>
+        <span class="mdi-expand_more icon"></span>
       </div>
     </div>
   </div>

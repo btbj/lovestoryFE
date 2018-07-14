@@ -12,7 +12,7 @@
       </div>
       <div class="extra-text">中国严肃婚恋中心</div>
       <div class="tel">
-        <span class="icon-phone2 tel-icon"></span>
+        <span class="mdi-phone tel-icon"></span>
         <span class="tel-number">{{hotLine}}</span>
       </div>
     </div>

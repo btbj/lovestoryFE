@@ -37,7 +37,7 @@
     </div>
     <div class="collapse-btn" v-if="!moreTag" @click="moreTag = true">
       <span>设置更多条件</span>
-      <span class="item-icon icon-expand_more"></span>
+      <span class="item-icon mdi-expand_more"></span>
     </div>
   </div>
   <div class="more-tags" v-if="moreTag">
@@ -69,7 +69,7 @@
     </div>
     <div class="collapse-btn" @click="moreTag = false">
       <span>收起</span>
-      <span class="item-icon icon-expand_less"></span>
+      <span class="item-icon mdi-expand_less"></span>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div class="home-online-service">
     <div class="online-service-label" @click="hidden = !hidden">
       <span>红娘牵线</span>
-      <span class="icon-message" style="margin-top: 5px"></span>
+      <span class="mdi-message" style="margin-top: 5px"></span>
     </div>
     <div class="online-service-box" v-show="!hidden">
       <div class="qq-box">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="tel-box">
-        <span class="icon-phone_in_talk phone-icon"></span>
+        <span class="mdi-phone_in_talk phone-icon"></span>
         <span>{{hotline}}</span>
       </div>
       <div class="wechat-box">

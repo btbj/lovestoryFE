@@ -1,7 +1,7 @@
 <template>
   <div class="pics-info-container">
     <div class="pics-info-title">
-      <span class="icon-radio_button_unchecked item-icon"></span>
+      <span class="mdi-radio_button_unchecked item-icon"></span>
       <span>我的相册</span>
     </div>
     <div class="pics-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>

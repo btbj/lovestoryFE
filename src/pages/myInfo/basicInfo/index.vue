@@ -1,7 +1,7 @@
 <template>
   <div class="basic-info-container">
     <div class="basic-info-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>基本资料</span>
     </div>
     <div class="basic-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>

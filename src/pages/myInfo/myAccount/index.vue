@@ -2,7 +2,7 @@
   <div class="account-info-container"
     v-loading="loading">
     <div class="account-info-title">
-      <span class="icon-radio_button_unchecked item-icon"></span>
+      <span class="mdi-radio_button_unchecked item-icon"></span>
       <span>密码修改</span>
     </div>
     <div class="account-step-box">

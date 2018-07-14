@@ -9,7 +9,7 @@
       <div class="pic-box">
         <div class="pic">
           <div class="add-icon-box">
-            <span class="icon-control_point item-icon"></span>
+            <span class="mdi-control_point item-icon"></span>
             <div class="add-word">上传照片</div>
           </div>
         </div>

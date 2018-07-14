@@ -25,9 +25,9 @@
           </div>
           <div class="login-set">
             <div class="freedom">
-              <span class="icon-check_box_outline_blank icon-size" v-if="!isFreedom"
+              <span class="mdi-check_box_outline_blank icon-size" v-if="!isFreedom"
                     @click="isFreedom = !isFreedom"></span>
-              <span class="icon-check_box icon-size" v-else
+              <span class="mdi-check_box icon-size" v-else
                     @click="isFreedom = !isFreedom"></span>
               <span style="font-size: 14px;">一个月免登</span>
             </div>
@@ -65,9 +65,9 @@
           </div>
           <div class="login-set">
             <div class="freedom">
-              <span class="icon-check_box_outline_blank icon-size" v-if="!isFreedom"
+              <span class="mdi-check_box_outline_blank icon-size" v-if="!isFreedom"
                     @click="isFreedom = !isFreedom"></span>
-              <span class="icon-check_box icon-size" v-else
+              <span class="mdi-check_box icon-size" v-else
                     @click="isFreedom = !isFreedom"></span>
               <span style="font-size: 14px;">一个月免登</span>
             </div>

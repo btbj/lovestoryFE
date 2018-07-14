@@ -5,65 +5,65 @@
     <div class="menu-list">
       <div class="menu-box">
         <div class="title">
-          <span class="item-icon icon-people"></span>
+          <span class="item-icon mdi-people"></span>
           <span>交 友 记 录</span>
         </div>
         <div :class="['item', currentDatingRecordsType('visitor') ? 'selected': '']" @click="toDatingRecords('visitor')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>谁看过我</span>
         </div>
         <div :class="['item', currentDatingRecordsType('history') ? 'selected': '']" @click="toDatingRecords('history')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>我看过谁</span>
         </div>
         <div :class="['item', currentDatingRecordsType('follower') ? 'selected': '']" @click="toDatingRecords('follower')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>谁关注我</span>
         </div>
         <div :class="['item', currentDatingRecordsType('following') ? 'selected': '']" @click="toDatingRecords('following')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>我关注谁</span>
         </div>
       </div>
       <div class="menu-box">
         <div class="title">
-          <span class="item-icon icon-assignment"></span>
+          <span class="item-icon mdi-assignment"></span>
           <span>完 善 资 料</span>
         </div>
         <div :class="['item', isCurrentRoute('basicinfo') ? 'selected' : '']"
           @click="toInfoRoute('basicinfo')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>基本资料</span>
         </div>
         <div :class="['item', isCurrentRoute('myintro') ? 'selected' : '']"
           @click="toInfoRoute('myintro')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>内心独白</span>
         </div>
         <div :class="['item', isCurrentRoute('mypics') ? 'selected' : '']"
           @click="toInfoRoute('mypics')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>我的相册</span>
         </div>
         <div :class="['item', isCurrentMyDetail () ? 'selected' : '']"
           @click="toInfoRoute('mydetail')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>详细资料</span>
         </div>
         <div :class="['item', isCurrentRoute('myoption') ? 'selected' : '']"
           @click="toInfoRoute('myoption')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>择偶条件</span>
         </div>
       </div>
       <div class="menu-box">
         <div class="title">
-          <span class="item-icon icon-settings"></span>
+          <span class="item-icon mdi-settings"></span>
           <span>我 的 账 号</span>
         </div>
         <div :class="['item', isCurrentRoute('changepwd') ? 'selected' : '']"
           @click="toInfoRoute('changepwd')">
-          <span class="item-icon icon-keyboard_arrow_right"></span>
+          <span class="item-icon mdi-keyboard_arrow_right"></span>
           <span>密码修改</span>
         </div>
         <div class="item"

@@ -11,7 +11,7 @@
       <div :class="['nav-item', isCurrent('plans') ? 'selected' : '']" @click="navTo('plans')">定制服务</div>
       <div :class="['nav-item', isCurrent('activities') ? 'selected' : '']" @click="navTo('activities')">活动互动</div>
       <div :class="['nav-item', isCurrent('myinfo') ? 'selected' : '']" @click="navTo('myinfo')">
-        <span class="icon-person person-icon"></span>
+        <span class="mdi-person person-icon"></span>
       </div>
     </div>
   </div>

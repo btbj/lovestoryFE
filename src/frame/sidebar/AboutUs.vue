@@ -1,7 +1,7 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-insert_drive_file item-icon"></span>
+      <span class="mdi-insert_drive_file item-icon"></span>
       <span style="margin-left: 10px;">关于我们</span>
       <span style="font-size: 16px;">&nbsp;/ABOUT US</span>
     </div>

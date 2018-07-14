@@ -1,7 +1,7 @@
 <template>
   <div class="inner-item-nav">
     <div class="item-label">
-      <span class="icon-navigate_next item-icon"></span>
+      <span class="mdi-navigate_next item-icon"></span>
       <slot name="rightTitle"></slot>
     </div>
     <div class="item-nav">

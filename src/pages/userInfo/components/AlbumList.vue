@@ -1,7 +1,7 @@
 <template>
   <div class="user-album-list-root">
     <div class="page-btn">
-      <span class="icon-keyboard_arrow_left icon"
+      <span class="mdi-keyboard_arrow_left icon"
         v-if="displayIndex > 0"
         @click="displayIndex--"></span>
     </div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="page-btn">
-      <span class="icon-keyboard_arrow_right icon"
+      <span class="mdi-keyboard_arrow_right icon"
         v-if="selfPicList.length > displayIndex + displayCount"
         @click="displayIndex++"></span>
     </div>

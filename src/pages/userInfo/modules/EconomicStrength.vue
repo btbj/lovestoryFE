@@ -1,7 +1,7 @@
 <template>
   <div class="_box-container">
     <div class="_box-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>经济实力</span>
     </div>
     <div class="_box-content">
