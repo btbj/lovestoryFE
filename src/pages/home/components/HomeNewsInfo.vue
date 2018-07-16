@@ -8,7 +8,7 @@
           <div class="tab-arrow"></div>
         </div>
         <div :class="['tab-item', type === 'industry' ? 'selected' : '']" @click="getNews('industry')">
-          <div class="tab-item-text">行业资讯</div>
+          <div class="tab-item-text">情感资讯</div>
           <div class="tab-arrow"></div>
         </div>
       </div>

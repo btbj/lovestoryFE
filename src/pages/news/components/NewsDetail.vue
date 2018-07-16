@@ -73,7 +73,7 @@ export default {
       switch (currentCategory) {
         case 'notification': result = '通知公告'; break
         case 'company': result = '公司新闻'; break
-        case 'industry': result = '行业资讯'; break
+        case 'industry': result = '情感资讯'; break
       }
       return result
     }

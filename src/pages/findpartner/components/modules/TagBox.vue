@@ -126,7 +126,7 @@ export default {
         religion: {name: 'religion', value: '', type: 1},
         // integrity: {name: 'integrity', value: '', type: 1},
         photo: {name: 'has_image', value: '', type: 1},
-        hotTag: {name: 'hot_tag', value: '', options: ['高级白领', '教师', '医务工作者', '银行职员', '空姐', '公务员', '会计', '在校学生', '私营业主'], type: 1}
+        hotTag: {name: 'hot_tag', value: '', options: ['高级白领', '教师', '医务工作者', '银行职员', '空姐', '公务员', '会计', '私营业主'], type: 1}
       }
     }
   },

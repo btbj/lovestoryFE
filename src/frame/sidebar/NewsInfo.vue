@@ -10,7 +10,7 @@
       <div class="news-info-divided-line"></div>
       <div :class="['news-info-item', isCurrent('company') ? 'selected' : '']" @click="postLink('news-company')">公司新闻</div>
       <div class="news-info-divided-line"></div>
-      <div :class="['news-info-item', isCurrent('industry') ? 'selected' : '']" @click="postLink('news-industry')">行业资讯</div>
+      <div :class="['news-info-item', isCurrent('industry') ? 'selected' : '']" @click="postLink('news-industry')">情感资讯</div>
       <div class="news-info-divided-line"></div>
     </div>
   </div>

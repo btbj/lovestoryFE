@@ -16,9 +16,8 @@
         <div class="info-detail-btn" v-if="activityInfo.id"
           @click="checkDetail">查看更多</div>
       </div>
-      <div class="activity-pic-box">
-        <img :src="activityInfo.image_url"
-             class="img-style">
+      <div class="activity-pic-box" :style="`background-image: url(${activityInfo.image_url});`">
+        <!-- <img :src="activityInfo.image_url" class="img-style"> -->
       </div>
     </div>
  </div>
@@ -156,14 +155,9 @@ export default {
       box-sizing: border-box;
       overflow: hidden;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      .img-style {
-        min-width: 100%;
-        min-height: 100%;
-      }
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
     }
   }
 }

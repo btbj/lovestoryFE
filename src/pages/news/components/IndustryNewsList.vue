@@ -1,10 +1,10 @@
 <template>
   <div class="news-list-root">
     <content-nav>
-      <span slot="rightTitle">行业资讯</span>
+      <span slot="rightTitle">情感资讯</span>
       <span slot="leftFirstTitle">首页></span>
       <span slot="leftSecondTitle">新闻资讯></span>
-      <span slot="leftThirdTitle">行业资讯</span>
+      <span slot="leftThirdTitle">情感资讯</span>
     </content-nav>
     <div class="inner-item-content">
       <div class="news-item-box" v-for="(newsItem, index) in newsList"
