@@ -2,10 +2,10 @@
   <div class="about-company-intro-root">
     <div class="inner-item-box">
       <content-nav>
-        <span slot="rightTitle">办公环境</span>
+        <span slot="rightTitle">公司环境</span>
         <span slot="leftFirstTitle">首页></span>
         <span slot="leftSecondTitle">关于我们></span>
-        <span slot="leftThirdTitle">办公环境</span>
+        <span slot="leftThirdTitle">公司环境</span>
       </content-nav>
       <div class="inner-item-content" v-html="contentInfo">
         <!-- {{contentInfo}} -->

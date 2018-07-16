@@ -13,7 +13,7 @@
        <div class="info-label">关于我们</div>
        <div class="about-us">
          <div class="about-item" @click="$router.push('/aboutus/company')">公司介绍</div>
-         <div class="about-item" @click="$router.push('/aboutus/env')">办公环境</div>
+         <div class="about-item" @click="$router.push('/aboutus/env')">公司环境</div>
          <div class="about-item" @click="$router.push('/aboutus/contact')">联系方式</div>
        </div>
      </div>

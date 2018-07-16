@@ -8,7 +8,7 @@
     <div class="item-list-box" style="height: 130px">
       <div :class="['about-us-item', isCurrent('aboutus-companyintro') ? 'selected' : '']" @click="postLink('aboutus-companyintro')">公司介绍</div>
       <div class="about-us-divided-line"></div>
-      <div :class="['about-us-item', isCurrent('aboutus-officeenv') ? 'selected' : '']" @click="postLink('aboutus-officeenv')">办公环境</div>
+      <div :class="['about-us-item', isCurrent('aboutus-officeenv') ? 'selected' : '']" @click="postLink('aboutus-officeenv')">公司环境</div>
       <div class="about-us-divided-line"></div>
       <div :class="['about-us-item', isCurrent('aboutus-contactmethods') ? 'selected' : '']" @click="postLink('aboutus-contactmethods')">联系方式</div>
       <div class="about-us-divided-line"></div>
