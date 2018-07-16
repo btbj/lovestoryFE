@@ -80,7 +80,7 @@ export default {
     padding: 10px 0 0 0;
   }
   ._content-info-box {
-    width: 600px;
+    width: 700px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -135,6 +135,8 @@ export default {
           font-size: 14px;
           text-align: left;
           margin-bottom: 20px;
+          word-wrap: break-word;
+          word-break: break-all;
         }
         ._inner-news-prev-next {
           width: 100%;

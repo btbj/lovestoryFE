@@ -1,11 +1,11 @@
 <template>
-  <section class="login-root-container">
+  <div class="login-root-container">
     <div class="login-header-nav">
       <index-header></index-header>
     </div>
     <login-body></login-body>
     <index-bottom></index-bottom>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -14,7 +14,13 @@ const LoginBody = r => require.ensure([], () => r(require('./components/LoginBod
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'login')
 
 export default {
-  components: { IndexHeader, LoginBody, IndexBottom }
+  components: { IndexHeader, LoginBody, IndexBottom },
+  metaInfo: {
+    title: '登录页面',
+    meta: [
+      { name: 'keywords', content: '登录页面,爱情故事登录页面' }
+    ]
+  }
 
 }
 </script>
@@ -28,7 +34,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 0 0;
+  padding: 0;
   height: 100%;
   .login-header-nav {
     display: flex;

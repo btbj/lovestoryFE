@@ -1,20 +1,21 @@
 <template>
-  <div class="about-content-box">
+  <div class="service-content-box">
     <div class="content-link-box">
-      <about-us></about-us>
+      <!-- <about-us></about-us> -->
       <new-news></new-news>
       <contact-us></contact-us>
     </div>
     <div class="content-info-box">
-      <div class="inner-item-box">
-        <content-nav>
-          <span slot="rightTitle">公司介绍</span>
-          <span slot="leftFirstTitle">首页></span>
-          <span slot="leftSecondTitle">关于我们></span>
-          <span slot="leftThirdTitle">公司介绍</span>
-        </content-nav>
-        <div class="inner-item-content">
-          {{contentInfo}}
+      <div class="service-intro-root">
+        <div class="inner-item-box">
+          <content-nav>
+            <span slot="rightTitle">服务介绍</span>
+            <span slot="leftFirstTitle">首页></span>
+            <span slot="leftSecondTitle">服务介绍</span>
+          </content-nav>
+          <div class="inner-item-content" v-html="contentInfo">
+            <!-- {{contentInfo}} -->
+          </div>
         </div>
       </div>
     </div>
@@ -22,32 +23,46 @@
 </template>
 
 <script>
-
+import siteService from '@/services/siteService'
+const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'aboutus')
 const AboutUs = r => require.ensure([], () => r(require('@/frame/sidebar/AboutUs')), 'aboutus')
 const NewNews = r => require.ensure([], () => r(require('@/frame/sidebar/NewNews')), 'aboutus')
 const ContactUs = r => require.ensure([], () => r(require('@/frame/sidebar/ContactUs')), 'aboutus')
-const ContentNav = r => require.ensure([], () => r(require('@/frame/contentnav/ContentNav')), 'aboutus')
 
 export default {
   components: { AboutUs, NewNews, ContactUs, ContentNav },
   data () {
     return {
-      contentInfo: '相亲相爱网是一个严肃认真的婚恋相亲网站，为具有中华人民共和国国籍的单身成年人士提供婚恋服务'
+      contentInfo: ''
     }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        this.contentInfo = res.data.info.value
+        // console.log(res)
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo(13)
   }
 
 }
 </script>
 
 <style lang="less">
-.about-content-box {
-  width: 80%;
+.service-content-box {
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 10px 0;
   .content-link-box {
     width: 280px;
     height: 100%;
@@ -57,7 +72,9 @@ export default {
     padding: 10px 0 0 0;
   }
   .content-info-box {
-    width: 600px;
+    // width: 700px;
+    flex: 1;
+    margin-left: 20px;
     height: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -95,9 +112,9 @@ export default {
       }
       .inner-item-content {
         width: 100%;
-        height: 580px;
+        // height: 580px;
         box-sizing: border-box;
-        padding: 40px 5px 10px 5px;
+        padding: 10px 5px;
         text-align: left;
         font-size: 14px;
       }

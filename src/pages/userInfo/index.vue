@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="partner-container">
     <div class="partner-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -11,32 +11,43 @@
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
     <div class="online-service-container">
-      <index-online-service></index-online-service>
+      <!-- <index-online-service></index-online-service> -->
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'partner')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'partner')
 const PagePic = r => require.ensure([], () => r(require('@/components/PagePic')), 'partner')
-const InfoContent = r => require.ensure([], () => r(require('./_InfoContent')), 'partner')
+const InfoContent = r => require.ensure([], () => r(require('./InfoContent')), 'partner')
 
 const IndexCompanyInfo = r => require.ensure([], () => r(require('@/components/IndexCompanyInfo')), 'partner')
 const IndexOnlineService = r => require.ensure([], () => r(require('@/components/IndexOnlineService')), 'partner')
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
   components: {
-    IndexHeader, IndexNavbar, PagePic, InfoContent,
-    IndexCompanyInfo, IndexOnlineService, IndexBottom
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    InfoContent,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
+  },
+  metaInfo: {
+    title: '用户信息',
+    meta: [
+      { name: 'keywords', content: '用户信息' }
+    ]
   }
 
 }
 </script>
 
 <style lang="less">
-.container {
+.partner-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +55,8 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
+  background: white;
   .partner-header-nav {
     display: flex;
     flex-direction: column;
@@ -60,8 +72,8 @@ export default {
   }
   .online-service-container {
     z-index: 1;
-    position: absolute;
-    top: 400px;
+    position: fixed;
+    bottom: 50px;
     right: 0;
   }
 }

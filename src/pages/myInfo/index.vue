@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="home-header-container">
     <div class="home-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -9,36 +9,59 @@
             <left-bar></left-bar>
           </el-aside>
           <el-main>
-            <nuct-child></nuct-child>
+            <!-- <basic-info></basic-info> -->
+            <router-view></router-view>
           </el-main>
         </el-container>
       </div>
     </div>
-  </section>
+    <index-bottom></index-bottom>
+  </div>
 </template>
 
 <script>
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'myinfo')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'myinfo')
 const LeftBar = r => require.ensure([], () => r(require('./components/LeftBar')), 'myinfo')
+const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'myinfo')
 
 export default {
   components: {
-    IndexHeader, IndexNavbar, LeftBar
+    IndexHeader,
+    IndexNavbar,
+    LeftBar,
+    IndexBottom
   },
+  metaInfo: {
+    title: '个人中心',
+    meta: [
+      { name: 'keywords', content: '个人中心' }
+    ]
+  },
+  computed: {
+    currentToken () {
+      return this.$store.getters.token
+    }
+  },
+  mounted: async function () {
+    if (this.currentToken === null) {
+      this.$router.replace({name: 'login'})
+    }
+  }
 }
 </script>
 
 <style lang="less">
-.container {
+.home-header-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
   .home-header-nav {
     display: flex;
     flex-direction: column;
@@ -55,8 +78,13 @@ export default {
     text-align: center;
     .main-body{
       margin: auto;
-      width: 840px;
-      padding: 15px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 15px 0;
+      .el-main {
+        padding: 0 0px;
+        margin-left: 20px;
+      }
     }
   }
 }

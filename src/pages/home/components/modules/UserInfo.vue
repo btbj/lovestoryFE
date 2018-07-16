@@ -5,6 +5,7 @@
     <div class="user-phone">{{userInfo.info.phone}}</div>
     <div class="user-address">{{userInfo.info.address}}</div>
     <div class="user-status">{{UserAge}} {{userInfo.info.marital_status}}</div>
+    <div class="user-logout-btn" @click="logoutUser">登出</div>
   </div>
 </template>
 
@@ -26,8 +27,16 @@ export default {
         this.userInfo = res.data.info
         console.log(res)
       } catch (error) {
-        console.log(error)
+        if (error.error_code === 110 || error.error_code === 101) {
+          this.$store.dispatch('logout')
+        } else {
+          console.log(error)
+        }
       }
+    },
+    logoutUser () {
+      this.$store.dispatch('logout')
+      this.$router.push('/')
     }
   },
   computed: {
@@ -73,6 +82,20 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+  }
+  .user-logout-btn{
+    width: 80px;
+    height: 30px;
+    background-color: #F1356F;
+    box-sizing: border-box;
+    border-radius: 3px;
+    color: white;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 15px;
+    &.user-logout-btn:hover{
+      background-color: rgb(255, 73, 131);
+    }
   }
 }
 

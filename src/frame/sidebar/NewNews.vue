@@ -1,35 +1,60 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-language item-icon"></span>
+      <span class="mdi-language item-icon"></span>
       <span style="margin-left: 10px;">最新资讯</span>
       <span style="font-size: 16px;">&nbsp;/NEWS</span>
     </div>
     <div class="item-list-box">
-      <div class="news-item" v-for="(news, index) in newsList"
-            :key="index">
-        <span class="icon-stop item-icon"></span>
-        <span>{{news.content}}</span></div>
+      <div class="news-item" v-for="(news, index) in newsList" :key="index"
+        @click="checkNewsDetail(news)">
+        <span class="mdi-stop item-icon"></span>
+        <span class="news-content">{{news.title}}</span></div>
     </div>
   </div>
 </template>
 
 <script>
+import articleService from '@/services/articleService'
+
 export default {
   data () {
     return {
-      newsList: [{
-        content: '教您几点在法国的常用礼仪...'
-      }, {
-        content: '一个星期不适用聊天软件，我的生活...'
-      }, {
-        content: '国外的婚礼习俗...'
-      }, {
-        content: '如何用英语说出最美的情话？...'
-      }, {
-        content: '嫁给老外是种怎样的体验？4个女人...'
-      }]
+      newsList: []
     }
+  },
+  methods: {
+    async getNews () {
+      try {
+        let res = await articleService.articles({
+          category: [1, 2, 3],
+          page: 1,
+          per_page: 5
+        })
+        // console.log('success', res)
+        this.newsList = res.data.articles
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    checkNewsDetail (news) {
+      console.log(news)
+      let category = 'notification'
+      switch (news.category) {
+        case '1': category = 'notification'; break
+        case '2': category = 'company'; break
+        case '3': category = 'industry'; break
+        default: category = 'not registered'
+      }
+      if (category !== 'not registered') {
+        this.$router.push({name: 'news-detail', params: {category, 'id': news.id}})
+      } else {
+        console.log('category not registered in NewNews')
+      }
+    }
+  },
+  mounted: async function () {
+    this.getNews()
   }
 }
 </script>
@@ -38,6 +63,7 @@ export default {
 .link-item-box {
   padding: 0 5px;
   width: 100%;
+  min-width: 280px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -78,6 +104,14 @@ export default {
       .item-icon {
         color: #D76083;
         margin-right: 10px;
+      }
+      .news-content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .news-content:hover{
+        color: #D76083;
       }
     }
   }

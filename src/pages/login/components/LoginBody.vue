@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" :style="`background-image: url('${loginbg}');`">
      <div class="login-box">
       <div class="login-content">
         <div class="login-header">
@@ -25,9 +25,9 @@
           </div>
           <div class="login-set">
             <div class="freedom">
-              <span class="icon-check_box_outline_blank icon-size" v-if="!isFreedom"
+              <span class="mdi-check_box_outline_blank icon-size" v-if="!isFreedom"
                     @click="isFreedom = !isFreedom"></span>
-              <span class="icon-check_box icon-size" v-else
+              <span class="mdi-check_box icon-size" v-else
                     @click="isFreedom = !isFreedom"></span>
               <span style="font-size: 14px;">一个月免登</span>
             </div>
@@ -65,9 +65,9 @@
           </div>
           <div class="login-set">
             <div class="freedom">
-              <span class="icon-check_box_outline_blank icon-size" v-if="!isFreedom"
+              <span class="mdi-check_box_outline_blank icon-size" v-if="!isFreedom"
                     @click="isFreedom = !isFreedom"></span>
-              <span class="icon-check_box icon-size" v-else
+              <span class="mdi-check_box icon-size" v-else
                     @click="isFreedom = !isFreedom"></span>
               <span style="font-size: 14px;">一个月免登</span>
             </div>
@@ -102,6 +102,7 @@
 
 <script>
 import userService from '@/services/userService'
+import imageService from '@/services/imageService'
 import OtpBtn from '@/components/OtpBtn'
 import PlainInput from '@/components/PlainInput'
 
@@ -130,7 +131,7 @@ export default {
     },
     async doLogin () {
       try {
-        let res = await userService.doLogin('/api/user/do_login', {
+        let res = await userService.doLogin({
           phone: this.tel,
           password: this.password
         })
@@ -171,6 +172,11 @@ export default {
         console.log(error)
       }
     }
+  },
+  computed: {
+    loginbg () {
+      return imageService.loginbg
+    }
   }
 }
 </script>
@@ -182,7 +188,7 @@ export default {
   // height: 520px;
   border-top: 2px solid #F3487E;
   box-sizing: border-box;
-  background-image: url("https://dummyimage.com/1200x520/eee/3ff.jpg&text=pic");
+  // background-image: url("https://dummyimage.com/1200x520/eee/3ff.jpg&text=pic");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

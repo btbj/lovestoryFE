@@ -4,39 +4,29 @@
      <div class="contact-info-box">
        <div class="info-label">联系方式</div>
        <div class="contact-info">
-         <div class="contact-item">
-           <div class="contact-label">热线 :</div>
-           <div class="contact-content">4006-0000-0000</div></div>
-         <div class="contact-item">
-           <div class="contact-label">Q Q :</div>
-           <div class="contact-content">945195459</div></div>
-         <div class="contact-item">
-           <div class="contact-label">邮箱 :</div>
-           <div class="contact-content">945195459@qq.com</div></div>
-         <div class="contact-item">
-           <div class="contact-label">地址 :</div>
-           <div class="contact-content">浙江省宁波市慈溪市古塘街道科技路18号</div></div>
+         <div class="contact-item" v-for="(item, index) in contactList" :key="index">
+           <div class="contact-label">{{item.label}}：</div>
+           <div class="contact-content">{{item.value}}</div></div>
        </div>
      </div>
      <div class="about-us-box">
        <div class="info-label">关于我们</div>
        <div class="about-us">
-         <div class="about-item">公司介绍</div>
-         <div class="about-item">办公环境</div>
-         <div class="about-item">联系方式</div>
+         <div class="about-item" @click="$router.push('/aboutus/company')">公司介绍</div>
+         <div class="about-item" @click="$router.push('/aboutus/env')">公司环境</div>
+         <div class="about-item" @click="$router.push('/aboutus/contact')">联系方式</div>
        </div>
      </div>
      <div class="attention-us-box">
        <div class="info-label">关注我们</div>
        <div class="attention-us">
-         <div class="attention-item">
+         <div class="attention-item" v-for="(item, index) in qrCodeList" :key="index">
            <div class="item-qrcode">
-             <img src="https://dummyimage.com/100x100/333/3ff.jpg&text=pic"
-                  class="img-style">
+             <img :src="item.value" class="img-style">
            </div>
-           <div class="item-label">微信公众号</div>
+           <div class="item-label">{{item.label}}</div>
          </div>
-         <div class="attention-item">
+         <!-- <div class="attention-item">
            <div class="item-qrcode">
              <img src="https://dummyimage.com/100x100/333/3ff.jpg&text=pic"
                   class="img-style">
@@ -49,7 +39,7 @@
                   class="img-style">
            </div>
            <div class="item-label">官网手机版</div>
-         </div>
+         </div> -->
        </div>
      </div>
    </div>
@@ -57,8 +47,47 @@
 </template>
 
 <script>
-export default {
+import siteService from '@/services/siteService'
 
+export default {
+  data () {
+    return {
+      contactList: [],
+      qrCodeList: []
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        let array = res.data.info.map(item => {
+          let {name, value, label} = item
+          return {name, value, label}
+        })
+        // console.log(array)
+        this.contactList = array
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    },
+    async getQRCode () {
+      try {
+        let res = await siteService.info({id: [16, 17, 18]})
+        let array = res.data.info.map(item => {
+          let {name, url: value, label} = item
+          return {name, value, label}
+        })
+        // console.log(array)
+        this.qrCodeList = array
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
+  mounted: async function () {
+    this.getSiteInfo([7, 8, 9, 11])
+    this.getQRCode()
+  }
 }
 </script>
 
@@ -74,6 +103,7 @@ export default {
     padding: 20px 0 0 0;
     margin: auto;
     width: 90%;
+    max-width: 1200px;
     height: 100%;
     box-sizing: border-box;
     display: flex;
@@ -87,7 +117,7 @@ export default {
     }
     .contact-info-box {
       box-sizing: border-box;
-      width: 340px;
+      flex: 1;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -103,19 +133,22 @@ export default {
           font-size: 14px;
           margin-bottom: 5px;
           display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
           .contact-label {
-            margin-right: 8px;
-            width: 40px;
+            width: 45px;
             text-align: right;
           }
           .contact-content {
-            width: 280px;
+            // width: 280px;
+            flex: 1;
             text-align: left;
           }
         }
       }
     }
     .about-us-box {
+      flex: 1;
       box-sizing: border-box;
       width: 100px;
       height: 100%;
@@ -133,6 +166,9 @@ export default {
           font-size: 14px;
           margin-bottom: 10px;
           cursor: pointer;
+        }
+        .about-item:hover{
+          color: #F3487E;
         }
       }
     }

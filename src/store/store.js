@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export const store = () => new Vuex.Store({
+export default new Vuex.Store({
   state: {
     token: {
       value: null,
@@ -12,7 +12,7 @@ export const store = () => new Vuex.Store({
   },
   getters: {
     token (state) {
-      let storedToken = localStorage.getItem('LoveStoryToken')
+      let storedToken = localStorage.getItem('LoveStoryFEToken')
       if (storedToken) {
         state.token = JSON.parse(storedToken)
       }
@@ -28,7 +28,18 @@ export const store = () => new Vuex.Store({
   mutations: {
     setToken (state, {value, expire}) {
       state.token = { value, expire }
-      localStorage.setItem('LoveStoryToken', JSON.stringify(state.token))
+      localStorage.setItem('LoveStoryFEToken', JSON.stringify(state.token))
+    }
+  },
+  actions: {
+    login (context, {value, expire}) {
+      context.commit('setToken', {value, expire})
+    },
+    logout (context) {
+      context.commit('setToken', {
+        value: null,
+        expire: 0
+      })
     }
   }
 })

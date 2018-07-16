@@ -11,7 +11,7 @@
           <div :class="[ 'header-word', type === 'register' ? 'word-style' : '']">会员注册</div>
         </div>
       </div>
-      <div class="login-body" v-if="type === 'login'">
+      <div class="login-body">
         <div class="title-word">专业红娘为您牵线搭桥</div>
         <div class="tel">
           <plain-input class="tel-input" placeholder="手机号" v-model="tel" maxlength="11"></plain-input>
@@ -25,9 +25,9 @@
         </div>
         <div class="login-set">
           <div class="freedom">
-            <span class="icon-check_box_outline_blank icon-size" v-if="!isFreedom"
+            <span class="mdi-check_box_outline_blank icon-size" v-if="!isFreedom"
                   @click="isFreedom = !isFreedom"></span>
-            <span class="icon-check_box icon-size" v-else
+            <span class="mdi-check_box icon-size" v-else
                   @click="isFreedom = !isFreedom"></span>
             <span style="font-size: 14px;">一个月免登</span>
           </div>
@@ -48,9 +48,6 @@
         <div class="registered-num">
           最新登记注册会员<span style="color: #FD6F9F">220145</span>人
         </div>
-      </div>
-      <div class="register-body" v-else>
-
       </div>
     </div>
   </div>
@@ -110,7 +107,8 @@ export default {
   border-bottom: 1px solid lightgray;
   background-color: white;
   box-sizing: border-box;
-  width: 300px;
+  // flex: 2;
+  width: 400px;
   height: 100%;
   .login-register-content {
     display: flex;
@@ -151,7 +149,7 @@ export default {
       box-sizing: border-box;
       width: 100%;
       height: 300px;
-      padding: 10px;
+      padding: 10px 28px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -258,13 +256,6 @@ export default {
         color: gray;
         font-size: 14px;
       }
-    }
-    .register-body {
-      box-sizing: border-box;
-      width: 100%;
-      height: 300px;
-      padding: 10px;
-      border: 1px solid black;
     }
   }
 }

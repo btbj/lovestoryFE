@@ -1,6 +1,5 @@
 <template>
-  <div class="register-container">
-
+  <div class="register-body-container">
     <div class="register-form">
       <div class="form-title">
         <div class="title-text">用户注册</div>
@@ -16,14 +15,14 @@
           <el-radio v-model="registerInfo.sex" label="女">女</el-radio>
         </el-form-item>
         <el-form-item label="生日" prop="birthday">
-          <el-date-picker size="small"
+          <el-date-picker size="small" class="input-item"
             v-model="registerInfo.birthday"
             type="date"
             placeholder="选择日期">
           </el-date-picker>
         </el-form-item>
         <el-form-item label="常住地" prop="address">
-          <el-input size="small" v-model="registerInfo.address"></el-input>
+          <area-picker class="input-item" v-model="registerInfo.address"></area-picker>
         </el-form-item>
         <el-form-item label="婚姻状况" prop="marrageState">
           <el-radio v-model="registerInfo.marrageState" label="未婚">未婚</el-radio>
@@ -31,35 +30,54 @@
           <el-radio v-model="registerInfo.marrageState" label="丧偶">丧偶</el-radio>
         </el-form-item>
         <el-form-item label="身高" prop="height">
-          <el-input size="small" v-model="registerInfo.height" maxlength="3"></el-input>
+          <el-input class="input-item" size="small" placeholder="请输入身高（cm）"
+            v-model="registerInfo.height" maxlength="3"></el-input>
         </el-form-item>
         <el-form-item label="学历" prop="education">
-          <el-input size="small" v-model="registerInfo.education"></el-input>
+          <el-select size="small" class="input-item" placeholder="请选择学历"
+            v-model="registerInfo.education">
+            <el-option v-for="(item, index) in options.education" :key="index"
+              :label="item" :value="item">
+            </el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="薪水" prop="salary">
-          <el-input size="small" v-model="registerInfo.salary"></el-input>
+        <el-form-item label="月薪" prop="salary">
+          <!-- <el-input class="input-item" size="small" placeholder="请输入月薪（元）"
+            v-model="registerInfo.salary"></el-input> -->
+          <el-select size="small" class="input-item" placeholder="请选择学历"
+            v-model="registerInfo.salary">
+            <el-option v-for="(item, index) in options.salary" :key="index"
+              :label="item" :value="item">
+            </el-option>
+          </el-select>
         </el-form-item>
         <div class="seperator"></div>
         <el-form-item label="手机号" prop="phone">
-          <el-input style="width: 200px;" size="small" v-model="registerInfo.phone" maxlength="11"></el-input>
+          <el-input style="width: 200px;" size="small" placeholder="请输入手机号"
+            v-model="registerInfo.phone" maxlength="11"></el-input>
           <otp-btn class="otp-btn" :phoneNumber="registerInfo.phone"></otp-btn>
         </el-form-item>
         <el-form-item label="验证码" prop="code">
-          <el-input style="width: 200px;" size="small" v-model="registerInfo.code"></el-input>
+          <el-input style="width: 200px;" size="small" placeholder="请输入验证码"
+            v-model="registerInfo.code" maxlength="4"></el-input>
         </el-form-item>
         <el-form-item label="登录密码" prop="password">
-          <el-input size="small" type="password" v-model="registerInfo.password" auto-complete="off"></el-input>
+          <el-input class="input-item" size="small" type="password" placeholder="请输入密码"
+            v-model="registerInfo.password" auto-complete="new-password" maxlength="20"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="passwordConfirm">
-          <el-input size="small" type="password" v-model="registerInfo.passwordConfirm" auto-complete="off"></el-input>
+          <el-input class="input-item" size="small" type="password" placeholder="请再次输入密码"
+            v-model="registerInfo.passwordConfirm" auto-complete="new-password" maxlength="20"></el-input>
         </el-form-item>
         <el-form-item label="昵称" prop="nickname">
-          <el-input size="small" v-model="registerInfo.nickname"></el-input>
+          <el-input class="input-item" size="small" placeholder="请输入昵称"
+            v-model="registerInfo.nickname"></el-input>
         </el-form-item>
-        <el-form-item label="自我介绍" prop="introduction">
-          <el-input type="textarea" resize="none"
+        <el-form-item label="内心独白" prop="monologue">
+          <el-input class="textarea-item" type="textarea" resize="none"
+            placeholder="请输入内心独白"
             :rows="4"
-            v-model="registerInfo.introduction"></el-input>
+            v-model="registerInfo.monologue"></el-input>
         </el-form-item>
       </el-form>
       <el-button class="register-btn" @click="validateForm">立即注册</el-button>
@@ -68,11 +86,12 @@
 </template>
 
 <script>
-import api from '~/service/api'
+import userService from '@/services/userService'
 import OtpBtn from '@/components/OtpBtn'
+import AreaPicker from '@/components/AreaPicker'
 
 export default {
-  components: { OtpBtn },
+  components: { OtpBtn, AreaPicker },
   data () {
     let checkEqualPass = (rule, value, callback) => {
       if (value !== this.registerInfo.password) {
@@ -84,10 +103,10 @@ export default {
     return {
       registerInfo: {
         // name: 'btbj',
-        sex: '',
+        sex: '男',
         birthday: '',
-        address: '',
-        marrageState: '',
+        address: ['慈溪市', '慈溪市'],
+        marrageState: '未婚',
         height: '',
         education: '',
         salary: '',
@@ -96,7 +115,7 @@ export default {
         password: '',
         passwordConfirm: '',
         nickname: '',
-        introduction: ''
+        monologue: ''
       },
       formRule: {
         // name: [
@@ -109,27 +128,28 @@ export default {
           { required: true, message: '请选择生日', trigger: 'blur' }
         ],
         address: [
-          { required: true, message: '请输入常住地', trigger: 'blur' }
+          { type: 'array', required: true, message: '请输入常住地', trigger: 'blur' }
         ],
         marrageState: [
           { required: true, message: '请选择婚姻状况', trigger: 'blur' }
         ],
         height: [
           { required: true, message: '请输入身高', trigger: 'blur' },
-          { pattern: /^[\d]{3}$/, message: '请输入身高（cm）', trigger: 'blur'}
+          { pattern: /^[\d]{3}$/, message: '请输入身高（cm）', trigger: 'blur' }
         ],
         education: [
           { required: true, message: '请输入学历', trigger: 'blur' }
         ],
         salary: [
-          { required: true, message: '请输入薪水', trigger: 'blur' }
+          { required: true, message: '请输入月薪（元）', trigger: 'blur' }
         ],
         phone: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          { pattern: /^1[\d]{10}$/, message: '手机号格式错误', trigger: 'blur'}
+          { pattern: /^1[\d]{10}$/, message: '手机号格式错误', trigger: 'blur' }
         ],
         code: [
-          { required: true, message: '请输入收到的验证码', trigger: 'blur' }
+          { required: true, message: '请输入收到的验证码', trigger: 'blur' },
+          { pattern: /^[\d]{4}$/, message: '验证码格式错误', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
@@ -141,9 +161,13 @@ export default {
         nickname: [
           { required: true, message: '请输入昵称', trigger: 'blur' }
         ],
-        introduction: [
-          { required: true, message: '请输入自我介绍', trigger: 'blur' }
+        monologue: [
+          { required: true, message: '请输入内心独白', trigger: 'blur' }
         ]
+      },
+      options: {
+        education: ['高中及中专以下', '大专', '本科', '双学士', '硕士', '博士', '博士后'],
+        salary: ['2000元以下', '2000~5000元', '5000~10000元', '10000~20000元', '20000元以上']
       }
     }
   },
@@ -157,33 +181,40 @@ export default {
           this.startRegister()
         } else {
           console.log('error submit!!')
-          return false;
+          return false
         }
       })
     },
     async startRegister () {
       try {
-        let res = await api.post('/api/user/do_reg', {
+        let res = await userService.doReg({
           // name: this.registerInfo.name,
           sex: this.registerInfo.sex,
           year: this.registerInfo.birthday.getFullYear(),
           month: this.registerInfo.birthday.getMonth() + 1,
           day: this.registerInfo.birthday.getDay(),
-          address: this.registerInfo.address,
+          province: this.registerInfo.address[0],
+          city: this.registerInfo.address[1],
           marital_status: this.registerInfo.marrageState,
           height: this.registerInfo.height,
           education: this.registerInfo.education,
           month_pay: this.registerInfo.salary,
-          introduction: this.registerInfo.introduction,
+          monologue: this.registerInfo.monologue,
           phone: this.registerInfo.phone,
           code: this.registerInfo.code,
           password: this.registerInfo.password,
-          nickname: this.registerInfo.nickname,
+          nickname: this.registerInfo.nickname
         })
         this.$message({
           message: res.message,
           type: 'success'
         })
+        this.$store.dispatch('setToken', {
+          value: res.data.token,
+          expire: res.data.timeout
+        })
+        this.$router.push({name: 'myinfo'})
+        // this.$router.push({name: 'prepay'})
       } catch (error) {
         console.log(error)
         if (error.message) {
@@ -191,12 +222,18 @@ export default {
         }
       }
     }
+  },
+  computed: {
+
+  },
+  mounted: function () {
+    this.registerInfo.birthday = new Date('2000-01-01')
   }
 }
 </script>
 
 <style lang="less">
-.register-container {
+.register-body-container {
   flex: 1;
   width: 100%;
   min-height: 1220px;
@@ -253,14 +290,13 @@ export default {
   }
   .el-form-item__content{
     text-align: left;
-    .el-input{
-      width: 300px;
-    }
-    .el-textarea{
-      width: 460px;
-    }
   }
 }
-
+.input-item{
+  width: 300px;
+}
+.textarea-item{
+  width: 460px;
+}
 
 </style>

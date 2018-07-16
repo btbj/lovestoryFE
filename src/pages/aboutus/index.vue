@@ -1,46 +1,73 @@
 <template>
-  <section class="aboutus-root-container">
+  <div class="aboutus-container">
     <div class="us-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
     </div>
     <page-pic></page-pic>
     <div class="us-content-container">
-      <about-content></about-content>
+      <about-frame></about-frame>
+      <!-- <div class="about-content-box">
+        <div class="content-link-box">
+          <about-us></about-us>
+          <new-news></new-news>
+          <contact-us></contact-us>
+        </div>
+        <div class="content-info-box">
+          <router-view></router-view>
+        </div>
+      </div> -->
     </div>
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
     <div class="online-service-container">
-      <index-online-service></index-online-service>
+      <!-- <index-online-service></index-online-service> -->
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
 const IndexHeader = r => require.ensure([], () => r(require('@/components/IndexHeader')), 'aboutus')
 const IndexNavbar = r => require.ensure([], () => r(require('@/components/IndexNavbar')), 'aboutus')
 const PagePic = r => require.ensure([], () => r(require('@/components/PagePic')), 'aboutus')
-const AboutContent = r => require.ensure([], () => r(require('./components/AboutContent')), 'aboutus')
+const AboutFrame = r => require.ensure([], () => r(require('./components/AboutFrame')), 'aboutus')
 
 const IndexCompanyInfo = r => require.ensure([], () => r(require('@/components/IndexCompanyInfo')), 'aboutus')
 const IndexOnlineService = r => require.ensure([], () => r(require('@/components/IndexOnlineService')), 'aboutus')
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
-  components: { IndexHeader, IndexNavbar, PagePic, AboutContent, IndexCompanyInfo, IndexOnlineService, IndexBottom }
+  components: {
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    AboutFrame,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
+  },
+  metaInfo: {
+    title: '关于我们',
+    meta: [
+      { name: 'keywords', content: '关于我们,公司信息,联系方式,工作环境' }
+    ]
+  }
+
 }
 </script>
 
 <style lang="less">
-.aboutus-root-container {
+.aboutus-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
+  background: white;
   .us-header-nav {
     display: flex;
     flex-direction: column;
@@ -51,8 +78,9 @@ export default {
     margin-bottom: 1px;
   }
   .us-content-container {
-    width: 100%;
-    height: 680px;
+    max-width: 1200px;
+    width: 90%;
+    // height: 680px;
     box-sizing: border-box;
   }
   .online-service-container {
@@ -62,5 +90,4 @@ export default {
     right: 0;
   }
 }
-
 </style>

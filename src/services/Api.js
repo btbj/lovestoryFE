@@ -1,10 +1,10 @@
 import axios from 'axios'
 import Vue from 'vue'
 import router from '@/router'
-import { store } from '@/store/store'
+import store from '@/store/store'
 import config from '@/myconfig'
 
-const vm = new Vue()
+const vm = new Vue({router, store})
 const Host = config.host
 const Http = axios.create({
   baseUrl: Host
@@ -46,6 +46,19 @@ const post = (url, data) => {
     }
   })
 }
+const handleTokenError = (message) => {
+  if (store.getters.token) {
+    store.dispatch('logout')
+    vm.$alert(message, '请重新登录', {
+      confirmButtonText: '确定',
+      callback: () => {
+        router.push({name: 'login'})
+      }
+    })
+  } else {
+    router.push({name: 'login'})
+  }
+}
 
 export default {
   serverBaseURL: Host,
@@ -72,18 +85,5 @@ export default {
     // 没有预存的错误，则返回原数据包，交给具体Service内部处理
     return res
   },
-
-  handleTokenError (message) {
-    if (store.getters.loginState) {
-      store.dispatch('logout')
-      vm.$alert(message, '请重新登录', {
-        confirmButtonText: '确定',
-        callback: () => {
-          router.push({name: 'LoginPage'})
-        }
-      })
-    } else {
-      router.push({name: 'LoginPage'})
-    }
-  }
+  handleTokenError
 }

@@ -25,10 +25,11 @@ export default {
 .home-login {
   margin-top: -60px;
   margin-bottom: 10px;
-  width: 840px;
+  width: 90%;
+  max-width: 1200px;
   height: 360px;
   display: flex;
-  z-index: 1;
+  z-index: 100;
 }
 
 </style>

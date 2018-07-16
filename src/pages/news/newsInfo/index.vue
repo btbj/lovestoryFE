@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="news-header-container">
     <div class="news-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -11,10 +11,10 @@
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
     <div class="online-service-container">
-      <index-online-service></index-online-service>
+      <!-- <index-online-service></index-online-service> -->
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -28,15 +28,20 @@ const IndexOnlineService = r => require.ensure([], () => r(require('@/components
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
   components: {
-    IndexHeader, IndexNavbar, PagePic, InfoContent,
-    IndexCompanyInfo, IndexOnlineService, IndexBottom
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    InfoContent,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
   }
 
 }
 </script>
 
 <style lang="less">
-.container {
+.news-header-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +49,7 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
   .news-header-nav {
     display: flex;
     flex-direction: column;
@@ -60,8 +65,8 @@ export default {
   }
   .online-service-container {
     z-index: 1;
-    position: absolute;
-    top: 400px;
+    position: fixed;
+    bottom: 50px;
     right: 0;
   }
 }

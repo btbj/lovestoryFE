@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="partner-container">
     <div class="partner-header-nav">
       <index-header></index-header>
       <index-navbar></index-navbar>
@@ -11,10 +11,10 @@
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
     <div class="online-service-container">
-      <index-online-service></index-online-service>
+      <!-- <index-online-service></index-online-service> -->
     </div>
     <div class="online-service-container"></div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -28,15 +28,27 @@ const IndexOnlineService = r => require.ensure([], () => r(require('@/components
 const IndexBottom = r => require.ensure([], () => r(require('@/components/IndexBottom')), 'aboutus')
 export default {
   components: {
-    IndexHeader, IndexNavbar, PagePic, PartnerContent,
-    IndexCompanyInfo, IndexOnlineService, IndexBottom
+    IndexHeader,
+    IndexNavbar,
+    PagePic,
+    PartnerContent,
+    IndexCompanyInfo,
+    IndexOnlineService,
+    IndexBottom
+  },
+  metaInfo: {
+    title: '寻找对象',
+    meta: [
+      { name: 'keywords', content: '寻找对象,对象搜索' }
+    ]
   }
 
 }
 </script>
 
 <style lang="less">
-.container {
+.partner-container {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +56,8 @@ export default {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0 10px 0;
+  padding: 0;
+  background: white;
   .partner-header-nav {
     display: flex;
     flex-direction: column;
@@ -55,7 +68,8 @@ export default {
     margin-bottom: 1px;
   }
   .partner-content-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     box-sizing: border-box;
   }
   .online-service-container {

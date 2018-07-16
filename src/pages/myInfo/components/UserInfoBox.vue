@@ -6,17 +6,17 @@
     <div class="user-address">{{userInfo.info.address}}</div>
     <div class="user-status">{{UserAge}} {{userInfo.info.marital_status}}</div>
     <div class="user-fans-row">
-      <div class="item">粉丝  <span class="num fans">108</span></div>
-      <div class="item">关注  <span class="num follow">58</span></div>
+      <div class="item">粉丝  <span class="num fans">{{userInfo.info.fans_num}}</span></div>
+      <div class="item">关注  <span class="num follow">{{userInfo.info.attention_num}}</span></div>
     </div>
   </div>
 </template>
 
 <script>
-import api from '~/service/api'
+import userService from '@/services/userService'
 
 export default {
-   data () {
+  data () {
     return {
       userInfo: null
     }
@@ -24,11 +24,14 @@ export default {
   methods: {
     async getUserInfo () {
       try {
-        let res = await api.post('/api/user/get_info', {
+        let res = await userService.getInfo({
           token: this.$store.getters.token
         })
         this.userInfo = res.data.info
-        console.log(res)
+        // if (this.userInfo.info.role_id === '3') {
+        //   this.$router.replace({name: 'prepay'})
+        // }
+        console.log('user info', res)
       } catch (error) {
         console.log(error)
       }
