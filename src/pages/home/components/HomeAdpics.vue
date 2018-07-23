@@ -135,13 +135,13 @@ export default {
       }
 
       .info-detail-btn {
-        width: 110px;
-        height: 30px;
         border: 1px solid black;
         box-sizing: border-box;
         background-color:rgba(0,0,0,0.01);
         color: black;
         line-height: 30px;
+        // height: 30px;
+        padding: 0 30px;
         cursor: pointer;
         &.info-detail-btn:hover{
           color: #D3016F;

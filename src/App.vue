@@ -10,7 +10,17 @@ const FloatBox = r => require.ensure([], () => r(require('@/components/IndexOnli
 
 export default {
   name: 'App',
-  components: { FloatBox }
+  components: { FloatBox },
+  methods: {
+    checkIE () {
+      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+        alert('使用IE浏览器在本页面的显示效果可能有差异，建议更换浏览器')
+      }
+    }
+  },
+  mounted: async function () {
+    await this.checkIE()
+  }
 }
 </script>
 

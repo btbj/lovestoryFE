@@ -1,7 +1,7 @@
 <template>
   <div class="home-online-service">
     <div class="online-service-label" @click="hidden = !hidden">
-      <span>红娘牵线</span>
+      <span class="label-text">红娘牵线</span>
       <span class="mdi-message" style="margin-top: 5px"></span>
     </div>
     <div class="online-service-box" v-show="!hidden">
@@ -84,11 +84,13 @@ export default {
     background-color: #F1356F;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    box-sizing: border-box;
+    padding: 15px 0;
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
     cursor: pointer;
   }
   .online-service-box {
