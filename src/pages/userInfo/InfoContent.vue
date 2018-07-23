@@ -67,6 +67,7 @@ export default {
         console.log(res)
       } catch (error) {
         console.log(error)
+        userService.handleErr(error)
       }
     }
   },

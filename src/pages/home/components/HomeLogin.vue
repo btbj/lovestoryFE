@@ -29,7 +29,7 @@ export default {
   max-width: 1200px;
   height: 360px;
   display: flex;
-  z-index: 1;
+  z-index: 100;
 }
 
 </style>

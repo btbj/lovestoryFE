@@ -1,7 +1,7 @@
 <template>
   <div class="basic-info-container">
     <div class="basic-info-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>基本资料</span>
     </div>
     <div class="basic-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
@@ -71,7 +71,7 @@
         <el-form-item prop="household">
           <span slot="label">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口：</span>
           <!-- <el-select size="small" v-model="basicInfo.account"></el-select> -->
-          <area-picker class="area-picker" v-model="basicInfo.household"></area-picker>
+          <province-city-picker class="area-picker" v-model="basicInfo.household"></province-city-picker>
         </el-form-item>
         <el-form-item prop="blood">
           <span slot="label">血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
@@ -133,7 +133,7 @@
     </div>
     <div class="option-btn">
       <div class="btn" @click="verifyForm">保存并继续</div>
-      <div class="btn">跳过此页</div>
+      <div class="btn" @click="$router.push({name: 'myinfo-myintro'})">跳过此页</div>
     </div>
   </div>
 </template>
@@ -141,9 +141,10 @@
 <script>
 import userService from '@/services/userService'
 import AreaPicker from '@/components/AreaPicker'
+import ProvinceCityPicker from '@/components/ProvinceCityPicker'
 
 export default {
-  components: { AreaPicker },
+  components: { AreaPicker, ProvinceCityPicker },
   data () {
     return {
       userInfo: {

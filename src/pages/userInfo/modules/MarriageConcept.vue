@@ -1,7 +1,7 @@
 <template>
   <div class="_box-container">
     <div class="_box-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>婚姻观念</span>
     </div>
     <div class="_marriage-item-label">关于自己</div>
@@ -186,7 +186,7 @@ export default {
   },
   computed: {
     originText () {
-      return this.familyInfo.origin.length ? (this.familyInfo.origin[0] + ' ' + this.familyInfo.origin[1]) : ''
+      return this.familyInfo.origin ? (this.familyInfo.origin[0] + ' ' + this.familyInfo.origin[1]) : ''
     },
     householdText () {
       let province = this.info.info.household_province

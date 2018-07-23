@@ -1,14 +1,14 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-insert_drive_file item-icon"></span>
+      <span class="mdi-insert_drive_file item-icon"></span>
       <span style="margin-left: 10px;">关于我们</span>
       <span style="font-size: 16px;">&nbsp;/ABOUT US</span>
     </div>
     <div class="item-list-box" style="height: 130px">
       <div :class="['about-us-item', isCurrent('aboutus-companyintro') ? 'selected' : '']" @click="postLink('aboutus-companyintro')">公司介绍</div>
       <div class="about-us-divided-line"></div>
-      <div :class="['about-us-item', isCurrent('aboutus-officeenv') ? 'selected' : '']" @click="postLink('aboutus-officeenv')">办公环境</div>
+      <div :class="['about-us-item', isCurrent('aboutus-officeenv') ? 'selected' : '']" @click="postLink('aboutus-officeenv')">公司环境</div>
       <div class="about-us-divided-line"></div>
       <div :class="['about-us-item', isCurrent('aboutus-contactmethods') ? 'selected' : '']" @click="postLink('aboutus-contactmethods')">联系方式</div>
       <div class="about-us-divided-line"></div>

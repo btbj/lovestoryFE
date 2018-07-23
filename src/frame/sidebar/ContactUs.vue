@@ -1,7 +1,7 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-phone2 item-icon"></span>
+      <span class="mdi-phone item-icon"></span>
       <span style="margin-left: 10px;">联系我们</span>
       <span style="font-size: 16px;">&nbsp;/CONTACT US</span>
     </div>

@@ -4,13 +4,37 @@
 </template>
 
 <script>
-import imageService from '@/services/imageService'
+// import imageService from '@/services/imageService'
+import siteService from '@/services/siteService'
 
 export default {
+  data () {
+    return {
+      bannerList: []
+    }
+  },
+  methods: {
+    async getSiteInfo (id) {
+      try {
+        let res = await siteService.info({id})
+        this.bannerList = res.data.info.images
+        console.log('banner', res)
+      } catch (error) {
+        siteService.handleErr(error)
+      }
+    }
+  },
   computed: {
     bannerImg () {
-      return imageService.banner
+      if (this.bannerList.length) {
+        let randomIndex = Math.round(Math.random() * this.bannerList.length)
+        // console.log('asdfasdfasf', this.bannerList.length, randomIndex)
+        return this.bannerList[randomIndex].url
+      }
     }
+  },
+  mounted: async function () {
+    this.getSiteInfo(26)
   }
 }
 </script>

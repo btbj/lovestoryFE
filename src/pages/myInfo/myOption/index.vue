@@ -1,7 +1,7 @@
 <template>
   <div class="option-info-container">
     <div class="option-info-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>择偶条件</span>
     </div>
     <div class="option-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>

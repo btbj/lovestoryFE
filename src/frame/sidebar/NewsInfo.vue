@@ -1,7 +1,7 @@
 <template>
   <div class="link-item-box">
     <div class="item-title">
-      <span class="icon-insert_drive_file item-icon"></span>
+      <span class="mdi-insert_drive_file item-icon"></span>
       <span style="margin-left: 10px;">新闻资讯</span>
       <span style="font-size: 16px;">&nbsp;/NEWS</span>
     </div>
@@ -10,7 +10,7 @@
       <div class="news-info-divided-line"></div>
       <div :class="['news-info-item', isCurrent('company') ? 'selected' : '']" @click="postLink('news-company')">公司新闻</div>
       <div class="news-info-divided-line"></div>
-      <div :class="['news-info-item', isCurrent('industry') ? 'selected' : '']" @click="postLink('news-industry')">行业资讯</div>
+      <div :class="['news-info-item', isCurrent('industry') ? 'selected' : '']" @click="postLink('news-industry')">情感资讯</div>
       <div class="news-info-divided-line"></div>
     </div>
   </div>

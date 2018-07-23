@@ -5,9 +5,9 @@
       <index-navbar></index-navbar>
     </div>
     <home-pic></home-pic>
-    <home-login></home-login>
+    <home-login style="z-index: 100px;"></home-login>
     <home-adwords>
-      <div slot="post-title">如果有爱，为什么错过</div>
+      <div slot="post-title">我无法定义幸福, 但是我知道有爱就一定会幸福</div>
       <div slot="post-words">立即加入会员，缘分就在眼前</div>
     </home-adwords>
     <home-member-cards></home-member-cards>
@@ -24,9 +24,7 @@
     </div>
     <index-company-info></index-company-info>
     <index-bottom></index-bottom>
-    <div class="online-service-container">
-      <!-- <index-online-service></index-online-service> -->
-    </div>
+    <!-- <index-online-service></index-online-service> -->
     <!-- <div>
       <div class="links">
         <div class="button--green"

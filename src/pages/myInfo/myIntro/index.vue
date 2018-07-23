@@ -1,7 +1,7 @@
 <template>
   <div class="intro-info-container">
     <div class="intro-info-title">
-      <span class="icon-radio_button_unchecked icon"></span>
+      <span class="mdi-radio_button_unchecked icon"></span>
       <span>内心独白</span>
     </div>
     <div class="intro-info-label">资料越完善，同等条件我们将优先推荐您哦！</div>
@@ -12,7 +12,7 @@
     </div>
     <div class="option-btn">
       <div class="btn" @click="submitInfo">保存并继续</div>
-      <div class="btn">跳过此页</div>
+      <div class="btn" @click="$router.push({name: 'myinfo-mypics'})">跳过此页</div>
     </div>
   </div>
 </template>

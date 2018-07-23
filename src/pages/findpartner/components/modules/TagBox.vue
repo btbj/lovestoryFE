@@ -37,7 +37,7 @@
     </div>
     <div class="collapse-btn" v-if="!moreTag" @click="moreTag = true">
       <span>设置更多条件</span>
-      <span class="item-icon icon-expand_more"></span>
+      <span class="item-icon mdi-expand_more"></span>
     </div>
   </div>
   <div class="more-tags" v-if="moreTag">
@@ -69,7 +69,7 @@
     </div>
     <div class="collapse-btn" @click="moreTag = false">
       <span>收起</span>
-      <span class="item-icon icon-expand_less"></span>
+      <span class="item-icon mdi-expand_less"></span>
     </div>
   </div>
 </div>
@@ -126,7 +126,7 @@ export default {
         religion: {name: 'religion', value: '', type: 1},
         // integrity: {name: 'integrity', value: '', type: 1},
         photo: {name: 'has_image', value: '', type: 1},
-        hotTag: {name: 'hot_tag', value: '', options: ['高级白领', '教师', '医务工作者', '银行职员', '空姐', '公务员', '会计', '在校学生', '私营业主'], type: 1}
+        hotTag: {name: 'hot_tag', value: '', options: ['高级白领', '教师', '医务工作者', '银行职员', '空姐', '公务员', '会计', '私营业主'], type: 1}
       }
     }
   },
@@ -202,7 +202,7 @@ export default {
     .row-label {
       align-self: flex-start;
       margin-top: 10px;
-      width: 70px;
+      width: 100px;
       font-size: 14px;
       font-weight: bold;
     }

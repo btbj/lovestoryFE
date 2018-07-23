@@ -5,15 +5,15 @@
        <div class="info-label">联系方式</div>
        <div class="contact-info">
          <div class="contact-item" v-for="(item, index) in contactList" :key="index">
-           <div class="contact-label">{{item.label}}：</div>
-           <div class="contact-content">{{item.value}}</div></div>
+           <span class="contact-label">{{item.label}}：</span>
+           <span class="contact-content">{{item.value}}</span></div>
        </div>
      </div>
      <div class="about-us-box">
        <div class="info-label">关于我们</div>
        <div class="about-us">
          <div class="about-item" @click="$router.push('/aboutus/company')">公司介绍</div>
-         <div class="about-item" @click="$router.push('/aboutus/env')">办公环境</div>
+         <div class="about-item" @click="$router.push('/aboutus/env')">公司环境</div>
          <div class="about-item" @click="$router.push('/aboutus/contact')">联系方式</div>
        </div>
      </div>
@@ -99,6 +99,7 @@ export default {
   box-sizing: border-box;
   padding: 10px 0 0 5px;
   background-color: #F5F5F5;
+  display: inline-block;
   .company-info-box {
     padding: 20px 0 0 0;
     margin: auto;
@@ -107,7 +108,9 @@ export default {
     height: 100%;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    // justify-content: space-between;
     .info-label {
       text-align: left;
       border-left: 2px solid #F3487E;
@@ -117,18 +120,19 @@ export default {
     }
     .contact-info-box {
       box-sizing: border-box;
-      flex: 1;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      width: 370px;
+      // height: 100%;
+      display: inline-block;
+      // display: flex;
+      // flex-direction: column;
       .contact-info {
         padding: 0 0 0 5px;
         width: 100%;
-        height: 100%;
+        // height: 100%;
         box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: flex-start;
         .contact-item {
           font-size: 14px;
           margin-bottom: 5px;
@@ -140,9 +144,12 @@ export default {
             text-align: right;
           }
           .contact-content {
-            // width: 280px;
+            width: 280px;
             flex: 1;
             text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
           }
         }
       }
@@ -151,13 +158,14 @@ export default {
       flex: 1;
       box-sizing: border-box;
       width: 100px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      // height: 100%;
+      display: inline-block;
+      // display: flex;
+      // flex-direction: column;
       .about-us {
         padding: 0 0 0 5px;
         width: 100%;
-        height: 100%;
+        // height: 100%;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -175,9 +183,10 @@ export default {
     .attention-us-box {
       box-sizing: border-box;
       width: 400px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      // height: 100%;
+      display: inline-block;
+      // display: flex;
+      // flex-direction: column;
       .attention-us {
         padding: 0 0 0 5px;
         width: 100%;
