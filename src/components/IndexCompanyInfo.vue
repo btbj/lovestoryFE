@@ -72,7 +72,8 @@ export default {
     },
     async getQRCode () {
       try {
-        let res = await siteService.info({id: [16, 17, 18]})
+        // let res = await siteService.info({id: [16, 17, 18]})
+        let res = await siteService.info({id: [16, 17]})
         let array = res.data.info.map(item => {
           let {name, url: value, label} = item
           return {name, value, label}
@@ -182,7 +183,7 @@ export default {
     }
     .attention-us-box {
       box-sizing: border-box;
-      width: 400px;
+      width: 250px;
       // height: 100%;
       display: inline-block;
       // display: flex;
