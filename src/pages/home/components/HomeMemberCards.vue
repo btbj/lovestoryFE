@@ -1,31 +1,37 @@
 <template>
   <div v-show="show" class="home-member-cards">
-    <div class="page-cards">
-      <div class="single-card" v-for="(member, index) in memberCardsList"
-        :key="index">
-        <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
-          <!-- <img :src="member.head_image_url" class="img-style"> -->
-        </div>
-        <div class="card-info">
-          <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
-            {{member.nickname}}
+    <el-carousel class="member-card-pages" :interval="5000"
+      arrow="hover" indicator-position="outside">
+      <el-carousel-item v-for="(memberPages, index) in memberCardsListPages" :key="index">
+        <div class="page-cards">
+          <div class="single-card" v-for="(member, index) in memberPages"
+            :key="index">
+            <div class="card-pic" :style="`background-image: url(${member.head_image_url})`">
+              <!-- <img :src="member.head_image_url" class="img-style"> -->
+            </div>
+            <div class="card-info">
+              <div class="member-info-item" style="color: #F02D73;font-size: 16px;">
+                {{member.nickname}}
+              </div>
+              <div class="member-info-item">年龄：{{member.age || '保密'}}</div>
+              <div class="member-info-item">身高：{{member.height}}</div>
+              <div class="member-info-item">学历：{{member.education}}</div>
+              <!-- <div class="member-info-item">收入：{{member.income}}</div> -->
+              <div class="member-detail-btn">
+                <div class="btn" @click="checkUserDetail(member)">查看详情</div>
+              </div>
+            </div>
           </div>
-          <div class="member-info-item">年龄：{{member.age}}</div>
-          <div class="member-info-item">身高：{{member.height}}</div>
-          <div class="member-info-item">学历：{{member.education}}</div>
-          <!-- <div class="member-info-item">收入：{{member.income}}</div> -->
-          <div class="member-detail-btn">
-            <div class="btn" @click="checkUserDetail(member)">查看详情</div>
-          </div>
         </div>
-      </div>
-    </div>
+      </el-carousel-item>
+    </el-carousel>
   </div>
 
 </template>
 
 <script>
 import userService from '@/services/userService'
+import chunk from 'lodash/chunk'
 
 export default {
   data () {
@@ -42,7 +48,7 @@ export default {
       try {
         let res = await userService.recommends({
           token: this.$store.getters.token,
-          num: 8
+          num: 24
         })
         console.log('success', res)
         this.memberCardsList = res.data.users
@@ -50,6 +56,11 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    }
+  },
+  computed: {
+    memberCardsListPages () {
+      return chunk(this.memberCardsList, 8)
     }
   },
   mounted: async function () {
@@ -80,10 +91,11 @@ export default {
       flex-basis: 25%;
       margin: 5px 0;
       display: flex;
+      flex-direction: row;
       box-sizing: border-box;
       width: 205px;
       height: 155px;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       .card-pic {
         margin-right: 10px;
@@ -105,12 +117,12 @@ export default {
         }
       }
       .card-info {
-        flex: 1;
+        // flex: 1;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
-        width: 95px;
+        // width: 95px;
         height: 155px;
         box-sizing: border-box;
         .member-info-item {
@@ -132,5 +144,9 @@ export default {
       }
     }
   }
+}
+.member-card-pages{
+  height: 100%;
+  width: 100%;
 }
 </style>
