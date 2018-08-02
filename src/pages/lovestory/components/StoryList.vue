@@ -102,10 +102,13 @@ export default {
       padding: 10px 0;
       .story-item-wrapper{
         flex-basis: 33.3%;
-        padding: 0 10px 20px;
+        width: 280px;
         box-sizing: border-box;
+        padding: 0 10px 20px;
         .story-card-box {
-          // width: 200px;
+          // width: 250px;
+          width: 100%;
+          min-width: 270px;
           border: 1px solid lightgrey;
           box-sizing: border-box;
           // margin: 0 10px 20px;

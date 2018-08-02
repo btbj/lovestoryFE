@@ -82,6 +82,10 @@ export default {
           per_page: this.paginationData.size
         })
         this.userList = res.data.users
+        let {count: total, page: current, per_page: size} = res.data
+        this.paginationData = {
+          current, total, size
+        }
         console.log(res)
       } catch (error) {
         userService.handleErr(error)

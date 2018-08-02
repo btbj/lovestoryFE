@@ -17,6 +17,12 @@
       <div class="_inner-news-content-box" v-html="newsDetail.info.content">
         <!-- {{newsDetail.info.content}} -->
       </div>
+      <div class="file-box" v-if="newsDetail.files.length > 0">
+        <div class="title-text">附件列表</div>
+        <div class="file-item" v-for="file in newsDetail.files" :key="file.id">
+          <span class="icon mdi-insert_drive_file"></span><span>{{file.client_name}}</span><a class="dl-btn" :href="file.url">下载</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -106,6 +112,29 @@ export default {
       margin-bottom: 20px;
       word-wrap: break-word;
       word-break: break-all;
+    }
+    .file-box{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      border-bottom: 1px dotted grey;
+      box-sizing: border-box;
+      padding: 10px 10px 0;
+      .title-text{
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      .file-item{
+        margin-bottom: 15px;
+        .icon{
+          color: #F1356F;
+        }
+        .dl-btn{
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
     }
     ._inner-news-prev-next {
       width: 100%;

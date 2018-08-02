@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .home-news-info {
   width: 55%;
   height: 100%;
@@ -172,7 +172,7 @@ export default {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          justify-content: space-around;
+          justify-content: flex-start;
           padding: 10px 0;
           .info-title {
             font-size: 16px;
@@ -185,11 +185,13 @@ export default {
           .info-content {
             flex: 1;
             font-size: 14px;
+            height: 50px;
+            line-height: 25px;
             text-align: left;
             color: grey;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             overflow: hidden;
             text-overflow: ellipsis;
           }
